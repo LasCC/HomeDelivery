@@ -1,0 +1,26 @@
+[
+	{
+		"image": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Château_de_Rambouillet_2013.JPG",
+		"name": "Rambouillet",
+		"latitude": 48.6540869,
+		"longitude": 1.8280519
+	},
+	{
+		"image": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Villiers-le-Bel_-_Collège_Saint-Exupéry.jpg",
+		"name": "Villiers-le-Bel",
+		"latitude": 49.005243,
+		"longitude": 2.3849963
+	},
+	{
+		"image": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Eaubonne_-_Avenue_de_l_Europe.jpg",
+		"name": "Eaubonne",
+		"latitude": 48.9906696,
+		"longitude": 2.2794326
+	},
+	{
+		"image": "https://medias.liberation.fr/photo/820956--.jpg?modified_at=1445893049&width=960",
+		"name": "Sevran",
+		"latitude": 48.9392142,
+		"longitude": 2.5257254
+	}
+]
