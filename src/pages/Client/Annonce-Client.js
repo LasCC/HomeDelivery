@@ -17,13 +17,31 @@ import {
 import { Link } from 'react-router-dom';
 import ROUTE from '../../Routes';
 import Navbar from '../../components/Navbar';
-import Map from '../../components/Map';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 window.document.title = "HomeDelivery - Création d'annonce";
 
+const Todo = ({ todo, index, removeTodo }) => {
+	return (
+		<Box display='flex' alignItems='center' style={{ marginTop: 15 }}>
+			<Typography>{todo.article}</Typography>
+			<i className='uil uil-times' onClick={() => removeTodo(index)} style={{ cursor: 'pointer' }} />
+		</Box>
+	);
+};
+
 export default (props) => {
+	const [ todos, setTodos ] = useState([]);
+	const addTodo = (article) => {
+		const newTodos = [ ...todos, { article } ];
+		setTodos(newTodos);
+	};
+	const removeTodo = (index) => {
+		const newTodos = [ ...todos ];
+		newTodos.splice(index, 1);
+		setTodos(newTodos);
+	};
+
 	const [ values, setValues ] = useState({
-		list: '',
 		annexe: '',
 		price_min: '',
 		payment: ''
@@ -34,6 +52,46 @@ export default (props) => {
 	const handleSubmit = () => {
 		console.log('====== LIST COURSES ======');
 		console.log(values);
+		console.log(value);
+	};
+	const TodoForm = ({ addTodo }) => {
+		const [ value, setValue ] = useState('');
+
+		const handleTodo = (e) => {
+			e.preventDefault();
+			if (!value) return;
+			addTodo(value);
+			setValue('');
+		};
+		return (
+			<form onSubmit={handleTodo}>
+				<Box display='flex' alignItems='center'>
+					<TextField
+						style={{ marginTop: 15 }}
+						label='Articles'
+						fullWidth
+						type='text'
+						variant='outlined'
+						placeholder='Riz, carottes, pommes vertes'
+						value={value}
+						onChange={(e) => setValue(e.target.value)}
+					/>
+					<Button
+						onClick={handleTodo}
+						style={{
+							marginTop: 15,
+							height: '100%',
+							backgroundColor: '#18B074',
+							color: 'white',
+							marginLeft: 3,
+							padding: 11
+						}}
+					>
+						<i className='uil uil-plus' style={{ fontSize: 20 }} />
+					</Button>
+				</Box>
+			</form>
+		);
 	};
 	return (
 		<div>
@@ -75,7 +133,7 @@ export default (props) => {
 							<Typography variant='h1' style={{ fontWeight: 'bold', fontSize: 25 }}>
 								Liste de course :{' '}
 							</Typography>
-							<TextField
+							{/* <TextField
 								style={{ marginTop: 15 }}
 								label='Articles'
 								multiline
@@ -85,7 +143,8 @@ export default (props) => {
 								placeholder='Riz, carottes, pommes vertes'
 								value={values.list}
 								onChange={handleChange('list')}
-							/>
+							/> */}
+							<TodoForm addTodo={addTodo} />
 							<FormHelperText>La liste des courses est limitée à 10 articles maximum</FormHelperText>
 							<Typography variant='h1' style={{ fontWeight: 'bold', fontSize: 25, marginTop: 15 }}>
 								Demandes annexes :{' '}
@@ -180,13 +239,20 @@ export default (props) => {
 							position: 'sticky',
 							top: 0,
 							height: '100vh',
-							backgroundColor: '3D9EFE7'
+							backgroundColor: '#D9EFE7'
 						}}
-						display='flex'
-						alignItems='center'
-						justifyContent='center'
 					>
-						<Map />
+						<Box style={{ padding: 35 }}>
+							<Typography component='h1' variant='h6'>
+								Résumé de votre annonce :
+							</Typography>
+							<Divider style={{ marginTop: 15, marginBottom: 15 }} />
+							<Box style={{ padding: 15 }}>
+								{todos.map((todo, index) => (
+									<Todo key={index} index={index} todo={todo} removeTodo={removeTodo} />
+								))}
+							</Box>
+						</Box>
 					</Box>
 				</Grid>
 			</Grid>

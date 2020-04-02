@@ -17,7 +17,8 @@ export default (props) => {
 		complement: '',
 		city: '',
 		code_post: '',
-		phone_number: ''
+		phone_number: '',
+		date: ''
 	});
 	const handleChange = (name) => (event) => {
 		setValues({ ...values, [name]: event.target.value });

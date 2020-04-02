@@ -99,13 +99,20 @@ export default (props) => {
 			</Drawer>
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
-				<Typography variant='h6' component='h1'>
-					Ravis de vous revoir <strong>[Ludovic]</strong>
-				</Typography>
-				<Typography color='textSecondary' variant='paragraph'>
-					Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl.
-				</Typography>
-				<Divider style={{ marginTop: 15, marginBottom: 15 }} />
+				<Box style={{ backgroundColor: '#D9EFE7', padding: 35, borderRadius: 15, width: '100%' }}>
+					<Typography variant='h6' component='h1'>
+						Ravis de vous revoir <strong>[Ludovic]</strong>
+					</Typography>
+					<Typography color='textSecondary' variant='paragraph'>
+						Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl.
+					</Typography>
+				</Box>
+				<Box style={{ marginTop: 15, padding: 35 }}>
+					<Typography variant='h6' component='h1'>
+						Vue d'ensemble de l'application
+					</Typography>
+					<Divider style={{ marginTop: 15, marginBottom: 15 }} />
+				</Box>
 			</main>
 		</div>
 	);
