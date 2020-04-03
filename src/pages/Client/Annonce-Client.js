@@ -23,20 +23,31 @@ import 'moment/locale/fr';
 moment.locale('fr');
 window.document.title = "HomeDelivery - Création d'annonce";
 
-const Todo = ({ todo, index, removeTodo }) => {
-	return (
-		<Box display='flex' alignItems='center' style={{ marginTop: 15 }}>
-			<Typography color='textSecondary'>{todo.article}</Typography>
-			<i className='uil uil-times' onClick={() => removeTodo(index)} style={{ cursor: 'pointer' }} />
-		</Box>
-	);
-};
-
 export default (props) => {
 	const [ todos, setTodos ] = useState([]);
+	const onlyNumbers = (e) => {
+		e.target.value = e.target.value.replace(/[^0-9]/g, '');
+		console.log(e.target.value);
+		if (e.target.value > 50) {
+			e.target.value = '50';
+		}
+	};
+	const Todo = ({ todo, index, removeTodo }) => {
+		return (
+			<Box display='flex' alignItems='center' style={{ marginTop: 15 }}>
+				<Typography color='textSecondary'>{todo.article}</Typography>
+				<i className='uil uil-times' onClick={() => removeTodo(index)} style={{ cursor: 'pointer' }} />
+			</Box>
+		);
+	};
 	const addTodo = (article) => {
 		const newTodos = [ ...todos, { article } ];
-		setTodos(newTodos);
+		if (todos.length < 10) {
+			// faire le reg (flememe)
+			setTodos(newTodos);
+		} else {
+			return;
+		}
 	};
 	const removeTodo = (index) => {
 		const newTodos = [ ...todos ];
@@ -186,21 +197,27 @@ export default (props) => {
 							</FormControl>
 							<Box style={{ marginBottom: 25, marginTop: 25 }}>
 								<Box>
-									<Typography variant='h1' style={{ fontWeight: 'bold', fontSize: 20 }}>
+									<Typography
+										variant='h1'
+										style={{ fontWeight: 'bold', fontSize: 20, marginBottom: 15 }}
+									>
 										Prix maximum à ne pas dépasser :
 									</Typography>
-									<FormControl fullWidth variant='outlined' style={{ marginTop: 15 }}>
-										<InputLabel>Prix</InputLabel>
-										<OutlinedInput
-											type='number'
-											variant='outlined'
-											inputProps={{ min: '0', max: '50' }}
-											value={values.price_max}
-											onChange={handleChange('price_max')}
-											endAdornment={<InputAdornment position='end'>€</InputAdornment>}
-										/>
-										<FormHelperText>Le prix maximum fixé est de 50€</FormHelperText>
-									</FormControl>
+									<TextField
+										variant='outlined'
+										label='Prix'
+										fullWidth
+										onInput={(e) => onlyNumbers(e)}
+										inputProps={{
+											maxLength: 2
+										}}
+										InputProps={{
+											endAdornment: <InputAdornment position='end'>€</InputAdornment>
+										}}
+										value={values.price_max}
+										onChange={handleChange('price_max')}
+									/>
+									<FormHelperText>Le prix maximum fixé est de 50€</FormHelperText>
 								</Box>
 							</Box>
 
@@ -261,7 +278,7 @@ export default (props) => {
 								<div className='ticket__divider' />
 								<Box className='ticket__body'>
 									<Box className='ticket__section'>
-										<Typography>Liste des courses :</Typography>
+										<Typography>Liste des courses ({todos.length} / 10) :</Typography>
 										{todos.map((todo, index) => (
 											<Todo key={index} index={index} todo={todo} removeTodo={removeTodo} />
 										))}
@@ -277,9 +294,7 @@ export default (props) => {
 									</Box>
 								</Box>
 								<Box className='ticket__footer '>
-									<Typography style={{ fontWeight: 'bold', marginBottom: 10 }}>
-										Prix maximum :
-									</Typography>
+									<Typography style={{ fontWeight: 'bold' }}>Prix maximum :</Typography>
 									<Typography color='textSecondary'>{values.price_max} €</Typography>
 								</Box>
 							</article>

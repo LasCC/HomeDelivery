@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Drawer, CssBaseline, Toolbar, Typography, Divider, InputBase, IconButton, Box } from '@material-ui/core';
+import {
+	Drawer,
+	CssBaseline,
+	Toolbar,
+	Typography,
+	Divider,
+	InputBase,
+	IconButton,
+	Box,
+	TextField,
+	Button
+} from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import ROUTE from '../../Routes';
 import DrawerDashboardClient from '../../components/DrawerDashboardClient';
-import moment from 'moment';
-import 'moment/locale/fr';
-moment.locale('fr');
-window.document.title = 'HomeDelivery - Historique';
+window.document.title = 'HomeDelivery - Contactez-nous ';
 
 const drawerWidth = 300;
 
@@ -40,17 +50,19 @@ const useStyles = makeStyles((theme) => ({
 	content: {
 		flexGrow: 1,
 		padding: theme.spacing(8),
-		backgroundColor: 'white',
 		boxShadow: '-8px 0px 18px 0px rgba(0,0,0,0.05)',
-		zIndex: 2,
-		height: '100vh'
+		height: '100vh',
+		zIndex: 2
 	}
 }));
 
 export default (props) => {
 	const classes = useStyles();
 	const [ values, setValues ] = useState({
-		input: ''
+		search: '',
+		firstName: '',
+		lastName: '',
+		message: ''
 	});
 	const handleChange = (name) => (event) => {
 		setValues({ ...values, [name]: event.target.value });
@@ -84,7 +96,7 @@ export default (props) => {
 					<img
 						src='https://svgur.com/i/Jg4.svg'
 						alt='logoHomeDelivery'
-						style={{ marginLeft: 13, marginTop: 13, objectFit: 'cover' }}
+						style={{ marginLeft: 13, marginTop: 13 }}
 					/>
 				</Box>
 				<Divider />
@@ -93,49 +105,67 @@ export default (props) => {
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
 				<Typography variant='h6' component='h1'>
-					Historique de vos annonces postées
+					Contactez nous
 				</Typography>
 				<Typography color='textSecondary' variant='paragraph'>
-					Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl.
+					Si vous avez la moindre question n'hésitez pas à nous écrire un petit message.
 				</Typography>
 				<Divider style={{ marginTop: 15, marginBottom: 15 }} />
-				<Box style={{ marginTop: 25, padding: 15 }}>
-					<Box
-						style={{
-							backgroundColor: 'white',
-							padding: 25,
-							marginTop: 15,
-							borderRadius: 10,
-							border: 'solid 1px rgba(0, 0, 0, 0.10)',
-							boxShadow:
-								'0 2px 2.3px rgba(0, 0, 0, 0.011),  0 3.4px 5.6px rgba(0, 0, 0, 0.016),  0 5.1px 10.7px rgba(0, 0, 0, 0.02),  0 8.5px 19.1px rgba(0, 0, 0, 0.024),  0 18.7px 35.4px rgba(0, 0, 0, 0.029),  0 100px 80px rgba(0, 0, 0, 0.04)'
-						}}
-						display='flex'
-						alignItems='center'
-					>
-						<Box>
-							<img
-								src='https://source.unsplash.com/random'
-								alt='imageHistorique'
-								style={{ height: 125, width: 125, borderRadius: 10 }}
-							/>
-						</Box>
-						<Box
+				<Box style={{ marginTop: 15, padding: 25 }}>
+					<Typography variant='h6' component='h1'>
+						<i className='uil uil-envelope' /> Nous envoyer un message
+					</Typography>
+					<TextField
+						style={{ marginBottom: 15, marginTop: 15 }}
+						fullWidth
+						variant='outlined'
+						label='Nom'
+						value={values.firstName}
+						onChange={handleChange('firstName')}
+					/>
+					<TextField
+						style={{ marginBottom: 15 }}
+						fullWidth
+						variant='outlined'
+						label='Prénom'
+						value={values.lastName}
+						onChange={handleChange('lastName')}
+					/>
+					<TextField
+						style={{ marginBottom: 15 }}
+						fullWidth
+						variant='outlined'
+						multiline
+						rows='4'
+						label='Message'
+						value={values.message}
+						onChange={handleChange('message')}
+					/>
+					<Box display='flex' justifyContent='row-reverse'>
+						<Button
 							style={{
-								marginLeft: 15
+								backgroundColor: '#18B074',
+								color: 'white',
+								fontWeight: 'bold',
+								marginTop: 15,
+								padding: 15,
+								borderRadius: 0
 							}}
 						>
-							<Typography varaiant='h6' component='h1' style={{ fontWeight: 'bold' }}>
-								Annonce le {moment().format('DD MMMM YYYY')}
-							</Typography>
-							<Typography varaiant='h6' component='h1' style={{ marginTop: 10, marginBottom: 10 }}>
-								<i className='uil uil-map-marker' /> [Adresse dans le localstorage]
-							</Typography>
-							<Typography variant='paragraph' color='textSecondary'>
-								Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl.
-							</Typography>
-						</Box>
+							Envoyer <i className='uil uil-envelope-send' />
+						</Button>
 					</Box>
+				</Box>
+				<Box style={{ marginTop: 15, padding: 25 }}>
+					<Typography variant='h6' component='h1'>
+						<i className='uil uil-bug' /> Vous avez trouver un bug ?
+					</Typography>
+					<Typography color='textSecondary' variant='paragraph'>
+						Si vous avez trouvé un bug merci de contacter au plus vite l'administrateur à l'adresse suivante
+						: <strong>support@homedelivery.com</strong> <br />
+						Merci d'indiquer le type de bug que vous avez trouvé et comment nous pouvons le reproduire pour
+						le corriger au plus vite.
+					</Typography>
 				</Box>
 			</main>
 		</div>

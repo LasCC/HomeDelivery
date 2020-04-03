@@ -11,6 +11,7 @@ const routes = {
 	DASHBOARD_SETTINGS: '/dashboard-settings',
 	DASHBOARD_QUESTIONS: '/dashboard-questions',
 	DASHBOARD_HISTORY: '/dashboard-history',
+	DASHBOARD_CONTACT: '/dashboard-contact',
 	TEST_MAP: '/dev'
 };
 

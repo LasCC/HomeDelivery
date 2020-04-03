@@ -6,7 +6,11 @@ import ROUTE from '../Routes';
 export default (props) => {
 	return (
 		<Box style={{ padding: 20, marginTop: 25 }}>
-			<img src='https://i.imgur.com/9ZGc4YR.png' alt='avatarUser' style={{ height: 80, borderRadius: 80 }} />
+			<img
+				src='https://i.imgur.com/t0rFXNh.png'
+				alt='avatarUser'
+				style={{ height: 80, width: 80, borderRadius: 80, objectFit: 'cover' }}
+			/>
 			<Typography variant='h6' component='h1' style={{ marginTop: 15, fontWeight: 'bold' }}>
 				Bonjour [Ludovic]
 			</Typography>
@@ -107,20 +111,22 @@ export default (props) => {
 						<Typography className='HoverText'>Questions récurrentes</Typography>
 					</Box>
 				</Link>
-				<Box
-					style={{
-						padding: 10,
-						marginTop: 15,
-						marginBottom: 15,
-						color: '#82867D',
-						cursor: 'pointer'
-					}}
-					display='flex'
-					alignItems='center'
-				>
-					<i className='uil uil-mailbox' style={{ fontSize: 20, marginRight: 10 }} />
-					<Typography className='HoverText'>Nous contacter</Typography>
-				</Box>
+				<Link to={ROUTE.DASHBOARD_CONTACT} style={{ textDecoration: 'none' }}>
+					<Box
+						style={{
+							padding: 10,
+							marginTop: 15,
+							marginBottom: 15,
+							color: '#82867D',
+							cursor: 'pointer'
+						}}
+						display='flex'
+						alignItems='center'
+					>
+						<i className='uil uil-mailbox' style={{ fontSize: 20, marginRight: 10 }} />
+						<Typography className='HoverText'>Nous contacter</Typography>
+					</Box>
+				</Link>
 				<Box
 					style={{
 						padding: 10,

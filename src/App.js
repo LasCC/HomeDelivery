@@ -17,6 +17,7 @@ const DashboardClient = lazy(() => import('./pages/Client/Dashboard-Client'));
 const DashboardClientSettings = lazy(() => import('./pages/Client/Account-Settings-Dashboard'));
 const DashboardClientQuestions = lazy(() => import('./pages/Client/Questions-Dashboard-Client'));
 const DashboardClientHistory = lazy(() => import('./pages/Client/History-Dashboard-Client'));
+const DashboardClientContact = lazy(() => import('./pages/Client/Contact-Dashboard-Client'));
 
 export default function App() {
 	return (
@@ -35,6 +36,7 @@ export default function App() {
 				<Route exact path={ROUTE.DASHBOARD_SETTINGS} component={DashboardClientSettings} />
 				<Route exact path={ROUTE.DASHBOARD_QUESTIONS} component={DashboardClientQuestions} />
 				<Route exact path={ROUTE.DASHBOARD_HISTORY} component={DashboardClientHistory} />
+				<Route exact path={ROUTE.DASHBOARD_CONTACT} component={DashboardClientContact} />
 			</Switch>
 		</Suspense>
 	);
