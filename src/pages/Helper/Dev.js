@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Grid, Box, Typography } from '@material-ui/core';
 import Navbar from '../../components/Navbar';
 import MapDev from '../../components/MapDev';
+import Lottie from 'react-lottie';
 window.document.title = 'HomeDelivery - dev';
 
 export default (props) => {
@@ -24,7 +25,6 @@ export default (props) => {
 				<Grid item xs={12} xl={6} md={6} sm={12}>
 					<Navbar />
 				</Grid>
-
 				<Grid item xs={12} xl={6} md={6} sm={12}>
 					<Box
 						style={{

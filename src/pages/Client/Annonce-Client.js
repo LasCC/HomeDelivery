@@ -18,12 +18,15 @@ import { Link } from 'react-router-dom';
 import ROUTE from '../../Routes';
 import Navbar from '../../components/Navbar';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import moment from 'moment';
+import 'moment/locale/fr';
+moment.locale('fr');
 window.document.title = "HomeDelivery - Création d'annonce";
 
 const Todo = ({ todo, index, removeTodo }) => {
 	return (
 		<Box display='flex' alignItems='center' style={{ marginTop: 15 }}>
-			<Typography>{todo.article}</Typography>
+			<Typography color='textSecondary'>{todo.article}</Typography>
 			<i className='uil uil-times' onClick={() => removeTodo(index)} style={{ cursor: 'pointer' }} />
 		</Box>
 	);
@@ -43,7 +46,7 @@ export default (props) => {
 
 	const [ values, setValues ] = useState({
 		annexe: '',
-		price_min: '',
+		price_max: '',
 		payment: ''
 	});
 	const handleChange = (name) => (event) => {
@@ -52,7 +55,6 @@ export default (props) => {
 	const handleSubmit = () => {
 		console.log('====== LIST COURSES ======');
 		console.log(values);
-		console.log(value);
 	};
 	const TodoForm = ({ addTodo }) => {
 		const [ value, setValue ] = useState('');
@@ -96,7 +98,7 @@ export default (props) => {
 	return (
 		<div>
 			<Grid container>
-				<Grid item xs={12} xl={6} md={6} sm={12}>
+				<Grid item xs={12} xl={8} md={8} sm={12}>
 					<Navbar />
 					<Box style={{ padding: 35 }}>
 						<Box display='flex' alignItems='center'>
@@ -161,26 +163,7 @@ export default (props) => {
 								onChange={handleChange('annexe')}
 							/>
 							<FormHelperText>Mettre texte ici pour expliquer les demandes annexes</FormHelperText>
-							<Box style={{ marginBottom: 25, marginTop: 25 }}>
-								<Box>
-									<Typography variant='h1' style={{ fontWeight: 'bold', fontSize: 20 }}>
-										Prix maximum à ne pas dépasser :
-									</Typography>
-									<FormControl fullWidth variant='outlined' style={{ marginTop: 15 }}>
-										<InputLabel>Prix</InputLabel>
-										<OutlinedInput
-											type='number'
-											variant='outlined'
-											inputProps={{ min: '0', max: '50' }}
-											value={values.price_min}
-											onChange={handleChange('price_min')}
-											endAdornment={<InputAdornment position='end'>€</InputAdornment>}
-										/>
-										<FormHelperText>Le prix maximum fixé est de 50€</FormHelperText>
-									</FormControl>
-								</Box>
-							</Box>
-							<Typography variant='h1' style={{ fontWeight: 'bold', fontSize: 20 }}>
+							<Typography variant='h1' style={{ fontWeight: 'bold', fontSize: 20, marginTop: 25 }}>
 								Mode de paiement :
 							</Typography>
 							<FormControl fullWidth variant='outlined' style={{ marginTop: 15 }}>
@@ -197,10 +180,30 @@ export default (props) => {
 									}}
 								>
 									<option aria-label='None' value='' />
-									<option value='CB'>Carte de crédit</option>
-									<option value='CASH'>Espèce</option>
+									<option value='Carte de crédit'>Carte de crédit</option>
+									<option value='Espèce'>Espèce</option>
 								</Select>
 							</FormControl>
+							<Box style={{ marginBottom: 25, marginTop: 25 }}>
+								<Box>
+									<Typography variant='h1' style={{ fontWeight: 'bold', fontSize: 20 }}>
+										Prix maximum à ne pas dépasser :
+									</Typography>
+									<FormControl fullWidth variant='outlined' style={{ marginTop: 15 }}>
+										<InputLabel>Prix</InputLabel>
+										<OutlinedInput
+											type='number'
+											variant='outlined'
+											inputProps={{ min: '0', max: '50' }}
+											value={values.price_max}
+											onChange={handleChange('price_max')}
+											endAdornment={<InputAdornment position='end'>€</InputAdornment>}
+										/>
+										<FormHelperText>Le prix maximum fixé est de 50€</FormHelperText>
+									</FormControl>
+								</Box>
+							</Box>
+
 							<Box display='flex' flexDirection='row-reverse'>
 								<Link to={ROUTE.RECAP_ANNONCE} style={{ textDecoration: 'none' }}>
 									<Button
@@ -232,26 +235,70 @@ export default (props) => {
 						</Box>
 					</Box>
 				</Grid>
-				<Grid item xs={12} xl={6} md={6} sm={12}>
+				<Grid item xs={12} xl={4} md={4} sm={12}>
 					<Box
 						style={{
 							position: '-webkit-sticky',
 							position: 'sticky',
 							top: 0,
 							height: '100vh',
-							backgroundColor: '#D9EFE7'
+							backgroundColor: '#F3F7F3'
 						}}
 					>
 						<Box style={{ padding: 35 }}>
 							<Typography component='h1' variant='h6'>
-								Résumé de votre annonce :
+								Je sais pas quoi mettre ici :=) :
 							</Typography>
 							<Divider style={{ marginTop: 15, marginBottom: 15 }} />
-							<Box style={{ padding: 15 }}>
-								{todos.map((todo, index) => (
-									<Todo key={index} index={index} todo={todo} removeTodo={removeTodo} />
-								))}
-							</Box>
+							<article className='ticket'>
+								<Box className='ticket__wrapper'>
+									<Box className='ticket__header'>
+										<Typography>
+											Annonce créer le <strong>{moment().format('DD MMMM YYYY')}</strong>
+										</Typography>
+									</Box>
+								</Box>
+								<div className='ticket__divider' />
+								<Box className='ticket__body'>
+									<Box className='ticket__section'>
+										<Typography>Liste des courses :</Typography>
+										{todos.map((todo, index) => (
+											<Todo key={index} index={index} todo={todo} removeTodo={removeTodo} />
+										))}
+									</Box>
+									<Box className='ticket__section'>
+										<Typography>Demandes annexes :</Typography>
+										<Typography color='textSecondary'>{values.annexe}</Typography>
+									</Box>
+
+									<Box className='ticket__section'>
+										<Typography>Mode de paiement :</Typography>
+										<Typography color='textSecondary'>{values.payment}</Typography>
+									</Box>
+								</Box>
+								<Box className='ticket__footer '>
+									<Typography style={{ fontWeight: 'bold', marginBottom: 10 }}>
+										Prix maximum :
+									</Typography>
+									<Typography color='textSecondary'>{values.price_max} €</Typography>
+								</Box>
+							</article>
+							<Link to={ROUTE.RECAP_ANNONCE} style={{ textDecoration: 'none' }}>
+								<Button
+									onClick={handleSubmit}
+									fullWidth
+									style={{
+										backgroundColor: '#18B074',
+										color: 'white',
+										fontWeight: 'bold',
+										marginTop: 20,
+										padding: 15,
+										borderRadius: 8
+									}}
+								>
+									Continuer <i className='uil uil-arrow-right' />
+								</Button>
+							</Link>
 						</Box>
 					</Box>
 				</Grid>

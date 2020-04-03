@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Drawer, CssBaseline, Toolbar, Typography, Divider, InputBase, IconButton, Box } from '@material-ui/core';
 import DrawerDashboardClient from '../../components/DrawerDashboardClient';
+import moment from 'moment';
+import 'moment/locale/fr';
+moment.locale('fr');
 window.document.title = 'HomeDelivery - Historique';
 
 const drawerWidth = 300;
@@ -90,10 +93,10 @@ export default (props) => {
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
 				<Typography variant='h6' component='h1'>
-					Questions récurrentes
+					Historique de vos annonces postées
 				</Typography>
 				<Typography color='textSecondary' variant='paragraph'>
-					Toutes les questions que les utilisateurs nous ont posées au fil du temps.
+					Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl.
 				</Typography>
 				<Divider style={{ marginTop: 15, marginBottom: 15 }} />
 				<Box style={{ marginTop: 25, padding: 15 }}>
@@ -103,6 +106,7 @@ export default (props) => {
 							padding: 25,
 							marginTop: 15,
 							borderRadius: 10,
+							border: 'solid 1px rgba(0, 0, 0, 0.10)',
 							boxShadow:
 								'0 2px 2.3px rgba(0, 0, 0, 0.011),  0 3.4px 5.6px rgba(0, 0, 0, 0.016),  0 5.1px 10.7px rgba(0, 0, 0, 0.02),  0 8.5px 19.1px rgba(0, 0, 0, 0.024),  0 18.7px 35.4px rgba(0, 0, 0, 0.029),  0 100px 80px rgba(0, 0, 0, 0.04)'
 						}}
@@ -122,7 +126,7 @@ export default (props) => {
 							}}
 						>
 							<Typography varaiant='h6' component='h1' style={{ fontWeight: 'bold' }}>
-								Annonce le 12/03/2019
+								Annonce le {moment().format('DD MMMM YYYY')}
 							</Typography>
 							<Typography varaiant='h6' component='h1' style={{ marginTop: 10, marginBottom: 10 }}>
 								<i className='uil uil-map-marker' /> [Adresse dans le localstorage]

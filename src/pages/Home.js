@@ -15,10 +15,48 @@ import {
 	ExpansionPanelSummary,
 	ExpansionPanelDetails
 } from '@material-ui/core';
+import Lottie from 'react-lottie';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Footer from '../components/Footer';
 import Map from '../components/Map';
 window.document.title = 'HomeDelivery - Accueil';
+
+const shampoo = require('../data/shampoo.json');
+const handShake = require('../data/handShake.json');
+const mask = require('../data/mask.json');
+const soap = require('../data/soap.json');
+const shampooOptions = {
+	loop: true,
+	autoplay: true,
+	animationData: shampoo,
+	rendererSettings: {
+		preserveAspectRatio: 'xMidYMid slice'
+	}
+};
+const handShakeOptions = {
+	loop: true,
+	autoplay: true,
+	animationData: handShake,
+	rendererSettings: {
+		preserveAspectRatio: 'xMidYMid slice'
+	}
+};
+const maskOptions = {
+	loop: true,
+	autoplay: true,
+	animationData: mask,
+	rendererSettings: {
+		preserveAspectRatio: 'xMidYMid slice'
+	}
+};
+const soapOptions = {
+	loop: true,
+	autoplay: true,
+	animationData: soap,
+	rendererSettings: {
+		preserveAspectRatio: 'xMidYMid slice'
+	}
+};
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -69,7 +107,7 @@ export default (props) => {
 							>
 								<Box display='flex' alignItems='center' style={{ marginBottom: 10 }}>
 									<img
-										src='https://svgur.com/i/JV2.svg'
+										src='https://svgur.com/i/Jg4.svg'
 										style={{ height: 65, marginRight: 15 }}
 										alt='logo'
 									/>
@@ -157,7 +195,7 @@ export default (props) => {
 								</Typography>
 								<Box display='flex' alignItems='center' style={{ marginTop: 80 }}>
 									<Box style={{ marginRight: 25 }}>
-										<img src='https://i.imgur.com/ONTBT6l.png' alt='laver' />
+										<Lottie options={handShakeOptions} height={150} width={150} />
 									</Box>
 									<Box flexGrow={1}>
 										<Typography>
@@ -181,13 +219,13 @@ export default (props) => {
 										</Typography>
 									</Box>
 									<Box>
-										<img src='https://i.imgur.com/bMnpRAh.png' alt='masque' />
+										<Lottie options={maskOptions} height={150} width={150} />
 									</Box>
 								</Box>
 								<Divider style={{ marginTop: 35, marginBottom: 35 }} />
 								<Box display='flex' alignItems='center' style={{ marginTop: 50 }}>
 									<Box style={{ marginRight: 25 }}>
-										<img src='https://i.imgur.com/0CpuEQY.png' alt='main' />
+										<Lottie options={soapOptions} height={150} width={150} />
 									</Box>
 									<Box flexGrow={1}>
 										<Typography>
@@ -210,7 +248,7 @@ export default (props) => {
 										</Typography>
 									</Box>
 									<Box>
-										<img src='https://i.imgur.com/cBZhcR0.png' alt='laver' />
+										<Lottie options={shampooOptions} height={150} width={150} />
 									</Box>
 								</Box>
 								<Divider style={{ marginTop: 35, marginBottom: 35 }} />

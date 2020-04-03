@@ -43,14 +43,9 @@ export default (props) => {
 			</Grid>
 			<Box display='flex' alignItems='center' style={{ padding: 30 }}>
 				<Box flexGrow={1} display='flex' alignItems='center'>
-					<img src='https://svgur.com/i/JV2.svg' style={{ height: 35, marginRight: 15 }} alt='logo' />
+					<img src='https://svgur.com/i/Jg4.svg' style={{ height: 35, marginRight: 15 }} alt='logo' />
 					<Typography variant='h1' style={{ color: 'black', fontWeight: 'bold', fontSize: 15 }}>
 						HomeDelivery
-					</Typography>
-				</Box>
-				<Box display='flex' alignItems='center'>
-					<Typography color='textSecondary' style={{ fontSize: 15 }}>
-						@ ESTIAM 2020
 					</Typography>
 				</Box>
 			</Box>

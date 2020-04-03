@@ -19,7 +19,7 @@ export default (props) => {
 			<Box display='flex' alignItems='center'>
 				<Drawer />
 				<Box p={2} flexGrow={1} display='flex' alignItems='center' style={{ marginLeft: 10 }}>
-					<img src='https://svgur.com/i/JV2.svg' style={{ height: 35, marginRight: 15 }} alt='logo' />
+					<img src='https://svgur.com/i/Jg4.svg' style={{ height: 35, marginRight: 15 }} alt='logo' />
 					<Link to={ROUTE.HOME} style={{ textDecoration: 'none', color: 'black' }}>
 						<Typography variant='h1' noWrap style={{ color: 'black', fontWeight: 'bold', fontSize: 23 }}>
 							HomeDelivery
