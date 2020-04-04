@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: 'white',
 		boxShadow: '-8px 0px 18px 0px rgba(0,0,0,0.05)',
 		zIndex: 2,
-		height: '100vh'
+		minHeight: '100vh'
 	}
 }));
 

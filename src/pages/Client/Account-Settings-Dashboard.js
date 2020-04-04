@@ -50,7 +50,8 @@ const useStyles = makeStyles((theme) => ({
 		padding: theme.spacing(8),
 		backgroundColor: 'white',
 		boxShadow: '-8px 0px 18px 0px rgba(0,0,0,0.05)',
-		zIndex: 2
+		zIndex: 2,
+		minHeight: '100vh'
 	}
 }));
 

@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 		flexGrow: 1,
 		padding: theme.spacing(8),
 		boxShadow: '-8px 0px 18px 0px rgba(0,0,0,0.05)',
-		height: '100vh',
+		minHeight: '100vh',
 		zIndex: 2
 	}
 }));
@@ -162,7 +162,11 @@ export default (props) => {
 					</Typography>
 					<Typography color='textSecondary' variant='paragraph'>
 						Si vous avez trouvé un bug merci de contacter au plus vite l'administrateur à l'adresse suivante
-						: <strong>support@homedelivery.com</strong> <br />
+						:{' '}
+						<a href='mailto: support@homedelivery.com' style={{ textDecoration: 'none', color: '#0E711A' }}>
+							<strong>support@homedelivery.com</strong>
+						</a>{' '}
+						<br />
 						Merci d'indiquer le type de bug que vous avez trouvé et comment nous pouvons le reproduire pour
 						le corriger au plus vite.
 					</Typography>

@@ -75,9 +75,6 @@ export default class App extends Component {
 	render() {
 		const { viewport } = this.state;
 		const { marker } = this.state;
-		console.log(marker.longitude);
-		console.log(marker.latitude);
-
 		return (
 			<MapGL
 				{...viewport}

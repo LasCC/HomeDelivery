@@ -12,6 +12,9 @@ const routes = {
 	DASHBOARD_QUESTIONS: '/dashboard-questions',
 	DASHBOARD_HISTORY: '/dashboard-history',
 	DASHBOARD_CONTACT: '/dashboard-contact',
+	DASHBOARD_HELPER: '/dashboard-helper',
+	DASHBOARD_HELPER_QR_CODE: '/dashboard-generate',
+	DASHBOARD_HELPER_ANNONCE: '/dashboard-annonces',
 	TEST_MAP: '/dev'
 };
 

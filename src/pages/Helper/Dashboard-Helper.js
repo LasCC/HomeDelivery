@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import ROUTE from '../../Routes';
-import DrawerDashboardClient from '../../components/DrawerDashboardClient';
+import DrawerDashboardHelper from '../../components/DrawerDashboardHelper';
 import CardHistory from '../../components/CardHistory';
 window.document.title = 'HomeDelivery - Dashbord';
 
@@ -73,8 +73,8 @@ export default (props) => {
 					<InputBase
 						onChange={handleChange('search')}
 						className={classes.input}
-						placeholder='Rechercher un livreur près de chez vous'
-						inputProps={{ 'aria-label': 'Rechercher un livreur près de chez vous' }}
+						placeholder='Rechercher une adresse'
+						inputProps={{ 'aria-label': 'Rechercher une adresse' }}
 					/>
 					<IconButton type='submit' className={classes.iconButton} aria-label='search'>
 						<i className='uil uil-arrow-right' style={{ fontSize: 25, color: '#82867D' }} />
@@ -97,13 +97,13 @@ export default (props) => {
 					/>
 				</Box>
 				<Divider />
-				<DrawerDashboardClient />
+				<DrawerDashboardHelper />
 			</Drawer>
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
 				<Box style={{ backgroundColor: '#D9EFE7', padding: 35, borderRadius: 15, width: '100%' }}>
 					<Typography variant='h6' component='h1'>
-						Ravis de vous revoir <strong>[Ludovic]</strong>
+						Prêt à aider les autres <strong>[Ludovic]</strong> ?
 					</Typography>
 					<Typography color='textSecondary' variant='paragraph'>
 						Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl.

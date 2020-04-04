@@ -10,7 +10,7 @@ import frLocale from 'date-fns/locale/fr';
 window.document.title = 'HomeDelivery - Création de compte';
 
 export default (props) => {
-	const [ selectedDate, setSelectedDate ] = React.useState(new Date('2014-08-18T21:11:54'));
+	const [ selectedDate, setSelectedDate ] = React.useState();
 	const [ values, setValues ] = useState({
 		firstname: '',
 		lastname: '',
@@ -132,6 +132,7 @@ export default (props) => {
 									inputVariant='outlined'
 									format='dd/MM/yyyy'
 									fullWidth
+									helperText={'Veuillez renseigner une date valide : dd/MM/yyyy'}
 									style={{ marginTop: 15, marginBottom: 15 }}
 									value={values.date_naissance}
 									onChange={handleDateChange}

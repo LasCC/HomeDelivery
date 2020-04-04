@@ -26,7 +26,7 @@ export default class ControlPanel extends PureComponent {
 
 	render() {
 		return (
-			<Box style={{ padding: 15, height: '220px' }}>
+			<Box style={{ padding: 15, height: '240px' }}>
 				<Box
 					display='flex'
 					flexWrap='wrap'

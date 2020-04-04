@@ -10,7 +10,6 @@ import {
 	InputLabel,
 	InputAdornment,
 	FormControl,
-	OutlinedInput,
 	Select,
 	FormHelperText
 } from '@material-ui/core';
@@ -32,6 +31,7 @@ export default (props) => {
 			e.target.value = '50';
 		}
 	};
+	console.log(todos);
 	const Todo = ({ todo, index, removeTodo }) => {
 		return (
 			<Box display='flex' alignItems='center' style={{ marginTop: 15 }}>
@@ -56,6 +56,7 @@ export default (props) => {
 	};
 
 	const [ values, setValues ] = useState({
+		list: '',
 		annexe: '',
 		price_max: '',
 		payment: ''
@@ -67,6 +68,7 @@ export default (props) => {
 		console.log('====== LIST COURSES ======');
 		console.log(values);
 	};
+	console.log(values);
 	const TodoForm = ({ addTodo }) => {
 		const [ value, setValue ] = useState('');
 
@@ -146,18 +148,7 @@ export default (props) => {
 							<Typography variant='h1' style={{ fontWeight: 'bold', fontSize: 25 }}>
 								Liste de course :{' '}
 							</Typography>
-							{/* <TextField
-								style={{ marginTop: 15 }}
-								label='Articles'
-								multiline
-								fullWidth
-								rows='4'
-								variant='outlined'
-								placeholder='Riz, carottes, pommes vertes'
-								value={values.list}
-								onChange={handleChange('list')}
-							/> */}
-							<TodoForm addTodo={addTodo} />
+							<TodoForm addTodo={addTodo} onChange={handleChange('list')} />
 							<FormHelperText>La liste des courses est limitée à 10 articles maximum</FormHelperText>
 							<Typography variant='h1' style={{ fontWeight: 'bold', fontSize: 25, marginTop: 15 }}>
 								Demandes annexes :{' '}

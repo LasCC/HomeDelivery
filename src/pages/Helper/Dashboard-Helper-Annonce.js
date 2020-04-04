@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Drawer, CssBaseline, Toolbar, Typography, Divider, InputBase, IconButton, Box } from '@material-ui/core';
-import DrawerDashboardClient from '../../components/DrawerDashboardClient';
-import CardHistory from '../../components/CardHistory';
-window.document.title = 'HomeDelivery - Historique';
+import DrawerDashboardHelper from '../../components/DrawerDashboardHelper';
+import { Link } from 'react-router-dom';
+import ROUTE from '../../Routes';
+import MapDev from '../../components/MapDev';
+window.document.title = 'HomeDelivery - Annonces';
 
 const drawerWidth = 300;
 
@@ -38,17 +40,17 @@ const useStyles = makeStyles((theme) => ({
 	content: {
 		flexGrow: 1,
 		padding: theme.spacing(8),
-		backgroundColor: 'white',
 		boxShadow: '-8px 0px 18px 0px rgba(0,0,0,0.05)',
-		zIndex: 2,
-		minHeight: '100vh'
+		minHeight: '100vh',
+		zIndex: 2
 	}
 }));
 
 export default (props) => {
 	const classes = useStyles();
+
 	const [ values, setValues ] = useState({
-		input: ''
+		search: ''
 	});
 	const handleChange = (name) => (event) => {
 		setValues({ ...values, [name]: event.target.value });
@@ -62,8 +64,8 @@ export default (props) => {
 					<InputBase
 						onChange={handleChange('search')}
 						className={classes.input}
-						placeholder='Rechercher un livreur près de chez vous'
-						inputProps={{ 'aria-label': 'Rechercher un livreur près de chez vous' }}
+						placeholder='Rechercher une adresse'
+						inputProps={{ 'aria-label': 'Rechercher une adresse' }}
 					/>
 					<IconButton type='submit' className={classes.iconButton} aria-label='search'>
 						<i className='uil uil-arrow-right' style={{ fontSize: 25, color: '#82867D' }} />
@@ -82,23 +84,35 @@ export default (props) => {
 					<img
 						src='https://svgur.com/i/Jg4.svg'
 						alt='logoHomeDelivery'
-						style={{ marginLeft: 13, marginTop: 13, objectFit: 'cover' }}
+						style={{ marginLeft: 13, marginTop: 13 }}
 					/>
 				</Box>
 				<Divider />
-				<DrawerDashboardClient />
+				<DrawerDashboardHelper />
 			</Drawer>
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
 				<Typography variant='h6' component='h1'>
-					Historique de vos annonces postées
+					Toutes les annonces près de votre position
 				</Typography>
 				<Typography color='textSecondary' variant='paragraph'>
-					Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl.
+					Pour aider une personne dans le besoin, cliquez simplement sur une box en bas de la map et laissez
+					vous guider.
 				</Typography>
 				<Divider style={{ marginTop: 15, marginBottom: 15 }} />
-				<Box style={{ marginTop: 25, padding: 15 }}>
-					<CardHistory />
+				<Box
+					style={{
+						position: '-webkit-sticky',
+						position: 'sticky',
+						top: 0,
+						height: '100vh',
+						backgroundColor: '3D9EFE7'
+					}}
+					display='flex'
+					alignItems='center'
+					justifyContent='center'
+				>
+					<MapDev />
 				</Box>
 			</main>
 		</div>
