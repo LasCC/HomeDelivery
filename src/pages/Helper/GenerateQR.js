@@ -15,14 +15,16 @@ import {
 	DialogTitle,
 	DialogContent,
 	DialogContentText,
-	DialogActions
+	DialogActions,
+	FormControl,
+	InputLabel,
+	Select,
+	FormHelperText
 } from '@material-ui/core';
-import { Link } from 'react-router-dom';
 import DrawerDashboardHelper from '../../components/DrawerDashboardHelper';
 import QRCode from 'qrcode.react';
 import moment from 'moment';
 import 'moment/locale/fr';
-import ROUTE from '../../Routes';
 moment.locale('fr');
 window.document.title = "HomeDelivery - Générateur d'attestation de déplacement provisoire";
 
@@ -248,16 +250,45 @@ export default (props) => {
 								onChange={handleChange('SortieHeure')}
 								style={{ marginTop: 25, marginBottom: 15, marginRight: 15 }}
 							/>
-							<TextField
-								label='Motifs'
-								variant='outlined'
-								helperText={'Veuillez sélectionner un modif de sortie'}
-								fullWidth
-								type='text'
-								value={values.Motifs}
-								onChange={handleChange('Motifs')}
-								style={{ marginTop: 25, marginBottom: 15 }}
-							/>
+
+							<FormControl fullWidth variant='outlined' style={{ marginTop: 15 }}>
+								<InputLabel htmlFor='select'>Motifs</InputLabel>
+								<Select
+									native
+									fullWidth
+									value={values.Motifs}
+									onChange={handleChange('Motifs')}
+									label='Motifs'
+								>
+									<option aria-label='None' value='' />
+									<option value='travail'>
+										Déplacements entre le domicile et le lieu d’exercice de l’activité
+										professionnelle.
+									</option>
+									<option value='courses'>
+										Déplacements pour effectuer des achats de fournitures nécessaires à lactivité
+										professionnelle et des achats de première nécessité.
+									</option>
+									<option value='sante'>
+										Consultations et soins ne pouvant être assurés à distance et ne pouvant être
+										différés.
+									</option>
+									<option value='famille'>
+										Déplacements pour motif familial impérieux, pour l’assistance aux personnes
+										vulnérables ou la garde d’enfants.
+									</option>
+									<option value='sport'>
+										Déplacements brefs, dans la limite d'une heure quotidienne et dans un rayon
+										maximal d'un kilomètre autour du domicile.
+									</option>
+									<option value='judiciaire'>Convocation judiciaire ou administrative.</option>
+									<option value='missions'>
+										Participation à des missions d’intérêt général sur demande de l’autorité
+										administrative.
+									</option>
+								</Select>
+								<FormHelperText>Veuillez sélectionner un modif de sortie</FormHelperText>
+							</FormControl>
 						</Box>
 					</Box>
 
