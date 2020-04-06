@@ -112,24 +112,20 @@ export default (props) => {
 				<Box style={{ marginTop: 15, padding: 35 }}>
 					<Box style={{ marginTop: 15, marginBottom: 15 }}>
 						<Typography variant='h6' component='h1'>
-							<i className='uil uil-plus' /> Créer un annonce
+							<i className='uil uil-check-circle' /> Faire une bonne action
 						</Typography>
 						<Divider style={{ marginTop: 15, marginBottom: 15 }} />
 						<Typography color='textSecondary' variant='paragraph'>
-							Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl. Donec
-							nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean
-							dignissim pellentesque felis.Donec nec justo eget felis facilisis fermentum. Aliquam
-							porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Aliquam porttitor
-							mauris sit amet orci. Aenean dignissim pellentesque felis.Donec nec justo eget felis
-							facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque
-							felis.
+							Si vous voulez faire une bonne action, n'hésitez pas à aider vos proches, voire même des
+							inconnues, pour ce faire veuillez vous rendre sur la page "annonce" et cliquer sur l'une des
+							boxes en bas de votre écran et laissez-vous guider.
 						</Typography>
 						<br />
-						<Link to={ROUTE.ANNONCE} style={{ textDecoration: 'none' }}>
+						<Link to={ROUTE.DASHBOARD_HELPER_ANNONCE} style={{ textDecoration: 'none' }}>
 							<Button
 								endIcon={
 									<i
-										className='uil uil-plus'
+										className='uil uil-map'
 										style={{ fontSize: 15, fontWeight: 'bold', color: '#46B04A' }}
 									/>
 								}
@@ -143,13 +139,13 @@ export default (props) => {
 									borderColor: '#46B04A'
 								}}
 							>
-								Créer une annonce gratuitement
+								Voir les annonces disponibles
 							</Button>
 						</Link>
 					</Box>
 					<Box style={{ marginTop: 40, marginBottom: 40 }}>
 						<Typography variant='h6' component='h1'>
-							<i className='uil uil-receipt-alt' /> Vos annonces récentes
+							<i className='uil uil-user-exclamation' /> Vos annonces effectuées récemment
 						</Typography>
 						<Divider style={{ marginTop: 15, marginBottom: 15 }} />
 						<CardHistory />

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import MapGL, { FlyToInterpolator, GeolocateControl, NavigationControl, FullscreenControl } from 'react-map-gl';
+import MapGL, { FlyToInterpolator, GeolocateControl, NavigationControl, FullscreenControl, Marker } from 'react-map-gl';
 import { GeoJsonLayer } from 'deck.gl';
+import Pin from './Pin';
+import MarkersCity from '../data/cities.json';
 import Geocoder from 'react-map-gl-geocoder';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
@@ -40,11 +42,12 @@ const cardsStyle = {
 };
 
 export default class App extends Component {
+	mapRef = React.createRef();
 	state = {
 		viewport: {
 			latitude: 48.84978,
 			longitude: 2.36464,
-			zoom: 11.3,
+			zoom: 12,
 			pitch: 60
 		},
 		searchResultLayer: null
@@ -63,7 +66,6 @@ export default class App extends Component {
 			...geocoderDefaultOverrides
 		});
 	};
-	mapRef = React.createRef();
 
 	handleOnResult = (event) => {
 		this.setState({
@@ -83,7 +85,7 @@ export default class App extends Component {
 		this._onViewportChange({
 			longitude,
 			latitude,
-			zoom: 13,
+			zoom: 16,
 			transitionInterpolator: new FlyToInterpolator({ speed: 1.2 }),
 			transitionDuration: 'auto'
 		});
@@ -99,7 +101,7 @@ export default class App extends Component {
 				ref={this.mapRef}
 				width='100%'
 				height='100%'
-				mapStyle='mapbox://styles/michallow/ck8g06vsi3l5p1inv7w41sstu'
+				mapStyle='mapbox://styles/michallow/ck86fkoji05jh1ipb0l9rlfy7'
 				onViewportChange={this.handleViewportChange}
 				dragRotate={true}
 				mapboxApiAccessToken={MAPBOX_TOKEN}
@@ -116,10 +118,17 @@ export default class App extends Component {
 				<div style={navStyle}>
 					<NavigationControl />
 				</div>
+				{MarkersCity.map((command) => {
+					return (
+						<Marker longitude={command.longitude} latitude={command.latitude}>
+							<Pin size={20} />
+						</Marker>
+					);
+				})}
 				<Geocoder
 					mapRef={this.mapRef}
 					onResult={this.handleOnResult}
-					onViewportChange={this.handleGeocoderViewportChange}
+					onViewportChange={this._goToViewport}
 					mapboxApiAccessToken={MAPBOX_TOKEN}
 					position='top-right'
 					placeholder='Rechercher une adresse'

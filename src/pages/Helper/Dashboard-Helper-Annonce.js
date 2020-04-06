@@ -105,8 +105,8 @@ export default (props) => {
 						position: '-webkit-sticky',
 						position: 'sticky',
 						top: 0,
-						height: '100vh',
-						backgroundColor: '3D9EFE7'
+						height: '90vh',
+						backgroundColor: '#3D9EFE7'
 					}}
 					display='flex'
 					alignItems='center'

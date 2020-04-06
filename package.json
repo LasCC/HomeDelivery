@@ -19,6 +19,7 @@
 		"qrcode.react": "^1.0.0",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
+		"react-draggable": "^4.2.0",
 		"react-lottie": "^1.2.3",
 		"react-map-gl": "^5.2.3",
 		"react-map-gl-geocoder": "^2.0.11",

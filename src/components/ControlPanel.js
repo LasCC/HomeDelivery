@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import { Box, Typography } from '@material-ui/core';
-
+import Draggable from 'react-draggable';
 import CITIES from '../data/cities.json';
 
 export default class ControlPanel extends PureComponent {
-	_renderButton = (city, index) => {
+	_renderCity = (city, index) => {
 		const backgroundImageCard = city.image;
 		return (
 			<Box
@@ -27,15 +27,17 @@ export default class ControlPanel extends PureComponent {
 	render() {
 		return (
 			<Box style={{ padding: 15, height: '240px' }}>
-				<Box
-					display='flex'
-					flexWrap='wrap'
-					alignContent='flex-end'
-					alignItems='center'
-					style={{ height: '100%', width: '1000vw', overflow: 'hidden' }}
-				>
-					{CITIES.map(this._renderButton)}
-				</Box>
+				<Draggable axis='x' defaultPosition={{ x: 0, y: 0 }}>
+					<Box
+						display='flex'
+						flexWrap='wrap'
+						alignContent='flex-end'
+						alignItems='center'
+						style={{ height: '100%', width: '1000vw', overflow: 'hidden' }}
+					>
+						{CITIES.map(this._renderCity)}
+					</Box>
+				</Draggable>
 			</Box>
 		);
 	}

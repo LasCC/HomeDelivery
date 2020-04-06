@@ -7,7 +7,7 @@ const routes = {
 	ANNONCE: '/create-annonce',
 	RECAP_ANNONCE: '/recap-annonce',
 	CHECKOUT_CLIENT: '/checkout',
-	DASHBOARD_HELPER: '/dashboard',
+	DASHBOARD: '/dashboard',
 	DASHBOARD_SETTINGS: '/dashboard-settings',
 	DASHBOARD_QUESTIONS: '/dashboard-questions',
 	DASHBOARD_HISTORY: '/dashboard-history',

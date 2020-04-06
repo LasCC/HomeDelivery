@@ -80,7 +80,7 @@ export default class App extends Component {
 				{...viewport}
 				width='100%'
 				height='100%'
-				mapStyle='mapbox://styles/michallow/ck8g06vsi3l5p1inv7w41sstu'
+				mapStyle='mapbox://styles/michallow/ck86fkoji05jh1ipb0l9rlfy7'
 				onViewportChange={this._onViewportChange}
 				mapboxApiAccessToken={MAPBOX_TOKEN}
 			>

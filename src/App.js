@@ -13,6 +13,7 @@ const CheckoutClient = lazy(() => import('./pages/Client/Checkout-Client'));
 const CreateAnnonce = lazy(() => import('./pages/Client/Annonce-Client'));
 const RecapAnnonce = lazy(() => import('./pages/Client/Recap-Client'));
 const Dev = lazy(() => import('./pages/Helper/Dev'));
+const DashboardClient = lazy(() => import('./pages/Client/Dashboard-Client'));
 const DashboardClientSettings = lazy(() => import('./pages/Client/Account-Settings-Dashboard'));
 const DashboardClientQuestions = lazy(() => import('./pages/Client/Questions-Dashboard-Client'));
 const DashboardClientHistory = lazy(() => import('./pages/Client/History-Dashboard-Client'));
@@ -20,6 +21,7 @@ const DashboardClientContact = lazy(() => import('./pages/Client/Contact-Dashboa
 const DashboardHelper = lazy(() => import('./pages/Helper/Dashboard-Helper'));
 const DashboardHelperGenerateQR = lazy(() => import('./pages/Helper/GenerateQR'));
 const DashboardHelperAnnonce = lazy(() => import('./pages/Helper/Dashboard-Helper-Annonce'));
+const UnknownPage = lazy(() => import('./Unknown'));
 
 export default function App() {
 	return (
@@ -34,6 +36,7 @@ export default function App() {
 				<Route exact path={ROUTE.ANNONCE} component={CreateAnnonce} />
 				<Route exact path={ROUTE.RECAP_ANNONCE} component={RecapAnnonce} />
 				<Route exact path={ROUTE.TEST_MAP} component={Dev} />
+				<Route exact path={ROUTE.DASHBOARD} component={DashboardClient} />
 				<Route exact path={ROUTE.DASHBOARD_SETTINGS} component={DashboardClientSettings} />
 				<Route exact path={ROUTE.DASHBOARD_QUESTIONS} component={DashboardClientQuestions} />
 				<Route exact path={ROUTE.DASHBOARD_HISTORY} component={DashboardClientHistory} />
@@ -41,6 +44,7 @@ export default function App() {
 				<Route exact path={ROUTE.DASHBOARD_HELPER} component={DashboardHelper} />
 				<Route exact path={ROUTE.DASHBOARD_HELPER_QR_CODE} component={DashboardHelperGenerateQR} />
 				<Route exact path={ROUTE.DASHBOARD_HELPER_ANNONCE} component={DashboardHelperAnnonce} />
+				<Route path='*' component={UnknownPage} />
 			</Switch>
 		</Suspense>
 	);
