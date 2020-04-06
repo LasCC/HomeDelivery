@@ -1,68 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![N|Solid](https://svgur.com/i/Jg4.svg)]() 
+# HomeDelivery
 
-## Available Scripts
+HomeDelivery est un application web afin d'aider les personnes âgées ou en situation de handicap/maladie de déposer une demande avec sa liste de course.
 
-In the project directory, you can run:
+- Création de compte bénévole/lambda.
+- Création d'annonces consultables sur un carte intéractive.
+- Répondre, est consulter un annonce et suivre l'état de celle-ci.
+- Générateur d'attestation de déplacement provisoire en version QR code.
 
-### `yarn start`
+# Features!
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Une interface simple d'utilisation est dans l'ère du temps !
+- Application à but non lucratif, aucune revente de donnée.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# Partie technique
 
-### `yarn test`
+HomeDelivery utilises les technologies suivantes :
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Back-end :
 
-### `yarn build`
+- Node-JS
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Python (POO)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- MongoDB
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Ubuntu 18 lts (sur un serveur aws)
 
-### `yarn eject`
+- SQL
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Front-end :
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-  React
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Framework CSS (Matérial-UI)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Figma/Adbode XD pour le prototype d'application
 
-## Learn More
+- Mapbox
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Installation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+tbd
 
-### Code Splitting
+### Todos
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+tbd
 
-### Analyzing the Bundle Size
+### Pictures
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Vous pouvez retouver le prototype de l'application sur cette page [figma](https://www.figma.com/file/Mkkz9zZjbRyFRKGctyFuGw/HomeDelivery?node-id=0%3A1 "Protoytpe de l'application")
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+@LasCC - Projet de groupe avec Riadh BOUCHAOUA, Sebastien WIENNE, Réda MAIZATE
