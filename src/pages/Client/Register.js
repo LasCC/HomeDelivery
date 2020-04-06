@@ -3,7 +3,6 @@ import { Grid, TextField, Typography, Box, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import ROUTE from '../../Routes';
-import NavbarRegister from '../../components/NavbarRegister';
 import Carousel_Text from '../../components/Carousel_Text';
 import DateFnsUtils from '@date-io/date-fns';
 import frLocale from 'date-fns/locale/fr';
@@ -38,10 +37,9 @@ export default (props) => {
 	console.log(values);
 	return (
 		<div>
-			<NavbarRegister />
 			<Grid container>
 				<Grid item xs={12} xl={5} md={5} sm={12}>
-					<Box style={{ height: '90vh' }} display='flex' alignItems='center' justifyContent='center'>
+					<Box style={{ height: '100vh' }} display='flex' alignItems='center' justifyContent='center'>
 						<Box style={{ padding: 25, width: '70%' }}>
 							<Typography variant='h1' style={{ fontWeight: 'bolder', fontSize: 55, marginBottom: 25 }}>
 								Inscription
@@ -181,7 +179,7 @@ export default (props) => {
 				</Grid>
 				<Grid item xs={12} xl={7} md={7} sm={12} className='backgroundRight'>
 					<Box
-						style={{ height: '91.8vh' }}
+						style={{ height: '100vh' }}
 						display='flex'
 						alignItems='center'
 						justifyContent='center'

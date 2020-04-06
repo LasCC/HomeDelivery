@@ -86,7 +86,7 @@ export default (props) => {
 		Naissance: '10/11/1990',
 		Ville_naissance: '',
 		Adresse: '',
-		Sortie: moment().format('DD/MM/YY'),
+		Sortie: '',
 		SortieHeure: moment().format('LT'),
 		Motifs: ''
 	});
@@ -168,7 +168,7 @@ export default (props) => {
 							prestations sociales et au retrait d’espèces.
 						</Typography>
 					</Box>
-					<Box style={{}}>
+					<Box>
 						<Box display='flex' alignItems='center'>
 							<TextField
 								label='Nom'
@@ -199,7 +199,10 @@ export default (props) => {
 								helperText={'Veuillez renseigner une date valide : dd/MM/yyyy'}
 								variant='outlined'
 								fullWidth
-								type='text'
+								type='date'
+								InputLabelProps={{
+									shrink: true
+								}}
 								onInput={onlyNumbers}
 								value={values.Naissance}
 								onChange={handleChange('Naissance')}
@@ -229,10 +232,12 @@ export default (props) => {
 							<TextField
 								label='Date de sortie'
 								variant='outlined'
-								placeholder={moment().format('DD/MM/YY')}
 								helperText={'Veuillez renseigner une date valide : dd/MM/yyyy'}
 								fullWidth
-								type='text'
+								type='date'
+								InputLabelProps={{
+									shrink: true
+								}}
 								value={values.Sortie}
 								onChange={handleChange('Sortie')}
 								style={{ marginTop: 25 }}
@@ -245,13 +250,12 @@ export default (props) => {
 								fullWidth
 								placeholder={moment().format('LT')}
 								helperText={'Veuillez renseigner une heure valide : hh:mm'}
-								type='text'
+								type='time'
 								value={values.SortieHeure}
 								onChange={handleChange('SortieHeure')}
 								style={{ marginTop: 25, marginBottom: 15, marginRight: 15 }}
 							/>
-
-							<FormControl fullWidth variant='outlined' style={{ marginTop: 15 }}>
+							<FormControl fullWidth variant='outlined' style={{ marginTop: 10 }}>
 								<InputLabel htmlFor='select'>Motifs</InputLabel>
 								<Select
 									native
@@ -306,51 +310,56 @@ export default (props) => {
 						Voir votre attestation <i className='uil uil-arrow-up-right' />
 					</Button>
 					<Dialog open={open} onClose={handleClose}>
-						<Box style={{}}>
-							<DialogTitle>Êtes-vous sûr de bien vouloir continuer ?</DialogTitle>
-							<DialogContent>
-								<DialogContentText>
-									Avant de télécharger l'attestation veuillez à bien vérifier les informations que
-									vous avez renseigné.
-								</DialogContentText>
-							</DialogContent>
-							<DialogActions>
-								<QRCode
-									id='QRCODE'
-									style={{ display: 'none' }}
-									value={qrcodevalue}
-									renderAs={'canvas'}
-								/>
-								<Button
-									onClick={handleClose}
-									style={{
-										marginTop: 15,
-										color: 'gray'
-									}}
-									autoFocus
+						<DialogTitle>Êtes-vous sûr de bien vouloir continuer ?</DialogTitle>
+						<DialogContent>
+							<DialogContentText>
+								Avant de télécharger l'attestation veuillez à bien vérifier les informations que vous
+								avez renseigné.
+							</DialogContentText>
+							<DialogContentText>
+								Si vous avez un doute sur la véracité de ce générateur d'attestation de déplacement
+								provisoire vous pouvez vous rendre sur{' '}
+								<a
+									href='https://media.interieur.gouv.fr/deplacement-covid-19/'
+									target='_blank'
+									rel='nooper noreferer'
 								>
-									Annuler
-								</Button>
-								<Button
-									onClick={downloadQR}
-									endIcon={
-										<i
-											className='uil uil-download-alt'
-											style={{ fontSize: 15, fontWeight: 'bold', color: '#46B04A' }}
-										/>
-									}
-									style={{
-										marginTop: 15,
-										color: '#46B04A',
-										fontWeight: 'bold',
-										textTransform: 'none'
-									}}
-									autoFocus
-								>
-									Télécharger
-								</Button>
-							</DialogActions>
-						</Box>
+									ce lien
+								</a>{' '}
+								et accéder au générateur du gouvernement.
+							</DialogContentText>
+						</DialogContent>
+						<DialogActions>
+							<QRCode id='QRCODE' style={{ display: 'none' }} value={qrcodevalue} renderAs={'canvas'} />
+							<Button
+								onClick={handleClose}
+								style={{
+									marginTop: 15,
+									color: 'gray'
+								}}
+								autoFocus
+							>
+								Annuler
+							</Button>
+							<Button
+								onClick={downloadQR}
+								endIcon={
+									<i
+										className='uil uil-download-alt'
+										style={{ fontSize: 15, fontWeight: 'bold', color: '#46B04A' }}
+									/>
+								}
+								style={{
+									marginTop: 15,
+									color: '#46B04A',
+									fontWeight: 'bold',
+									textTransform: 'none'
+								}}
+								autoFocus
+							>
+								Télécharger
+							</Button>
+						</DialogActions>
 					</Dialog>
 				</Box>
 			</main>

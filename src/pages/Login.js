@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Grid, TextField, Typography, Box, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import ROUTE from '../Routes';
-import NavbarRegister from '../components/NavbarRegister';
 import Carousel_Text from '../components/Carousel_Text';
 window.document.title = 'HomeDelivery - Connexion';
 
@@ -20,10 +19,9 @@ export default (props) => {
 	};
 	return (
 		<div>
-			<NavbarRegister />
 			<Grid container>
 				<Grid item xs={12} xl={5} md={5} sm={12}>
-					<Box style={{ height: '90vh' }} display='flex' alignItems='center' justifyContent='center'>
+					<Box style={{ height: '100vh' }} display='flex' alignItems='center' justifyContent='center'>
 						<Box style={{ padding: 25, width: '70%' }}>
 							<Typography variant='h1' style={{ fontWeight: 'bolder', fontSize: 55, marginBottom: 15 }}>
 								Connexion
@@ -72,7 +70,7 @@ export default (props) => {
 				</Grid>
 				<Grid item xs={12} xl={7} md={7} sm={12} className='backgroundRight'>
 					<Box
-						style={{ height: '91.8vh' }}
+						style={{ height: '100vh' }}
 						display='flex'
 						alignItems='center'
 						justifyContent='center'
