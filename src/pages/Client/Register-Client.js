@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import { Grid, TextField, Typography, Box, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import ROUTE from '../../Routes';
-import Carousel_Text from '../../components/Carousel_Text';
-import DateFnsUtils from '@date-io/date-fns';
-import frLocale from 'date-fns/locale/fr';
-window.document.title = 'HomeDelivery - Création de compte';
+window.document.title = 'HomeDelivery - Création de compte classique';
 
 export default (props) => {
-	const [ selectedDate, setSelectedDate ] = React.useState();
 	const [ values, setValues ] = useState({
 		firstname: '',
 		lastname: '',
@@ -26,10 +21,6 @@ export default (props) => {
 	const handleChange = (name) => (event) => {
 		setValues({ ...values, [name]: event.target.value });
 	};
-	const handleDateChange = (date) => {
-		setSelectedDate(date);
-		setValues({ ...values, date_naissance: date });
-	};
 	const handleSubmit = () => {
 		console.log('====== Registration ======');
 		console.log(values);
@@ -38,9 +29,35 @@ export default (props) => {
 	return (
 		<div>
 			<Grid container>
-				<Grid item xs={12} xl={5} md={5} sm={12}>
-					<Box style={{ height: '100vh' }} display='flex' alignItems='center' justifyContent='center'>
-						<Box style={{ padding: 25, width: '70%' }}>
+				<Grid item xs={12} xl={3} md={3} sm={12}>
+					<Box
+						style={{
+							height: '94.6vh',
+							boxShadow:
+								'0 0.7px 2.2px rgba(0, 0, 0, 0.024) , 0 -0.5px 6px rgba(0, 0, 0, 0.035) , 0 -0.4px 14.5px rgba(0, 0, 0, 0.046) , 0 54px 48px rgba(0, 0, 0, 0.07)',
+							zIndex: 2,
+							backgroundColor: '#18B074',
+							padding: 25
+						}}
+						className='backgroundRegister'
+					>
+						<img src='http://svgur.com/i/Jqv.svg' alt='logoHomedeliveryBlanc' style={{ height: 40 }} />
+						<Box display='flex' alignItems='center' style={{ height: '85%' }}>
+							<Box>
+								<Typography style={{ color: 'white' }}>Trouver du texte a mettre ici</Typography>
+								<Typography color='textSecondary'>Avec un paragraph ici</Typography>
+							</Box>
+						</Box>
+					</Box>
+				</Grid>
+				<Grid item xs={12} xl={9} md={9} sm={12}>
+					<Box
+						style={{ height: '94.6vh', zIndex: 1 }}
+						display='flex'
+						alignItems='center'
+						justifyContent='center'
+					>
+						<Box style={{ padding: 25, width: '85%' }}>
 							<Typography variant='h1' style={{ fontWeight: 'bolder', fontSize: 55, marginBottom: 25 }}>
 								Inscription
 							</Typography>
@@ -124,21 +141,20 @@ export default (props) => {
 									style={{ marginTop: 15, marginBottom: 15 }}
 								/>
 							</Box>
-							<MuiPickersUtilsProvider utils={DateFnsUtils} locale={frLocale}>
-								<KeyboardDatePicker
-									label='Date de naissance'
-									inputVariant='outlined'
-									format='dd/MM/yyyy'
-									fullWidth
-									helperText={'Veuillez renseigner une date valide : dd/MM/yyyy'}
-									style={{ marginTop: 15, marginBottom: 15 }}
-									value={values.date_naissance}
-									onChange={handleDateChange}
-									KeyboardButtonProps={{
-										'aria-label': 'date de naissance'
-									}}
-								/>
-							</MuiPickersUtilsProvider>
+							<TextField
+								label='Date de naissance'
+								variant='outlined'
+								format='dd/MM/yyyy'
+								fullWidth
+								type='date'
+								helperText={'Veuillez renseigner une date valide : dd/MM/yyyy'}
+								InputLabelProps={{
+									shrink: true
+								}}
+								style={{ marginTop: 15, marginBottom: 15 }}
+								value={values.date_naissance}
+								onChange={handleChange('date_naissance')}
+							/>
 							<Box display='flex'>
 								<TextField
 									label='Code postale'
@@ -174,26 +190,6 @@ export default (props) => {
 									Continuer <i className='uil uil-arrow-right' />
 								</Button>
 							</Link>
-						</Box>
-					</Box>
-				</Grid>
-				<Grid item xs={12} xl={7} md={7} sm={12} className='backgroundRight'>
-					<Box
-						style={{ height: '100vh' }}
-						display='flex'
-						alignItems='center'
-						justifyContent='center'
-						className='registrationHelper'
-					>
-						<Box
-							style={{
-								position: 'relative',
-								top: '40%',
-								left: '25%',
-								transform: 'translate(-40%, -25%)'
-							}}
-						>
-							<Carousel_Text />
 						</Box>
 					</Box>
 				</Grid>

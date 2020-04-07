@@ -2,6 +2,7 @@ const routes = {
 	HOME: '/',
 	REGISTER_HELPER: '/register-helper',
 	REGISTER: '/register',
+	REGISTER_CLIENT: '/register-client',
 	CONFIRM_REGISTRATION: '/confirm-registration',
 	LOGIN: '/login',
 	ANNONCE: '/create-annonce',

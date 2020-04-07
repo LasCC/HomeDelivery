@@ -5,8 +5,9 @@ import './styles.css';
 import ROUTE from './Routes';
 import Loader from './components/Loader';
 const Home = lazy(() => import('./pages/Home'));
+const Register = lazy(() => import('./pages/Register'));
+const RegisterClient = lazy(() => import('./pages/Client/Register-Client'));
 const RegisterHelper = lazy(() => import('./pages/Helper/Register-Helper'));
-const Register = lazy(() => import('./pages/Client/Register'));
 const ConfirmRegistration = lazy(() => import('./pages/Confirm-Registration'));
 const Login = lazy(() => import('./pages/Login'));
 const CheckoutClient = lazy(() => import('./pages/Client/Checkout-Client'));
@@ -28,8 +29,9 @@ export default function App() {
 		<Suspense fallback={<Loader />}>
 			<Switch>
 				<Route exact path={ROUTE.HOME} component={Home} />
-				<Route exact path={ROUTE.REGISTER_HELPER} component={RegisterHelper} />
 				<Route exact path={ROUTE.REGISTER} component={Register} />
+				<Route exact path={ROUTE.REGISTER_HELPER} component={RegisterHelper} />
+				<Route exact path={ROUTE.REGISTER_CLIENT} component={RegisterClient} />
 				<Route exact path={ROUTE.CONFIRM_REGISTRATION} component={ConfirmRegistration} />
 				<Route exact path={ROUTE.LOGIN} component={Login} />
 				<Route exact path={ROUTE.CHECKOUT_CLIENT} component={CheckoutClient} />

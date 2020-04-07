@@ -322,3 +322,95 @@ body {
 		transform: translateY(0) rotate(-45deg);
 	}
 }
+
+.stepperRegister {
+	padding: 25px;
+	background-color: white;
+	box-shadow: 0 0px 2.7px rgba(0, 0, 0, 0.012), 0 0px 6.9px rgba(0, 0, 0, 0.018), 0 0px 14.2px rgba(0, 0, 0, 0.022),
+		0 0px 29.2px rgba(0, 0, 0, 0.028), 0 0px 80px rgba(0, 0, 0, 0.04);
+	margin-top: 25px;
+	margin-bottom: 25px;
+	border-radius: 15px;
+	border: solid 2px #dfdfdf4d;
+	width: 75%;
+	cursor: pointer;
+	transition: all .3s ease;
+}
+
+.stepperRegister:hover {
+	border: solid 2px #18b074;
+	background-color: #edf4f1;
+	transform: translateY(-5px);
+}
+
+.stepperRegister:hover .uil.uil-chat-bubble-user {
+	color: #18b074 !important;
+}
+.stepperRegister:hover .uil.uil-arrow-right {
+	color: #18b074 !important;
+}
+.stepperRegister:hover .uil.uil-users-alt {
+	color: #18b074 !important;
+}
+
+.wrapper-progressBar {
+	width: 100%;
+}
+
+.progressBar li {
+	list-style-type: none;
+	float: left;
+	width: 33%;
+	position: relative;
+	text-align: center;
+}
+
+.progressBar li:before {
+	content: " ";
+	line-height: 30px;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #ddd;
+	display: block;
+	text-align: center;
+	margin: 0 auto 10px;
+	background-color: white;
+}
+
+.progressBar li:after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	background-color: #ddd;
+	top: 15px;
+	left: -50%;
+	z-index: -1;
+}
+
+.progressBar li:first-child:after {
+	content: none;
+}
+
+.progressBar li.active {
+	color: dodgerblue;
+}
+
+.progressBar li.active:before {
+	border-color: dodgerblue;
+	background-color: dodgerblue;
+}
+
+.progressBar li.active:after {
+	background-color: dodgerblue;
+}
+
+.backgroundRegister {
+	background-color: #244224 !important;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%2325572f' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%23266c3a' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%23288044' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%2329954f' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%232aaa5a' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E");
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: right;
+	box-shadow: 17px 0px 37px -20px rgba(0, 0, 0, 0.35);
+}

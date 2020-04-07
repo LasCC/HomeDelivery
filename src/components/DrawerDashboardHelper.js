@@ -7,7 +7,7 @@ export default (props) => {
 	return (
 		<Box style={{ padding: 20, marginTop: 25 }}>
 			<img
-				src='https://i.imgur.com/t0rFXNh.png'
+				src='https://i.imgur.com/QVpfR18.jpg'
 				alt='avatarUser'
 				style={{ height: 80, width: 80, borderRadius: 80, objectFit: 'cover' }}
 			/>

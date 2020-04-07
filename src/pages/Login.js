@@ -20,9 +20,31 @@ export default (props) => {
 	return (
 		<div>
 			<Grid container>
-				<Grid item xs={12} xl={5} md={5} sm={12}>
-					<Box style={{ height: '100vh' }} display='flex' alignItems='center' justifyContent='center'>
-						<Box style={{ padding: 25, width: '70%' }}>
+				<Grid item xs={12} xl={3} md={3} sm={12}>
+					<Box
+						style={{
+							height: '100vh',
+							zIndex: 2,
+							backgroundColor: '#18B074',
+							padding: 25
+						}}
+						className='backgroundRegister'
+					>
+						<img src='http://svgur.com/i/Jqv.svg' alt='logoHomedeliveryBlanc' style={{ height: 40 }} />
+						<Box>
+							<Typography style={{ color: 'white' }}>Trouver du texte a mettre ici</Typography>
+							<Typography color='textSecondary'>Avec un paragraph ici</Typography>
+						</Box>
+					</Box>
+				</Grid>
+				<Grid item xs={12} xl={9} md={9} sm={12}>
+					<Box
+						style={{ height: '100vh', zIndex: 1 }}
+						display='flex'
+						alignItems='center'
+						justifyContent='center'
+					>
+						<Box style={{ padding: 25, width: '85%' }}>
 							<Typography variant='h1' style={{ fontWeight: 'bolder', fontSize: 55, marginBottom: 15 }}>
 								Connexion
 							</Typography>
@@ -65,26 +87,6 @@ export default (props) => {
 							>
 								Connexion
 							</Button>
-						</Box>
-					</Box>
-				</Grid>
-				<Grid item xs={12} xl={7} md={7} sm={12} className='backgroundRight'>
-					<Box
-						style={{ height: '100vh' }}
-						display='flex'
-						alignItems='center'
-						justifyContent='center'
-						className='registrationHelper'
-					>
-						<Box
-							style={{
-								position: 'relative',
-								top: '40%',
-								left: '25%',
-								transform: 'translate(-40%, -25%)'
-							}}
-						>
-							<Carousel_Text />
 						</Box>
 					</Box>
 				</Grid>
