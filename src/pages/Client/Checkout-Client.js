@@ -40,7 +40,7 @@ export default (props) => {
 									<Typography color='textSecondary'>Confirmation</Typography>
 								</Link>
 								<Link to={ROUTE.SHIPMENT_ANNONCE} style={{ textDecoration: 'none' }}>
-									<Typography color='textSecondary'></Typography>Livraison</Typography>
+									<Typography color='textSecondary'>Livraison</Typography>
 								</Link>
 								<Link to={ROUTE.CHECKOUT_CLIENT} style={{ textDecoration: 'none' }}>
 									<Typography color='textPrimary' style={{ fontWeight: 'bold' }}>
