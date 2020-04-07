@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Grid, TextField, Typography, Box, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import ROUTE from '../Routes';
-import Carousel_Text from '../components/Carousel_Text';
 window.document.title = 'HomeDelivery - Connexion';
 
 export default (props) => {

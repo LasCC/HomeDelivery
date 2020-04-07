@@ -131,6 +131,7 @@ export default class App extends Component {
 					onViewportChange={this._goToViewport}
 					mapboxApiAccessToken={MAPBOX_TOKEN}
 					position='top-right'
+					marker={{ color: 'red' }}
 					placeholder='Rechercher une adresse'
 				/>
 				<div style={cardsStyle}>

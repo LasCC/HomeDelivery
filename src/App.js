@@ -23,6 +23,8 @@ const DashboardClientContact = lazy(() => import('./pages/Client/Contact-Dashboa
 const DashboardHelper = lazy(() => import('./pages/Helper/Dashboard-Helper'));
 const DashboardHelperGenerateQR = lazy(() => import('./pages/Helper/GenerateQR'));
 const DashboardHelperAnnonce = lazy(() => import('./pages/Helper/Dashboard-Helper-Annonce'));
+const DashboardHelperSettings = lazy(() => import('./pages/Helper/User-Settings-Helper'));
+const DashboardShipmentHistory = lazy(() => import('./pages/Helper/Dashboard-Shipment-History'));
 const UnknownPage = lazy(() => import('./Unknown'));
 
 export default function App() {
@@ -47,6 +49,8 @@ export default function App() {
 				<Route exact path={ROUTE.DASHBOARD_HELPER} component={DashboardHelper} />
 				<Route exact path={ROUTE.DASHBOARD_HELPER_QR_CODE} component={DashboardHelperGenerateQR} />
 				<Route exact path={ROUTE.DASHBOARD_HELPER_ANNONCE} component={DashboardHelperAnnonce} />
+				<Route exact path={ROUTE.DASHBOARD_SETTINGS_HELPER} component={DashboardHelperSettings} />
+				<Route exact path={ROUTE.DASHBOARD_HISTORY_HELPER} component={DashboardShipmentHistory} />
 				<Route exact path={ROUTE.TEST_MAP} component={Dev} />
 				<Route path='*' component={UnknownPage} />
 			</Switch>

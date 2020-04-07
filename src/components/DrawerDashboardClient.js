@@ -7,7 +7,7 @@ export default (props) => {
 	return (
 		<Box style={{ padding: 20, marginTop: 25 }}>
 			<img
-				src='https://i.imgur.com/t0rFXNh.png'
+				src='https://i.imgur.com/f3F04uB.png'
 				alt='avatarUser'
 				style={{ height: 80, width: 80, borderRadius: 80, objectFit: 'cover' }}
 			/>
@@ -35,7 +35,7 @@ export default (props) => {
 				<Typography style={{ color: '#82867D', textTransform: 'uppercase', fontWeight: 'bold', fontSize: 15 }}>
 					Menu
 				</Typography>
-				<Link to={ROUTE.DASHBOARD_HELPER} style={{ textDecoration: 'none' }}>
+				<Link to={ROUTE.DASHBOARD} style={{ textDecoration: 'none' }}>
 					<Box
 						style={{
 							padding: 10,

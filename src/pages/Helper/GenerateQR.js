@@ -149,7 +149,7 @@ export default (props) => {
 				<Typography color='textSecondary' variant='paragraph'>
 					En application de l’article 3 du décret du 23 mars 2020 prescrivant les mesures générales
 					nécessaires pour faire face à l’épidémie de Covid19 dans le cadre de l’état d’urgence sanitaire.
-					(Générateur créer avant )
+					(Générateur créer avant le gouvernement français le 04/05/2020)
 				</Typography>
 				<Divider style={{ marginTop: 15, marginBottom: 15 }} />
 				<Box style={{ marginTop: 15, padding: 35 }}>

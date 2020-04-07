@@ -145,7 +145,7 @@ export default (props) => {
 					</Box>
 					<Box style={{ marginTop: 40, marginBottom: 40 }}>
 						<Typography variant='h6' component='h1'>
-							<i className='uil uil-user-exclamation' /> Vos annonces effectuées récemment
+							<i className='uil uil-box' /> Les livraisons effectuées récemment
 						</Typography>
 						<Divider style={{ marginTop: 15, marginBottom: 15 }} />
 						<CardHistory />

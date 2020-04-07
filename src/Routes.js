@@ -17,6 +17,8 @@ const routes = {
 	DASHBOARD_HELPER: '/dashboard-helper',
 	DASHBOARD_HELPER_QR_CODE: '/dashboard-generate',
 	DASHBOARD_HELPER_ANNONCE: '/dashboard-annonces',
+	DASHBOARD_SETTINGS_HELPER: '/dashboard-user-settings',
+	DASHBOARD_HISTORY_HELPER: '/dashboard-shipment-history',
 	TEST_MAP: '/dev'
 };
 

@@ -7,7 +7,7 @@ export default (props) => {
 	return (
 		<Box style={{ padding: 20, marginTop: 25 }}>
 			<img
-				src='https://i.imgur.com/QVpfR18.jpg'
+				src='https://i.imgur.com/f3F04uB.png'
 				alt='avatarUser'
 				style={{ height: 80, width: 80, borderRadius: 80, objectFit: 'cover' }}
 			/>
@@ -67,7 +67,7 @@ export default (props) => {
 						<Typography className='HoverText'>Annonces</Typography>
 					</Box>
 				</Link>
-				<Link to={ROUTE.DASHBOARD_SETTINGS} style={{ textDecoration: 'none' }}>
+				<Link to={ROUTE.DASHBOARD_SETTINGS_HELPER} style={{ textDecoration: 'none' }}>
 					<Box
 						style={{
 							padding: 10,
@@ -83,7 +83,7 @@ export default (props) => {
 						<Typography className='HoverText'>Compte utilisateur</Typography>
 					</Box>
 				</Link>
-				<Link to={ROUTE.DASHBOARD_HISTORY} style={{ textDecoration: 'none' }}>
+				<Link to={ROUTE.DASHBOARD_HISTORY_HELPER} style={{ textDecoration: 'none' }}>
 					<Box
 						style={{
 							padding: 10,
@@ -95,8 +95,8 @@ export default (props) => {
 						display='flex'
 						alignItems='center'
 					>
-						<i className='uil uil-history' style={{ fontSize: 20, marginRight: 10 }} />
-						<Typography className='HoverText'>Historique</Typography>
+						<i className='uil uil-box' style={{ fontSize: 20, marginRight: 10 }} />
+						<Typography className='HoverText'>Livraisons effectuées</Typography>
 					</Box>
 				</Link>
 			</Box>
