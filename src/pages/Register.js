@@ -11,7 +11,7 @@ export default (props) => {
 				<Grid item xs={12} xl={3} md={3} sm={12}>
 					<Box
 						style={{
-							height: '94.6vh',
+							height: '100vh',
 							zIndex: 2,
 							backgroundColor: '#18B074',
 							padding: 25
@@ -19,7 +19,7 @@ export default (props) => {
 						className='backgroundRegister'
 					>
 						<img src='http://svgur.com/i/Jqv.svg' alt='logoHomedeliveryBlanc' style={{ height: 40 }} />
-						<Box display='flex' alignItems='center' style={{ height: '85%' }}>
+						<Box display='flex' alignItems='center' style={{}}>
 							<Box>
 								<Typography style={{ color: 'white' }}>Trouver du texte a mettre ici</Typography>
 								<Typography color='textSecondary'>Avec un paragraph ici</Typography>

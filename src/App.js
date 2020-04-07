@@ -12,7 +12,8 @@ const ConfirmRegistration = lazy(() => import('./pages/Confirm-Registration'));
 const Login = lazy(() => import('./pages/Login'));
 const CheckoutClient = lazy(() => import('./pages/Client/Checkout-Client'));
 const CreateAnnonce = lazy(() => import('./pages/Client/Annonce-Client'));
-const RecapAnnonce = lazy(() => import('./pages/Client/Recap-Client'));
+const ConfirmAnnonce = lazy(() => import('./pages/Client/Confirm-Annonce'));
+const ShippingAnnonce = lazy(() => import('./pages/Client/Shipping-Annonce'));
 const Dev = lazy(() => import('./pages/Helper/Dev'));
 const DashboardClient = lazy(() => import('./pages/Client/Dashboard-Client'));
 const DashboardClientSettings = lazy(() => import('./pages/Client/Account-Settings-Dashboard'));
@@ -36,8 +37,8 @@ export default function App() {
 				<Route exact path={ROUTE.LOGIN} component={Login} />
 				<Route exact path={ROUTE.CHECKOUT_CLIENT} component={CheckoutClient} />
 				<Route exact path={ROUTE.ANNONCE} component={CreateAnnonce} />
-				<Route exact path={ROUTE.RECAP_ANNONCE} component={RecapAnnonce} />
-				<Route exact path={ROUTE.TEST_MAP} component={Dev} />
+				<Route exact path={ROUTE.CONFIRM_ANNONCE} component={ConfirmAnnonce} />
+				<Route exact path={ROUTE.SHIPMENT_ANNONCE} component={ShippingAnnonce} />
 				<Route exact path={ROUTE.DASHBOARD} component={DashboardClient} />
 				<Route exact path={ROUTE.DASHBOARD_SETTINGS} component={DashboardClientSettings} />
 				<Route exact path={ROUTE.DASHBOARD_QUESTIONS} component={DashboardClientQuestions} />
@@ -46,6 +47,7 @@ export default function App() {
 				<Route exact path={ROUTE.DASHBOARD_HELPER} component={DashboardHelper} />
 				<Route exact path={ROUTE.DASHBOARD_HELPER_QR_CODE} component={DashboardHelperGenerateQR} />
 				<Route exact path={ROUTE.DASHBOARD_HELPER_ANNONCE} component={DashboardHelperAnnonce} />
+				<Route exact path={ROUTE.TEST_MAP} component={Dev} />
 				<Route path='*' component={UnknownPage} />
 			</Switch>
 		</Suspense>

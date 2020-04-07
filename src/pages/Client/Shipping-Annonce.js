@@ -8,9 +8,36 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import moment from 'moment';
 import 'moment/locale/fr';
 moment.locale('fr');
-window.document.title = 'HomeDelivery - Paiement';
+window.document.title = 'HomeDelivery - Livraison en cours..';
 
 export default (props) => {
+	const items = [
+		{
+			title: 'Jean célestin a accepter votre commande',
+			time: 'Le 12 Mars 2020 à 19h30',
+			icon: 'uil uil-check-circle',
+			check: 'uil uil-check'
+		},
+		{
+			title: 'Jean célestin est dans le magasin',
+			time: 'Le 12 Mars 2020 à 19h38',
+			icon: 'uil uil-shop',
+			check: 'uil uil-check'
+		},
+
+		{
+			title: 'Jean célestin vous as envoyé le ticket de caisse',
+			time: 'Le 12 Mars 2020 à 19h44',
+			icon: 'uil uil-qrcode-scan',
+			check: 'uil uil-times'
+		},
+		{
+			title: 'Jean célestin est en chemin vers votre domicile',
+			time: 'Le 12 Mars 2020 à 19h45',
+			icon: 'uil uil-car',
+			check: 'uil uil-times'
+		}
+	];
 	return (
 		<div>
 			<Grid container>
@@ -40,17 +67,39 @@ export default (props) => {
 									<Typography color='textSecondary'>Confirmation</Typography>
 								</Link>
 								<Link to={ROUTE.SHIPMENT_ANNONCE} style={{ textDecoration: 'none' }}>
-									<Typography color='textSecondary'></Typography>Livraison</Typography>
+									<Typography color='textPrimary' style={{ fontWeight: 'bold' }}>
+										Livraison
+									</Typography>
 								</Link>
 								<Link to={ROUTE.CHECKOUT_CLIENT} style={{ textDecoration: 'none' }}>
-									<Typography color='textPrimary' style={{ fontWeight: 'bold' }}>
-										Paiement
-									</Typography>
+									<Typography color='textSecondary'>Paiement</Typography>
 								</Link>
 							</Breadcrumbs>
 						</Box>
 						<Divider />
-						<Box style={{ marginTop: 5, padding: 25 }}>Paiement ici :)</Box>
+						<Box style={{ marginTop: 5, padding: 25 }}>
+							{items.map((command) => {
+								return (
+									<Box
+										display='flex'
+										alignItems='center'
+										className='stepperRegister'
+										style={{ width: '85%' }}
+									>
+										<Box>
+											<i className={command.icon} style={{ fontSize: 50 }} />
+										</Box>
+										<Box style={{ marginLeft: 10 }} flexGrow={1}>
+											<Typography>{command.title}</Typography>
+											<Typography color='textSecondary'>{command.time}</Typography>
+										</Box>
+										<Box>
+											<i class={command.check} style={{ fontSize: 25 }} />
+										</Box>
+									</Box>
+								);
+							})}
+						</Box>
 					</Box>
 				</Grid>
 				<Grid item xs={12} xl={4} md={4} sm={12}>

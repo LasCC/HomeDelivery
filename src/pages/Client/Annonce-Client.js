@@ -135,11 +135,14 @@ export default (props) => {
 										Liste de courses
 									</Typography>
 								</Link>
-								<Link to={ROUTE.RECAP_ANNONCE} style={{ textDecoration: 'none' }}>
-									<Typography color='textPrimary'>Récapitulatif</Typography>
+								<Link to={ROUTE.CONFIRM_ANNONCE} style={{ textDecoration: 'none' }}>
+									<Typography color='textSecondary'>Confirmation</Typography>
+								</Link>
+								<Link to={ROUTE.SHIPMENT_ANNONCE} style={{ textDecoration: 'none' }}>
+									<Typography color='textSecondary'>Livraison</Typography>
 								</Link>
 								<Link to={ROUTE.CHECKOUT_CLIENT} style={{ textDecoration: 'none' }}>
-									<Typography color='textPrimary'>Paiement</Typography>
+									<Typography color='textSecondary'>Paiement</Typography>
 								</Link>
 							</Breadcrumbs>
 						</Box>
@@ -213,7 +216,7 @@ export default (props) => {
 							</Box>
 
 							<Box display='flex' flexDirection='row-reverse'>
-								<Link to={ROUTE.RECAP_ANNONCE} style={{ textDecoration: 'none' }}>
+								<Link to={ROUTE.CONFIRM_ANNONCE} style={{ textDecoration: 'none' }}>
 									<Button
 										onClick={handleSubmit}
 										style={{
@@ -255,7 +258,7 @@ export default (props) => {
 					>
 						<Box style={{ padding: 35 }}>
 							<Typography component='h1' variant='h6'>
-								Je sais pas quoi mettre ici :=) :
+								Récapitulatif de votre annonce <i className='uil uil-ticket' />
 							</Typography>
 							<Divider style={{ marginTop: 15, marginBottom: 15 }} />
 							<article className='ticket'>
@@ -289,7 +292,7 @@ export default (props) => {
 									<Typography color='textSecondary'>{values.price_max} €</Typography>
 								</Box>
 							</article>
-							<Link to={ROUTE.RECAP_ANNONCE} style={{ textDecoration: 'none' }}>
+							<Link to={ROUTE.CONFIRM_ANNONCE} style={{ textDecoration: 'none' }}>
 								<Button
 									onClick={handleSubmit}
 									fullWidth

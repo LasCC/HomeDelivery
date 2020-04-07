@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Typography, Button, Container } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import Lottie from 'react-lottie';
 import ROUTE from './Routes';
 
@@ -18,8 +17,7 @@ const handShakeOptions = {
 export default (props) => {
 	return (
 		<div>
-			<Navbar />
-			<Box style={{ height: '90vh' }}>
+			<Box style={{ height: '100vh' }}>
 				<Lottie options={handShakeOptions} height={500} width={500} />
 				<Typography variant='h5' component='h1' align='center'>
 					Oops ! Cette page n'existe plus..
@@ -34,10 +32,12 @@ export default (props) => {
 							style={{
 								padding: 15,
 								marginTop: 15,
-								color: '#46B04A',
+								color: '#17BBBB',
 								fontWeight: 'bold',
 								textTransform: 'none',
-								borderColor: '#46B04A'
+								boxShadow:
+									'0 2.8px 2.2px rgba(0, 0, 0, 0.008),  0 6.7px 5.3px rgba(0, 0, 0, 0.012),  0 12.5px 10px rgba(0, 0, 0, 0.015),  0 22.3px 17.9px rgba(0, 0, 0, 0.018),  0 41.8px 33.4px rgba(0, 0, 0, 0.022),   0 100px 80px rgba(0, 0, 0, 0.03)',
+								borderColor: 'lightgray'
 							}}
 						>
 							Revenir à l'accueil
