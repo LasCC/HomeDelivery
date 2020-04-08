@@ -19,25 +19,25 @@ HomeDelivery utilises les technologies suivantes :
 
 ## Back-end :
 
-- Node-JS
+- Node-JS, ExpressJS
 
 - Python (POO)
 
 - MongoDB
 
-- Ubuntu 18 lts (sur un serveur aws)
+- Ubuntu 18 LTS (Serveur AWS)
 
-- SQL
+- SQLite
 
 ## Front-end :
 
--  React
+- React
 
-- Framework CSS (Matérial-UI)
+- Framework CSS (Material-ui)
 
-- Figma/Adbode XD pour le prototype d'application
+- Figma/Adobe XD pour le prototype d'application
 
-- Mapbox
+- Mapbox JS
 
 ### Installation
 
