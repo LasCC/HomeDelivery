@@ -24,15 +24,23 @@ export default (props) => {
 						style={{
 							height: '100vh',
 							zIndex: 2,
-							backgroundColor: '#18B074',
-							padding: 25
+							backgroundColor: '#18B074'
 						}}
 						className='backgroundRegister'
 					>
-						<img src='http://svgur.com/i/Jqv.svg' alt='logoHomedeliveryBlanc' style={{ height: 40 }} />
-						<Box>
-							<Typography style={{ color: 'white' }}>Trouver du texte a mettre ici</Typography>
-							<Typography color='textSecondary'>Avec un paragraph ici</Typography>
+						<Box
+							display='flex'
+							alignItems='center'
+							style={{
+								padding: 25
+							}}
+						>
+							<img src='http://svgur.com/i/Jqv.svg' alt='logoHomedeliveryBlanc' style={{ height: 40 }} />
+							<Box>
+								<Typography style={{ color: 'white', fontWeight: 'bold', marginLeft: 10 }}>
+									HomeDelivery
+								</Typography>
+							</Box>
 						</Box>
 					</Box>
 				</Grid>

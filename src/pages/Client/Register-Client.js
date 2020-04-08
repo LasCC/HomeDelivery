@@ -32,27 +32,33 @@ export default (props) => {
 				<Grid item xs={12} xl={3} md={3} sm={12}>
 					<Box
 						style={{
-							height: '94.6vh',
+							height: '100vh',
 							boxShadow:
 								'0 0.7px 2.2px rgba(0, 0, 0, 0.024) , 0 -0.5px 6px rgba(0, 0, 0, 0.035) , 0 -0.4px 14.5px rgba(0, 0, 0, 0.046) , 0 54px 48px rgba(0, 0, 0, 0.07)',
 							zIndex: 2,
-							backgroundColor: '#18B074',
-							padding: 25
+							backgroundColor: '#18B074'
 						}}
 						className='backgroundRegister'
 					>
-						<img src='http://svgur.com/i/Jqv.svg' alt='logoHomedeliveryBlanc' style={{ height: 40 }} />
-						<Box display='flex' alignItems='center' style={{ height: '85%' }}>
+						<Box
+							display='flex'
+							alignItems='center'
+							style={{
+								padding: 25
+							}}
+						>
+							<img src='http://svgur.com/i/Jqv.svg' alt='logoHomedeliveryBlanc' style={{ height: 40 }} />
 							<Box>
-								<Typography style={{ color: 'white' }}>Trouver du texte a mettre ici</Typography>
-								<Typography color='textSecondary'>Avec un paragraph ici</Typography>
+								<Typography style={{ color: 'white', fontWeight: 'bold', marginLeft: 10 }}>
+									HomeDelivery
+								</Typography>
 							</Box>
 						</Box>
 					</Box>
 				</Grid>
 				<Grid item xs={12} xl={9} md={9} sm={12}>
 					<Box
-						style={{ height: '94.6vh', zIndex: 1 }}
+						style={{ height: '100vh', zIndex: 1 }}
 						display='flex'
 						alignItems='center'
 						justifyContent='center'
