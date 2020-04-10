@@ -85,7 +85,7 @@ export default (props) => {
 				<Typography variant='h6' component='h1'>
 					<i className='uil uil-box' /> Toutes les personnes que vous avez aidées depuis votre inscription
 				</Typography>
-				<Typography color='textSecondary' variant='paragraph'>
+				<Typography color='textSecondary'>
 					Mauris aliquet scelerisque blandit. Morbi laoreet, tortor at convallis laoreet, augue nibh cursus
 					mauris, eget faucibus ex nibh a sem.
 				</Typography>

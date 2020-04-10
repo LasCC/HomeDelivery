@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
 	Drawer,
@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import ROUTE from '../../Routes';
+
 import DrawerDashboardHelper from '../../components/DrawerDashboardHelper';
 import CardHistory from '../../components/CardHistory';
 window.document.title = 'HomeDelivery - Dashbord';
@@ -64,6 +65,7 @@ export default (props) => {
 	const handleChange = (name) => (event) => {
 		setValues({ ...values, [name]: event.target.value });
 	};
+
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
@@ -105,7 +107,7 @@ export default (props) => {
 					<Typography variant='h6' component='h1'>
 						Prêt à aider les autres <strong>[Ludovic]</strong> ?
 					</Typography>
-					<Typography color='textSecondary' variant='paragraph'>
+					<Typography color='textSecondary'>
 						Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl.
 					</Typography>
 				</Box>
@@ -115,7 +117,7 @@ export default (props) => {
 							<i className='uil uil-check-circle' /> Faire une bonne action
 						</Typography>
 						<Divider style={{ marginTop: 15, marginBottom: 15 }} />
-						<Typography color='textSecondary' variant='paragraph'>
+						<Typography color='textSecondary'>
 							Si vous voulez faire une bonne action, n'hésitez pas à aider vos proches, voire même des
 							inconnues, pour ce faire veuillez vous rendre sur la page "annonce" et cliquer sur l'une des
 							boxes en bas de votre écran et laissez-vous guider.
@@ -148,9 +150,6 @@ export default (props) => {
 							<i className='uil uil-box' /> Les livraisons effectuées récemment
 						</Typography>
 						<Divider style={{ marginTop: 15, marginBottom: 15 }} />
-						<CardHistory />
-						<CardHistory />
-						<CardHistory />
 						<CardHistory />
 					</Box>
 				</Box>

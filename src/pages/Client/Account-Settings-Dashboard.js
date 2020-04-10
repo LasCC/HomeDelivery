@@ -116,7 +116,7 @@ export default (props) => {
 				<Typography variant='h6' component='h1'>
 					Paramètre de votre compte utilisateur
 				</Typography>
-				<Typography color='textSecondary' variant='paragraph'>
+				<Typography color='textSecondary'>
 					Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl.
 				</Typography>
 				<Divider style={{ marginTop: 15, marginBottom: 15 }} />
@@ -241,7 +241,7 @@ export default (props) => {
 					</Typography>
 					<Divider style={{ marginTop: 15, marginBottom: 15 }} />
 					<Box style={{ marginTop: 25 }}>
-						<Typography color='textSecondary' variant='paragraph'>
+						<Typography color='textSecondary'>
 							En supprimant vos données personnelles vous ne pourrez plus vous connecter à l'application.
 						</Typography>
 						<br />

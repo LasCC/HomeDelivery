@@ -95,7 +95,7 @@ export default (props) => {
 				<Typography variant='h6' component='h1'>
 					Toutes les annonces près de votre position
 				</Typography>
-				<Typography color='textSecondary' variant='paragraph'>
+				<Typography color='textSecondary'>
 					Pour aider une personne dans le besoin, cliquez simplement sur une box en bas de la map et laissez
 					vous guider.
 				</Typography>

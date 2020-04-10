@@ -113,7 +113,7 @@ export default (props) => {
 				<Typography variant='h6' component='h1'>
 					Paramètre de votre compte utilisateur
 				</Typography>
-				<Typography color='textSecondary' variant='paragraph'>
+				<Typography color='textSecondary'>
 					Chez HomeDelivery vous avez le contrôle de vos données personnelles, vous pouvez éditer, supprimer
 					toutes vos données enregistrées sur notre site internet.
 				</Typography>

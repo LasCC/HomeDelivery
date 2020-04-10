@@ -93,7 +93,7 @@ export default (props) => {
 				<Typography variant='h6' component='h1'>
 					Historique de vos annonces postées
 				</Typography>
-				<Typography color='textSecondary' variant='paragraph'>
+				<Typography color='textSecondary'>
 					Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl.
 				</Typography>
 				<Divider style={{ marginTop: 15, marginBottom: 15 }} />

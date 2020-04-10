@@ -105,7 +105,7 @@ export default (props) => {
 					<Typography variant='h6' component='h1'>
 						Ravis de vous revoir <strong>[Ludovic]</strong>
 					</Typography>
-					<Typography color='textSecondary' variant='paragraph'>
+					<Typography color='textSecondary'>
 						Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl.
 					</Typography>
 				</Box>
@@ -115,7 +115,7 @@ export default (props) => {
 							<i className='uil uil-plus' /> Créer un annonce
 						</Typography>
 						<Divider style={{ marginTop: 15, marginBottom: 15 }} />
-						<Typography color='textSecondary' variant='paragraph'>
+						<Typography color='textSecondary'>
 							Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl. Donec
 							nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean
 							dignissim pellentesque felis.Donec nec justo eget felis facilisis fermentum. Aliquam

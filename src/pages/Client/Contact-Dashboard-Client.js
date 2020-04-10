@@ -107,7 +107,7 @@ export default (props) => {
 				<Typography variant='h6' component='h1'>
 					Contactez nous
 				</Typography>
-				<Typography color='textSecondary' variant='paragraph'>
+				<Typography color='textSecondary'>
 					Si vous avez la moindre question n'hésitez pas à nous écrire un petit message.
 				</Typography>
 				<Divider style={{ marginTop: 15, marginBottom: 15 }} />
@@ -160,7 +160,7 @@ export default (props) => {
 					<Typography variant='h6' component='h1'>
 						<i className='uil uil-bug' /> Vous avez trouver un bug ?
 					</Typography>
-					<Typography color='textSecondary' variant='paragraph'>
+					<Typography color='textSecondary'>
 						Si vous avez trouvé un bug merci de contacter au plus vite l'administrateur à l'adresse suivante
 						:{' '}
 						<a href='mailto: support@homedelivery.com' style={{ textDecoration: 'none', color: '#0E711A' }}>

@@ -146,7 +146,7 @@ export default (props) => {
 				<Typography variant='h6' component='h1'>
 					Générateur d'attestation de déplacement provisoire
 				</Typography>
-				<Typography color='textSecondary' variant='paragraph'>
+				<Typography color='textSecondary'>
 					En application de l’article 3 du décret du 23 mars 2020 prescrivant les mesures générales
 					nécessaires pour faire face à l’épidémie de Covid19 dans le cadre de l’état d’urgence sanitaire.
 					(Générateur créer avant le gouvernement français le 04/05/2020)
@@ -159,7 +159,7 @@ export default (props) => {
 							<i className='uil uil-qrcode-scan' />
 						</Typography>
 						<Divider style={{ marginTop: 15, marginBottom: 15 }} />
-						<Typography color='textSecondary' variant='paragraph'>
+						<Typography color='textSecondary'>
 							Les personnes souhaitant bénéficier de l'une de ces exceptions doivent se munir s'il y a
 							lieu, lors de leurs déplacements hors de leur domicile, d'un document leur permettant de
 							justifier que le déplacement considéré entre dans le champ de l'une de ces exceptions. A
