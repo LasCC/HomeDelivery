@@ -8,8 +8,9 @@ export default class ControlPanel extends PureComponent {
 		const backgroundImageCard = city.image;
 		return (
 			<Box
+				key={index}
 				style={{ backgroundImage: `url(${backgroundImageCard})` }}
-				className='CardsDevMap hoverCard'
+				className='CardsDevMap mapCards'
 				onClick={() => this.props.onViewportChange(city)}
 			>
 				<Box style={{ padding: 15 }}>
@@ -27,17 +28,15 @@ export default class ControlPanel extends PureComponent {
 	render() {
 		return (
 			<Box style={{ padding: 15, height: '240px' }}>
-				<Draggable axis='x' defaultPosition={{ x: 0, y: 0 }}>
-					<Box
-						display='flex'
-						flexWrap='wrap'
-						alignContent='flex-end'
-						alignItems='center'
-						style={{ height: '100%', width: '1000vw', overflow: 'hidden' }}
-					>
-						{CITIES.map(this._renderCity)}
-					</Box>
-				</Draggable>
+				<Box
+					display='flex'
+					flexWrap='wrap'
+					alignContent='flex-end'
+					alignItems='center'
+					style={{ height: '100%', width: '1000vw', overflow: 'hidden' }}
+				>
+					{CITIES.map(this._renderCity)}
+				</Box>
 			</Box>
 		);
 	}

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+/* import React, { Component } from 'react';
 import { render } from 'react-dom';
 import MapGL, { FlyToInterpolator, GeolocateControl, NavigationControl, FullscreenControl, Marker } from 'react-map-gl';
 import { GeoJsonLayer } from 'deck.gl';
@@ -147,4 +147,89 @@ export default class App extends Component {
 
 export function renderToDom(container) {
 	render(<App />, container);
+}
+ */
+import React from 'react';
+import mapboxgl from 'mapbox-gl';
+import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
+
+import 'mapbox-gl/dist/mapbox-gl.css'; // Updating node module will keep css up to date.
+import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'; // Updating node module will keep css up to date.
+
+mapboxgl.accessToken = 'pk.eyJ1IjoibWljaGFsbG93IiwiYSI6ImNrN3JraDE5aTBkcG0zbG91aWxzaGN1ZHYifQ.3y3s0EYnPlHXE5F_8-ySkg';
+
+export default class MapDev extends React.Component {
+	componentDidMount() {
+		const { lngMap, latMap, zoom } = {
+			lngMap: 2.36464,
+			latMap: 48.84978,
+			zoom: 13.4
+		};
+
+		const map = new mapboxgl.Map({
+			container: this.mapContainer,
+			style: 'mapbox://styles/michallow/ck86fkoji05jh1ipb0l9rlfy7',
+			center: [ lngMap, latMap ],
+			zoom
+		});
+
+		let directions = new MapboxDirections({
+			accessToken: mapboxgl.accessToken,
+			unit: 'metric',
+			profile: 'mapbox/driving',
+			alternatives: true,
+			unit: 'metric',
+			language: 'fr',
+			steps: true,
+			geocoder: {
+				language: 'fr'
+			},
+			placeholderDestination: 'Le point de départ',
+			placeholderOrigin: 'La destination'
+		});
+
+		let lat = 48 + Math.random();
+		let lon = 2 + Math.random();
+		let latDest = 48 + Math.random();
+		let lonDest = 2 + Math.random();
+		directions.setOrigin([ lon, lat ]);
+		let bounds = new mapboxgl.LngLatBounds();
+		bounds.extend([ lon, lat ]);
+		bounds.extend([ lonDest, latDest ]);
+		directions.setDestination([ lonDest, latDest ]);
+		map.fitBounds(bounds, { padding: 90, duration: 1000 });
+
+		map.addControl(
+			new mapboxgl.GeolocateControl({
+				positionOptions: {
+					enableHighAccuracy: true
+				},
+				trackUserLocation: true,
+				showUserLocation: true
+			})
+		);
+		map.on('load', function() {
+			map.addControl(directions, 'top-left');
+			map.setLayoutProperty('country-label-lg', 'text-field', [ 'get', 'name_fr' ]);
+		});
+	}
+
+	render() {
+		return (
+			<div className='map-wrapper'>
+				<div
+					ref={(el) => (this.mapContainer = el)}
+					style={{
+						position: 'absolute',
+						zIndex: 1,
+						top: '0px',
+						bottom: '0px',
+						left: '0px',
+						right: '0px',
+						display: 'flex'
+					}}
+				/>
+			</div>
+		);
+	}
 }
