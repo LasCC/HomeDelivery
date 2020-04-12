@@ -77,7 +77,7 @@ export default (props) => {
 		setOpen(false);
 	};
 	const onlyNumbers = (e) => {
-		e.target.value = e.target.value.replace(/^[0-9]{2}[\/]{1}[0-9]{2}[\/]{1}[0-9]{4}$/g, '');
+		e.target.value = e.target.value.replace(/^[0-9]{2}[]{1}[0-9]{2}[]{1}[0-9]{4}$/g, '');
 	};
 	const [ values, setValues ] = useState({
 		search: '',
@@ -195,7 +195,6 @@ export default (props) => {
 						<Box display='flex' alignItems='center'>
 							<TextField
 								label='Date de naissance'
-								type='number'
 								placeholder='10/11/1990'
 								helperText={'Veuillez renseigner une date valide : dd/MM/yyyy'}
 								variant='outlined'
@@ -323,7 +322,8 @@ export default (props) => {
 								<a
 									href='https://media.interieur.gouv.fr/deplacement-covid-19/'
 									target='_blank'
-									rel='nooper noreferer'
+									without
+									rel='noopener noreferrer'
 								>
 									ce lien
 								</a>{' '}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Button, Container } from '@material-ui/core';
+import { Box, Typography, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Lottie from 'react-lottie';
 import ROUTE from './Routes';

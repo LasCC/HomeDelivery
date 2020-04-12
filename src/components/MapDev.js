@@ -175,7 +175,6 @@ export default class MapDev extends React.Component {
 
 		let directions = new MapboxDirections({
 			accessToken: mapboxgl.accessToken,
-			unit: 'metric',
 			profile: 'mapbox/driving',
 			alternatives: true,
 			unit: 'metric',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, TextField, Typography, Box } from '@material-ui/core';
+import { Grid, Typography, Box } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import ROUTE from '../Routes';
 window.document.title = 'HomeDelivery - Choix création de compte';

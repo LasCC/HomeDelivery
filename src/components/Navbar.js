@@ -1,8 +1,7 @@
 import React from 'react';
-import { Box, Typography, Button, Divider, IconButton } from '@material-ui/core';
-import Drawer from './Drawer';
-import CloseIcon from '@material-ui/icons/Close';
+import { Box, Typography, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import Drawer from './Drawer';
 import ROUTE from '../Routes';
 
 export default (props) => {
