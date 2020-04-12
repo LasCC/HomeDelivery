@@ -1,17 +1,16 @@
-[![N|Solid](https://svgur.com/i/Jg4.svg)]() 
-# HomeDelivery
-
-HomeDelivery est un application web afin d'aider les personnes âgées ou en situation de handicap/maladie de déposer une demande avec sa liste de course.
+[![N|Solid](https://i.imgur.com/GQDrHLL.png)]() 
+HomeDelivery est une application web afin d'aider les personnes âgées ou en situation de handicap/maladie de déposer une demande avec sa liste de courses.
 
 - Création de compte bénévole/lambda.
-- Création d'annonces consultables sur un carte intéractive.
-- Répondre, est consulter un annonce et suivre l'état de celle-ci.
+- Création d'annonces consultables sur un carte interactive.
+- Répondre, est consulté une annonce et suivre l'état de celle-ci.
 - Générateur d'attestation de déplacement provisoire en version QR code.
 
-# Features!
+# Fonctionnalités!
 
-- Une interface simple d'utilisation est dans l'ère du temps !
-- Application à but non lucratif, aucune revente de donnée.
+- Une interface simple d'utilisation est dans l'air du temps !
+- Application à but non lucratif, aucune revente de données.
+- Une application mobile est disponible pour génerer un attestation de déplacement provisoire pour les bénévoles qui livrent.
 
 # Partie technique
 
@@ -39,16 +38,29 @@ HomeDelivery utilises les technologies suivantes :
 
 - Mapbox JS
 
+- (Mobile) React Native
+
 ### Installation
 
-tbd
+```
+yarn install && yarn start
+```
 
-### Todos
+### v2 ?
 
-tbd
+TBD
 
-### Pictures
+### Quelques images du site 
+
+[![N|Solid](https://i.imgur.com/GRrwkzx.jpg)]() 
+[![N|Solid](https://i.imgur.com/ZU1nt79.png)]() 
+[![N|Solid](https://i.imgur.com/Hc10g6c.png)]() 
+[![N|Solid](https://i.imgur.com/ySiIXhC.png)]() 
+[![N|Solid](https://i.imgur.com/nxT6kG2.png)]() 
+[![N|Solid](https://i.imgur.com/rh4hrzb.png)]() 
+[![N|Solid](https://i.imgur.com/3GUm8In.png)]() 
+
 
 Vous pouvez retouver le prototype de l'application sur cette page [figma](https://www.figma.com/file/Mkkz9zZjbRyFRKGctyFuGw/HomeDelivery?node-id=0%3A1 "Protoytpe de l'application")
 
-@LasCC - Projet de groupe avec Riadh BOUCHAOUA, Sebastien WIENNE, Réda MAIZATE
+@LasCC - Projet de groupe avec Riadh BOUCHAHOUA, Sebastien WIENNE, Réda MAIZATE
