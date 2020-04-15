@@ -1,4 +1,4 @@
-/* import React, { Component } from 'react';
+import React, { Component } from 'react';
 import { render } from 'react-dom';
 import MapGL, { FlyToInterpolator, GeolocateControl, NavigationControl, FullscreenControl, Marker } from 'react-map-gl';
 import { GeoJsonLayer } from 'deck.gl';
@@ -81,6 +81,10 @@ export default class App extends Component {
 	};
 	_onViewportChange = (viewport) => this.setState({ viewport });
 
+	_onClickMarker = (city) => {
+		this.setState({ popupInfo: city });
+	};
+
 	_goToViewport = ({ longitude, latitude }) => {
 		this._onViewportChange({
 			longitude,
@@ -148,8 +152,8 @@ export default class App extends Component {
 export function renderToDom(container) {
 	render(<App />, container);
 }
- */
-import React from 'react';
+
+/* import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
 
@@ -232,3 +236,4 @@ export default class MapDev extends React.Component {
 		);
 	}
 }
+ */

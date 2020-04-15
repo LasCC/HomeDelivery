@@ -7,7 +7,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import HomeIcon from '@material-ui/icons/Home';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
 const useStyles = makeStyles({
@@ -41,7 +40,7 @@ export default function TemporaryDrawer() {
 		>
 			<List component='nav' aria-label='main mailbox folders'>
 				<ListItem alignItems='flex-start'>
-					<img src='https://i.imgur.com/OAh6bzO.png' style={{ height: 35, marginRight: 15 }} alt='logo' />
+					<img src='https://svgur.com/i/Jg4.svg' style={{ height: 35, marginRight: 15 }} alt='logo' />
 					<Typography variant='h6' noWrap style={{ color: 'black', fontWeight: 'bold' }}>
 						HomeDelivery
 					</Typography>
@@ -81,15 +80,6 @@ export default function TemporaryDrawer() {
 							<PersonAddIcon />
 						</ListItemIcon>
 						<ListItemText primary='Créer un compte' />
-					</ListItem>
-				</Link>
-
-				<Link to={ROUTE.HELP} style={{ textDecoration: 'none', color: 'black' }}>
-					<ListItem button>
-						<ListItemIcon>
-							<HelpOutlineIcon />
-						</ListItemIcon>
-						<ListItemText primary='Aide' />
 					</ListItem>
 				</Link>
 			</List>

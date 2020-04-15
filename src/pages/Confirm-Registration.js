@@ -34,12 +34,17 @@ export default (props) => {
 	return (
 		<div>
 			<Grid container>
-				<Grid item xs={12} xl={3} md={3} sm={12}>
+				<Grid
+					item
+					xs={12}
+					xl={3}
+					md={3}
+					sm={12}
+					style={{ boxShadow: '17px 0px 37px -20px rgba(0, 0, 0, 0.35)' }}
+				>
 					<Box
 						style={{
 							height: '100vh',
-							boxShadow:
-								'0 0.7px 2.2px rgba(0, 0, 0, 0.024) , 0 -0.5px 6px rgba(0, 0, 0, 0.035) , 0 -0.4px 14.5px rgba(0, 0, 0, 0.046) , 0 54px 48px rgba(0, 0, 0, 0.07)',
 							zIndex: 2,
 							backgroundColor: '#18B074'
 						}}

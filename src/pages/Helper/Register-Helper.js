@@ -23,12 +23,17 @@ export default (props) => {
 	return (
 		<div>
 			<Grid container>
-				<Grid item xs={12} xl={3} md={3} sm={12}>
+				<Grid
+					item
+					xs={12}
+					xl={3}
+					md={3}
+					sm={12}
+					style={{ boxShadow: '17px 0px 37px -20px rgba(0, 0, 0, 0.35)' }}
+				>
 					<Box
 						style={{
 							height: '100vh',
-							boxShadow:
-								'0 0.7px 2.2px rgba(0, 0, 0, 0.024) , 0 -0.5px 6px rgba(0, 0, 0, 0.035) , 0 -0.4px 14.5px rgba(0, 0, 0, 0.046) , 0 54px 48px rgba(0, 0, 0, 0.07)',
 							zIndex: 2,
 							backgroundColor: '#18B074'
 						}}
@@ -67,41 +72,46 @@ export default (props) => {
 							<TextField
 								label='Nom'
 								variant='outlined'
+								placeholder='PLATINI'
 								fullWidth
-								value={values.firstname} // value.age value.Fname value.Lname
+								value={values.firstname}
 								onChange={handleChange('firstname')}
 								style={{ marginTop: 25, marginBottom: 15 }}
 							/>
 							<TextField
 								label='Prénom'
 								variant='outlined'
+								placeholder='Michel'
 								fullWidth
-								value={values.lastname} // value.age value.Fname value.Lname
+								value={values.lastname}
 								onChange={handleChange('lastname')}
 								style={{ marginTop: 15, marginBottom: 15 }}
 							/>
 							<TextField
 								label='Adresse email'
 								variant='outlined'
+								placeholder='michel.platini@gmail.com'
 								fullWidth
-								value={values.mail} // value.age value.Fname value.Lname
+								value={values.mail}
 								onChange={handleChange('mail')}
 								style={{ marginTop: 15, marginBottom: 15 }}
 							/>
 							<TextField
 								label='Mot de passe'
 								variant='outlined'
+								placeholder='****************'
 								type='password'
 								fullWidth
-								value={values.password} // value.age value.Fname value.Lname
+								value={values.password}
 								onChange={handleChange('password')}
 								style={{ marginTop: 15, marginBottom: 15 }}
 							/>
 							<TextField
 								label='N° de téléphone'
+								placeholder='060316579'
 								variant='outlined'
 								fullWidth
-								value={values.phone_number} // value.age value.Fname value.Lname
+								value={values.phone_number}
 								onChange={handleChange('phone_number')}
 								style={{ marginTop: 15, marginBottom: 15 }}
 							/>

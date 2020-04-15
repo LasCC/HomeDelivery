@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Component } from 'react';
-import MapGL, { GeolocateControl, NavigationControl, FullscreenControl, Marker, Source, Layer } from 'react-map-gl';
+import MapGL, { GeolocateControl, NavigationControl, FullscreenControl, Marker } from 'react-map-gl';
 import Pin from './Pin';
 
 const MAPBOX_TOKEN = 'pk.eyJ1IjoibWljaGFsbG93IiwiYSI6ImNrN3JraDE5aTBkcG0zbG91aWxzaGN1ZHYifQ.3y3s0EYnPlHXE5F_8-ySkg';
@@ -26,8 +26,6 @@ const navStyle = {
 	left: 0,
 	padding: '10px'
 };
-
-const data = require('../data/data.geojson');
 
 export default class App extends Component {
 	state = {
@@ -89,21 +87,6 @@ export default class App extends Component {
 					positionOptions={{ enableHighAccuracy: true }}
 					trackUserLocation={true}
 				/>
-				<Source type='geojson' data={data}>
-					<Layer
-						id='lineLayer'
-						type='line'
-						source='my-data'
-						layout={{
-							'line-join': 'round',
-							'line-cap': 'round'
-						}}
-						paint={{
-							'line-color': '#18B074',
-							'line-width': 5
-						}}
-					/>
-				</Source>
 				<Marker
 					longitude={marker.longitude}
 					latitude={marker.latitude}

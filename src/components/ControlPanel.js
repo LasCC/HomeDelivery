@@ -17,8 +17,16 @@ export default class ControlPanel extends PureComponent {
 					<Typography gutterBottom variant='h5' component='h1' style={{ fontWeight: 'bold', color: 'white' }}>
 						{city.name}
 					</Typography>
-					<Typography style={{ color: 'white' }}>
-						{city.latitude} | {city.longitude}
+					<Typography
+						variant='outlined'
+						color='primary'
+						style={{ color: 'white', fontWeight: 'bold' }}
+						onClick={() =>
+							window.open(
+								`https://www.google.com/maps/dir/?api=1&origin=&destination=12+residence+pasteur+rambouillet&travelmode=driving`
+							)}
+					>
+						Lancer l'itineraire <i class='uil uil-arrow-up-right' />
 					</Typography>
 				</Box>
 			</Box>
@@ -27,7 +35,7 @@ export default class ControlPanel extends PureComponent {
 
 	render() {
 		return (
-			<Box style={{ padding: 15, height: '240px' }}>
+			<Box style={{ padding: 15, height: '50vh' }}>
 				<Box
 					display='flex'
 					flexWrap='wrap'

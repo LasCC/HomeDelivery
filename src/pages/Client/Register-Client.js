@@ -29,12 +29,17 @@ export default (props) => {
 	return (
 		<div>
 			<Grid container>
-				<Grid item xs={12} xl={3} md={3} sm={12}>
+				<Grid
+					item
+					xs={12}
+					xl={3}
+					md={3}
+					sm={12}
+					style={{ boxShadow: '17px 0px 37px -20px rgba(0, 0, 0, 0.35)' }}
+				>
 					<Box
 						style={{
 							height: '100vh',
-							boxShadow:
-								'0 0.7px 2.2px rgba(0, 0, 0, 0.024) , 0 -0.5px 6px rgba(0, 0, 0, 0.035) , 0 -0.4px 14.5px rgba(0, 0, 0, 0.046) , 0 54px 48px rgba(0, 0, 0, 0.07)',
 							zIndex: 2,
 							backgroundColor: '#18B074'
 						}}
@@ -74,6 +79,7 @@ export default (props) => {
 								<TextField
 									label='Nom'
 									variant='outlined'
+									placeholder='PLATINI'
 									fullWidth
 									type='text'
 									value={values.firstname}
@@ -83,6 +89,7 @@ export default (props) => {
 								<TextField
 									label='Prénom'
 									variant='outlined'
+									placeholder='Michel'
 									fullWidth
 									type='text'
 									value={values.lastname}
@@ -95,6 +102,7 @@ export default (props) => {
 									label='Mot de passe'
 									type='password'
 									variant='outlined'
+									placeholder='*****************'
 									fullWidth
 									value={values.password}
 									onChange={handleChange('password')}
@@ -104,6 +112,7 @@ export default (props) => {
 									label='Confirmation'
 									type='password'
 									variant='outlined'
+									placeholder='*****************'
 									fullWidth
 									value={values.password_confirm}
 									onChange={handleChange('password_confirm')}
@@ -114,6 +123,7 @@ export default (props) => {
 								<TextField
 									label='Adresse mail'
 									variant='outlined'
+									placeholder='michel.platini@gmail.com'
 									type='email'
 									fullWidth
 									value={values.mail}
@@ -123,6 +133,7 @@ export default (props) => {
 								<TextField
 									label='Adresse'
 									variant='outlined'
+									placeholder='12 rue des fleures'
 									fullWidth
 									value={values.home}
 									onChange={handleChange('home')}
@@ -133,6 +144,7 @@ export default (props) => {
 								<TextField
 									label='Complément adresse'
 									variant='outlined'
+									placeholder='Batiment C, porte 313'
 									fullWidth
 									value={values.complement}
 									onChange={handleChange('complement')}
@@ -141,6 +153,7 @@ export default (props) => {
 								<TextField
 									label='Ville'
 									variant='outlined'
+									placeholder='Paris'
 									fullWidth
 									value={values.city}
 									onChange={handleChange('city')}
@@ -165,6 +178,7 @@ export default (props) => {
 								<TextField
 									label='Code postale'
 									variant='outlined'
+									placeholder='75001'
 									fullWidth
 									value={values.code_post}
 									onChange={handleChange('code_post')}
@@ -173,6 +187,7 @@ export default (props) => {
 								<TextField
 									label='N° de téléphone'
 									variant='outlined'
+									placeholder='060316579'
 									fullWidth
 									type='tel'
 									value={values.phone_number}
