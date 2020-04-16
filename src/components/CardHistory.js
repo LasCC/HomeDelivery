@@ -25,13 +25,7 @@ export default (props) => {
 		return (
 			<div>
 				{data.data.map((feed, i) => (
-					<Box
-						display='flex'
-						alignItems='center'
-						className='stepperRegister'
-						style={{ width: '100%' }}
-						key={i}
-					>
+					<Box display='flex' alignItems='center' className=' successCard' style={{ width: '100%' }} key={i}>
 						<Box>
 							<img
 								src={feed.avatar}

@@ -109,55 +109,6 @@ export default (props) => {
 						Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl.
 					</Typography>
 				</Box>
-				<Box style={{ marginTop: 15, padding: 35 }}>
-					<Box style={{ marginTop: 15, marginBottom: 15 }}>
-						<Typography variant='h6' component='h1'>
-							<i className='uil uil-plus' /> Créer un annonce
-						</Typography>
-						<Divider style={{ marginTop: 15, marginBottom: 15 }} />
-						<Typography color='textSecondary'>
-							Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl. Donec
-							nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean
-							dignissim pellentesque felis.Donec nec justo eget felis facilisis fermentum. Aliquam
-							porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Aliquam porttitor
-							mauris sit amet orci. Aenean dignissim pellentesque felis.Donec nec justo eget felis
-							facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque
-							felis.
-						</Typography>
-						<br />
-						<Link to={ROUTE.ANNONCE} style={{ textDecoration: 'none' }}>
-							<Button
-								endIcon={
-									<i
-										className='uil uil-plus'
-										style={{ fontSize: 15, fontWeight: 'bold', color: '#46B04A' }}
-									/>
-								}
-								variant='outlined'
-								style={{
-									padding: 15,
-									marginTop: 15,
-									color: '#46B04A',
-									fontWeight: 'bold',
-									textTransform: 'none',
-									borderColor: '#46B04A'
-								}}
-							>
-								Créer une annonce gratuitement
-							</Button>
-						</Link>
-					</Box>
-					<Box style={{ marginTop: 40, marginBottom: 40 }}>
-						<Typography variant='h6' component='h1'>
-							<i className='uil uil-receipt-alt' /> Vos annonces récentes
-						</Typography>
-						<Divider style={{ marginTop: 15, marginBottom: 15 }} />
-						<CardHistory />
-						<CardHistory />
-						<CardHistory />
-						<CardHistory />
-					</Box>
-				</Box>
 			</main>
 		</div>
 	);

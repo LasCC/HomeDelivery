@@ -114,13 +114,14 @@ export default (props) => {
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
 				<Typography variant='h6' component='h1'>
-					Paramètre de votre compte utilisateur
+					<i className='uil uil-sliders-v' /> Paramètre de votre compte utilisateur
 				</Typography>
 				<Typography color='textSecondary'>
-					Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl.
+					Chez HomeDelivery, toutes vos données vous appartiennent, si vous le souhaitez vous pouvez supprimer
+					ou modifier toutes vos données enregistrées sur notre plateforme.
 				</Typography>
 				<Divider style={{ marginTop: 15, marginBottom: 15 }} />
-				<Box style={{ marginTop: 25, padding: 15 }}>
+				<Box style={{ marginTop: 25 }}>
 					<Typography variant='h6' component='h1'>
 						<i className='uil uil-database' style={{ marginRight: 10 }} /> Données personnelles
 					</Typography>
@@ -132,7 +133,7 @@ export default (props) => {
 							type='text'
 							value={values.firstname}
 							onChange={handleChange('firstname')}
-							style={{ marginTop: 25, marginBottom: 15, marginRight: 15 }}
+							style={{ marginTop: 15, marginBottom: 15, marginRight: 15 }}
 						/>
 						<TextField
 							label='Prénom'
@@ -141,7 +142,7 @@ export default (props) => {
 							type='text'
 							value={values.lastname}
 							onChange={handleChange('lastname')}
-							style={{ marginTop: 25, marginBottom: 15 }}
+							style={{ marginTop: 15, marginBottom: 15 }}
 						/>
 					</Box>
 					<Box display='flex'>
@@ -223,23 +224,22 @@ export default (props) => {
 					<Button
 						onClick={handleSubmit}
 						style={{
-							backgroundColor: '#18B074',
+							backgroundColor: 'rgb(70, 176, 74)',
+							borderRadius: 4,
 							color: 'white',
 							fontWeight: 'bold',
 							marginTop: 15,
-							padding: 15,
-							borderRadius: 0
+							padding: 15
 						}}
 					>
 						<i className='uil uil-save' /> Modifier vos paramètres
 					</Button>
 				</Box>
-				<Box style={{ marginTop: 25, padding: 15 }}>
+				<Box style={{ marginTop: 25 }}>
 					<Typography variant='h6' component='h1'>
 						<i className='uil uil-trash-alt' style={{ marginRight: 10 }} /> Supprimer vos données
 						personnelles
 					</Typography>
-					<Divider style={{ marginTop: 15, marginBottom: 15 }} />
 					<Box style={{ marginTop: 25 }}>
 						<Typography color='textSecondary'>
 							En supprimant vos données personnelles vous ne pourrez plus vous connecter à l'application.
@@ -253,7 +253,7 @@ export default (props) => {
 								fontWeight: 'bold',
 								marginTop: 15,
 								padding: 15,
-								borderRadius: 0
+								borderRadius: 4
 							}}
 						>
 							<i className='uil uil-trash-alt' /> Supprimer

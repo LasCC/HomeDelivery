@@ -103,16 +103,13 @@ export default (props) => {
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
 				<Typography variant='h6' component='h1'>
-					Questions récurrentes
+					<i class='uil uil-comment-question' /> Questions récurrentes
 				</Typography>
 				<Typography color='textSecondary'>
 					Toutes les questions que les utilisateurs nous ont posées au fil du temps.
 				</Typography>
 				<Divider style={{ marginTop: 15, marginBottom: 15 }} />
-				<Box style={{ marginTop: 25, padding: 15 }}>
-					<Typography color='textSecondary'>
-						Merci de mettre à jour ce texte monsieur expert Excel.
-					</Typography>
+				<Box style={{ marginTop: 25 }}>
 					<ExpansionPanel>
 						<ExpansionPanelSummary
 							expandIcon={<ExpandMoreIcon />}

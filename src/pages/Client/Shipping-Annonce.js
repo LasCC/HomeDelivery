@@ -16,26 +16,30 @@ export default (props) => {
 			title: 'Jean célestin a accepter votre commande',
 			time: 'Le 12 Mars 2020 à 19h30',
 			icon: 'uil uil-check-circle',
-			check: 'uil uil-check'
+			check: 'uil uil-check',
+			class: 'successCard'
 		},
 		{
 			title: 'Jean célestin est dans le magasin',
 			time: 'Le 12 Mars 2020 à 19h38',
 			icon: 'uil uil-shop',
-			check: 'uil uil-check'
+			check: 'uil uil-check',
+			class: 'successCard'
 		},
 
 		{
 			title: 'Jean célestin vous as envoyé le ticket de caisse',
 			time: 'Le 12 Mars 2020 à 19h44',
 			icon: 'uil uil-qrcode-scan',
-			check: 'uil uil-times'
+			check: 'uil uil-times',
+			class: 'dangerCard'
 		},
 		{
 			title: 'Jean célestin est en chemin vers votre domicile',
 			time: 'Le 12 Mars 2020 à 19h45',
 			icon: 'uil uil-car',
-			check: 'uil uil-times'
+			check: 'uil uil-times',
+			class: 'dangerCard'
 		}
 	];
 	return (
@@ -78,23 +82,24 @@ export default (props) => {
 						</Box>
 						<Divider />
 						<Box style={{ marginTop: 5, padding: 25 }}>
-							{items.map((command) => {
+							{items.map((i, k) => {
 								return (
 									<Box
 										display='flex'
 										alignItems='center'
-										className='stepperRegister'
+										className={i.class}
+										key={k}
 										style={{ width: '85%' }}
 									>
 										<Box>
-											<i className={command.icon} style={{ fontSize: 50 }} />
+											<i className={i.icon} style={{ fontSize: 50 }} />
 										</Box>
 										<Box style={{ marginLeft: 10 }} flexGrow={1}>
-											<Typography>{command.title}</Typography>
-											<Typography color='textSecondary'>{command.time}</Typography>
+											<Typography>{i.title}</Typography>
+											<Typography color='textSecondary'>{i.time}</Typography>
 										</Box>
 										<Box>
-											<i class={command.check} style={{ fontSize: 25 }} />
+											<i class={i.check} style={{ fontSize: 25 }} />
 										</Box>
 									</Box>
 								);

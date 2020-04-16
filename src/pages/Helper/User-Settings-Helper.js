@@ -184,10 +184,11 @@ export default (props) => {
 							fontWeight: 'bold',
 							marginTop: 15,
 							padding: 15,
-							borderRadius: 0
+							borderRadius: 4,
+							boxShadow: 'rgba(24, 176, 116, 0.15) 0px 9px 18px 3px'
 						}}
 					>
-						<i className='uil uil-save' /> Modifier vos paramètres
+						Modifier vos paramètres <i className='uil uil-save' />
 					</Button>
 				</Box>
 			</main>

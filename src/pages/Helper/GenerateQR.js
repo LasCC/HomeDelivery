@@ -144,7 +144,7 @@ export default (props) => {
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
 				<Typography variant='h6' component='h1'>
-					Générateur d'attestation de déplacement provisoire
+					<i className='uil uil-qrcode-scan' /> Générateur d'attestation de déplacement provisoire
 				</Typography>
 				<Typography color='textSecondary'>
 					En application de l’article 3 du décret du 23 mars 2020 prescrivant les mesures générales
@@ -152,23 +152,7 @@ export default (props) => {
 					(Générateur créer avant le gouvernement français le 04/05/2020)
 				</Typography>
 				<Divider style={{ marginTop: 15, marginBottom: 15 }} />
-				<Box style={{ marginTop: 15, padding: 35 }}>
-					<Box style={{ marginTop: 15, marginBottom: 15 }}>
-						<Typography variant='h6' component='h1'>
-							Veuillez remplir le formulaire pour pouvoir génerer votre QRCode
-							<i className='uil uil-qrcode-scan' />
-						</Typography>
-						<Divider style={{ marginTop: 15, marginBottom: 15 }} />
-						<Typography color='textSecondary'>
-							Les personnes souhaitant bénéficier de l'une de ces exceptions doivent se munir s'il y a
-							lieu, lors de leurs déplacements hors de leur domicile, d'un document leur permettant de
-							justifier que le déplacement considéré entre dans le champ de l'une de ces exceptions. A
-							utiliser par les travailleurs non-salariés, lorsqu’ils ne peuvent disposer d’un justificatif
-							de déplacement établi par leur employeur. Y compris les acquisitions à titre gratuit
-							(distribution de denrées alimentaires…) et les déplacements liés à la perception de
-							prestations sociales et au retrait d’espèces.
-						</Typography>
-					</Box>
+				<Box style={{ marginTop: 15 }}>
 					<Box>
 						<Box display='flex' alignItems='center'>
 							<TextField
@@ -303,7 +287,8 @@ export default (props) => {
 							fontWeight: 'bold',
 							marginTop: 15,
 							padding: 15,
-							borderRadius: 0
+							borderRadius: 4,
+							boxShadow: 'rgba(24, 176, 116, 0.15) 0px 9px 18px 3px'
 						}}
 						onClick={handleClickOpen}
 					>

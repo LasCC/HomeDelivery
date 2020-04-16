@@ -56,7 +56,7 @@ export default (props) => {
 								autres ou être aider.
 							</Typography>
 							<Link to={ROUTE.REGISTER_CLIENT} style={{ textDecoration: 'none', color: 'black' }}>
-								<Box display='flex' alignItems='center' className='stepperRegister'>
+								<Box display='flex' alignItems='center' className=' successCard'>
 									<Box>
 										<i className='uil uil-chat-bubble-user' style={{ fontSize: 50 }} />
 									</Box>
@@ -74,7 +74,7 @@ export default (props) => {
 								</Box>
 							</Link>
 							<Link to={ROUTE.REGISTER_HELPER} style={{ textDecoration: 'none', color: 'black' }}>
-								<Box display='flex' alignItems='center' className='stepperRegister'>
+								<Box display='flex' alignItems='center' className=' successCard'>
 									<Box>
 										<i className='uil uil-users-alt' style={{ fontSize: 50 }} />
 									</Box>

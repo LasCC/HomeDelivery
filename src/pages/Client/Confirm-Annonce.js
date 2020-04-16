@@ -59,12 +59,7 @@ export default (props) => {
 								confirmer la liste de courses que vous avez renseigné sur votre droite
 							</Typography>
 							<Link to={ROUTE.ANNONCE} style={{ textDecoration: 'none', color: 'black' }}>
-								<Box
-									display='flex'
-									alignItems='center'
-									className='stepperRegister'
-									style={{ width: '85%' }}
-								>
+								<Box display='flex' alignItems='center' className='dangerCard' style={{ width: '85%' }}>
 									<Box>
 										<i className='uil uil-exclamation-circle' style={{ fontSize: 50 }} />
 									</Box>
@@ -86,7 +81,7 @@ export default (props) => {
 								<Box
 									display='flex'
 									alignItems='center'
-									className='stepperRegister'
+									className='successCard'
 									style={{ width: '85%' }}
 								>
 									<Box>

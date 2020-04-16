@@ -312,7 +312,7 @@ body {
 	}
 }
 
-.stepperRegister {
+.successCard {
 	padding: 25px;
 	background-color: white;
 	box-shadow: 0 0px 2.7px rgba(0, 0, 0, 0.012), 0 0px 6.9px rgba(0, 0, 0, 0.018), 0 0px 14.2px rgba(0, 0, 0, 0.022),
@@ -326,20 +326,50 @@ body {
 	transition: all .3s ease-in-out;
 }
 
-.stepperRegister:hover {
+.successCard:hover {
 	border: solid 2px #18b074;
 	background-color: #edf4f1;
 	transform: translateY(-5px);
 }
 
-.stepperRegister:hover .uil.uil-chat-bubble-user {
+.successCard:hover .uil.uil-chat-bubble-user {
 	color: #18b074 !important;
 }
-.stepperRegister:hover .uil.uil-arrow-right {
+.successCard:hover .uil.uil-arrow-right {
 	color: #18b074 !important;
 }
-.stepperRegister:hover .uil.uil-users-alt {
+.successCard:hover .uil.uil-users-alt {
 	color: #18b074 !important;
+}
+
+.dangerCard {
+	padding: 25px;
+	background-color: white;
+	box-shadow: 0 0px 2.7px rgba(0, 0, 0, 0.012), 0 0px 6.9px rgba(0, 0, 0, 0.018), 0 0px 14.2px rgba(0, 0, 0, 0.022),
+		0 0px 29.2px rgba(0, 0, 0, 0.028), 0 0px 80px rgba(0, 0, 0, 0.04);
+	margin-top: 25px;
+	margin-bottom: 25px;
+	border-radius: 15px;
+	border: solid 2px #dfdfdf4d;
+	width: 75%;
+	cursor: pointer;
+	transition: all .3s ease-in-out;
+}
+
+.dangerCard:hover {
+	border: solid 2px #b01818;
+	background-color: #fff0f0;
+	transform: translateY(-5px);
+}
+
+.dangerCard:hover .uil.uil-chat-bubble-user {
+	color: #b01818 !important;
+}
+.dangerCard:hover .uil.uil-arrow-right {
+	color: #b01818 !important;
+}
+.dangerCard:hover .uil.uil-users-alt {
+	color: #b01818 !important;
 }
 
 .wrapper-progressBar {
@@ -404,20 +434,30 @@ body {
 }
 
 .CardsDevMap {
-	height: 200px;
-	width: 200px;
-	margin-bottom: 15px;
+	height: 180px;
+	width: 300px;
 	margin-left: 15px;
 	background-repeat: no-repeat;
 	background-size: cover;
 	max-Width: 350;
-	box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
 	cursor: pointer;
 	border-radius: 10px;
 	transition: all .3s ease-in-out;
+	box-shadow: rgba(0, 0, 0, 0.096) 0px 9px 18px 3px;
 }
-.CardsDevMap:hover {
-	transform: translateY(-5px);
+
+.imagesMap {
+	border-radius: 15px;
+	position: absolute;
+	transition: all .3s ease-in-out;
+
+	top: -5px;
+	height: 120px;
+	width: 120px;
+	object-fit: cover;
+}
+.imagesMap:hover {
+	transform: scale(1.05);
 }
 
 .card {

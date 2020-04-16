@@ -91,13 +91,13 @@ export default (props) => {
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
 				<Typography variant='h6' component='h1'>
-					Historique de vos annonces postées
+					<i className='uil uil-receipt-alt' /> Historique de vos annonces postées
 				</Typography>
 				<Typography color='textSecondary'>
-					Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl.
+					Toutes vos annonces que vous avez postées sur la plateforme HomeDelivery.
 				</Typography>
 				<Divider style={{ marginTop: 15, marginBottom: 15 }} />
-				<Box style={{ marginTop: 25, padding: 15 }}>
+				<Box style={{ marginTop: 25 }}>
 					<CardHistory />
 				</Box>
 			</main>
