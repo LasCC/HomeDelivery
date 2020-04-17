@@ -28,17 +28,30 @@ export default (props) => {
 						Nous contacter
 					</Typography>
 					<Divider style={{ backgroundColor: '#4A7968', height: 3, width: '50%' }} />
-					<Typography style={{ marginTop: 15, marginBottom: 15 }}>mail@ubermachin.com</Typography>
-					<Typography style={{ marginTop: 15, marginBottom: 15 }}>+33 6 03 87 64 36 </Typography>
+					<Typography style={{ marginTop: 15, marginBottom: 15 }}>
+						<i className='uil uil-fast-mail' /> mail@ubermachin.com
+					</Typography>
+					<Typography style={{ marginTop: 15, marginBottom: 15 }}>
+						<i className='uil uil-calling' />+33 6 03 87 64 36{' '}
+					</Typography>
 				</Grid>
 				<Grid item xs={4}>
 					<Typography variant='h1' style={{ fontSize: 20, fontWeight: 'bold' }}>
 						Nous suivre
 					</Typography>
 					<Divider style={{ backgroundColor: '#4A7968', height: 3, width: '50%' }} />
-					<Typography style={{ marginTop: 15, marginBottom: 15 }}>Facebook</Typography>
-					<Typography style={{ marginTop: 15, marginBottom: 15 }}>Twitter</Typography>
-					<Typography style={{ marginTop: 15, marginBottom: 15 }}>Instagram</Typography>
+					<Typography style={{ marginTop: 15, marginBottom: 15 }}>
+						<i className='uil uil-facebook-f' />Facebook
+					</Typography>
+					<Typography style={{ marginTop: 15, marginBottom: 15 }}>
+						<i className='uil uil-twitter-alt' />Twitter
+					</Typography>
+					<Typography style={{ marginTop: 15, marginBottom: 15 }}>
+						<i className='uil uil-instagram' />Instagram
+					</Typography>
+					<Typography style={{ marginTop: 15, marginBottom: 15 }}>
+						<i className='uil uil-github' /> Github
+					</Typography>
 				</Grid>
 			</Grid>
 			<Box display='flex' alignItems='center' style={{ padding: 30 }}>

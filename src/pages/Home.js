@@ -92,33 +92,22 @@ export default (props) => {
 
 	return (
 		<div>
-			<Navbar />
 			<Grid container>
 				<Grid item xs={12}>
 					<Container maxWidth='lg'>
+						<Navbar />
 						<Box style={{ height: '100vh' }}>
 							<Box
 								style={{
 									position: 'relative',
-									top: '40%',
-									left: '40%',
-									transform: 'translate(-40%, -40%)'
+									top: '30%',
+									textAlign: 'center',
+									left: '30%',
+									transform: 'translate(-30%, -30%)',
+									zIndex: 5
 								}}
 							>
-								<Box display='flex' alignItems='center' style={{ marginBottom: 10 }}>
-									<img
-										src='https://svgur.com/i/Jg4.svg'
-										style={{ height: 65, marginRight: 15 }}
-										alt='logo'
-									/>
-									<Typography
-										variant='h1'
-										style={{ color: 'black', fontWeight: 'bold', fontSize: 30 }}
-									>
-										HomeDelivery
-									</Typography>
-								</Box>
-								<Typography variant='h1' style={{ fontSize: 30 }}>
+								<Typography variant='h3' component='h1' style={{ fontWeight: 'bold' }}>
 									La plateforme qui met en relation<br />
 									les personnes dans le besoin
 								</Typography>
@@ -145,8 +134,9 @@ export default (props) => {
 								{values.search}
 							</Box>
 						</Box>
+						<div className='curve' />
 					</Container>
-					<Grid item>
+					<Grid item style={{ zIndex: 55 }}>
 						<Box
 							id='LeSaviezVous'
 							style={{
@@ -174,7 +164,6 @@ export default (props) => {
 							</Container>
 						</Box>
 					</Grid>
-					{/* Images section */}
 					<Grid item>
 						<Box
 							style={{

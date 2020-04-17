@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './styles.css';
-
+import 'circular-std';
 import ROUTE from './Routes';
 import Loader from './components/Loader';
 const Home = lazy(() => import('./pages/Home'));

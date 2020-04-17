@@ -92,7 +92,7 @@ export default (props) => {
 				}}
 				anchor='left'
 			>
-				<Box className={classes.toolbar}>
+				<Box className={classes.toolbar} display='flex' alignItems='center'>
 					<img
 						src='https://svgur.com/i/Jg4.svg'
 						alt='logoHomeDelivery'
@@ -104,13 +104,172 @@ export default (props) => {
 			</Drawer>
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
-				<Box style={{ backgroundColor: '#D9EFE7', padding: 35, borderRadius: 15, width: '100%' }}>
-					<Typography variant='h6' component='h1'>
-						Ravis de vous revoir <strong>[Ludovic]</strong>
-					</Typography>
-					<Typography color='textSecondary'>
-						Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at feli nare nisl.
-					</Typography>
+				<Box style={{ height: '80vh' }} display='flex' alignItems='center' justifyContent='center'>
+					<Box>
+						<Typography color='textSecondary' variant='h6' component='h1' style={{ textAlign: 'center' }}>
+							Ravis de vous revoir parmi nous [Ludovic]
+						</Typography>
+						<Typography variant='h4' component='h1' style={{ fontWeight: 'bold', textAlign: 'center' }}>
+							Que souhaitez-vous faire aujourd’hui ?
+						</Typography>
+						<Box style={{ marginTop: 25 }} display='flex' alignItems='center'>
+							<Box
+								className='card'
+								style={{
+									height: 200,
+									width: 200,
+									backgroundColor: '#D7FFF1',
+									borderRadius: 10,
+									margin: 10
+								}}
+							>
+								<Link to={ROUTE.DASHBOARD_HELPER_ANNONCE} style={{ textDecoration: 'none' }}>
+									<Box
+										display='flex'
+										justify='center'
+										alignItems='center'
+										style={{
+											height: '100%',
+											backgroundImage: "url('https://svgur.com/i/KAb.svg')",
+											backgroundPosition: 'center',
+											backgroundSize: 'right',
+											borderRadius: '10px'
+										}}
+									>
+										<Typography
+											style={{
+												fontWeight: 'bolder',
+												color: '#1f2d3d',
+												opacity: 1
+											}}
+											variant='h6'
+											component='h2'
+										>
+											Consultez <br />les annonces
+										</Typography>
+									</Box>
+								</Link>
+							</Box>
+							<Box
+								className='card'
+								style={{
+									height: 200,
+									width: 200,
+									backgroundColor: '#048A81',
+									borderRadius: 10,
+									margin: 10
+								}}
+							>
+								<Box display='flex' justify='center' alignItems='center' style={{ height: '100%' }}>
+									<Typography
+										style={{ fontWeight: 'bold', color: '#fff', opacity: 1 }}
+										variant='h6'
+										component='h2'
+									>
+										Votre compte
+									</Typography>
+								</Box>
+							</Box>
+							<Box
+								className='card'
+								flexGrow={1}
+								style={{
+									height: 200,
+									backgroundColor: '#022F40',
+									borderRadius: 10,
+									margin: 10
+								}}
+							>
+								<Box display='flex' justify='center' alignItems='center' style={{ height: '100%' }}>
+									<Typography
+										style={{ fontWeight: 'bold', color: '#fff', opacity: 1 }}
+										variant='h6'
+										component='h2'
+									>
+										Générer votre attestation de <br />Déplacement provisoire
+									</Typography>
+								</Box>
+							</Box>
+							<Box
+								className='card'
+								style={{
+									height: 200,
+									width: 178,
+									backgroundColor: '#E1FAF9',
+									borderRadius: 10,
+									margin: 10
+								}}
+							>
+								<Box display='flex' justify='center' alignItems='center' style={{ height: '100%' }}>
+									<Typography
+										style={{ fontWeight: 'bold', color: '#1f2d3d', opacity: 0.9 }}
+										variant='h6'
+										component='h2'
+									>
+										Questions ?
+									</Typography>
+								</Box>
+							</Box>
+						</Box>
+						<Box display='flex' alignItems='center'>
+							<Box
+								className='card'
+								flexGrow={1}
+								style={{
+									height: 200,
+									backgroundColor: '#F4C3C2',
+									borderRadius: 10,
+									margin: 10
+								}}
+							>
+								<Link
+									to={ROUTE.DASHBOARD_HISTORY_HELPER}
+									style={{ textDecoration: 'none', width: '100%' }}
+								>
+									<Box
+										display='flex'
+										justify='center'
+										alignItems='center'
+										style={{
+											height: '100%',
+											backgroundImage: "url('https://svgur.com/i/KAa.svg')",
+											backgroundRepeat: 'no-repeat',
+											backgroundPosition: 'left',
+											backgroundPositionX: '-6em',
+											borderRadius: '10px'
+										}}
+									>
+										<Typography
+											style={{ fontWeight: 'bold', color: 'white', opacity: 1 }}
+											variant='h6'
+											component='h2'
+										>
+											Livraisons effectuées <br /> 45
+										</Typography>
+									</Box>
+								</Link>
+							</Box>
+							<Box
+								className='card'
+								style={{
+									height: 200,
+									backgroundColor: '#add9cd',
+									borderRadius: 10,
+									margin: 10
+								}}
+							>
+								<Box display='flex' justify='center' alignItems='center' style={{ height: '100%' }}>
+									<Typography
+										style={{ fontWeight: 'bold', color: '#1f2d3d', opacity: 0.9 }}
+										variant='h6'
+										component='h2'
+									>
+										Nous contacter
+									</Typography>
+								</Box>
+							</Box>
+						</Box>
+					</Box>
 				</Box>
 			</main>
 		</div>

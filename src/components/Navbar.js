@@ -1,14 +1,13 @@
 import React from 'react';
-import { Box, Typography, Button } from '@material-ui/core';
+import { Box, Typography, Divider } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import Drawer from './Drawer';
+
 import ROUTE from '../Routes';
 
 export default (props) => {
 	return (
 		<div>
 			<Box display='flex' alignItems='center'>
-				<Drawer />
 				<Box p={2} flexGrow={1} display='flex' alignItems='center' style={{ marginLeft: 10 }}>
 					<img src='https://svgur.com/i/Jg4.svg' style={{ height: 35, marginRight: 15 }} alt='logo' />
 					<Link to={ROUTE.HOME} style={{ textDecoration: 'none', color: 'black' }}>
@@ -29,38 +28,36 @@ export default (props) => {
 					style={{ marginRight: 10, display: 'flex' }}
 					alignItems='center'
 				>
-					<Link to={ROUTE.LOGIN} style={{ textDecoration: 'none', color: '#18B074' }}>
-						<Typography
-							style={{
-								padding: 13,
-								marginRight: 15,
-								color: '#18B074',
-								fontWeight: 'bold',
-								textTransform: 'capitalize'
-							}}
-						>
-							Connexion
-						</Typography>
-					</Link>
+					<Typography
+						style={{
+							padding: 13,
+							marginRight: 15
+						}}
+					>
+						C'est quoi HomeDelivery ?
+					</Typography>
+					<Typography
+						style={{
+							padding: 13,
+							marginRight: 15
+						}}
+					>
+						Comment ça marche ?
+					</Typography>
+					<Divider
+						orientation='vertical'
+						flexItem
+						style={{ marginRight: 15, backgroundColor: 'lightgray' }}
+					/>
 					<Link to={ROUTE.REGISTER} style={{ textDecoration: 'none' }}>
-						<Button
+						<Typography
+							className='HoverText'
 							style={{
-								backgroundColor: '#18B074',
-								padding: 13,
-								borderRadius: 8,
-								boxShadow: '0px 9px 18px 3px rgba(24,176,116,0.15)'
+								color: '#18B074'
 							}}
 						>
-							<Typography
-								style={{
-									fontWeight: 'bold',
-									color: 'white',
-									textTransform: 'capitalize'
-								}}
-							>
-								Inscription gratuite
-							</Typography>
-						</Button>
+							Inscription gratuite
+						</Typography>
 					</Link>
 				</Box>
 			</Box>

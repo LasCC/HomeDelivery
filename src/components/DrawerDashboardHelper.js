@@ -47,7 +47,7 @@ export default (props) => {
 						display='flex'
 						alignItems='center'
 					>
-						<i className='uil uil-dashboard' style={{ fontSize: 20, marginRight: 10 }} />
+						<i className='uil uil-create-dashboard' style={{ fontSize: 20, marginRight: 10 }} />
 						<Typography className='HoverText'>Dashboard</Typography>
 					</Box>
 				</Link>
