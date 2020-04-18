@@ -10,11 +10,14 @@ import {
 	IconButton,
 	Box,
 	Button,
-	TextField
+	TextField,
+	Breadcrumbs
 } from '@material-ui/core';
-
+import { Link } from 'react-router-dom';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import ROUTE from '../../Routes';
 import DrawerDashboardHelper from '../../components/DrawerDashboardHelper';
-window.document.title = 'HomeDelivery - Dashbord';
+window.document.title = 'HomeDelivery - Compte utilisateur';
 
 const drawerWidth = 300;
 
@@ -110,6 +113,22 @@ export default (props) => {
 			</Drawer>
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
+				<Breadcrumbs
+					separator={<NavigateNextIcon fontSize='small' />}
+					aria-label='breadcrumb'
+					style={{ marginBottom: 25 }}
+				>
+					<Link to={ROUTE.DASHBOARD_HELPER} style={{ textDecoration: 'none' }}>
+						<Typography color='textSecondary'>
+							<i className='uil uil-create-dashboard' /> Dashboard
+						</Typography>
+					</Link>
+					<Link style={{ textDecoration: 'none' }}>
+						<Typography color='textPrimary' style={{ fontWeight: 'bold' }}>
+							<i className='uil uil-user-circle' /> Compte utilisateur
+						</Typography>
+					</Link>
+				</Breadcrumbs>
 				<Typography variant='h6' component='h1'>
 					Paramètre de votre compte utilisateur
 				</Typography>

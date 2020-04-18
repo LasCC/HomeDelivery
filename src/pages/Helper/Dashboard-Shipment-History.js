@@ -1,9 +1,22 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Drawer, CssBaseline, Toolbar, Typography, Divider, InputBase, IconButton, Box } from '@material-ui/core';
+import {
+	Drawer,
+	CssBaseline,
+	Toolbar,
+	Typography,
+	Divider,
+	InputBase,
+	IconButton,
+	Box,
+	Breadcrumbs
+} from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import CardHistory from '../../components/CardHistory';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import ROUTE from '../../Routes';
 import DrawerDashboardHelper from '../../components/DrawerDashboardHelper';
-window.document.title = 'HomeDelivery - Dashbord';
+window.document.title = 'HomeDelivery - Livraisons effectuées';
 
 const drawerWidth = 300;
 
@@ -82,6 +95,22 @@ export default (props) => {
 			</Drawer>
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
+				<Breadcrumbs
+					separator={<NavigateNextIcon fontSize='small' />}
+					aria-label='breadcrumb'
+					style={{ marginBottom: 25 }}
+				>
+					<Link to={ROUTE.DASHBOARD_HELPER} style={{ textDecoration: 'none' }}>
+						<Typography color='textSecondary'>
+							<i className='uil uil-create-dashboard' /> Dashboard
+						</Typography>
+					</Link>
+					<Link style={{ textDecoration: 'none' }}>
+						<Typography color='textPrimary' style={{ fontWeight: 'bold' }}>
+							<i className='uil uil-box' /> Livraisons effectuées
+						</Typography>
+					</Link>
+				</Breadcrumbs>
 				<Typography variant='h6' component='h1'>
 					<i className='uil uil-box' /> Toutes les personnes que vous avez aidées depuis votre inscription
 				</Typography>

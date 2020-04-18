@@ -10,8 +10,12 @@ import {
 	IconButton,
 	Box,
 	TextField,
-	Button
+	Button,
+	Breadcrumbs
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import ROUTE from '../../Routes';
 import DrawerDashboardClient from '../../components/DrawerDashboardClient';
 window.document.title = 'HomeDelivery - Contactez-nous ';
 
@@ -102,6 +106,22 @@ export default (props) => {
 			</Drawer>
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
+				<Breadcrumbs
+					separator={<NavigateNextIcon fontSize='small' />}
+					aria-label='breadcrumb'
+					style={{ marginBottom: 25 }}
+				>
+					<Link to={ROUTE.DASHBOARD} style={{ textDecoration: 'none' }}>
+						<Typography color='textSecondary'>
+							<i className='uil uil-create-dashboard' /> Dashboard
+						</Typography>
+					</Link>
+					<Link style={{ textDecoration: 'none' }}>
+						<Typography color='textPrimary' style={{ fontWeight: 'bold' }}>
+							<i className='uil uil-receipt-alt' /> Historique
+						</Typography>
+					</Link>
+				</Breadcrumbs>
 				<Typography variant='h6' component='h1'>
 					Contactez nous
 				</Typography>

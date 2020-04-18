@@ -92,7 +92,7 @@ export default (props) => {
 				}}
 				anchor='left'
 			>
-				<Box className={classes.toolbar} display='flex' alignItems='center'>
+				<Box className={classes.toolbar}>
 					<img
 						src='https://svgur.com/i/Jg4.svg'
 						alt='logoHomeDelivery'
@@ -131,8 +131,8 @@ export default (props) => {
 										style={{
 											height: '100%',
 											backgroundImage: "url('https://svgur.com/i/KAb.svg')",
-											backgroundPosition: 'center',
-											backgroundSize: 'right',
+											backgroundPosition: 'right',
+											backgroundSize: 'cover',
 											borderRadius: '10px'
 										}}
 									>
@@ -160,15 +160,28 @@ export default (props) => {
 									margin: 10
 								}}
 							>
-								<Box display='flex' justify='center' alignItems='center' style={{ height: '100%' }}>
-									<Typography
-										style={{ fontWeight: 'bold', color: '#fff', opacity: 1 }}
-										variant='h6'
-										component='h2'
+								<Link to={ROUTE.DASHBOARD_SETTINGS_HELPER} style={{ textDecoration: 'none' }}>
+									<Box
+										display='flex'
+										justify='center'
+										alignItems='center'
+										style={{
+											height: '100%',
+											backgroundImage: "url('https://svgur.com/i/KAw.svg')",
+											backgroundPosition: 'center',
+											backgroundSize: 'cover',
+											borderRadius: '10px'
+										}}
 									>
-										Votre compte
-									</Typography>
-								</Box>
+										<Typography
+											style={{ fontWeight: 'bold', color: '#fff', opacity: 1 }}
+											variant='h6'
+											component='h2'
+										>
+											Votre compte
+										</Typography>
+									</Box>
+								</Link>
 							</Box>
 							<Box
 								className='card'
@@ -180,15 +193,28 @@ export default (props) => {
 									margin: 10
 								}}
 							>
-								<Box display='flex' justify='center' alignItems='center' style={{ height: '100%' }}>
-									<Typography
-										style={{ fontWeight: 'bold', color: '#fff', opacity: 1 }}
-										variant='h6'
-										component='h2'
+								<Link to={ROUTE.DASHBOARD_HELPER_QR_CODE} style={{ textDecoration: 'none' }}>
+									<Box
+										display='flex'
+										justify='center'
+										alignItems='center'
+										style={{
+											height: '100%',
+											backgroundImage: "url('https://svgur.com/i/KAw.svg')",
+											backgroundPosition: 'center',
+											backgroundSize: 500,
+											borderRadius: '10px'
+										}}
 									>
-										Générer votre attestation de <br />Déplacement provisoire
-									</Typography>
-								</Box>
+										<Typography
+											style={{ fontWeight: 'bold', color: '#fff', opacity: 1 }}
+											variant='h6'
+											component='h2'
+										>
+											Générer votre attestation de <br />Déplacement provisoire
+										</Typography>
+									</Box>
+								</Link>
 							</Box>
 							<Box
 								className='card'
