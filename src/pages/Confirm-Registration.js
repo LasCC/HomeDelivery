@@ -107,7 +107,7 @@ export default (props) => {
 										fontWeight: 'bold',
 										marginTop: 15,
 										padding: 15,
-										borderRadius: 0
+										borderRadius: 4
 									}}
 								>
 									Confirmer

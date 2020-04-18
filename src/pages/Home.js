@@ -15,6 +15,8 @@ import {
 	ExpansionPanelSummary,
 	ExpansionPanelDetails
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import ROUTE from '../Routes';
 import Lottie from 'react-lottie';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Footer from '../components/Footer';
@@ -141,27 +143,35 @@ export default (props) => {
 							id='LeSaviezVous'
 							style={{
 								padding: '4em',
-								marginTop: 15,
 								marginBottom: 15,
-								backgroundColor: '#D9EFE7'
+								backgroundColor: '#D9EFE7',
+								textAlign: 'center'
 							}}
 						>
-							<Container maxWidth='lg'>
-								<Typography
-									variant='h1'
-									style={{ color: 'black', fontWeight: 'bold', fontSize: 45, marginBottom: 15 }}
-								>
-									Le saviez vous ?
-								</Typography>
-								<Typography>
-									Nous sommes une plateforme d’entraide qui<br />
-									cherche à mettre en relation des personnes<br />
-									qui veulent aider leurs prochains pour des <br />
-									tâches quotidiennes telle qu’aller chercher <br />
-									du pain, faire des courses de première nécessité <br />
-									tout cela dans le bénévolat et la bienveillance.
-								</Typography>
-							</Container>
+							<Typography
+								variant='h1'
+								style={{ color: 'black', fontWeight: 'bold', fontSize: 45, marginBottom: 15 }}
+							>
+								Le saviez vous ?
+							</Typography>
+							<Typography color='textSecondary'>
+								Nous sommes une plateforme d’entraide qui cherche à mettre en relation <br />des
+								personnes qui veulent aider leurs prochains pour des tâches quotidiennes <br />telle
+								qu’aller chercher du pain, faire des courses de première nécessité tout cela dans le
+								bénévolat et la bienveillance.
+							</Typography>
+							<img
+								src='https://i.imgur.com/INyeAba.png'
+								style={{
+									height: 800,
+									zIndex: 1,
+									marginTop: 25,
+									borderRadius: 10,
+									boxShadow:
+										'  0 2.8px 2.2px rgba(0, 0, 0, 0.02),  0 6.7px 5.3px rgba(0, 0, 0, 0.028),  0 12.5px 10px rgba(0, 0, 0, 0.035),  0 22.3px 17.9px rgba(0, 0, 0, 0.042),  0 41.8px 33.4px rgba(0, 0, 0, 0.05),  0 100px 80px rgba(0, 0, 0, 0.07)'
+								}}
+							/>
+							<div className='curve2' />
 						</Box>
 					</Grid>
 					<Grid item>
@@ -174,11 +184,22 @@ export default (props) => {
 							<Container maxWidth='lg'>
 								<Typography
 									variant='h1'
-									style={{ color: 'black', fontWeight: 'bold', fontSize: 45, marginBottom: 15 }}
+									style={{
+										color: 'black',
+										fontWeight: 'bold',
+										fontSize: 45,
+										marginBottom: 15,
+										textAlign: 'center'
+									}}
 								>
 									Respect des consignes sanitaires
 								</Typography>
-								<Typography color='textSecondary'>
+								<Typography
+									color='textSecondary'
+									style={{
+										textAlign: 'center'
+									}}
+								>
 									Nous mettons un poing d’honneur à bien respecter les règles sanitaires mise en
 									oeuvre dans le cadre de l’épidémie sanitaire CoViD-19.
 								</Typography>
@@ -244,7 +265,7 @@ export default (props) => {
 							</Container>
 						</Box>
 					</Grid>
-					<Box style={{ marginTop: 15 }}>
+					<Box style={{ marginTop: 15, textAlign: 'center' }}>
 						<Container maxWidth='lg'>
 							<Typography
 								variant='h1'
@@ -257,31 +278,22 @@ export default (props) => {
 								<b> HomeDelivery</b>, aucun frais <br />
 								ne va vous être demandé.
 							</Typography>
-							<Button
-								style={{
-									backgroundColor: '#18B074',
-									padding: 13,
-									borderRadius: 8,
-									marginTop: 15,
-									boxShadow: '0px 9px 18px 3px rgba(24,176,116,0.22)'
-								}}
-							>
+							<Link to={ROUTE.REGISTER} style={{ textDecoration: 'none' }}>
 								<Typography
 									style={{
-										fontWeight: 'bold',
-										color: 'white',
-										textTransform: 'capitalize'
+										color: '#18B074',
+										marginTop: 15
 									}}
 								>
 									Inscription gratuite
 								</Typography>
-							</Button>
+							</Link>
 						</Container>
 					</Box>
 					<Box style={{ height: '70vh', backgroundColor: '#18B074', marginTop: 50 }}>
 						<Map />
 					</Box>
-					<Box style={{ marginTop: 80, height: '70vh' }}>
+					<Box style={{ marginTop: 80, height: '70vh' }} id='CommentCaMarche'>
 						<Container maxWidth='lg'>
 							<Typography
 								variant='h1'

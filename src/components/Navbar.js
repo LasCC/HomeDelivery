@@ -28,22 +28,26 @@ export default (props) => {
 					style={{ marginRight: 10, display: 'flex' }}
 					alignItems='center'
 				>
-					<Typography
-						style={{
-							padding: 13,
-							marginRight: 15
-						}}
-					>
-						C'est quoi HomeDelivery ?
-					</Typography>
-					<Typography
-						style={{
-							padding: 13,
-							marginRight: 15
-						}}
-					>
-						Comment ça marche ?
-					</Typography>
+					<a href='#LeSaviezVous' style={{ textDecoration: 'none', color: 'black' }}>
+						<Typography
+							style={{
+								padding: 13,
+								marginRight: 15
+							}}
+						>
+							C'est quoi HomeDelivery ?
+						</Typography>
+					</a>
+					<a href='#CommentCaMarche' style={{ textDecoration: 'none', color: 'black' }}>
+						<Typography
+							style={{
+								padding: 13,
+								marginRight: 15
+							}}
+						>
+							Comment ça marche ?
+						</Typography>
+					</a>
 					<Divider
 						orientation='vertical'
 						flexItem

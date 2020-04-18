@@ -138,7 +138,7 @@ export default (props) => {
 										fontWeight: 'bold',
 										marginTop: 15,
 										padding: 15,
-										borderRadius: 0
+										borderRadius: 4
 									}}
 								>
 									Continuer <i className='uil uil-arrow-right' />

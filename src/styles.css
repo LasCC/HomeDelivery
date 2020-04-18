@@ -481,11 +481,25 @@ body {
 	background: url("https://svgur.com/i/KAm.svg");
 	background-repeat: no-repeat;
 	background-size: cover;
-	height: 1000px;
-	width: 3000px;
+	height: 850px;
+	max-width: 3000px;
 	z-index: -1;
 	position: absolute;
 	left: -900px;
-	margin-top: -940px;
+	margin-top: -840px;
 	right: 0;
+	overflow: hidden;
+}
+.curve2 {
+	background: url("https://svgur.com/i/KAm.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 815px;
+	max-width: 3500px;
+	z-index: 0;
+	position: absolute;
+	left: -900px;
+	margin-top: -750px;
+	right: 0;
+	overflow: hidden;
 }

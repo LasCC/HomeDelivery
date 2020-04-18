@@ -1,22 +1,9 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-	Drawer,
-	CssBaseline,
-	Toolbar,
-	Typography,
-	Divider,
-	InputBase,
-	IconButton,
-	Box,
-	Button,
-	Grid
-} from '@material-ui/core';
+import { Drawer, CssBaseline, Toolbar, Typography, Divider, InputBase, IconButton, Box } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import ROUTE from '../../Routes';
-
 import DrawerDashboardHelper from '../../components/DrawerDashboardHelper';
-import CardHistory from '../../components/CardHistory';
 window.document.title = 'HomeDelivery - Dashbord';
 
 const drawerWidth = 300;
@@ -188,6 +175,7 @@ export default (props) => {
 								flexGrow={1}
 								style={{
 									height: 200,
+									width: 400,
 									backgroundColor: '#022F40',
 									borderRadius: 10,
 									margin: 10
