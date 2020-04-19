@@ -53,13 +53,13 @@ TBD
 
 ### Quelques images du site 
 
-[![N|Solid](https://i.imgur.com/GRrwkzx.jpg)](https://i.imgur.com/GRrwkzx.jpg) 
-[![N|Solid](https://i.imgur.com/ZU1nt79.png)](https://i.imgur.com/ZU1nt79.png) 
-[![N|Solid](https://i.imgur.com/Hc10g6c.png)](https://i.imgur.com/Hc10g6c.png) 
-[![N|Solid](https://i.imgur.com/ySiIXhC.png)](https://i.imgur.com/ySiIXhC.png) 
-[![N|Solid](https://i.imgur.com/nxT6kG2.png)](https://i.imgur.com/nxT6kG2.png) 
-[![N|Solid](https://i.imgur.com/rh4hrzb.png)](https://i.imgur.com/rh4hrzb.png) 
-[![N|Solid](https://i.imgur.com/3GUm8In.png)](https://i.imgur.com/3GUm8In.png) 
+[![N|Solid](https://i.imgur.com/fdMbcXo.png)](https://i.imgur.com/fdMbcXo.png) 
+[![N|Solid](https://i.imgur.com/aJyxJr1.png)](https://i.imgur.com/aJyxJr1.png) 
+[![N|Solid](https://i.imgur.com/MR4ycBV.png)](https://i.imgur.com/MR4ycBV.png) 
+[![N|Solid](https://i.imgur.com/6Y1o9fV.png)](https://i.imgur.com/6Y1o9fV.png) 
+[![N|Solid](https://i.imgur.com/UFFNOVi.jpg)](https://i.imgur.com/UFFNOVi.jpg) 
+[![N|Solid](https://i.imgur.com/Zss419J.png)](https://i.imgur.com/Zss419J.png) 
+[![N|Solid](https://i.imgur.com/z2U4pkY.png)](https://i.imgur.com/z2U4pkY.png) 
 
 
 Vous pouvez retouver le prototype de l'application sur cette page [figma](https://www.figma.com/file/Mkkz9zZjbRyFRKGctyFuGw/HomeDelivery?node-id=0%3A1 "Protoytpe de l'application")

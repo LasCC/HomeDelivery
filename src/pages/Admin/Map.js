@@ -57,13 +57,11 @@ const markers = [
 	{ markerOffset: -15, name: 'Caracas', coordinates: [ -66.9036, 10.4806 ] },
 	{ markerOffset: -15, name: 'Lima', coordinates: [ -77.0428, -12.0464 ] }
 ];
-const geoUrl = 'https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json';
 
 export default (props) => {
 	const classes = useStyles();
 	const geoUrl =
 		'https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json';
-	const colorScale = scaleLinear().domain([ 0.29, 0.68 ]).range([ '#ffedea', '#ff5233' ]);
 	const [ data, setData ] = useState([]);
 	useEffect(() => {
 		csv(`/vulnerability.csv`).then((data) => {
