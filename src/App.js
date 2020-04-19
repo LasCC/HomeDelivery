@@ -25,6 +25,10 @@ const DashboardHelperGenerateQR = lazy(() => import('./pages/Helper/GenerateQR')
 const DashboardHelperAnnonce = lazy(() => import('./pages/Helper/Dashboard-Helper-Annonce'));
 const DashboardHelperSettings = lazy(() => import('./pages/Helper/User-Settings-Helper'));
 const DashboardShipmentHistory = lazy(() => import('./pages/Helper/Dashboard-Shipment-History'));
+const DashboardAdmin = lazy(() => import('./pages/Admin/Dashboard'));
+const DashboardAdminUsers = lazy(() => import('./pages/Admin/Users'));
+const DashboardAdminLogin = lazy(() => import('./pages/Admin/Login'));
+const DashboardAdminAnalytics = lazy(() => import('./pages/Admin/Map'));
 const UnknownPage = lazy(() => import('./Unknown'));
 
 export default function App() {
@@ -51,6 +55,10 @@ export default function App() {
 				<Route exact path={ROUTE.DASHBOARD_HELPER_ANNONCE} component={DashboardHelperAnnonce} />
 				<Route exact path={ROUTE.DASHBOARD_SETTINGS_HELPER} component={DashboardHelperSettings} />
 				<Route exact path={ROUTE.DASHBOARD_HISTORY_HELPER} component={DashboardShipmentHistory} />
+				<Route exact path={ROUTE.DASHBOARD_ADMIN} component={DashboardAdmin} />
+				<Route exact path={ROUTE.DASHBOARD_ADMIN_USERS} component={DashboardAdminUsers} />
+				<Route exact path={ROUTE.DASHBOARD_ADMIN_LOGIN} component={DashboardAdminLogin} />
+				<Route exact path={ROUTE.DASHBOARD_ADMIN_ANALYTICS} component={DashboardAdminAnalytics} />
 				<Route exact path={ROUTE.TEST_MAP} component={Dev} />
 				<Route path='*' component={UnknownPage} />
 			</Switch>

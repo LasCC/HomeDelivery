@@ -19,6 +19,10 @@ const routes = {
 	DASHBOARD_HELPER_ANNONCE: '/dashboard-annonces',
 	DASHBOARD_SETTINGS_HELPER: '/dashboard-user-settings',
 	DASHBOARD_HISTORY_HELPER: '/dashboard-shipment-history',
+	DASHBOARD_ADMIN: '/administration-dashboard',
+	DASHBOARD_ADMIN_USERS: '/administration-dashboard-users',
+	DASHBOARD_ADMIN_LOGIN: '/login-administration',
+	DASHBOARD_ADMIN_ANALYTICS: '/administration-dashboard-analytics',
 	TEST_MAP: '/dev'
 };
 
