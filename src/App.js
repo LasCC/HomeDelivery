@@ -4,6 +4,7 @@ import './styles.css';
 import 'circular-std';
 import ROUTE from './Routes';
 import Loader from './components/Loader';
+
 const Home = lazy(() => import('./pages/Home'));
 const Register = lazy(() => import('./pages/Register'));
 const RegisterClient = lazy(() => import('./pages/Client/Register-Client'));
@@ -29,6 +30,7 @@ const DashboardAdmin = lazy(() => import('./pages/Admin/Dashboard'));
 const DashboardAdminUsers = lazy(() => import('./pages/Admin/Users'));
 const DashboardAdminLogin = lazy(() => import('./pages/Admin/Login'));
 const DashboardAdminAnalytics = lazy(() => import('./pages/Admin/Map'));
+const DashboardAdminAccount = lazy(() => import('./pages/Admin/Account'));
 const UnknownPage = lazy(() => import('./Unknown'));
 
 export default function App() {
@@ -59,6 +61,7 @@ export default function App() {
 				<Route exact path={ROUTE.DASHBOARD_ADMIN_USERS} component={DashboardAdminUsers} />
 				<Route exact path={ROUTE.DASHBOARD_ADMIN_LOGIN} component={DashboardAdminLogin} />
 				<Route exact path={ROUTE.DASHBOARD_ADMIN_ANALYTICS} component={DashboardAdminAnalytics} />
+				<Route exact path={ROUTE.DASHBOARD_ADMIN_ACCOUNT} component={DashboardAdminAccount} />
 				<Route exact path={ROUTE.TEST_MAP} component={Dev} />
 				<Route path='*' component={UnknownPage} />
 			</Switch>

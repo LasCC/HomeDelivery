@@ -39,6 +39,7 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
+import UpdateIcon from '@material-ui/icons/Update';
 import moment from 'moment';
 import 'moment/locale/fr';
 moment.locale('fr');
@@ -60,7 +61,8 @@ const tableIcons = {
 	Search: forwardRef((props, ref) => <Search {...props} ref={ref} />),
 	SortArrow: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref} />),
 	ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref} />),
-	ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
+	ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
+	UpdateIcon: forwardRef((props, ref) => <UpdateIcon {...props} ref={ref} />)
 };
 
 const drawerWidth = 240;
@@ -246,7 +248,7 @@ export default (props) => {
 					]}
 					actions={[
 						{
-							icon: 'dashboardicon',
+							icon: () => <UpdateIcon />,
 							tooltip: "Mettre à jour l'utilisateur",
 							onClick: (event, query) => {
 								handleClickOpen();
@@ -254,7 +256,7 @@ export default (props) => {
 							}
 						},
 						{
-							icon: 'trash',
+							icon: () => <DeleteOutline />,
 							tooltip: "Supprimer l'utilisateur",
 							onClick: (event, query) => {
 								alert("Vous avez supprimer l'utilisateur");

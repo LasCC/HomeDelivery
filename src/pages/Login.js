@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Grid, TextField, Typography, Box, Button } from '@material-ui/core';
+import { Grid, TextField, Typography, Box, Button, InputAdornment, IconButton } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import ROUTE from '../Routes';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 window.document.title = 'HomeDelivery - Connexion';
 
 export default (props) => {
@@ -9,6 +11,13 @@ export default (props) => {
 		email: '',
 		password: ''
 	});
+	const handleClickShowPassword = () => {
+		setValues({ ...values, showPassword: !values.showPassword });
+	};
+
+	const handleMouseDownPassword = (event) => {
+		event.preventDefault();
+	};
 	const handleChange = (name) => (event) => {
 		setValues({ ...values, [name]: event.target.value });
 	};
@@ -67,13 +76,30 @@ export default (props) => {
 								style={{ marginTop: 25, marginBottom: 15, marginRight: 15 }}
 							/>
 							<TextField
-								label='Mot de passe'
-								type='password'
 								variant='outlined'
-								fullWidth
+								label='Mot de passe'
 								value={values.password}
+								type={values.showPassword ? 'text' : 'password'}
 								onChange={handleChange('password')}
-								style={{ marginTop: 25, marginBottom: 15 }}
+								fullWidth
+								style={{
+									marginTop: 20,
+									marginBottom: 15
+								}}
+								InputProps={{
+									endAdornment: (
+										<InputAdornment position='end'>
+											<IconButton
+												edge='end'
+												aria-label='toggle password visibility'
+												onClick={handleClickShowPassword}
+												onMouseDown={handleMouseDownPassword}
+											>
+												{values.showPassword ? <VisibilityOff /> : <Visibility />}
+											</IconButton>
+										</InputAdornment>
+									)
+								}}
 							/>
 							<Link to={ROUTE.HOME} style={{ textDecoration: 'none' }}>
 								<Typography variant='h2' style={{ color: '#18B074', fontSize: 15 }}>
@@ -89,7 +115,7 @@ export default (props) => {
 									fontWeight: 'bold',
 									marginTop: 20,
 									padding: 15,
-									borderRadius: 0
+									borderRadius: 4
 								}}
 							>
 								Connexion

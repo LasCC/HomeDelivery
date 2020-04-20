@@ -23,6 +23,7 @@ const routes = {
 	DASHBOARD_ADMIN_USERS: '/administration-dashboard-users',
 	DASHBOARD_ADMIN_LOGIN: '/login-administration',
 	DASHBOARD_ADMIN_ANALYTICS: '/administration-dashboard-analytics',
+	DASHBOARD_ADMIN_ACCOUNT: '/administration-dashboard-account',
 	TEST_MAP: '/dev'
 };
 

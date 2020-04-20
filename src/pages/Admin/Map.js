@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Drawer, AppBar, Toolbar, CssBaseline, Typography, Divider, Box } from '@material-ui/core';
+import { Drawer, AppBar, Toolbar, CssBaseline, Typography, Box } from '@material-ui/core';
 import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from 'react-simple-maps';
 import { csv } from 'd3-fetch';
-import { scaleLinear } from 'd3-scale';
-import { Link } from 'react-router-dom';
-import ROUTE from '../../Routes';
 import DrawerDashboardAdmin from '../../components/DrawerDashboardAdmin';
 const drawerWidth = 240;
 

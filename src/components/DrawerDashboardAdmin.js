@@ -59,7 +59,7 @@ export default (props) => {
 					</ListItem>
 				</Link>
 				<Link
-					to={ROUTE.DASHBOARD_ADMIN_ANALYTICS}
+					to={ROUTE.DASHBOARD_ADMIN_ACCOUNT}
 					style={{ textDecoration: 'none', color: 'rgba(0, 0, 0, 0.87)' }}
 				>
 					<ListItem button style={{ marginTop: 15, marginBottom: 15 }}>
