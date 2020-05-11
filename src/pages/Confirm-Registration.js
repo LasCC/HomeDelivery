@@ -46,7 +46,7 @@ export default (props) => {
 						style={{
 							height: '100vh',
 							zIndex: 2,
-							backgroundColor: '#18B074'
+							backgroundColor: 'rgb(70, 176, 74)'
 						}}
 						className='backgroundRegister'
 					>
@@ -93,7 +93,7 @@ export default (props) => {
 							<Typography
 								onClick={handleSubmitCode}
 								variant='h2'
-								style={{ color: '#18B074', fontSize: 15, cursor: 'pointer' }}
+								style={{ color: 'rgb(70, 176, 74)', fontSize: 15, cursor: 'pointer' }}
 							>
 								Code de confirmation non reçu ?
 							</Typography>
@@ -102,7 +102,7 @@ export default (props) => {
 									onClick={handleSubmit}
 									fullWidth
 									style={{
-										backgroundColor: '#18B074',
+										backgroundColor: 'rgb(70, 176, 74)',
 										color: 'white',
 										fontWeight: 'bold',
 										marginTop: 15,

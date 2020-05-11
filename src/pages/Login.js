@@ -33,7 +33,7 @@ export default (props) => {
 						style={{
 							height: '100vh',
 							zIndex: 2,
-							backgroundColor: '#18B074'
+							backgroundColor: 'rgb(70, 176, 74)'
 						}}
 						className='backgroundRegister'
 					>
@@ -102,7 +102,7 @@ export default (props) => {
 								}}
 							/>
 							<Link to={ROUTE.HOME} style={{ textDecoration: 'none' }}>
-								<Typography variant='h2' style={{ color: '#18B074', fontSize: 15 }}>
+								<Typography variant='h2' style={{ color: 'rgb(70, 176, 74)', fontSize: 15 }}>
 									Problème d'identification ?
 								</Typography>
 							</Link>
@@ -110,7 +110,7 @@ export default (props) => {
 								onClick={handleSubmit}
 								fullWidth
 								style={{
-									backgroundColor: '#18B074',
+									backgroundColor: 'rgb(70, 176, 74)',
 									color: 'white',
 									fontWeight: 'bold',
 									marginTop: 20,

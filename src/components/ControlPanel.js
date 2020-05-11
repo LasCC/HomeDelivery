@@ -27,7 +27,12 @@ export default class ControlPanel extends PureComponent {
 							<Chip
 								label='En ligne'
 								variant='outlined'
-								style={{ color: '#18b074', borderColor: '#18b074', borderWidth: 1, fontWeight: 'bold' }}
+								style={{
+									color: 'rgb(70, 176, 74)',
+									borderColor: 'rgb(70, 176, 74)',
+									borderWidth: 1,
+									fontWeight: 'bold'
+								}}
 							/>
 						</Box>
 						<Button

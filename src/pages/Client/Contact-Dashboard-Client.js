@@ -109,7 +109,7 @@ export default (props) => {
 				<Breadcrumbs
 					separator={<NavigateNextIcon fontSize='small' />}
 					aria-label='breadcrumb'
-					style={{ marginBottom: 25 }}
+					style={{ marginBottom: 35 }}
 				>
 					<Link to={ROUTE.DASHBOARD} style={{ textDecoration: 'none' }}>
 						<Typography color='textSecondary'>
@@ -118,7 +118,7 @@ export default (props) => {
 					</Link>
 					<Link style={{ textDecoration: 'none' }}>
 						<Typography color='textPrimary' style={{ fontWeight: 'bold' }}>
-							<i className='uil uil-receipt-alt' /> Historique
+							<i className='uil uil-mailbox' /> Nous contacter
 						</Typography>
 					</Link>
 				</Breadcrumbs>
@@ -129,14 +129,16 @@ export default (props) => {
 					Si vous avez la moindre question n'hésitez pas à nous écrire un petit message.
 				</Typography>
 				<Divider style={{ marginTop: 15, marginBottom: 15 }} />
-				<Box style={{ marginTop: 15, padding: 25 }}>
+				<Box style={{ marginTop: 15 }}>
 					<Typography variant='h6' component='h1'>
 						<i className='uil uil-envelope' /> Nous envoyer un message
 					</Typography>
 					<TextField
 						style={{ marginBottom: 15, marginTop: 15 }}
 						fullWidth
+						autoFocus
 						variant='outlined'
+						placeholder='PLATINI'
 						label='Nom'
 						value={values.firstName}
 						onChange={handleChange('firstName')}
@@ -144,6 +146,7 @@ export default (props) => {
 					<TextField
 						style={{ marginBottom: 15 }}
 						fullWidth
+						placeholder='Michel'
 						variant='outlined'
 						label='Prénom'
 						value={values.lastName}
@@ -162,19 +165,19 @@ export default (props) => {
 					<Box display='flex' justifyContent='row-reverse'>
 						<Button
 							style={{
-								backgroundColor: '#18B074',
+								backgroundColor: 'rgb(70, 176, 74)',
 								color: 'white',
 								fontWeight: 'bold',
 								marginTop: 15,
 								padding: 15,
-								borderRadius: 0
+								borderRadius: 4
 							}}
 						>
 							Envoyer <i className='uil uil-envelope-send' />
 						</Button>
 					</Box>
 				</Box>
-				<Box style={{ marginTop: 15, padding: 25 }}>
+				<Box style={{ marginTop: 25 }}>
 					<Typography variant='h6' component='h1'>
 						<i className='uil uil-bug' /> Vous avez trouver un bug ?
 					</Typography>

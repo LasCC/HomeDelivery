@@ -20,7 +20,7 @@ export default (props) => {
 						style={{
 							height: '100vh',
 							zIndex: 2,
-							backgroundColor: '#18B074'
+							backgroundColor: 'rgb(70, 176, 74)'
 						}}
 						className='backgroundRegister'
 					>

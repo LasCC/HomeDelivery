@@ -252,7 +252,7 @@ export default (props) => {
 							padding: 15
 						}}
 					>
-						<i className='uil uil-save' /> Modifier vos paramètres
+						Modifier vos paramètres <i className='uil uil-save' />
 					</Button>
 				</Box>
 				<Box style={{ marginTop: 25 }}>
@@ -276,7 +276,7 @@ export default (props) => {
 								borderRadius: 4
 							}}
 						>
-							<i className='uil uil-trash-alt' /> Supprimer
+							Supprimer <i className='uil uil-trash-alt' />
 						</Button>
 					</Box>
 				</Box>

@@ -280,7 +280,7 @@ export default (props) => {
 							<Link to={ROUTE.REGISTER} style={{ textDecoration: 'none' }}>
 								<Typography
 									style={{
-										color: '#18B074',
+										color: 'rgb(70, 176, 74)',
 										marginTop: 15
 									}}
 								>
@@ -289,7 +289,7 @@ export default (props) => {
 							</Link>
 						</Container>
 					</Box>
-					<Box style={{ height: '70vh', backgroundColor: '#18B074', marginTop: 50 }}>
+					<Box style={{ height: '70vh', backgroundColor: 'rgb(70, 176, 74)', marginTop: 50 }}>
 						<Map />
 					</Box>
 					<Box style={{ marginTop: 80, height: '70vh' }} id='CommentCaMarche'>

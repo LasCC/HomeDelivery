@@ -23,7 +23,7 @@ export default (props) => {
 					</Box>
 				</Box>
 				<Box>
-					<Typography style={{ color: '#18B074' }}>Besoin d'aide ?</Typography>
+					<Typography style={{ color: 'rgb(70, 176, 74)' }}>Besoin d'aide ?</Typography>
 				</Box>
 			</Box>
 			<Box style={{ padding: 20 }}>

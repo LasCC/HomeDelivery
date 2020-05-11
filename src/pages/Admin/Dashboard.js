@@ -148,26 +148,28 @@ export default (props) => {
 									</Box>
 								</Link>
 							</Box>
-							<Box
-								className='card'
-								style={{
-									height: 200,
-									width: 178,
-									backgroundColor: '#E1FAF9',
-									borderRadius: 10,
-									margin: 10
-								}}
-							>
-								<Box display='flex' justify='center' alignItems='center' style={{ height: '100%' }}>
-									<Typography
-										style={{ fontWeight: 'bold', color: '#1f2d3d', opacity: 0.9 }}
-										variant='h6'
-										component='h2'
-									>
-										Compte
-									</Typography>
+							<Link to={ROUTE.DASHBOARD_ADMIN_ACCOUNT} style={{ textDecoration: 'none' }}>
+								<Box
+									className='card'
+									style={{
+										height: 200,
+										width: 178,
+										backgroundColor: '#E1FAF9',
+										borderRadius: 10,
+										margin: 10
+									}}
+								>
+									<Box display='flex' justify='center' alignItems='center' style={{ height: '100%' }}>
+										<Typography
+											style={{ fontWeight: 'bold', color: '#1f2d3d', opacity: 0.9 }}
+											variant='h6'
+											component='h2'
+										>
+											Compte
+										</Typography>
+									</Box>
 								</Box>
-							</Box>
+							</Link>
 						</Box>
 						<Box display='flex' alignItems='center'>
 							<Box

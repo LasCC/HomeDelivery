@@ -66,20 +66,20 @@ body {
 
 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
 	border-color: black !important;
-	border-radius: 0px !important;
+	border-radius: 5px !important;
 }
 
 .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
-	border-radius: 0px !important;
+	border-radius: 5px !important;
 }
 
 .MuiFormLabel-root.Mui-focused {
 	color: black !important;
-	border-radius: 0px !important;
+	border-radius: 5px !important;
 }
 
 .MuiFormLabel-root {
-	border-radius: 0px !important;
+	border-radius: 5px !important;
 }
 
 .boxes {
@@ -537,19 +537,19 @@ html {
 }
 
 .successCard:hover {
-	border: solid 2px #18b074;
+	border: solid 2px rgb(70, 176, 74);
 	background-color: #edf4f1;
 	transform: translateY(-5px);
 }
 
 .successCard:hover .uil.uil-chat-bubble-user {
-	color: #18b074 !important;
+	color: rgb(70, 176, 74) !important;
 }
 .successCard:hover .uil.uil-arrow-right {
-	color: #18b074 !important;
+	color: rgb(70, 176, 74) !important;
 }
 .successCard:hover .uil.uil-users-alt {
-	color: #18b074 !important;
+	color: rgb(70, 176, 74) !important;
 }
 
 .dangerCard {
@@ -715,4 +715,8 @@ html {
 	box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.008), 0 6.7px 5.3px rgba(0, 0, 0, 0.012),
 		0 12.5px 10px rgba(0, 0, 0, 0.015), 0 22.3px 17.9px rgba(0, 0, 0, 0.018), 0 41.8px 33.4px rgba(0, 0, 0, 0.022),
 		0 100px 80px rgba(0, 0, 0, 0.03) !important;
+}
+
+.HoverTextColor:hover {
+	color: rgb(70, 176, 74) !important;
 }

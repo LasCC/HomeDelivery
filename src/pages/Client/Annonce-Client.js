@@ -30,7 +30,6 @@ export default (props) => {
 			e.target.value = '50';
 		}
 	};
-	console.log(todos);
 	const Todo = ({ todo, index, removeTodo }) => {
 		return (
 			<Box display='flex' alignItems='center' style={{ marginTop: 15 }}>
@@ -41,15 +40,11 @@ export default (props) => {
 	};
 	const addTodo = (article) => {
 		const newTodos = [ ...todos, { article } ];
+		console.log(todos);
 		if (todos.length < 10) {
-			// faire le reg (flememe)
 			setTodos(newTodos);
 		} else {
-			const todoTextField = document.querySelector('#todoTextField');
 			const FormHelperTextTodo = document.querySelector('#FormHelperTextTodo');
-			todoTextField.classList.add('Mui-disabled');
-			todoTextField.setAttribute('disabled', true);
-			todoTextField.style.cursor = 'not-allowed';
 			FormHelperTextTodo.innerHTML = 'Vous avez atteint la limite de 10 articles';
 			FormHelperTextTodo.classList.add('Mui-error');
 			return;
@@ -67,6 +62,7 @@ export default (props) => {
 		price_max: '',
 		payment: ''
 	});
+
 	const handleChange = (name) => (event) => {
 		setValues({ ...values, [name]: event.target.value });
 	};
@@ -88,7 +84,6 @@ export default (props) => {
 			<form onSubmit={handleTodo}>
 				<Box display='flex' alignItems='center'>
 					<TextField
-						autoFocus
 						id='todoTextField'
 						style={{ marginTop: 15 }}
 						label='Articles'
@@ -104,7 +99,7 @@ export default (props) => {
 						style={{
 							marginTop: 15,
 							height: '100%',
-							backgroundColor: '#18B074',
+							backgroundColor: 'rgb(70, 176, 74)',
 							color: 'white',
 							marginLeft: 3,
 							padding: 11
@@ -199,7 +194,7 @@ export default (props) => {
 									<Button
 										onClick={handleSubmit}
 										style={{
-											backgroundColor: '#18B074',
+											backgroundColor: 'rgb(70, 176, 74)',
 											color: 'white',
 											fontWeight: 'bold',
 											marginTop: 20,
@@ -276,7 +271,7 @@ export default (props) => {
 									onClick={handleSubmit}
 									fullWidth
 									style={{
-										backgroundColor: '#18B074',
+										backgroundColor: 'rgb(70, 176, 74)',
 										color: 'white',
 										fontWeight: 'bold',
 										marginTop: 20,

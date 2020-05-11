@@ -57,7 +57,7 @@ export default (props) => {
 						<Typography
 							className='HoverText'
 							style={{
-								color: '#18B074'
+								color: 'rgb(70, 176, 74)'
 							}}
 						>
 							Inscription gratuite

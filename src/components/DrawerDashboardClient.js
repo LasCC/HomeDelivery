@@ -46,9 +46,10 @@ export default (props) => {
 						}}
 						display='flex'
 						alignItems='center'
+						className='HoverTextColor'
 					>
 						<i className='uil uil-create-dashboard' style={{ fontSize: 20, marginRight: 10 }} />
-						<Typography className='HoverText'>Dashboard</Typography>
+						<Typography>Dashboard</Typography>
 					</Box>
 				</Link>
 				<Link to={ROUTE.DASHBOARD_SETTINGS} style={{ textDecoration: 'none' }}>
@@ -62,9 +63,10 @@ export default (props) => {
 						}}
 						display='flex'
 						alignItems='center'
+						className='HoverTextColor'
 					>
 						<i className='uil uil-user-circle' style={{ fontSize: 20, marginRight: 10 }} />
-						<Typography className='HoverText'>Compte utilisateur</Typography>
+						<Typography>Compte utilisateur</Typography>
 					</Box>
 				</Link>
 				<Link to={ROUTE.DASHBOARD_HISTORY} style={{ textDecoration: 'none' }}>
@@ -78,9 +80,10 @@ export default (props) => {
 						}}
 						display='flex'
 						alignItems='center'
+						className='HoverTextColor'
 					>
 						<i className='uil uil-history' style={{ fontSize: 20, marginRight: 10 }} />
-						<Typography className='HoverText'>Historique</Typography>
+						<Typography>Historique</Typography>
 					</Box>
 				</Link>
 			</Box>
@@ -106,9 +109,10 @@ export default (props) => {
 						}}
 						display='flex'
 						alignItems='center'
+						className='HoverTextColor'
 					>
 						<i className='uil uil-comment-question' style={{ fontSize: 20, marginRight: 10 }} />
-						<Typography className='HoverText'>Questions récurrentes</Typography>
+						<Typography>Questions récurrentes</Typography>
 					</Box>
 				</Link>
 				<Link to={ROUTE.DASHBOARD_CONTACT} style={{ textDecoration: 'none' }}>
@@ -122,9 +126,10 @@ export default (props) => {
 						}}
 						display='flex'
 						alignItems='center'
+						className='HoverTextColor'
 					>
 						<i className='uil uil-mailbox' style={{ fontSize: 20, marginRight: 10 }} />
-						<Typography className='HoverText'>Nous contacter</Typography>
+						<Typography>Nous contacter</Typography>
 					</Box>
 				</Link>
 				<Box
@@ -137,9 +142,10 @@ export default (props) => {
 					}}
 					display='flex'
 					alignItems='center'
+					className='HoverTextColor'
 				>
 					<i className='uil uil-sign-out-alt' style={{ fontSize: 20, marginRight: 10 }} />
-					<Typography className='HoverText'>Déconnexion</Typography>
+					<Typography>Déconnexion</Typography>
 				</Box>
 			</Box>
 		</Box>

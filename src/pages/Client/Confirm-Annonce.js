@@ -17,7 +17,6 @@ export default (props) => {
 					<Navbar />
 					<Box style={{ padding: 35 }}>
 						<ClientStep />
-
 						<Divider />
 						<Box style={{ marginTop: 15, padding: 25 }}>
 							<Typography variant='h1' style={{ fontWeight: 'bold', fontSize: 25 }}>
@@ -29,7 +28,7 @@ export default (props) => {
 								confirmer la liste de courses que vous avez renseigné sur votre droite
 							</Typography>
 							<Link to={ROUTE.ANNONCE} style={{ textDecoration: 'none', color: 'black' }}>
-								<Box display='flex' alignItems='center' className='dangerCard' style={{ width: '85%' }}>
+								<Box display='flex' alignItems='center' className='dangerCard' style={{ width: '90%' }}>
 									<Box>
 										<i className='uil uil-exclamation-circle' style={{ fontSize: 50 }} />
 									</Box>
@@ -52,7 +51,7 @@ export default (props) => {
 									display='flex'
 									alignItems='center'
 									className='successCard'
-									style={{ width: '85%' }}
+									style={{ width: '90%' }}
 								>
 									<Box>
 										<i className='uil uil-check-circle' style={{ fontSize: 50 }} />

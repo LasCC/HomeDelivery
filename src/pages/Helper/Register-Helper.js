@@ -35,7 +35,7 @@ export default (props) => {
 						style={{
 							height: '100vh',
 							zIndex: 2,
-							backgroundColor: '#18B074'
+							backgroundColor: 'rgb(70, 176, 74)'
 						}}
 						className='backgroundRegister'
 					>
@@ -133,7 +133,7 @@ export default (props) => {
 									onClick={handleSubmit}
 									fullWidth
 									style={{
-										backgroundColor: '#18B074',
+										backgroundColor: 'rgb(70, 176, 74)',
 										color: 'white',
 										fontWeight: 'bold',
 										marginTop: 15,
