@@ -42,7 +42,7 @@ export default (props) => {
 										</Typography>
 									</Box>
 									<Box>
-										<i class='uil uil-arrow-right' style={{ fontSize: 25 }} />
+										<i className='uil uil-arrow-right' style={{ fontSize: 25 }} />
 									</Box>
 								</Box>
 							</Link>
@@ -65,7 +65,7 @@ export default (props) => {
 										</Typography>
 									</Box>
 									<Box>
-										<i class='uil uil-arrow-right' style={{ fontSize: 25 }} />
+										<i className='uil uil-arrow-right' style={{ fontSize: 25 }} />
 									</Box>
 								</Box>
 							</Link>

@@ -720,3 +720,10 @@ html {
 .HoverTextColor:hover {
 	color: rgb(70, 176, 74) !important;
 }
+
+.chart-area {
+	height: 190px;
+	width: calc(100% + 30px);
+	margin-left: -15px;
+	margin-right: -15px;
+}

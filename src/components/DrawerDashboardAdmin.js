@@ -18,61 +18,59 @@ export default (props) => {
 					alt='avatarUser'
 					style={{ height: 80, width: 80, borderRadius: 80, objectFit: 'cover' }}
 				/>
-				<Typography variant='h6' component='h1' style={{ marginTop: 15, fontWeight: 'bold' }}>
+				<Typography variant='h6' component='h1' style={{ marginTop: 15, fontWeight: 'bold', color: 'white' }}>
 					Bonjour [Ludovic]
 				</Typography>
-				<Typography color='textSecondary'>Administrateur</Typography>
+				<Typography style={{ color: '#f2f2f2' }}>Administrateur</Typography>
 			</Box>
-			<Divider />
+			<Divider style={{ marginTop: 15, marginBottom: 5 }} />
 			<List>
-				<Link to={ROUTE.DASHBOARD_ADMIN} style={{ textDecoration: 'none', color: 'rgba(0, 0, 0, 0.87)' }}>
+				<Link to={ROUTE.DASHBOARD_ADMIN} style={{ textDecoration: 'none', color: 'white' }}>
 					<ListItem button style={{ marginTop: 15, marginBottom: 15 }}>
 						<ListItemIcon>
-							<DashboardIcon />
+							<DashboardIcon style={{ color: '#ededed' }} />
 						</ListItemIcon>
 						<ListItemText>Dashboard</ListItemText>
 					</ListItem>
 				</Link>
-				<Link
-					to={ROUTE.DASHBOARD_ADMIN_ANALYTICS}
-					style={{ textDecoration: 'none', color: 'rgba(0, 0, 0, 0.87)' }}
-				>
+				<Link to={ROUTE.DASHBOARD_ADMIN_ANALYTICS} style={{ textDecoration: 'none', color: 'white' }}>
 					<ListItem button style={{ marginTop: 15, marginBottom: 15 }}>
 						<ListItemIcon>
-							<MapIcon />
+							<MapIcon style={{ color: '#ededed' }} />
 						</ListItemIcon>
 						<ListItemText>Carte</ListItemText>
 					</ListItem>
 				</Link>
-				<ListItem button style={{ marginTop: 15, marginBottom: 15 }}>
-					<ListItemIcon>
-						<InsertChartIcon />
-					</ListItemIcon>
-					<ListItemText>Data vision</ListItemText>
-				</ListItem>
-				<Link to={ROUTE.DASHBOARD_ADMIN_USERS} style={{ textDecoration: 'none', color: 'rgba(0, 0, 0, 0.87)' }}>
+
+				<Link to={ROUTE.DASHBOARD_ADMIN_DATAVIZ} style={{ textDecoration: 'none', color: 'white' }}>
 					<ListItem button style={{ marginTop: 15, marginBottom: 15 }}>
 						<ListItemIcon>
-							<SupervisedUserCircleIcon />
+							<InsertChartIcon style={{ color: '#ededed' }} />
+						</ListItemIcon>
+						<ListItemText>Data vision</ListItemText>
+					</ListItem>
+				</Link>
+
+				<Link to={ROUTE.DASHBOARD_ADMIN_USERS} style={{ textDecoration: 'none', color: 'white' }}>
+					<ListItem button style={{ marginTop: 15, marginBottom: 15 }}>
+						<ListItemIcon>
+							<SupervisedUserCircleIcon style={{ color: '#ededed' }} />
 						</ListItemIcon>
 						<ListItemText>Utilisateurs</ListItemText>
 					</ListItem>
 				</Link>
-				<Link
-					to={ROUTE.DASHBOARD_ADMIN_ACCOUNT}
-					style={{ textDecoration: 'none', color: 'rgba(0, 0, 0, 0.87)' }}
-				>
+				<Link to={ROUTE.DASHBOARD_ADMIN_ACCOUNT} style={{ textDecoration: 'none', color: 'white' }}>
 					<ListItem button style={{ marginTop: 15, marginBottom: 15 }}>
 						<ListItemIcon>
-							<SettingsIcon />
+							<SettingsIcon style={{ color: '#ededed' }} />
 						</ListItemIcon>
 						<ListItemText>Compte</ListItemText>
 					</ListItem>
 				</Link>
-				<Link to={ROUTE.DASHBOARD_ADMIN_LOGIN} style={{ textDecoration: 'none', color: 'rgba(0, 0, 0, 0.87)' }}>
+				<Link to={ROUTE.DASHBOARD_ADMIN_LOGIN} style={{ textDecoration: 'none', color: 'white' }}>
 					<ListItem button style={{ marginTop: 15, marginBottom: 15 }}>
 						<ListItemIcon>
-							<ExitToAppIcon />
+							<ExitToAppIcon style={{ color: '#ededed' }} />
 						</ListItemIcon>
 						<ListItemText>Déconnexion</ListItemText>
 					</ListItem>

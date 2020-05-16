@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Grid, TextField, Typography, Box, Button, InputAdornment, IconButton } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import ROUTE from '../Routes';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
 window.document.title = 'HomeDelivery - Connexion';
 
 export default (props) => {
@@ -95,7 +93,11 @@ export default (props) => {
 												onClick={handleClickShowPassword}
 												onMouseDown={handleMouseDownPassword}
 											>
-												{values.showPassword ? <VisibilityOff /> : <Visibility />}
+												{values.showPassword ? (
+													<i className='uil uil-eye-slash' />
+												) : (
+													<i className='uil uil-eye' />
+												)}
 											</IconButton>
 										</InputAdornment>
 									)

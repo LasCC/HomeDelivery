@@ -10,8 +10,6 @@ import {
 	IconButton,
 	Divider
 } from '@material-ui/core';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 const LoginAdmin = (props) => {
 	const [ values, setValues ] = useState({
@@ -92,7 +90,11 @@ const LoginAdmin = (props) => {
 										onClick={handleClickShowPassword}
 										onMouseDown={handleMouseDownPassword}
 									>
-										{values.showPassword ? <VisibilityOff /> : <Visibility />}
+										{values.showPassword ? (
+											<i className='uil uil-eye-slash' />
+										) : (
+											<i className='uil uil-eye' />
+										)}
 									</IconButton>
 								</InputAdornment>
 							)

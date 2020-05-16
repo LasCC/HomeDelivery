@@ -160,6 +160,7 @@ export default (props) => {
 								bénévolat et la bienveillance.
 							</Typography>
 							<img
+								alt='curve'
 								src='https://i.imgur.com/INyeAba.png'
 								style={{
 									height: 800,

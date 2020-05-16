@@ -22,6 +22,11 @@ moment.locale('fr');
 window.document.title = "HomeDelivery - Création d'annonce";
 
 export default (props) => {
+	const inputLabel = React.useRef(null);
+	const [ labelWidth, setLabelWidth ] = React.useState(0);
+	React.useEffect(() => {
+		setLabelWidth(inputLabel.current.offsetWidth);
+	}, []);
 	const [ todos, setTodos ] = useState([]);
 	const onlyNumbers = (e) => {
 		e.target.value = e.target.value.replace(/[^0-9]/g, '');
@@ -146,17 +151,15 @@ export default (props) => {
 								Mode de paiement :
 							</Typography>
 							<FormControl fullWidth variant='outlined' style={{ marginTop: 15 }}>
-								<InputLabel htmlFor='select'>Mode de paiement</InputLabel>
+								<InputLabel ref={inputLabel} htmlFor='select'>
+									Mode de paiement
+								</InputLabel>
 								<Select
 									native
-									fullWidth
+									labelWidth={labelWidth}
 									value={values.payment}
 									onChange={handleChange('payment')}
 									label='Carte de crédit'
-									inputProps={{
-										name: 'age',
-										id: 'select'
-									}}
 								>
 									<option aria-label='None' value='' />
 									<option value='Carte de crédit'>Carte de crédit</option>

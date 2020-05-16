@@ -50,7 +50,7 @@ export default class ControlPanel extends PureComponent {
 									`https://www.google.com/maps/dir/?api=1&origin=&destination=12+residence+pasteur+rambouillet&travelmode=driving`
 								)}
 						>
-							Lancer l'itineraire <i class='uil uil-arrow-up-right' />
+							Lancer l'itineraire <i className='uil uil-arrow-up-right' />
 						</Button>
 					</Box>
 				</Box>

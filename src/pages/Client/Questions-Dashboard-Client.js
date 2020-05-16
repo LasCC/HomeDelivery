@@ -123,7 +123,7 @@ export default (props) => {
 					</Link>
 				</Breadcrumbs>
 				<Typography variant='h6' component='h1'>
-					<i class='uil uil-comment-question' /> Questions récurrentes
+					<i className='uil uil-comment-question' /> Questions récurrentes
 				</Typography>
 				<Typography color='textSecondary'>
 					Toutes les questions que les utilisateurs nous ont posées au fil du temps.

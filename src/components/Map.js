@@ -34,7 +34,7 @@ export default class App extends Component {
 			longitude: 2.36464,
 			zoom: 11.3,
 			bearing: -25,
-			pitch: 60
+			pitch: 0
 		},
 		marker: {
 			latitude: 48.84978,
@@ -78,7 +78,7 @@ export default class App extends Component {
 				{...viewport}
 				width='100%'
 				height='100%'
-				mapStyle='mapbox://styles/michallow/ck86fkoji05jh1ipb0l9rlfy7'
+				mapStyle='mapbox://styles/michallow/cka8x07ne2cxk1iqkg4yg4zq7'
 				onViewportChange={this._onViewportChange}
 				mapboxApiAccessToken={MAPBOX_TOKEN}
 			>

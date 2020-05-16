@@ -2,7 +2,6 @@ import React, { forwardRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
 	Drawer,
-	AppBar,
 	Toolbar,
 	CssBaseline,
 	Typography,
@@ -17,7 +16,9 @@ import {
 	Button,
 	InputLabel,
 	MenuItem,
-	Breadcrumbs
+	Breadcrumbs,
+	InputBase,
+	IconButton
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import ROUTE from '../../Routes';
@@ -40,8 +41,10 @@ import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import UpdateIcon from '@material-ui/icons/Update';
+import MapIcon from '@material-ui/icons/Map';
 import moment from 'moment';
 import 'moment/locale/fr';
+window.document.title = "HomeDelivery - Gestion d'utilisateurs";
 moment.locale('fr');
 
 const tableIcons = {
@@ -62,19 +65,28 @@ const tableIcons = {
 	SortArrow: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref} />),
 	ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref} />),
 	ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
-	UpdateIcon: forwardRef((props, ref) => <UpdateIcon {...props} ref={ref} />)
+	UpdateIcon: forwardRef((props, ref) => <UpdateIcon {...props} ref={ref} />),
+	MapIcon: forwardRef((props, ref) => <MapIcon {...props} ref={ref} />)
 };
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex'
 	},
 	appBar: {
-		zIndex: theme.zIndex.drawer + 1,
-		backgroundColor: '#F4F6F3',
-		boxShadow: 'none'
+		width: `calc(100% - ${drawerWidth}px)`,
+		marginLeft: drawerWidth,
+		borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+		zIndex: 3,
+		backgroundColor: 'white'
+	},
+	input: {
+		marginLeft: theme.spacing(1),
+		flex: 1,
+		marginTop: 3,
+		zIndex: 3
 	},
 	drawer: {
 		width: drawerWidth,
@@ -82,15 +94,14 @@ const useStyles = makeStyles((theme) => ({
 	},
 	drawerPaper: {
 		width: drawerWidth,
+		backgroundColor: '#388E3B',
 		borderRight: 0,
 		zIndex: 1
 	},
-	drawerContainer: {
-		overflow: 'auto'
-	},
+	toolbar: theme.mixins.toolbar,
 	content: {
 		flexGrow: 1,
-		padding: theme.spacing(5),
+		padding: theme.spacing(8),
 		boxShadow: '-8px 0px 18px 0px rgba(0,0,0,0.05)',
 		minHeight: '100vh',
 		zIndex: 2
@@ -141,29 +152,36 @@ export default (props) => {
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
-			<AppBar position='fixed' className={classes.appBar}>
+			<Box position='fixed' className={classes.appBar}>
 				<Toolbar>
-					<Box display='flex' alignItems='center'>
-						<img src='https://svgur.com/i/Jg4.svg' alt='logoHomedeliveryBlanc' style={{ height: 40 }} />
-						<Box>
-							<Typography style={{ color: 'black', fontWeight: 'bold', marginLeft: 10 }}>
-								HomeDelivery
-							</Typography>
-						</Box>
-					</Box>
+					<i className='uil uil-search' style={{ fontSize: 25, color: '#82867D' }} />
+					<InputBase
+						className={classes.input}
+						placeholder='Rechercher un utilisateur'
+						inputProps={{ 'aria-label': 'Rechercher un utilisateur' }}
+					/>
+					<IconButton type='submit' className={classes.iconButton} aria-label='search'>
+						<i className='uil uil-arrow-right' style={{ fontSize: 25, color: '#82867D' }} />
+					</IconButton>
 				</Toolbar>
-			</AppBar>
+			</Box>
 			<Drawer
 				className={classes.drawer}
 				variant='permanent'
 				classes={{
 					paper: classes.drawerPaper
 				}}
+				anchor='left'
 			>
-				<Toolbar />
-				<div className={classes.drawerContainer}>
-					<DrawerDashboardAdmin />
-				</div>
+				<Box className={classes.toolbar} style={{ backgroundColor: '#2E7D32' }}>
+					<img
+						src='https://svgur.com/i/Jg4.svg'
+						alt='logoHomeDelivery'
+						style={{ marginLeft: 13, marginTop: 13 }}
+					/>
+				</Box>
+				<Divider />
+				<DrawerDashboardAdmin />
 			</Drawer>
 			<main className={classes.content}>
 				<Toolbar />
@@ -184,11 +202,10 @@ export default (props) => {
 					</Link>
 				</Breadcrumbs>
 				<Typography variant='h6' component='h1'>
-					<i className='uil uil-user-circle' /> Tous les utilisateurs actifs de l'application
+					<i className='uil uil-user-circle' /> Tous les utilisateurs de l'application
 				</Typography>
 				<Typography color='textSecondary'>
-					Mauris aliquet scelerisque blandit. Morbi laoreet, tortor at convallis laoreet, augue nibh cursus
-					mauris, eget faucibus ex nibh a sem.
+					Modification en temps réelle des informations des utilisateurs de HomeDelivery
 				</Typography>
 				<Divider style={{ marginTop: 15, marginBottom: 25 }} />
 				<MaterialTable
@@ -247,6 +264,13 @@ export default (props) => {
 						}
 					]}
 					actions={[
+						{
+							icon: () => <MapIcon />,
+							tooltip: "Localisation de l'utilisateur",
+							onClick: (event, query) => {
+								alert('Redirection sur google map');
+							}
+						},
 						{
 							icon: () => <UpdateIcon />,
 							tooltip: "Mettre à jour l'utilisateur",

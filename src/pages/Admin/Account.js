@@ -1,32 +1,42 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-	Drawer,
-	AppBar,
 	Toolbar,
-	CssBaseline,
 	Typography,
 	Divider,
 	Box,
 	Breadcrumbs,
 	TextField,
-	Button
+	Button,
+	Drawer,
+	CssBaseline,
+	InputBase,
+	IconButton
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import ROUTE from '../../Routes';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import DrawerDashboardAdmin from '../../components/DrawerDashboardAdmin';
+window.document.title = 'HomeDelivery - Confiuration de votre compte';
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex'
 	},
 	appBar: {
-		zIndex: theme.zIndex.drawer + 1,
-		backgroundColor: '#F4F6F3',
-		boxShadow: 'none'
+		width: `calc(100% - ${drawerWidth}px)`,
+		marginLeft: drawerWidth,
+		borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+		zIndex: 3,
+		backgroundColor: 'white'
+	},
+	input: {
+		marginLeft: theme.spacing(1),
+		flex: 1,
+		marginTop: 3,
+		zIndex: 3
 	},
 	drawer: {
 		width: drawerWidth,
@@ -34,15 +44,14 @@ const useStyles = makeStyles((theme) => ({
 	},
 	drawerPaper: {
 		width: drawerWidth,
+		backgroundColor: '#388E3B',
 		borderRight: 0,
 		zIndex: 1
 	},
-	drawerContainer: {
-		overflow: 'auto'
-	},
+	toolbar: theme.mixins.toolbar,
 	content: {
 		flexGrow: 1,
-		padding: theme.spacing(5),
+		padding: theme.spacing(8),
 		boxShadow: '-8px 0px 18px 0px rgba(0,0,0,0.05)',
 		minHeight: '100vh',
 		zIndex: 2
@@ -68,29 +77,37 @@ export default (props) => {
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
-			<AppBar position='fixed' className={classes.appBar}>
+			<Box position='fixed' className={classes.appBar}>
 				<Toolbar>
-					<Box display='flex' alignItems='center'>
-						<img src='https://svgur.com/i/Jg4.svg' alt='logoHomedeliveryBlanc' style={{ height: 40 }} />
-						<Box>
-							<Typography style={{ color: 'black', fontWeight: 'bold', marginLeft: 10 }}>
-								HomeDelivery
-							</Typography>
-						</Box>
-					</Box>
+					<i className='uil uil-search' style={{ fontSize: 25, color: '#82867D' }} />
+					<InputBase
+						onChange={handleChange('search')}
+						className={classes.input}
+						placeholder='Rechercher un utilisateur'
+						inputProps={{ 'aria-label': 'Rechercher un utilisateur' }}
+					/>
+					<IconButton type='submit' className={classes.iconButton} aria-label='search'>
+						<i className='uil uil-arrow-right' style={{ fontSize: 25, color: '#82867D' }} />
+					</IconButton>
 				</Toolbar>
-			</AppBar>
+			</Box>
 			<Drawer
 				className={classes.drawer}
 				variant='permanent'
 				classes={{
 					paper: classes.drawerPaper
 				}}
+				anchor='left'
 			>
-				<Toolbar />
-				<div className={classes.drawerContainer}>
-					<DrawerDashboardAdmin />
-				</div>
+				<Box className={classes.toolbar} style={{ backgroundColor: '#2E7D32' }}>
+					<img
+						src='https://svgur.com/i/Jg4.svg'
+						alt='logoHomeDelivery'
+						style={{ marginLeft: 13, marginTop: 13 }}
+					/>
+				</Box>
+				<Divider />
+				<DrawerDashboardAdmin />
 			</Drawer>
 			<main className={classes.content}>
 				<Toolbar />

@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Drawer, CssBaseline, Toolbar, Typography, Divider, InputBase, IconButton, Box, Card } from '@material-ui/core';
-import { Link } from 'react-router-dom';
-import ROUTE from '../../Routes';
-import { Line, Bar } from 'react-chartjs-2';
-import { dashboardAllProductsChart, dashboardShippedProductsChart, dashboard24HoursPerformanceChart } from './charts';
+import { Drawer, CssBaseline, Toolbar, Typography, Divider, InputBase, IconButton, Box, Grid } from '@material-ui/core';
+import {
+	XYPlot,
+	XAxis,
+	YAxis,
+	VerticalGridLines,
+	HorizontalGridLines,
+	VerticalBarSeries,
+	DiscreteColorLegend
+} from 'react-vis';
 import DrawerDashboardAdmin from '../../components/DrawerDashboardAdmin';
-window.document.title = 'HomeDelivery - Dashbord';
-
 const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
@@ -56,6 +59,7 @@ export default (props) => {
 		setValues({ ...values, [name]: event.target.value });
 	};
 
+	const BarSeries = VerticalBarSeries;
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
@@ -92,32 +96,40 @@ export default (props) => {
 				<DrawerDashboardAdmin />
 			</Drawer>
 			<main className={classes.content}>
-				<div className={classes.toolbar} />
-				<Box display='flex' alignItems='center'>
-					<Card style={{ width: '50%', marginRight: 15, padding: 15 }}>
-						<Typography>Un exemple de charts</Typography>
-						<div className='chart-area'>
-							<Line
-								data={dashboardShippedProductsChart.data}
-								options={dashboardShippedProductsChart.options}
-							/>
-						</div>
-					</Card>
-					<Card style={{ width: '50%', marginRight: 15, padding: 15 }}>
-						<Typography>Un deuxième exemple de charts</Typography>
-						<div className='chart-area'>
-							<Line data={dashboardAllProductsChart.data} options={dashboardAllProductsChart.options} />
-						</div>
-					</Card>
-					<Card style={{ width: '50%', marginRight: 15, padding: 15 }}>
-						<Typography>Un troisème exemple de charts</Typography>
-						<div className='chart-area'>
-							<Bar
-								data={dashboard24HoursPerformanceChart.data}
-								options={dashboard24HoursPerformanceChart.options}
-							/>
-						</div>
-					</Card>
+				<Box
+					style={{ height: '80vh', width: '80vw' }}
+					display='flex'
+					alignItems='center'
+					justifyContent='center'
+				>
+					<XYPlot
+						className='clustered-stacked-bar-chart-example'
+						xType='ordinal'
+						stackBy='y'
+						width={300}
+						height={300}
+					>
+						<DiscreteColorLegend
+							style={{ position: 'absolute', left: '50px', top: '10px' }}
+							orientation='horizontal'
+							items={[
+								{
+									title: 'benevole',
+									color: '#12939A'
+								},
+								{
+									title: 'classique',
+									color: '#79C7E3'
+								}
+							]}
+						/>
+						<VerticalGridLines />
+						<HorizontalGridLines />
+						<XAxis />
+						<YAxis />
+						<BarSeries color='#46B04A' data={[ { x: 'Bénévoles', y: 365 } ]} />
+						<BarSeries color='#79C7E3' data={[ { x: 'Classique', y: 325 } ]} />
+					</XYPlot>
 				</Box>
 			</main>
 		</div>

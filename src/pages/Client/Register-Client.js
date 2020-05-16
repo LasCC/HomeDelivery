@@ -1,10 +1,33 @@
 import React, { useState } from 'react';
-import { Grid, TextField, Typography, Box, Button } from '@material-ui/core';
+import { Grid, TextField, Typography, Box, Button, IconButton, InputAdornment } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import ROUTE from '../../Routes';
 window.document.title = 'HomeDelivery - Création de compte classique';
 
 export default (props) => {
+	const handleClickShowPassword = () => {
+		setValues({ ...values, showPassword: !values.showPassword });
+	};
+	const handleMouseDownPassword = (event) => {
+		event.preventDefault();
+	};
+	const getResponse = async () => {
+		try {
+			const response = await axios.get(
+				`https://api-adresse.data.gouv.fr/search/?q=${values.home}+${values.code_post}+${values.city}`
+			);
+			console.log(response.data);
+			console.log(
+				`Localisation de l'utilisateur`,
+				response.data.features[0].geometry.coordinates[1],
+				response.data.features[0].geometry.coordinates[0]
+			);
+			return response.data;
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
 	const [ values, setValues ] = useState({
 		firstname: '',
 		lastname: '',
@@ -24,8 +47,8 @@ export default (props) => {
 	const handleSubmit = () => {
 		console.log('====== Registration ======');
 		console.log(values);
+		getResponse();
 	};
-	console.log(values);
 	return (
 		<div>
 			<Grid container>
@@ -107,16 +130,54 @@ export default (props) => {
 									value={values.password}
 									onChange={handleChange('password')}
 									style={{ marginTop: 15, marginBottom: 15, marginRight: 15 }}
+									type={values.showPassword ? 'text' : 'password'}
+									InputProps={{
+										endAdornment: (
+											<InputAdornment position='end'>
+												<IconButton
+													edge='end'
+													aria-label='toggle password visibility'
+													onClick={handleClickShowPassword}
+													onMouseDown={handleMouseDownPassword}
+												>
+													{values.showPassword ? (
+														<i className='uil uil-eye-slash' />
+													) : (
+														<i className='uil uil-eye' />
+													)}
+												</IconButton>
+											</InputAdornment>
+										)
+									}}
 								/>
 								<TextField
 									label='Confirmation'
 									type='password'
 									variant='outlined'
 									placeholder='*****************'
+									type={values.showPassword ? 'text' : 'password'}
 									fullWidth
 									value={values.password_confirm}
 									onChange={handleChange('password_confirm')}
 									style={{ marginTop: 15, marginBottom: 15 }}
+									InputProps={{
+										endAdornment: (
+											<InputAdornment position='end'>
+												<IconButton
+													edge='end'
+													aria-label='toggle password visibility'
+													onClick={handleClickShowPassword}
+													onMouseDown={handleMouseDownPassword}
+												>
+													{values.showPassword ? (
+														<i className='uil uil-eye-slash' />
+													) : (
+														<i className='uil uil-eye' />
+													)}
+												</IconButton>
+											</InputAdornment>
+										)
+									}}
 								/>
 							</Box>
 							<Box display='flex'>
@@ -195,22 +256,23 @@ export default (props) => {
 									style={{ marginTop: 15, marginBottom: 15 }}
 								/>
 							</Box>
-							<Link to={ROUTE.CONFIRM_REGISTRATION} style={{ textDecoration: 'none' }}>
-								<Button
-									onClick={handleSubmit}
-									fullWidth
-									style={{
-										backgroundColor: 'rgb(70, 176, 74)',
-										color: 'white',
-										fontWeight: 'bold',
-										marginTop: 15,
-										padding: 15,
-										borderRadius: 4
-									}}
-								>
-									Continuer <i className='uil uil-arrow-right' />
-								</Button>
-							</Link>
+							{/* <Link to={ROUTE.CONFIRM_REGISTRATION} style={{ textDecoration: 'none' }}> */}
+							<Button
+								/* onClick={handleSubmit} */
+								onClick={handleSubmit}
+								fullWidth
+								style={{
+									backgroundColor: 'rgb(70, 176, 74)',
+									color: 'white',
+									fontWeight: 'bold',
+									marginTop: 15,
+									padding: 15,
+									borderRadius: 4
+								}}
+							>
+								Continuer <i className='uil uil-arrow-right' />
+							</Button>
+							{/* </Link> */}
 						</Box>
 					</Box>
 				</Grid>
