@@ -1,0 +1,10 @@
+---
+version: '3'
+
+services:
+    webapp:
+        build: .
+        # build from Dockerfile
+        image: react-app
+        ports:
+            - "80:80"
