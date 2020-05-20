@@ -1,9 +1,22 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Drawer, InputBase, Toolbar, CssBaseline, Typography, Box, IconButton, Divider } from '@material-ui/core';
+import {
+	Drawer,
+	InputBase,
+	Toolbar,
+	CssBaseline,
+	Typography,
+	Box,
+	IconButton,
+	Divider,
+	Breadcrumbs
+} from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import ROUTE from '../../Routes';
 import Map from '../../components/Map';
 import DrawerDashboardAdmin from '../../components/DrawerDashboardAdmin';
-window.document.title = 'HomeDelivery - Carte intéractif';
+window.document.title = 'HomeDelivery - Carte intéractive';
 
 const drawerWidth = 300;
 
@@ -79,26 +92,45 @@ export default (props) => {
 				anchor='left'
 			>
 				<Box className={classes.toolbar} style={{ backgroundColor: '#2E7D32' }}>
-					<img
-						src='https://svgur.com/i/Jg4.svg'
-						alt='logoHomeDelivery'
-						style={{ marginLeft: 13, marginTop: 13 }}
-					/>
+					<Typography style={{ marginLeft: 25, marginTop: 20, color: 'white', fontWeight: 'bold' }}>
+						HomeDelivery - Administration
+					</Typography>
 				</Box>
 				<Divider />
 				<DrawerDashboardAdmin />
 			</Drawer>
 			<main className={classes.content}>
 				<Toolbar />
+				<Breadcrumbs
+					separator={<NavigateNextIcon fontSize='small' />}
+					aria-label='breadcrumb'
+					style={{ marginBottom: 25 }}
+				>
+					<Link to={ROUTE.DASHBOARD_ADMIN} style={{ textDecoration: 'none' }}>
+						<Typography color='textSecondary'>
+							<i className='uil uil-create-dashboard' /> Dashboard
+						</Typography>
+					</Link>
+					<Link style={{ textDecoration: 'none' }}>
+						<Typography color='textPrimary' style={{ fontWeight: 'bold' }}>
+							<i className='uil uil-map' /> Carte intéractive
+						</Typography>
+					</Link>
+				</Breadcrumbs>
+				<Typography variant='h6' component='h1'>
+					<i className='uil uil-user-location' /> Tous les utilisateurs de l'application
+				</Typography>
+				<Typography color='textSecondary'>
+					Affichage en temps réel de tous les utilisateurs de l'application répartie sur une carte interactive
+				</Typography>
+				<Divider style={{ marginTop: 15, marginBottom: 25 }} />
 				<Box
 					style={{ height: '80vh', width: '80vw' }}
 					display='flex'
 					alignItems='center'
 					justifyContent='center'
 				>
-					<Box style={{ width: '85%', height: '100%' }}>
-						<Map />
-					</Box>
+					<Map />
 				</Box>
 			</main>
 		</div>

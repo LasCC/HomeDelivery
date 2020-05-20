@@ -174,11 +174,9 @@ export default (props) => {
 				anchor='left'
 			>
 				<Box className={classes.toolbar} style={{ backgroundColor: '#2E7D32' }}>
-					<img
-						src='https://svgur.com/i/Jg4.svg'
-						alt='logoHomeDelivery'
-						style={{ marginLeft: 13, marginTop: 13 }}
-					/>
+					<Typography style={{ marginLeft: 25, marginTop: 20, color: 'white', fontWeight: 'bold' }}>
+						HomeDelivery - Administration
+					</Typography>
 				</Box>
 				<Divider />
 				<DrawerDashboardAdmin />

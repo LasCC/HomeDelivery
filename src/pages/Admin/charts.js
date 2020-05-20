@@ -1,5 +1,5 @@
 function hexToRGB(hex, alpha) {
-	var r = parseInt(hex.slice(1, 3), 16),
+	const r = parseInt(hex.slice(1, 3), 16),
 		g = parseInt(hex.slice(3, 5), 16),
 		b = parseInt(hex.slice(5, 7), 16);
 
@@ -11,6 +11,10 @@ function hexToRGB(hex, alpha) {
 }
 
 const chartColor = '#FFFFFF';
+
+function getRandomInt(max) {
+	return Math.floor(Math.random() * Math.floor(max));
+}
 
 const gradientChartOptionsConfiguration = {
 	maintainAspectRatio: false,
@@ -63,7 +67,7 @@ const gradientChartOptionsConfiguration = {
 	}
 };
 
-var gradientChartOptionsConfigurationWithNumbersAndGrid = {
+const gradientChartOptionsConfigurationWithNumbersAndGrid = {
 	maintainAspectRatio: false,
 	legend: {
 		display: false
@@ -113,11 +117,11 @@ var gradientChartOptionsConfigurationWithNumbersAndGrid = {
 const dashboardPanelChart = {
 	data: (canvas) => {
 		const ctx = canvas.getContext('2d');
-		var chartColor = '#FFFFFF';
-		var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+		const chartColor = '#FFFFFF';
+		const gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
 		gradientStroke.addColorStop(0, '#80b6f4');
 		gradientStroke.addColorStop(1, chartColor);
-		var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
+		const gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
 		gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
 		gradientFill.addColorStop(1, 'rgba(255, 255, 255, 0.14)');
 
@@ -138,7 +142,20 @@ const dashboardPanelChart = {
 					fill: true,
 					backgroundColor: gradientFill,
 					borderWidth: 2,
-					data: [ 50, 150, 100, 190, 130, 90, 150, 160, 120, 140, 190, 95 ]
+					data: [
+						getRandomInt(50),
+						getRandomInt(150),
+						getRandomInt(100),
+						getRandomInt(190),
+						getRandomInt(130),
+						getRandomInt(90),
+						getRandomInt(150),
+						getRandomInt(160),
+						getRandomInt(120),
+						getRandomInt(140),
+						getRandomInt(190),
+						getRandomInt(95)
+					]
 				}
 			]
 		};
@@ -206,18 +223,31 @@ const dashboardPanelChart = {
 
 const dashboardShippedProductsChart = {
 	data: (canvas) => {
-		var ctx = canvas.getContext('2d');
-		var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+		const ctx = canvas.getContext('2d');
+		const gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
 		gradientStroke.addColorStop(0, '#80b6f4');
 		gradientStroke.addColorStop(1, chartColor);
-		var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+		const gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
 		gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
 		gradientFill.addColorStop(1, 'rgba(249, 99, 59, 0.40)');
 		return {
-			labels: [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+			labels: [
+				'Janvier',
+				'Février',
+				'Mars',
+				'Avril',
+				'Maï',
+				'Juin',
+				'Juillet',
+				'Août',
+				'Septembre',
+				'Octobre',
+				'Novembre',
+				'Décembre'
+			],
 			datasets: [
 				{
-					label: 'Active Users',
+					label: 'Utilisateurs actifs',
 					borderColor: '#f96332',
 					pointBorderColor: '#FFF',
 					pointBackgroundColor: '#f96332',
@@ -228,7 +258,20 @@ const dashboardShippedProductsChart = {
 					fill: true,
 					backgroundColor: gradientFill,
 					borderWidth: 2,
-					data: [ 542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 630 ]
+					data: [
+						getRandomInt(50),
+						getRandomInt(150),
+						getRandomInt(100),
+						getRandomInt(190),
+						getRandomInt(130),
+						getRandomInt(90),
+						getRandomInt(150),
+						getRandomInt(160),
+						getRandomInt(120),
+						getRandomInt(140),
+						getRandomInt(190),
+						getRandomInt(95)
+					]
 				}
 			]
 		};
@@ -238,18 +281,18 @@ const dashboardShippedProductsChart = {
 
 const dashboardAllProductsChart = {
 	data: (canvas) => {
-		var ctx = canvas.getContext('2d');
-		var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+		const ctx = canvas.getContext('2d');
+		const gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
 		gradientStroke.addColorStop(0, '#18ce0f');
 		gradientStroke.addColorStop(1, chartColor);
-		var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+		const gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
 		gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
 		gradientFill.addColorStop(1, hexToRGB('#18ce0f', 0.4));
 		return {
-			labels: [ '12pm,', '3pm', '6pm', '9pm', '12am', '3am', '6am', '9am' ],
+			labels: [ '00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00' ],
 			datasets: [
 				{
-					label: 'Email Stats',
+					label: 'Annonces postées',
 					borderColor: '#18ce0f',
 					pointBorderColor: '#FFF',
 					pointBackgroundColor: '#18ce0f',
@@ -260,7 +303,20 @@ const dashboardAllProductsChart = {
 					fill: true,
 					backgroundColor: gradientFill,
 					borderWidth: 2,
-					data: [ 40, 500, 650, 700, 1200, 1250, 1300, 1900 ]
+					data: [
+						getRandomInt(50),
+						getRandomInt(150),
+						getRandomInt(100),
+						getRandomInt(190),
+						getRandomInt(130),
+						getRandomInt(90),
+						getRandomInt(150),
+						getRandomInt(160),
+						getRandomInt(120),
+						getRandomInt(140),
+						getRandomInt(190),
+						getRandomInt(95)
+					]
 				}
 			]
 		};
@@ -274,28 +330,28 @@ const dashboardAllProductsChart = {
 
 const dashboard24HoursPerformanceChart = {
 	data: (canvas) => {
-		var ctx = canvas.getContext('2d');
-		var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+		const ctx = canvas.getContext('2d');
+		const gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
 		gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
 		gradientFill.addColorStop(1, hexToRGB('#2CA8FF', 0.6));
 		return {
 			labels: [
-				'January',
-				'February',
-				'March',
-				'April',
-				'May',
-				'June',
-				'July',
-				'August',
-				'September',
-				'October',
-				'November',
-				'December'
+				'Janvier',
+				'Février',
+				'Mars',
+				'Avril',
+				'Maï',
+				'Juin',
+				'Juillet',
+				'Août',
+				'Septembre',
+				'Octobre',
+				'Novembre',
+				'Décembre'
 			],
 			datasets: [
 				{
-					label: 'Active Countries',
+					label: 'Utilisateurs actifs',
 					backgroundColor: gradientFill,
 					borderColor: '#2CA8FF',
 					pointBorderColor: '#FFF',
@@ -306,7 +362,20 @@ const dashboard24HoursPerformanceChart = {
 					pointRadius: 4,
 					fill: true,
 					borderWidth: 1,
-					data: [ 80, 99, 86, 96, 123, 85, 100, 75, 88, 90, 123, 155 ]
+					data: [
+						getRandomInt(50),
+						getRandomInt(150),
+						getRandomInt(100),
+						getRandomInt(190),
+						getRandomInt(130),
+						getRandomInt(90),
+						getRandomInt(150),
+						getRandomInt(160),
+						getRandomInt(120),
+						getRandomInt(140),
+						getRandomInt(190),
+						getRandomInt(95)
+					]
 				}
 			]
 		};

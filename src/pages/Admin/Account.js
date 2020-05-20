@@ -100,11 +100,9 @@ export default (props) => {
 				anchor='left'
 			>
 				<Box className={classes.toolbar} style={{ backgroundColor: '#2E7D32' }}>
-					<img
-						src='https://svgur.com/i/Jg4.svg'
-						alt='logoHomeDelivery'
-						style={{ marginLeft: 13, marginTop: 13 }}
-					/>
+					<Typography style={{ marginLeft: 25, marginTop: 20, color: 'white', fontWeight: 'bold' }}>
+						HomeDelivery - Administration
+					</Typography>
 				</Box>
 				<Divider />
 				<DrawerDashboardAdmin />
@@ -131,8 +129,8 @@ export default (props) => {
 					<i className='uil uil uil-setting' /> Paramètre de votre compte administrateur
 				</Typography>
 				<Typography color='textSecondary'>
-					Mauris aliquet scelerisque blandit. Morbi laoreet, tortor at convallis laoreet, augue nibh cursus
-					mauris, eget faucibus ex nibh a sem.
+					Veuillez remplir les champs ci-dessous pour mettre à jour vos informations de connexion à la
+					plateforme
 				</Typography>
 				<Divider style={{ marginTop: 15, marginBottom: 25 }} />
 				<TextField

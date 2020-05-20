@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Drawer, CssBaseline, Toolbar, Typography, Divider, InputBase, IconButton, Box, Card } from '@material-ui/core';
+import {
+	Drawer,
+	CssBaseline,
+	Toolbar,
+	Typography,
+	Divider,
+	InputBase,
+	IconButton,
+	Box,
+	Card,
+	Chip
+} from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import ROUTE from '../../Routes';
 import { Line, Bar } from 'react-chartjs-2';
@@ -82,11 +93,9 @@ export default (props) => {
 				anchor='left'
 			>
 				<Box className={classes.toolbar} style={{ backgroundColor: '#2E7D32' }}>
-					<img
-						src='https://svgur.com/i/Jg4.svg'
-						alt='logoHomeDelivery'
-						style={{ marginLeft: 13, marginTop: 13 }}
-					/>
+					<Typography style={{ marginLeft: 25, marginTop: 20, color: 'white', fontWeight: 'bold' }}>
+						HomeDelivery - Administration
+					</Typography>
 				</Box>
 				<Divider />
 				<DrawerDashboardAdmin />
@@ -95,7 +104,7 @@ export default (props) => {
 				<div className={classes.toolbar} />
 				<Box display='flex' alignItems='center'>
 					<Card style={{ width: '50%', marginRight: 15, padding: 15 }}>
-						<Typography>Un exemple de charts</Typography>
+						<Typography>Utilisateurs actifs de l'application</Typography>
 						<div className='chart-area'>
 							<Line
 								data={dashboardShippedProductsChart.data}
@@ -104,13 +113,13 @@ export default (props) => {
 						</div>
 					</Card>
 					<Card style={{ width: '50%', marginRight: 15, padding: 15 }}>
-						<Typography>Un deuxième exemple de charts</Typography>
+						<Typography>Nombre d'annonces publiées</Typography>
 						<div className='chart-area'>
 							<Line data={dashboardAllProductsChart.data} options={dashboardAllProductsChart.options} />
 						</div>
 					</Card>
 					<Card style={{ width: '50%', marginRight: 15, padding: 15 }}>
-						<Typography>Un troisème exemple de charts</Typography>
+						<Typography>Nombre d'utilisateur inscrits</Typography>
 						<div className='chart-area'>
 							<Bar
 								data={dashboard24HoursPerformanceChart.data}
