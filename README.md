@@ -1,6 +1,9 @@
 [![N|Solid](https://i.imgur.com/GQDrHLL.png)]() 
-# HomeDelivery
+
 [![Build Status](http://3.90.31.250:8080/buildStatus/icon?job=React-CI)](http://3.90.31.250:8080/job/React-CI/)
+# HomeDelivery
+
+
 HomeDelivery est une application web afin d'aider les personnes âgées ou en situation de handicap/maladie de déposer une demande avec sa liste de courses.
 
 - Création de compte bénévole/lambda.
