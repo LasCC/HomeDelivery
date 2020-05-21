@@ -185,18 +185,22 @@ export default (props) => {
                 telle qu’aller chercher du pain, faire des courses de première
                 nécessité tout cela dans le bénévolat et la bienveillance.
               </Typography>
+
               <img
                 alt='curve'
                 src='https://i.imgur.com/INyeAba.png'
                 style={{
-                  height: 800,
+                  height: "auto",
                   zIndex: 1,
                   marginTop: 25,
                   borderRadius: 10,
+                  width: "100%",
+                  maxWidth: 1600,
                   boxShadow:
                     "  0 2.8px 2.2px rgba(0, 0, 0, 0.02),  0 6.7px 5.3px rgba(0, 0, 0, 0.028),  0 12.5px 10px rgba(0, 0, 0, 0.035),  0 22.3px 17.9px rgba(0, 0, 0, 0.042),  0 41.8px 33.4px rgba(0, 0, 0, 0.05),  0 100px 80px rgba(0, 0, 0, 0.07)",
                 }}
               />
+
               <div className='curve2' />
             </Box>
           </Grid>
