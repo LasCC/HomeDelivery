@@ -158,7 +158,8 @@ export default (props) => {
                 onChange={handleChange("annexe")}
               />
               <FormHelperText>
-                Mettre texte ici pour expliquer les demandes annexes
+                Avez-vous une question à poster au livreur ? Une allergie, un
+                magasin ou une marque de préférence ?
               </FormHelperText>
               <Typography
                 variant='h1'
@@ -201,6 +202,7 @@ export default (props) => {
                   <TextField
                     variant='outlined'
                     label='Prix'
+                    placeholder='Prix maximum à ne pas dépasser est de 50€'
                     fullWidth
                     onInput={(e) => onlyNumbers(e)}
                     inputProps={{

@@ -1,7 +1,9 @@
 import React from "react";
-import { Grid, Typography, Box, Divider } from "@material-ui/core";
+import { Grid, Typography, Box, Divider, Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import ROUTE from "../../Routes";
 import ClientStep from "../../components/ClientStep";
-import MapDev from "../../components/MapDev";
+import Map from "../../components/Map";
 import Navbar from "../../components/Navbar";
 import moment from "moment";
 import "moment/locale/fr";
@@ -49,6 +51,37 @@ export default (props) => {
             <ClientStep />
             <Divider />
             <Box style={{ marginTop: 5, padding: 25 }}>
+              <Box display='flex'>
+                <Box flexGrow={1}>
+                  <Typography
+                    variant='h1'
+                    style={{ fontWeight: "bold", fontSize: 25 }}
+                  >
+                    Livraison en cours <i className='uil uil-truck'></i>
+                  </Typography>
+                </Box>
+                <Box>
+                  <a
+                    href='tel:123-456-7890'
+                    style={{ color: "#19B074", textDecoration: "none" }}
+                  >
+                    Contacter le livreur <i className='uil uil-calling'></i>
+                  </a>
+                </Box>
+              </Box>
+              <Typography style={{ marginTop: 10 }}>
+                Si vous rencontrez le moindre problème n'hésitez pas à contacter
+                le support avec ce{" "}
+                <a
+                  href='mailto:io.estiam@gmail.com'
+                  style={{
+                    textDecoration: "none",
+                    color: "#19B074",
+                  }}
+                >
+                  mail
+                </a>
+              </Typography>
               {items.map((i, k) => {
                 return (
                   <Box
@@ -72,6 +105,36 @@ export default (props) => {
                 );
               })}
             </Box>
+            <Box display='flex' flexDirection='row-reverse'>
+              <Link
+                to={ROUTE.CHECKOUT_CLIENT}
+                style={{ textDecoration: "none" }}
+              >
+                <Button
+                  style={{
+                    backgroundColor: "rgb(70, 176, 74)",
+                    color: "white",
+                    fontWeight: "bold",
+                    marginTop: 20,
+                    padding: 15,
+                    borderRadius: 4,
+                  }}
+                >
+                  Procéder au paiement <i className='uil uil-bill' />
+                </Button>
+              </Link>
+              <Button
+                style={{
+                  color: "gray",
+                  fontWeight: "bold",
+                  marginTop: 20,
+                  padding: 15,
+                  borderRadius: 0,
+                }}
+              >
+                Annuler
+              </Button>
+            </Box>
           </Box>
         </Grid>
         <Grid item xs={12} xl={4} md={4} sm={12}>
@@ -83,7 +146,7 @@ export default (props) => {
               backgroundColor: "#F3F7F3",
             }}
           >
-            <MapDev />
+            <Map />
           </Box>
         </Grid>
       </Grid>

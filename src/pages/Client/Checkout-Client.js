@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Box, Divider } from "@material-ui/core";
 import ClientStep from "../../components/ClientStep";
-import MapDev from "../../components/MapDev";
+import Map from "../../components/Map";
 import Navbar from "../../components/Navbar";
 import moment from "moment";
 import "moment/locale/fr";
@@ -29,7 +29,7 @@ export default (props) => {
               backgroundColor: "#F3F7F3",
             }}
           >
-            <MapDev />
+            <Map />
           </Box>
         </Grid>
       </Grid>

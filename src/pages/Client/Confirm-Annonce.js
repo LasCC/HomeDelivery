@@ -18,14 +18,14 @@ export default (props) => {
           <Box style={{ padding: 35 }}>
             <ClientStep />
             <Divider />
-            <Box style={{ marginTop: 15, padding: 25 }}>
+            <Box style={{ marginTop: 15, padding: 20 }}>
               <Typography
                 variant='h1'
                 style={{ fontWeight: "bold", fontSize: 25 }}
               >
-                Confirmation de votre annonce
+                Confirmation de votre annonce{" "}
+                <i className='uil uil-file-check-alt'></i>
               </Typography>
-              <Divider style={{ marginTop: 15, marginBottom: 15 }} />
               <Typography>
                 Avant de continuer dans le processus de création d'annonce,
                 merci de bien vouloir confirmer la liste de courses que vous
