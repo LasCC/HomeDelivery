@@ -131,27 +131,7 @@ export default (props) => {
   const handleClose = () => {
     setState({ ...state, open: false });
   };
-  const [state, setState] = React.useState({
-    columns: [
-      { title: "Name", field: "name" },
-      { title: "Surname", field: "surname" },
-      { title: "Birth Year", field: "birthYear", type: "numeric" },
-      {
-        title: "Birth Place",
-        field: "birthCity",
-        lookup: { 34: "İstanbul", 63: "Şanlıurfa" },
-      },
-    ],
-    data: [
-      { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 },
-      {
-        name: "Zerya Betül",
-        surname: "Baran",
-        birthYear: 2017,
-        birthCity: 34,
-      },
-    ],
-  });
+  const [state, setState] = React.useState({});
 
   return (
     <div className={classes.root}>
@@ -236,17 +216,6 @@ export default (props) => {
           columns={state.columns}
           data={state.data}
           columns={[
-            {
-              title: "Photo d'identité",
-              field: "avatar",
-              render: (query) => (
-                <img
-                  style={{ height: 60, width: 60, borderRadius: "50%" }}
-                  src={"https://api.adorable.io/avatars/285/abott@adorable.png"}
-                  alt='avatar'
-                />
-              ),
-            },
             { title: "Nom", field: "firstname" },
             { title: "Prénom", field: "lastname" },
             {
@@ -265,6 +234,10 @@ export default (props) => {
               title: "Date de naissance",
               field: "birthDate",
             },
+            {
+              title: "Numéro de téléphone",
+              field: "phonenumber",
+            },
           ]}
           data={[
             {
@@ -274,6 +247,7 @@ export default (props) => {
               city: "Rambouillet",
               annonces: 6,
               birthDate: "08/03/1995",
+              phonenumber: "0603469784",
             },
             {
               firstname: "Zerya Betül",
@@ -282,6 +256,7 @@ export default (props) => {
               city: "Paris 11e",
               annonces: 2,
               birthDate: "12/11/1998",
+              phonenumber: "0649784620",
             },
           ]}
           actions={[
