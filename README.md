@@ -1,49 +1,72 @@
----
-description: >-
-  Toutes les démarches à suivre pour créer sont compte utilisateur sur notre
-  plateforme
----
+[![N|Solid](https://i.imgur.com/GQDrHLL.png)]()
 
-# Inscription 🍃
+[![Build Status](http://3.90.31.250:8080/buildStatus/icon?job=React-CI)](https://github.com/LasCC/HomeDelivery)
 
-## Choisir un camp lors de votre inscription
+# HomeDelivery
 
-* Créer un compte dit "**classique**" 👩‍💼
-* Ou alors créer un compte "**bénévole**" 👨‍👨‍👦‍👦
+HomeDelivery est une application web afin d'aider les personnes âgées ou en situation de handicap/maladie de déposer une demande avec sa liste de courses.
 
+- Création de compte bénévole/lambda.
+- Création d'annonces consultables sur un carte interactive.
+- Répondre, est consulté une annonce et suivre l'état de celle-ci.
+- Générateur d'attestation de déplacement provisoire en version QR code.
 
+Application mobile https://github.com/LasCC/HomeDelivery-React-Native
 
-## Le compte classique 👩‍💼 
+# Fonctionnalités!
 
-Il vous permet de créer des annonces sur notre plateforme, être aider par la communauté de HomeDelivery.
+- Une interface simple d'utilisation est dans l'air du temps !
+- Application à but non lucratif, aucune revente de données.
+- Une application mobile est disponible pour génerer un attestation de déplacement provisoire pour les bénévoles qui livrent.
 
-## Le compte bénévole 👨‍👨‍👦‍👦 
+# Partie technique
 
-Aidez les personnes dans le besoin, rejoignez la communauté de bénévole. Vous allez directement être en relation avec les habitants qui en ont le plus besoin en répondant à des annonces et remplir une liste de tâche.
+HomeDelivery utilises les technologies suivantes :
 
-## Comment faire ce choix ? 🙄
+## Back-end :
 
-![](.gitbook/assets/image%20%286%29.png)
+- Node-JS, ExpressJS
 
-Rendez-vous sur la page de création de compte et choisissez votre camp
+- Python (POO)
 
-## Inscription avec un compte classique 👩‍💼
+- MongoDB
 
-![](.gitbook/assets/image%20%283%29.png)
+- Ubuntu 18 LTS (Serveur AWS)
 
-Vous devez alors simplement remplir les champs demandés pour créer votre compte, si vous vous êtes trompé sur un champ, pas de panique vous pouvez changer vos informations de compte dans votre espace personnel.
+- SQLite
 
-## Inscription avec un compte bénévole 👨‍👨‍👦‍👦
+## Front-end :
 
-![](.gitbook/assets/image.png)
+- React
 
-Comme pour le compte classique veuillez remplir les champs demandés pour créer votre compte utilisateur.
+- Framework CSS (Material-ui)
 
-## Confirmation d'inscription ✅
+- Figma/Adobe XD pour le prototype d'application
 
-Pour les deux types de compte \(classique et bénévole\) vous allez recevoir sur votre email que vous avez renseigné à l'inscription un mail de confirmation il suffit de copier le code et de le coller.
+- Mapbox JS
 
-![](.gitbook/assets/image%20%289%29.png)
+- (Mobile) React Native
 
+### Installation
 
+```
+yarn install && yarn start
+```
 
+### v2 ?
+
+TBD
+
+### Quelques images du site
+
+[![N|Solid](https://i.imgur.com/fdMbcXo.png)](https://i.imgur.com/fdMbcXo.png)
+[![N|Solid](https://i.imgur.com/aJyxJr1.png)](https://i.imgur.com/aJyxJr1.png)
+[![N|Solid](https://i.imgur.com/MR4ycBV.png)](https://i.imgur.com/MR4ycBV.png)
+[![N|Solid](https://i.imgur.com/6Y1o9fV.png)](https://i.imgur.com/6Y1o9fV.png)
+[![N|Solid](https://i.imgur.com/UFFNOVi.jpg)](https://i.imgur.com/UFFNOVi.jpg)
+[![N|Solid](https://i.imgur.com/Zss419J.png)](https://i.imgur.com/Zss419J.png)
+[![N|Solid](https://i.imgur.com/z2U4pkY.png)](https://i.imgur.com/z2U4pkY.png)
+
+Vous pouvez retouver le prototype de l'application sur cette page [figma](https://www.figma.com/file/Mkkz9zZjbRyFRKGctyFuGw/HomeDelivery?node-id=0%3A1 "Protoytpe de l'application")
+
+@LasCC - Projet de groupe avec Riadh BOUCHAHOUA, Sebastien WIENNE, Réda MAIZATE
