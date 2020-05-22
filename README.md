@@ -31,13 +31,13 @@ HomeDelivery utilises les technologies suivantes :
 
 - MongoDB
 
-- Ubuntu 18 LTS (Serveur AWS)
+- CentOS (Serveur AWS)
 
 - SQLite
 
 ## Front-end :
 
-- React
+- ReactJS
 
 - Framework CSS (Material-ui)
 
@@ -47,15 +47,21 @@ HomeDelivery utilises les technologies suivantes :
 
 - (Mobile) React Native
 
+- Chart-JS
+
+## DevOps :
+
+- Jenkins
+
+- Github
+
+- Docker
+
 ### Installation
 
 ```
 yarn install && yarn start
 ```
-
-### v2 ?
-
-TBD
 
 ### Quelques images du site
 
@@ -65,7 +71,7 @@ TBD
 [![N|Solid](https://i.imgur.com/6Y1o9fV.png)](https://i.imgur.com/6Y1o9fV.png)
 [![N|Solid](https://i.imgur.com/UFFNOVi.jpg)](https://i.imgur.com/UFFNOVi.jpg)
 [![N|Solid](https://i.imgur.com/Zss419J.png)](https://i.imgur.com/Zss419J.png)
-[![N|Solid](https://i.imgur.com/z2U4pkY.png)](https://i.imgur.com/z2U4pkY.png)
+[![N|Solid](https://i.imgur.com/gmTG5V0.png)](https://i.imgur.com/gmTG5V0.png)
 
 Vous pouvez retouver le prototype de l'application sur cette page [figma](https://www.figma.com/file/Mkkz9zZjbRyFRKGctyFuGw/HomeDelivery?node-id=0%3A1 "Protoytpe de l'application")
 
