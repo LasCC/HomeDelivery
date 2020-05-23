@@ -12,11 +12,11 @@ import {
   Step,
   StepLabel,
   StepContent,
+  Divider,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Lottie from "react-lottie";
-import ROUTE from "../../Routes";
 import Navbar from "../../components/Navbar";
 import moment from "moment";
 import "moment/locale/fr";
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
 function getSteps() {
   return [
     "Prendre en charge la commande",
-    "Acheter les articles",
+    "Se rendre dans le magasin",
     "Confirmer l'achat et fournir les preuves",
     "Livraison chez le client",
   ];
@@ -73,13 +73,59 @@ function getSteps() {
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return `En acceptant de prendre en charge la commande du client je sais pas quoi mettre`;
+      return (
+        <Typography>
+          Attention ! Si vous acceptez la livraison vous ne pouvez plus{" "}
+          <strong>revenir en arrière.</strong> <br />
+          Êtes vous sur de vouloir continuer ?
+        </Typography>
+      );
     case 1:
-      return `Confirmez vous avoir acheter la liste complète du client ?`;
+      return (
+        <Typography>
+          Êtes vous dans le magasin près du domicile du client ?
+        </Typography>
+      );
     case 2:
-      return `Un input avec upload en base64 dans la bdd :zzz:`;
+      return (
+        <>
+          <Typography>
+            Veuillez fournir les preuves d'achat, <br />
+            il vous suffit de <strong>prendre en photo</strong> le{" "}
+            <strong>ticket de caisse</strong> et de le mettre en ligne
+          </Typography>
+          <input
+            accept='image/*'
+            id='contained-button-file'
+            multiple
+            style={{ display: "none" }}
+            type='file'
+          />
+          <label htmlFor='contained-button-file'>
+            <Button
+              component='span'
+              style={{
+                marginTop: 15,
+                marginBottom: 15,
+                backgroundColor: "rgb(70, 176, 74)",
+                color: "white",
+                fontWeight: "bold",
+                borderRadius: 4,
+              }}
+            >
+              <i className='uil uil-upload' />
+              Importer votre ticket
+            </Button>
+          </label>
+        </>
+      );
     case 3:
-      return `Livraison à domicile en respectant les distances de sécurité et déposer la livraison au palier de la personne.`;
+      return (
+        <Typography>
+          Avez-vous livrer le client ? <br /> Si c'est le cas veuillez cliquer
+          sur le bouton "<strong>Finaliser la livraison</strong>"
+        </Typography>
+      );
     default:
       return "Étape inconnue";
   }
@@ -154,7 +200,6 @@ export default (props) => {
               <ExpansionPanel
                 expanded={expanded === "panel1"}
                 onChange={handleChange("panel1")}
-                defaultExpanded
               >
                 <ExpansionPanelSummary
                   expandIcon={<ExpandMoreIcon />}
@@ -162,18 +207,60 @@ export default (props) => {
                   id='panel1bh-header'
                 >
                   <Typography className={classes.heading}>
-                    Informations à propos du client
+                    Informations à propos de la commande
                   </Typography>
                   <Typography className={classes.secondaryHeading}>
                     Toutes les informations nécessaires au bon déroulement de la
                     livraison
                   </Typography>
                 </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Typography>
-                    Nulla facilisi. Phasellus sollicitudin nulla et quam mattis
-                    feugiat. Aliquam eget maximus est, id dignissim quam.
-                  </Typography>
+                <ExpansionPanelDetails style={{ display: "block" }}>
+                  <Box style={{ width: "100%" }}>
+                    <Typography style={{ fontWeight: "bold", fontSize: 20 }}>
+                      <i className='uil uil-user-circle' />
+                      Destinatire
+                    </Typography>
+                    <Divider style={{ marginTop: 10, marginBottom: 10 }} />
+                    <Typography>Nom : COULON</Typography>
+                    <Typography>Prénom : Ludovic</Typography>
+                    <Typography>Adresse : 27 rue des pommes</Typography>
+                    <Typography>
+                      Complément d'adresse : Batiment C, porte 313, Étage 4
+                    </Typography>
+                    <Typography>Ville : Paris 11e</Typography>
+                    <Typography>Code postale : 75011</Typography>
+                  </Box>
+                  <Box style={{ width: "100%", marginTop: 25 }}>
+                    <Typography style={{ fontWeight: "bold", fontSize: 20 }}>
+                      <i className='uil uil-calling' />
+                      Contact
+                    </Typography>
+                    <Divider style={{ marginTop: 10, marginBottom: 10 }} />
+                    <Typography>
+                      Mail :{" "}
+                      <a
+                        href='mailto:coulonludovic@gmail.com'
+                        style={{
+                          textDecoration: "none",
+                          color: "rgb(70, 176, 74",
+                        }}
+                      >
+                        coulonludovic@gmail.com
+                      </a>
+                    </Typography>
+                    <Typography>
+                      Numéro de téléphone :{" "}
+                      <a
+                        href='tel:0606060606'
+                        style={{
+                          textDecoration: "none",
+                          color: "rgb(70, 176, 74",
+                        }}
+                      >
+                        0606060606
+                      </a>
+                    </Typography>
+                  </Box>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
 
@@ -193,12 +280,22 @@ export default (props) => {
                     Liste et demande explicites du client
                   </Typography>
                 </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Typography>
-                    Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
-                    Integer sit amet egestas eros, vitae egestas augue. Duis vel
-                    est augue.
-                  </Typography>
+                <ExpansionPanelDetails style={{ display: "block" }}>
+                  <Box style={{ width: "100%" }}>
+                    <Typography style={{ fontWeight: "bold", fontSize: 20 }}>
+                      <i className='uil uil-shopping-cart' />
+                      Liste de courses
+                    </Typography>
+                    <Divider style={{ marginTop: 10, marginBottom: 10 }} />
+                    <Typography>Liste complète ici</Typography>
+                  </Box>
+                  <Box style={{ width: "100%", marginTop: 25 }}>
+                    <Typography style={{ fontWeight: "bold", fontSize: 20 }}>
+                      <i className='uil uil-question-circle' /> Demandes annexes
+                    </Typography>
+                    <Divider style={{ marginTop: 10, marginBottom: 10 }} />
+                    <Typography>Liste complète ici</Typography>
+                  </Box>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
 
