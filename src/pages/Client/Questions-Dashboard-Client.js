@@ -9,16 +9,13 @@ import {
   InputBase,
   IconButton,
   Box,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
   Breadcrumbs,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import Questions from "../../components/Questions";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import ROUTE from "../../Routes";
 import DrawerDashboardClient from "../../components/DrawerDashboardClient";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 window.document.title = "HomeDelivery - Questions récurrentes";
 
 const drawerWidth = 300;
@@ -143,96 +140,7 @@ export default (props) => {
         </Typography>
         <Divider style={{ marginTop: 15, marginBottom: 15 }} />
         <Box style={{ marginTop: 25 }}>
-          <ExpansionPanel>
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls='panel1a-content'
-              id='panel1a-header'
-            >
-              <Typography className={classes.heading}>
-                Expansion Panel 1
-              </Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
-              </Typography>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-          <ExpansionPanel>
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls='panel2a-content'
-              id='panel2a-header'
-            >
-              <Typography className={classes.heading}>
-                Expansion Panel 2
-              </Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
-              </Typography>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-          <ExpansionPanel>
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls='panel2a-content'
-              id='panel2a-header'
-            >
-              <Typography className={classes.heading}>
-                Expansion Panel 2
-              </Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
-              </Typography>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-          <ExpansionPanel>
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls='panel2a-content'
-              id='panel2a-header'
-            >
-              <Typography className={classes.heading}>
-                Expansion Panel 2
-              </Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
-              </Typography>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-          <ExpansionPanel>
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls='panel2a-content'
-              id='panel2a-header'
-            >
-              <Typography className={classes.heading}>
-                Expansion Panel 2
-              </Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
-              </Typography>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
+          <Questions />
         </Box>
       </main>
     </div>
