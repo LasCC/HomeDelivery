@@ -269,9 +269,7 @@ export default (props) => {
                   style={{ marginTop: 15, marginBottom: 15 }}
                 />
               </Box>
-              {/* <Link to={ROUTE.CONFIRM_REGISTRATION} style={{ textDecoration: 'none' }}> */}
               <Button
-                /* onClick={handleSubmit} */
                 onClick={handleSubmit}
                 fullWidth
                 style={{
@@ -281,11 +279,11 @@ export default (props) => {
                   marginTop: 15,
                   padding: 15,
                   borderRadius: 4,
+                  boxShadow: "0px 9px 18px 3px rgba(24,176,116,0.15)",
                 }}
               >
                 Continuer <i className='uil uil-arrow-right' />
               </Button>
-              {/* </Link> */}
             </Box>
           </Box>
         </Grid>

@@ -10,16 +10,13 @@ import {
   InputBase,
   Divider,
   Grid,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import ROUTE from "../Routes";
 import Lottie from "react-lottie";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Footer from "../components/Footer";
 import Map from "../components/Map";
+import Questions from "../components/Questions";
 window.document.title = "HomeDelivery - Accueil";
 
 const shampoo = require("../data/shampoo.json");
@@ -377,96 +374,7 @@ export default (props) => {
               >
                 Questions récurrentes
               </Typography>
-              <ExpansionPanel>
-                <ExpansionPanelSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls='panel1a-content'
-                  id='panel1a-header'
-                >
-                  <Typography className={classes.heading}>
-                    Expansion Panel 1
-                  </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
-                  </Typography>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
-              <ExpansionPanel>
-                <ExpansionPanelSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls='panel2a-content'
-                  id='panel2a-header'
-                >
-                  <Typography className={classes.heading}>
-                    Expansion Panel 2
-                  </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
-                  </Typography>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
-              <ExpansionPanel>
-                <ExpansionPanelSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls='panel2a-content'
-                  id='panel2a-header'
-                >
-                  <Typography className={classes.heading}>
-                    Expansion Panel 2
-                  </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
-                  </Typography>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
-              <ExpansionPanel>
-                <ExpansionPanelSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls='panel2a-content'
-                  id='panel2a-header'
-                >
-                  <Typography className={classes.heading}>
-                    Expansion Panel 2
-                  </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
-                  </Typography>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
-              <ExpansionPanel>
-                <ExpansionPanelSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls='panel2a-content'
-                  id='panel2a-header'
-                >
-                  <Typography className={classes.heading}>
-                    Expansion Panel 2
-                  </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
-                  </Typography>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
+              <Questions />
             </Container>
           </Box>
           <Box style={{ backgroundColor: "#D9EFE7" }}>

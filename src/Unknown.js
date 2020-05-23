@@ -3,6 +3,7 @@ import { Box, Typography, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import Lottie from "react-lottie";
 import ROUTE from "./Routes";
+window.document.title = "HomeDelivery - Ohoh ! Cette page n'existe pas..";
 
 const unknown = require("./data/404.json");
 const handShakeOptions = {

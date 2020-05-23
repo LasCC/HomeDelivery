@@ -7,11 +7,29 @@ import {
   Button,
   InputAdornment,
   IconButton,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Dialog,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import Slide from "@material-ui/core/Slide";
 window.document.title = "HomeDelivery - Connexion";
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction='up' ref={ref} {...props} />;
+});
+
 export default (props) => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -79,7 +97,7 @@ export default (props) => {
                 Connexion
               </Typography>
               <Typography color='textSecondary'>
-                Veuillez renseigner vos identifiant pour accéder à la plateforme
+                Veuillez renseigner vos identifiant pour accéder à HomeDelivery
               </Typography>
               <TextField
                 label='Adresse email'
@@ -119,14 +137,69 @@ export default (props) => {
                   ),
                 }}
               />
-              <Link to='#' style={{ textDecoration: "none" }}>
-                <Typography
-                  variant='h2'
-                  style={{ color: "rgb(70, 176, 74)", fontSize: 15 }}
-                >
-                  Problème d'identification ?
-                </Typography>
-              </Link>
+              <Typography
+                onClick={handleClickOpen}
+                variant='h2'
+                style={{
+                  color: "rgb(70, 176, 74)",
+                  fontSize: 15,
+                  cursor: "pointer",
+                }}
+              >
+                Problème d'identification ?
+              </Typography>
+              <Dialog
+                open={open}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={handleClose}
+                aria-labelledby='alert-dialog-slide-title'
+                aria-describedby='alert-dialog-slide-description'
+              >
+                <DialogTitle id='alert-dialog-slide-title'>
+                  {"Vous avez un problème d'authentification ?"}
+                </DialogTitle>
+                <DialogContent>
+                  <DialogContentText id='alert-dialog-slide-description'>
+                    Si vous n'arrivez pas à accéder à HomeDelivery, veuillez
+                    nous contacter à{" "}
+                    <a
+                      href='mailto:io.estiam@gmail.com'
+                      style={{
+                        textDecoration: "none",
+                        color: "rgb(70, 176, 74)",
+                      }}
+                    >
+                      cette adresse email
+                    </a>
+                    <br />
+                    Nous vous conseillons aussi de regarder{" "}
+                    <a
+                      href='https://coulonludovicc.gitbook.io/homedelivery/'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      style={{
+                        textDecoration: "none",
+                        color: "rgb(70, 176, 74)",
+                      }}
+                    >
+                      notre documentation
+                    </a>{" "}
+                    en cas de problème quelconque.
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose} style={{ color: "gray" }}>
+                    Annuler
+                  </Button>
+                  <Button
+                    onClick={handleClose}
+                    style={{ color: "rgb(70, 176, 74)" }}
+                  >
+                    Accepter
+                  </Button>
+                </DialogActions>
+              </Dialog>
               <Button
                 onClick={handleSubmit}
                 fullWidth
@@ -137,6 +210,7 @@ export default (props) => {
                   marginTop: 20,
                   padding: 15,
                   borderRadius: 4,
+                  boxShadow: "0px 9px 18px 3px rgba(24,176,116,0.15)",
                 }}
               >
                 Connexion
