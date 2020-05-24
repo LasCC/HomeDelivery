@@ -23,6 +23,7 @@ import {
   Breadcrumbs,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import Slide from "@material-ui/core/Slide";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import ROUTE from "../../Routes";
 import DrawerDashboardHelper from "../../components/DrawerDashboardHelper";
@@ -32,6 +33,10 @@ import "moment/locale/fr";
 moment.locale("fr");
 window.document.title =
   "HomeDelivery - Générateur d'attestation de déplacement provisoire";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction='up' ref={ref} {...props} />;
+});
 
 const drawerWidth = 300;
 
@@ -349,7 +354,12 @@ export default (props) => {
           >
             Voir votre attestation <i className='uil uil-arrow-up-right' />
           </Button>
-          <Dialog open={open} onClose={handleClose}>
+          <Dialog
+            open={open}
+            TransitionComponent={Transition}
+            keepMounted
+            onClose={handleClose}
+          >
             <DialogTitle>Êtes-vous sûr de bien vouloir continuer ?</DialogTitle>
             <DialogContent>
               <DialogContentText>
@@ -365,6 +375,10 @@ export default (props) => {
                   target='_blank'
                   without
                   rel='noopener noreferrer'
+                  style={{
+                    textDecoration: "none",
+                    color: "rgb(70, 176, 74)",
+                  }}
                 >
                   ce lien
                 </a>{" "}
