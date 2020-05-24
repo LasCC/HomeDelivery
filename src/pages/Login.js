@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Grid,
   TextField,
@@ -9,9 +9,11 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { LoginContext } from "../contexts/LoginContext";
 window.document.title = "HomeDelivery - Connexion";
 
 export default (props) => {
+  const { handleLogin, httpError, checkAuth } = useContext(LoginContext);
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -27,8 +29,7 @@ export default (props) => {
     setValues({ ...values, [name]: event.target.value });
   };
   const handleSubmit = () => {
-    console.log("====== LOGIN ======");
-    console.log(values);
+    handleLogin({ ...values })
   };
   return (
     <div>
@@ -112,8 +113,8 @@ export default (props) => {
                         {values.showPassword ? (
                           <i className='uil uil-eye-slash' />
                         ) : (
-                          <i className='uil uil-eye' />
-                        )}
+                            <i className='uil uil-eye' />
+                          )}
                       </IconButton>
                     </InputAdornment>
                   ),

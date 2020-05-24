@@ -8,10 +8,8 @@ export const LoginContext = createContext();
 
 const LoginProvider = props => {
     const [loginState, setLoginState] = useState({
-        name: "",
         lastname: "",
         email: "",
-        numero_dossier: "",
         token: "",
         hasRegistred: false,
         isLogged: false,
@@ -25,7 +23,8 @@ const LoginProvider = props => {
     const endpoint = "";
 
     const handleLogin = async data => {
-        //console.log("login request ....", data);
+        console.log("login request ....", data);
+
 
         let res;
         try {
@@ -33,11 +32,8 @@ const LoginProvider = props => {
             res = await http.post(endpoint + "/auth/login", data);
             //console.log(res);
         } catch (ex) {
-            //console.log("*****************", ex);
-            //console.log("ERR DATA*****************", ex.response);
-            // if(ex.response)
-            const expectedError =
-                ex.response && ex.response.status >= 400 && ex.response.status < 500;
+
+            const expectedError = ex.response.status >= 400 && ex.response.status <= 500
             console.dir(expectedError);
 
             setHttpError({
