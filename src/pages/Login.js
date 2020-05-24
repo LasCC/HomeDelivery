@@ -13,10 +13,7 @@ import {
   DialogTitle,
   Dialog,
 } from "@material-ui/core";
-
 import Slide from "@material-ui/core/Slide";
-
-import { Link } from "react-router-dom";
 import { LoginContext } from "../contexts/LoginContext";
 
 window.document.title = "HomeDelivery - Connexion";
@@ -26,7 +23,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default (props) => {
-
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -54,7 +50,7 @@ export default (props) => {
     setValues({ ...values, [name]: event.target.value });
   };
   const handleSubmit = () => {
-    handleLogin({ ...values })
+    handleLogin({ ...values });
   };
   return (
     <div>
@@ -138,8 +134,8 @@ export default (props) => {
                         {values.showPassword ? (
                           <i className='uil uil-eye-slash' />
                         ) : (
-                            <i className='uil uil-eye' />
-                          )}
+                          <i className='uil uil-eye' />
+                        )}
                       </IconButton>
                     </InputAdornment>
                   ),
