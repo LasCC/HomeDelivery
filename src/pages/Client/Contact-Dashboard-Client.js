@@ -198,10 +198,10 @@ export default (props) => {
             Si vous avez trouvé un bug merci de contacter au plus vite
             l'administrateur à l'adresse suivante :{" "}
             <a
-              href='mailto: support@homedelivery.com'
+              href='mailto: io.estiam@gmail.com'
               style={{ textDecoration: "none", color: "#0E711A" }}
             >
-              <strong>support@homedelivery.com</strong>
+              <strong>io.estiam@gmail.com</strong>
             </a>{" "}
             <br />
             Merci d'indiquer le type de bug que vous avez trouvé et comment nous

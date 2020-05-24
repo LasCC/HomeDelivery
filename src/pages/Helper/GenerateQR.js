@@ -250,6 +250,7 @@ export default (props) => {
               <TextField
                 label='Adresse'
                 variant='outlined'
+                placeholder='12 rue des fleures 75001 Paris'
                 helperText={"12 rue des fleures 75001 Paris"}
                 fullWidth
                 type='text'
