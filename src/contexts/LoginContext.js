@@ -63,6 +63,7 @@ const LoginProvider = (props) => {
             const tokendata = await jwtdecode(token);
             //console.log(tokendata);
             localStorage.setItem("token", token);
+            await localStorage.setItem('account_to_register', JSON.stringify(tokendata))
             await setLoginState({
                 name: tokendata.firstName,
                 lastname: tokendata.lastName,
@@ -79,8 +80,8 @@ const LoginProvider = (props) => {
             else if (tokendata.acc_type === "helper") return props.history.push(ROUTE.DASHBOARD_HELPER)
 
         } catch (ex) {
-            //console.log("invalid Token", ex);
-            throw ex;
+            console.log("invalid Token", ex);
+
         }
     };
     const handleClientRegistration = async (data) => {
@@ -149,7 +150,8 @@ const LoginProvider = (props) => {
 
     };
     const mailChecking = async (data) => {
-        //console.log("mail verification + login request ", data);
+        console.log("mail verification + login request ", data);
+
         let res;
         try {
             res = await http.post(endpoint + "/auth/verifymail", data);
@@ -163,14 +165,20 @@ const LoginProvider = (props) => {
                 console.log(ex.response)
                 const expectedError = ex.response.status >= 400 && ex.response.status <= 500;
                 console.dir(expectedError);
+
                 setHttpError({
                     clientError: expectedError,
                     serverError: !expectedError,
+                    status: ex.response.status
                 });
+                if (ex.response.status === 409) return props.history.push(ROUTE.LOGIN)
+
             } else {
+                // erreur serveur
                 setHttpError({
                     serverError: !expectedError,
                     clientError: expectedError,
+                    status: ex.response.status
 
                 });
             }
@@ -181,13 +189,14 @@ const LoginProvider = (props) => {
     const resendMail = async () => {
         //console.log("Envoi de mail....");
         const res = await http.post(endpoint + "/auth/mailresent", {
-            email: loginState.email,
+            email: JSON.parse(localStorage.getItem("account_to_register")).email,
         });
         //console.log(res);
     };
     const handleLogout = () => {
         //console.log("logged out .....");
         localStorage.removeItem("token");
+        localStorage.removeItem("account_to_register");
         setLoginState({
             name: "",
             lastname: "",
