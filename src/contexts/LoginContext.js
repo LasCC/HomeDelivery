@@ -207,7 +207,7 @@ const LoginProvider = (props) => {
             isLogged: false,
             isActive: false,
         });
-        window.location.replace("/");
+        props.history.push(ROUTE.HOME)
     };
     const checkAuth = () => {
         //console.log("checking...");
@@ -222,8 +222,9 @@ const LoginProvider = (props) => {
         // return loginState.isLogged;
 
         try {
-            const { exp, isActive } = jwtdecode(token);
-            if (!isActive) return false;
+            const { exp, acc_isActive, acc_type } = jwtdecode(token);
+            if (!acc_isActive) return false;
+
             const now = new Date().getTime() / 1000;
             const dateExp = new Date(exp * 1000);
             const dateNow = new Date(now * 1000);
@@ -239,12 +240,13 @@ const LoginProvider = (props) => {
                 handleLogout();
                 return false;
             }
+            return acc_type
         } catch (ex) {
-            //console.log(ex);
+            console.log("exx--- ", ex);
             return false;
         }
 
-        return true;
+
     };
 
     return (

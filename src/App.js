@@ -5,9 +5,9 @@ import "circular-std";
 import ROUTE from "./Routes";
 import Loader from "./components/Loader";
 import LoginContext from "../src/contexts/LoginContext";
-import ProtectedRoute from "./specialroutes/ProtectedRoute";
-import PublicClientRoute from "./specialroutes/PublicClientRoute";
-import PublicHelperRoute from "./specialroutes/PublicHelperRoute";
+import PublicRoute from "./specialroutes/PublicRoute"; // si tu n'est pas loggé
+import ProtectedClientRoute from "./specialroutes/ProtectedClientRoute"; // si tu es loggé en tant que client
+import ProtectedHelperRoute from "./specialroutes/ProtectedHelperRoute"; // si tu es loggé en tant que helper
 import NotificationWrapper from "./components/NotificationWrapper"
 const Home = lazy(() => import("./pages/Home"));
 const Register = lazy(() => import("./pages/Register"));
@@ -68,104 +68,104 @@ export default function App() {
     <Suspense fallback={<Loader />}>
       <LoginContext>
         <Switch>
-          <Route exact path={ROUTE.HOME} component={Home} />
-          <Route exact path={ROUTE.REGISTER} component={Register} />
-          <Route
+          <PublicRoute exact path={ROUTE.HOME} component={Home} />
+          <PublicRoute exact path={ROUTE.REGISTER} component={Register} />
+          <PublicRoute
             exact
             path={ROUTE.REGISTER_HELPER}
             component={RegisterHelper}
           />
-          <Route
+          <PublicRoute
             exact
             path={ROUTE.REGISTER_CLIENT}
             component={RegisterClient}
           />
-          <Route
+          <PublicRoute
             exact
             path={ROUTE.CONFIRM_REGISTRATION}
             component={ConfirmRegistration}
           />
-          <Route exact path={ROUTE.LOGIN} component={Login} />
+          <PublicRoute exact path={ROUTE.LOGIN} component={Login} />
 
-          <Route
+          <ProtectedClientRoute
             exact
             path={ROUTE.CHECKOUT_CLIENT}
             component={CheckoutClient}
           />
-          <Route exact path={ROUTE.ANNONCE} component={CreateAnnonce} />
-          <Route
+          <ProtectedClientRoute exact path={ROUTE.ANNONCE} component={CreateAnnonce} />
+          <ProtectedClientRoute
             exact
             path={ROUTE.CONFIRM_ANNONCE}
             component={ConfirmAnnonce}
           />
-          <Route
+          <ProtectedClientRoute
             exact
             path={ROUTE.SHIPMENT_ANNONCE}
             component={ShippingAnnonce}
           />
-          <Route exact path={ROUTE.DASHBOARD} component={DashboardClient} />
-          <Route
+          <ProtectedClientRoute exact path={ROUTE.DASHBOARD} component={DashboardClient} />
+          <ProtectedClientRoute
             exact
             path={ROUTE.DASHBOARD_SETTINGS}
             component={DashboardClientSettings}
           />
-          <Route
+          <ProtectedClientRoute
             exact
             path={ROUTE.DASHBOARD_QUESTIONS}
             component={DashboardClientQuestions}
           />
-          <Route
+          <ProtectedClientRoute
             exact
             path={ROUTE.DASHBOARD_HISTORY}
             component={DashboardClientHistory}
           />
-          <Route
+          <ProtectedClientRoute
             exact
             path={ROUTE.DASHBOARD_CONTACT}
             component={DashboardClientContact}
           />
 
-          <Route
+          <ProtectedHelperRoute
             exact
             path={ROUTE.DASHBOARD_HELPER}
             component={DashboardHelper}
           />
-          <Route
+          <ProtectedHelperRoute
             exact
             path={ROUTE.DASHBOARD_HELPER_QR_CODE}
             component={DashboardHelperGenerateQR}
           />
-          <Route
+          <ProtectedHelperRoute
             exact
             path={ROUTE.DASHBOARD_HELPER_ANNONCE}
             component={DashboardHelperAnnonce}
           />
-          <Route
+          <ProtectedHelperRoute
             exact
             path={ROUTE.DASHBOARD_SETTINGS_HELPER}
             component={DashboardHelperSettings}
           />
-          <Route
+          <ProtectedHelperRoute
             exact
             path={ROUTE.DASHBOARD_HISTORY_HELPER}
             component={DashboardShipmentHistory}
           />
-          <Route
+          <ProtectedHelperRoute
             exact
             path={ROUTE.DASHBOARD_UPDATE_ANNONCE_HELPER}
             component={DashboardHelperUpdateAnnonce}
           />
-          <Route
+          <ProtectedHelperRoute
             exact
             path={ROUTE.DASHBOARD_CONTACT_HELPER}
             component={DashboardHelperContact}
           />
-          <Route
+          <ProtectedHelperRoute
             exact
             path={ROUTE.DASHBOARD_QUESTIONS_HELPER}
             component={DashboardHelperQuestions}
           />
-
+          {/* ADMIN */}
           <Route
             exact
             path={ROUTE.DASHBOARD_ADMIN}

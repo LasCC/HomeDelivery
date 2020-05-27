@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, Typography, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import ROUTE from "../Routes";
+import { LoginContext } from "../contexts/LoginContext"
 
 export default (props) => {
+  const { handleLogout } = useContext(LoginContext)
+  const { firstName } = JSON.parse(localStorage.getItem('account_to_register'))
   return (
     <Box style={{ padding: 20, marginTop: 25 }}>
       <img
@@ -16,7 +19,7 @@ export default (props) => {
         component='h1'
         style={{ marginTop: 15, fontWeight: "bold" }}
       >
-        Bonjour [Ludovic]
+        Bonjour {firstName}
       </Typography>
       <Link to={ROUTE.ANNONCE} style={{ textDecoration: "none" }}>
         <Button
@@ -174,6 +177,7 @@ export default (props) => {
           display='flex'
           alignItems='center'
           className='HoverTextColor'
+          onClick={handleLogout}
         >
           <i
             className='uil uil-sign-out-alt'
