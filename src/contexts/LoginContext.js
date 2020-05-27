@@ -28,16 +28,31 @@ const LoginProvider = (props) => {
         try {
             //console.log("login try ");
             res = await http.post(endpoint + "/auth/login", data);
+            setHttpError({
+                serverError: false,
+                clientError: false,
+
+            });
             //console.log(res);
         } catch (ex) {
-            const expectedError =
-                ex.response.status >= 400 && ex.response.status <= 500;
-            console.dir(expectedError);
 
-            setHttpError({
-                serverError: !expectedError,
-                clientError: expectedError,
-            });
+            console.dir(ex)
+            const expectedError = null;
+            if (ex.response !== undefined) {
+                console.log(ex.response)
+                const expectedError = ex.response.status >= 400 && ex.response.status <= 500;
+                console.dir(expectedError);
+                setHttpError({
+                    clientError: expectedError,
+                    serverError: !expectedError,
+                });
+            } else {
+                setHttpError({
+                    serverError: !expectedError,
+                    clientError: expectedError,
+
+                });
+            }
             setTimeout(() => console.log(httpError), 5000);
             return;
         }
@@ -53,7 +68,6 @@ const LoginProvider = (props) => {
                 lastname: tokendata.lastName,
                 email: tokendata.email,
                 token: token,
-                numero_dossier: tokendata.candidatureID,
                 hasRegistred: true,
                 isLogged: true,
                 isActive: tokendata.isActive,
@@ -72,11 +86,43 @@ const LoginProvider = (props) => {
     const handleClientRegistration = async (data) => {
         console.log("register request ...", data);
         // TODO si user deja enregistré go login 
-        let res;
+        let res = null;
         try {
             res = await http.post(endpoint + "/auth/register", data);
             console.log(res)
             if (res.status === 201) props.history.push(ROUTE.CONFIRM_REGISTRATION)
+
+        } catch (ex) {
+
+            console.dir(ex)
+            const expectedError = null;
+            if (ex.response !== undefined) {
+                console.log(ex.response)
+                const expectedError = ex.response.status >= 400 && ex.response.status <= 500;
+                console.dir(expectedError);
+                setHttpError({
+                    clientError: expectedError,
+                    serverError: !expectedError,
+                });
+            } else {
+                setHttpError({
+                    serverError: !expectedError,
+                    clientError: expectedError,
+
+                });
+            }
+            setTimeout(() => console.log(httpError), 5000);
+            return;
+        }
+    }
+    const handleHelperRegistration = async (data) => {
+        console.log("register request ...", data);
+        // TODO si user deja enregistré go login 
+        let res = null;
+        try {
+            res = await http.post(endpoint + "/auth/register", data);
+            console.log(res)
+            if (res.status === 201) return props.history.push(ROUTE.CONFIRM_REGISTRATION)
 
         } catch (ex) {
             if (ex.response.status === 409) props.history.push(ROUTE.LOGIN)
@@ -88,23 +134,7 @@ const LoginProvider = (props) => {
                 status: ex.response.status,
             });
         }
-    }
-    const handleHelperRegistration = async (data) => {
-        //console.log("register request ...", data);
-        let res;
-        try {
-            res = await http.post(endpoint + "/auth/register", data);
-        } catch (ex) {
-            //console.log(ex.response.status);
-            const expectedError = ex.response.status >= 400 && ex.response.status <= 500;
-            return setHttpError({
 
-                serverError: !expectedError,
-                clientError: expectedError,
-
-                status: ex.response.status,
-            });
-        }
 
         setLoginState({
             name: data.firstName,
@@ -116,33 +146,37 @@ const LoginProvider = (props) => {
             isActive: false,
         });
         setHttpError({ serverError: false, clientError: false });
-        return props.history.push("/confirmation");
+
     };
     const mailChecking = async (data) => {
         //console.log("mail verification + login request ", data);
         let res;
         try {
             res = await http.post(endpoint + "/auth/verifymail", data);
-        } catch (ex) {
-            //console.log(res);
-            const expectedError =
-                ex.response && ex.response.status >= 400 && ex.response.status < 500;
-            return setHttpError({
-                serverError: expectedError,
-                clientError: !expectedError,
-            });
-        }
-
-        try {
+            if (res.status === 200) return props.history.push(ROUTE.LOGIN);
             setHttpError({ serverError: false, clientError: false });
-            return props.history.push("/connexion");
         } catch (ex) {
-            // toast.error("Error Notification !");
-            //console.log("invalid Token", ex);
-            throw ex;
-        }
 
-        // props.history.push("/dashboard");
+            console.dir(ex)
+            const expectedError = null;
+            if (ex.response !== undefined) {
+                console.log(ex.response)
+                const expectedError = ex.response.status >= 400 && ex.response.status <= 500;
+                console.dir(expectedError);
+                setHttpError({
+                    clientError: expectedError,
+                    serverError: !expectedError,
+                });
+            } else {
+                setHttpError({
+                    serverError: !expectedError,
+                    clientError: expectedError,
+
+                });
+            }
+            setTimeout(() => console.log(httpError), 5000);
+            return;
+        }
     };
     const resendMail = async () => {
         //console.log("Envoi de mail....");

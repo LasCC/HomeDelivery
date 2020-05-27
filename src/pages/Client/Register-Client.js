@@ -58,7 +58,8 @@ export default (props) => {
     let geoloc = await getResponse(); // coordonné geolocalisé
     let acc_to_register = JSON.parse(localStorage.getItem("account_to_register")); // recup acc-type 
     acc_to_register = { ...acc_to_register, ...values, ...geoloc }; // on ajoute le state et geoloc
-    localStorage.removeItem("acc_to_register")
+
+
     delete acc_to_register.password_confirm
     delete acc_to_register.showPassword
     //send to back here---
