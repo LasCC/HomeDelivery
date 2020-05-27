@@ -50,7 +50,7 @@ export default (props) => {
     setValues({ ...values, [name]: event.target.value });
   };
   const handleSubmit = () => {
-    handleLogin({ ...values });
+    handleLogin({ email: values.email, password: values.password });
   };
   return (
     <div>
@@ -134,8 +134,8 @@ export default (props) => {
                         {values.showPassword ? (
                           <i className='uil uil-eye-slash' />
                         ) : (
-                          <i className='uil uil-eye' />
-                        )}
+                            <i className='uil uil-eye' />
+                          )}
                       </IconButton>
                     </InputAdornment>
                   ),
