@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Drawer,
@@ -13,6 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import ROUTE from "../../Routes";
 import DrawerDashboardClient from "../../components/DrawerDashboardClient";
+import { LoginContext } from "../../contexts/LoginContext"
 window.document.title = "HomeDelivery - Dashbord";
 
 const drawerWidth = 300;
@@ -59,6 +61,7 @@ export default (props) => {
   const [values, setValues] = useState({
     search: "",
   });
+  const { firstName } = JSON.parse(localStorage.getItem('account_to_register'))
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
@@ -124,7 +127,7 @@ export default (props) => {
               component='h1'
               style={{ textAlign: "center" }}
             >
-              Ravis de vous revoir parmi nous [Ludovic]
+              Ravis de vous revoir parmi nous {firstName}
             </Typography>
             <Typography
               variant='h4'
