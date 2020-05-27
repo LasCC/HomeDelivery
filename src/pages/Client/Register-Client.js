@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Grid,
   TextField,
@@ -9,9 +9,12 @@ import {
   InputAdornment,
 } from "@material-ui/core";
 import axios from "axios";
+import { LoginContext } from "../../contexts/LoginContext";
 window.document.title = "HomeDelivery - Création de compte classique";
 
 export default (props) => {
+  const { handleClientRegistration } = useContext(LoginContext)
+
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
@@ -21,43 +24,55 @@ export default (props) => {
   const getResponse = async () => {
     try {
       const response = await axios.get(
-        `https://api-adresse.data.gouv.fr/search/?q=${values.home}+${values.code_post}+${values.city}`
+        `https://api-adresse.data.gouv.fr/search/?q=${values.address}+${values.zipcode}+${values.city}`
       );
-      console.log(response.data);
-      console.log(
-        `Localisation de l'utilisateur`,
-        response.data.features[0].geometry.coordinates[1],
-        response.data.features[0].geometry.coordinates[0]
-      );
-      return response.data;
+      // console.log(response.data);
+      // console.log(
+      //   `Localisation de l'utilisateur`,
+      //   response.data.features[0].geometry.coordinates[1],
+      //   response.data.features[0].geometry.coordinates[0]
+      // );
+      return { latitude: response.data.features[0].geometry.coordinates[1].toString(), longitude: response.data.features[0].geometry.coordinates[0].toString() };
     } catch (error) {
       console.log(error.message);
     }
   };
   const [values, setValues] = useState({
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     password: "",
     password_confirm: "",
-    mail: "",
-    home: "",
-    complement: "",
+    email: "",
+    address: "",
+    c_address: "",
     city: "",
-    code_post: "",
-    phone_number: "",
-    date_naissance: "",
+    zipcode: "",
+    phone: "",
+    birth_date: "",
   });
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log("====== Registration ======");
-    console.log(values);
-    getResponse();
+    let geoloc = await getResponse(); // coordonné geolocalisé
+    let acc_to_register = JSON.parse(localStorage.getItem("account_to_register")); // recup acc-type 
+    acc_to_register = { ...acc_to_register, ...values, ...geoloc }; // on ajoute le state et geoloc
+    localStorage.removeItem("acc_to_register")
+    delete acc_to_register.password_confirm
+    delete acc_to_register.showPassword
+    //send to back here---
+    // console.log(acc_to_register)
+    handleClientRegistration({ ...acc_to_register })
+    delete acc_to_register.password
+    localStorage.setItem('account_to_register', JSON.stringify(acc_to_register))
+    console.log("ls : -> ", acc_to_register)
+
   };
   return (
     <div>
       <Grid container>
+
         <Grid
           item
           xs={12}
@@ -120,8 +135,8 @@ export default (props) => {
                   placeholder='PLATINI'
                   fullWidth
                   type='text'
-                  value={values.firstname}
-                  onChange={handleChange("firstname")}
+                  value={values.firstName}
+                  onChange={handleChange("firstName")}
                   style={{ marginTop: 25, marginBottom: 15, marginRight: 15 }}
                 />
                 <TextField
@@ -130,8 +145,8 @@ export default (props) => {
                   placeholder='Michel'
                   fullWidth
                   type='text'
-                  value={values.lastname}
-                  onChange={handleChange("lastname")}
+                  value={values.lastName}
+                  onChange={handleChange("lastName")}
                   style={{ marginTop: 25, marginBottom: 15 }}
                 />
               </Box>
@@ -157,8 +172,8 @@ export default (props) => {
                           {values.showPassword ? (
                             <i className='uil uil-eye-slash' />
                           ) : (
-                            <i className='uil uil-eye' />
-                          )}
+                              <i className='uil uil-eye' />
+                            )}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -185,8 +200,8 @@ export default (props) => {
                           {values.showPassword ? (
                             <i className='uil uil-eye-slash' />
                           ) : (
-                            <i className='uil uil-eye' />
-                          )}
+                              <i className='uil uil-eye' />
+                            )}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -200,8 +215,8 @@ export default (props) => {
                   placeholder='michel.platini@gmail.com'
                   type='email'
                   fullWidth
-                  value={values.mail}
-                  onChange={handleChange("mail")}
+                  value={values.email}
+                  onChange={handleChange("email")}
                   style={{ marginTop: 15, marginBottom: 15, marginRight: 15 }}
                 />
                 <TextField
@@ -209,8 +224,8 @@ export default (props) => {
                   variant='outlined'
                   placeholder='12 rue des fleures'
                   fullWidth
-                  value={values.home}
-                  onChange={handleChange("home")}
+                  value={values.address}
+                  onChange={handleChange("address")}
                   style={{ marginTop: 15, marginBottom: 15 }}
                 />
               </Box>
@@ -220,8 +235,8 @@ export default (props) => {
                   variant='outlined'
                   placeholder='Batiment C, porte 313'
                   fullWidth
-                  value={values.complement}
-                  onChange={handleChange("complement")}
+                  value={values.c_address}
+                  onChange={handleChange("c_address")}
                   style={{ marginTop: 15, marginBottom: 15, marginRight: 15 }}
                 />
                 <TextField
@@ -245,8 +260,8 @@ export default (props) => {
                   shrink: true,
                 }}
                 style={{ marginTop: 15, marginBottom: 15 }}
-                value={values.date_naissance}
-                onChange={handleChange("date_naissance")}
+                value={values.birth_date}
+                onChange={handleChange("birth_date")}
               />
               <Box display='flex'>
                 <TextField
@@ -254,8 +269,8 @@ export default (props) => {
                   variant='outlined'
                   placeholder='75001'
                   fullWidth
-                  value={values.code_post}
-                  onChange={handleChange("code_post")}
+                  value={values.zipcode}
+                  onChange={handleChange("zipcode")}
                   style={{ marginTop: 15, marginBottom: 15, marginRight: 15 }}
                 />
                 <TextField
@@ -264,8 +279,8 @@ export default (props) => {
                   placeholder='060316579'
                   fullWidth
                   type='tel'
-                  value={values.phone_number}
-                  onChange={handleChange("phone_number")}
+                  value={values.phone}
+                  onChange={handleChange("phone")}
                   style={{ marginTop: 15, marginBottom: 15 }}
                 />
               </Box>
@@ -288,6 +303,7 @@ export default (props) => {
           </Box>
         </Grid>
       </Grid>
+
     </div>
   );
 };

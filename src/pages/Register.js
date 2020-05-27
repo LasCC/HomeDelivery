@@ -4,7 +4,15 @@ import { Link } from "react-router-dom";
 import ROUTE from "../Routes";
 window.document.title = "HomeDelivery - Choix création de compte";
 
+
 export default (props) => {
+  const setAccountType = acc_type => {
+    const account_data = JSON.stringify({ acc_type })
+    localStorage.setItem("account_to_register", account_data)
+    if (acc_type === 'client') return props.history.push(ROUTE.REGISTER_CLIENT)
+    else if (acc_type === 'helper') return props.history.push(ROUTE.REGISTER_HELPER)
+
+  }
   return (
     <div>
       <Grid container>
@@ -65,71 +73,67 @@ export default (props) => {
                 Cette partie est déterminante pour la suite, en effet vous devez
                 choisir en aider les autres ou être aider.
               </Typography>
-              <Link
-                to={ROUTE.REGISTER_CLIENT}
-                style={{ textDecoration: "none", color: "black" }}
+
+              <Box
+                display='flex'
+                alignItems='center'
+                className=' successCard'
+                onClick={() => setAccountType("client")}
               >
-                <Box
-                  display='flex'
-                  alignItems='center'
-                  className=' successCard'
-                >
-                  <Box>
-                    <i
-                      className='uil uil-chat-bubble-user'
-                      style={{ fontSize: 50 }}
-                    />
-                  </Box>
-                  <Box style={{ marginLeft: 10 }} flexGrow={1}>
-                    <Typography>
-                      Compte <strong>"classique"</strong>
-                    </Typography>
-                    <Typography color='textSecondary'>
-                      Créer des annonces, être aidé par la communauté
-                      HomeDelivery
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <i
-                      className='uil uil-arrow-right'
-                      style={{ fontSize: 25 }}
-                    />
-                  </Box>
+                <Box>
+                  <i
+                    className='uil uil-chat-bubble-user'
+                    style={{ fontSize: 50 }}
+                  />
                 </Box>
-              </Link>
-              <Link
-                to={ROUTE.REGISTER_HELPER}
-                style={{ textDecoration: "none", color: "black" }}
+                <Box style={{ marginLeft: 10 }} flexGrow={1}>
+                  <Typography>
+                    Compte <strong>"classique"</strong>
+                  </Typography>
+                  <Typography color='textSecondary'>
+                    Créer des annonces, être aidé par la communauté
+                    HomeDelivery
+                    </Typography>
+                </Box>
+                <Box>
+                  <i
+                    className='uil uil-arrow-right'
+                    style={{ fontSize: 25 }}
+                  />
+                </Box>
+              </Box>
+
+
+              <Box
+                display='flex'
+                alignItems='center'
+                className=' successCard'
+                onClick={() => setAccountType("helper")}
               >
-                <Box
-                  display='flex'
-                  alignItems='center'
-                  className=' successCard'
-                >
-                  <Box>
-                    <i className='uil uil-users-alt' style={{ fontSize: 50 }} />
-                  </Box>
-                  <Box style={{ marginLeft: 10 }} flexGrow={1}>
-                    <Typography>
-                      Compte <strong>"bénévole"</strong>
-                    </Typography>
-                    <Typography color='textSecondary'>
-                      Aidez les personnes dans le besoin, rejoindre la
-                      communauté HomeDelivery
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <i
-                      className='uil uil-arrow-right'
-                      style={{ fontSize: 25 }}
-                    />
-                  </Box>
+                <Box>
+                  <i className='uil uil-users-alt' style={{ fontSize: 50 }} />
                 </Box>
-              </Link>
+                <Box style={{ marginLeft: 10 }} flexGrow={1}>
+                  <Typography>
+                    Compte <strong>"bénévole"</strong>
+                  </Typography>
+                  <Typography color='textSecondary'>
+                    Aidez les personnes dans le besoin, rejoindre la
+                    communauté HomeDelivery
+                    </Typography>
+                </Box>
+                <Box>
+                  <i
+                    className='uil uil-arrow-right'
+                    style={{ fontSize: 25 }}
+                  />
+                </Box>
+              </Box>
+
             </Box>
           </Box>
         </Grid>
       </Grid>
-    </div>
+    </div >
   );
 };

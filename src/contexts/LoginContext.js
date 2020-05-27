@@ -69,16 +69,39 @@ const LoginProvider = (props) => {
             throw ex;
         }
     };
-    const handleRegistration = async (data) => {
+    const handleClientRegistration = async (data) => {
+        console.log("register request ...", data);
+        // TODO si user deja enregistré go login 
+        let res;
+        try {
+            res = await http.post(endpoint + "/auth/register", data);
+            console.log(res)
+            if (res.status === 201) props.history.push(ROUTE.CONFIRM_REGISTRATION)
+
+        } catch (ex) {
+            if (ex.response.status === 409) props.history.push(ROUTE.LOGIN)
+            console.log(ex.response);
+            const expectedError = ex.response.status >= 400 && ex.response.status <= 500;
+            return setHttpError({
+                serverError: !expectedError,
+                clientError: expectedError,
+                status: ex.response.status,
+            });
+        }
+    }
+    const handleHelperRegistration = async (data) => {
         //console.log("register request ...", data);
         let res;
         try {
             res = await http.post(endpoint + "/auth/register", data);
         } catch (ex) {
             //console.log(ex.response.status);
-            const expectedError =
-                ex.response && ex.response.status >= 400 && ex.response.status < 500;
+            const expectedError = ex.response.status >= 400 && ex.response.status <= 500;
             return setHttpError({
+
+                serverError: !expectedError,
+                clientError: expectedError,
+
                 status: ex.response.status,
             });
         }
@@ -88,7 +111,6 @@ const LoginProvider = (props) => {
             lastname: data.lastName,
             email: data.email,
             token: "",
-            numero_dossier: "",
             hasRegistred: true,
             isLogged: false,
             isActive: false,
@@ -189,7 +211,8 @@ const LoginProvider = (props) => {
                 handleLogin,
                 checkAuth,
                 handleLogout,
-                handleRegistration,
+                handleClientRegistration,
+                handleHelperRegistration,
                 mailChecking,
                 resendMail,
                 httpError,
