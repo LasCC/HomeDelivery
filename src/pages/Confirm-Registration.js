@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Grid,
   TextField,
@@ -10,9 +10,11 @@ import {
 import MuiAlert from "@material-ui/lab/Alert";
 import { Link } from "react-router-dom";
 import ROUTE from "../Routes";
+import { LoginContext } from "../contexts/LoginContext"
 window.document.title = "HomeDelivery - Confirmation d'inscription";
 
 export default (props) => {
+  const { mailChecking, resendMail } = useContext(LoginContext)
   function Alert(props) {
     return <MuiAlert elevation={6} variant='filled' {...props} />;
   }
@@ -26,18 +28,22 @@ export default (props) => {
   };
 
   const [values, setValues] = useState({
-    code_confirm: "",
+    secretCode: "",
   });
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
-  const handleSubmitCode = () => {
+  const handleResent = () => {
+    const { email } = JSON.parse(localStorage.getItem("account_to_register"))
+    resendMail({ email })
     setOpen(true);
   };
   const handleSubmit = () => {
     console.log("====== CONFIRM CODE ======");
-    console.log(values);
+    mailChecking(values)
+
   };
+  const user_mail = JSON.parse(localStorage.getItem('account_to_register')).email
   return (
     <div>
       <Grid container>
@@ -95,20 +101,20 @@ export default (props) => {
               </Typography>
               <Typography color='textSecondary'>
                 Un code de confirmation vous a été envoyé dans votre boîte de
-                réception [MAIL].
+                réception <b>{user_mail}</b>.
               </Typography>
               <TextField
                 label='Code de confirmation'
                 variant='outlined'
                 fullWidth
                 required
-                placeholder='OCB8s.Ztagl58BK83LyIV24Smd6Ken7in8f'
-                value={values.code_confirm} // value.age value.Fname value.Lname
-                onChange={handleChange("code_confirm")}
+                placeholder='87d28fca48'
+                value={values.secretCode} // value.age value.Fname value.Lname
+                onChange={handleChange("secretCode")}
                 style={{ marginTop: 25, marginBottom: 15 }}
               />
               <Typography
-                onClick={handleSubmitCode}
+                onClick={handleResent}
                 variant='h2'
                 style={{
                   color: "rgb(70, 176, 74)",
@@ -118,22 +124,22 @@ export default (props) => {
               >
                 Code de confirmation non reçu ?
               </Typography>
-              <Link to={ROUTE.LOGIN} style={{ textDecoration: "none" }}>
-                <Button
-                  onClick={handleSubmit}
-                  fullWidth
-                  style={{
-                    backgroundColor: "rgb(70, 176, 74)",
-                    color: "white",
-                    fontWeight: "bold",
-                    marginTop: 15,
-                    padding: 15,
-                    borderRadius: 4,
-                  }}
-                >
-                  Confirmer
+
+              <Button
+                onClick={handleSubmit}
+                fullWidth
+                style={{
+                  backgroundColor: "rgb(70, 176, 74)",
+                  color: "white",
+                  fontWeight: "bold",
+                  marginTop: 15,
+                  padding: 15,
+                  borderRadius: 4,
+                }}
+              >
+                Confirmer
                 </Button>
-              </Link>
+
               <Snackbar
                 open={open}
                 autoHideDuration={4000}
@@ -151,6 +157,9 @@ export default (props) => {
           </Box>
         </Grid>
       </Grid>
+      <pre>
+        {JSON.stringify(values)}
+      </pre>
     </div>
   );
 };
