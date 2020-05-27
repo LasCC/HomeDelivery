@@ -8,6 +8,7 @@ import LoginContext from "../src/contexts/LoginContext";
 import ProtectedRoute from "./specialroutes/ProtectedRoute";
 import PublicClientRoute from "./specialroutes/PublicClientRoute";
 import PublicHelperRoute from "./specialroutes/PublicHelperRoute";
+import NotificationWrapper from "./components/NotificationWrapper"
 const Home = lazy(() => import("./pages/Home"));
 const Register = lazy(() => import("./pages/Register"));
 const RegisterClient = lazy(() => import("./pages/Client/Register-Client"));
@@ -199,6 +200,7 @@ export default function App() {
           <Route exact path={ROUTE.TEST_MAP} component={Dev} />
           <Route path='*' component={UnknownPage} />
         </Switch>
+        <NotificationWrapper />
       </LoginContext>
     </Suspense>
   );

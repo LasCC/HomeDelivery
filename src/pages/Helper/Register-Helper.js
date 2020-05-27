@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Grid, TextField, Typography, Box, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import ROUTE from "../../Routes";
+import { LoginContext } from "../../contexts/LoginContext";
 window.document.title = "HomeDelivery - Création de compte bénévole";
 
 export default (props) => {
+  const { handleHelperRegistration } = useContext(LoginContext)
+
   const [values, setValues] = useState({
-    firstname: "",
-    lastname: "",
-    mail: "",
+    firstName: "",
+    lastName: "",
+    email: "",
     password: "",
-    phone_number: "",
+    phone: "",
+    birth_date: ""
   });
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
@@ -18,7 +22,17 @@ export default (props) => {
 
   const handleSubmit = () => {
     console.log("====== Registration HELPER ======");
-    console.log(values);
+    let acc_to_register = JSON.parse(localStorage.getItem("account_to_register")); // recup acc-type 
+    acc_to_register = { ...acc_to_register, ...values, }; // on ajoute le state + acctype
+    delete acc_to_register.password_confirm
+    delete acc_to_register.showPassword
+    //send to back here ---
+    // console.log(acc_to_register)
+    handleHelperRegistration({ ...acc_to_register })
+    delete acc_to_register.password
+    localStorage.setItem('account_to_register', JSON.stringify(acc_to_register))
+    console.log("ls : -> ", acc_to_register)
+
   };
   return (
     <div>
@@ -83,8 +97,8 @@ export default (props) => {
                 variant='outlined'
                 placeholder='PLATINI'
                 fullWidth
-                value={values.firstname}
-                onChange={handleChange("firstname")}
+                value={values.firstName}
+                onChange={handleChange("firstName")}
                 style={{ marginTop: 25, marginBottom: 15 }}
               />
               <TextField
@@ -92,8 +106,8 @@ export default (props) => {
                 variant='outlined'
                 placeholder='Michel'
                 fullWidth
-                value={values.lastname}
-                onChange={handleChange("lastname")}
+                value={values.lastName}
+                onChange={handleChange("lastName")}
                 style={{ marginTop: 15, marginBottom: 15 }}
               />
               <TextField
@@ -101,8 +115,8 @@ export default (props) => {
                 variant='outlined'
                 placeholder='michel.platini@gmail.com'
                 fullWidth
-                value={values.mail}
-                onChange={handleChange("mail")}
+                value={values.email}
+                onChange={handleChange("email")}
                 style={{ marginTop: 15, marginBottom: 15 }}
               />
               <TextField
@@ -120,8 +134,8 @@ export default (props) => {
                 placeholder='060316579'
                 variant='outlined'
                 fullWidth
-                value={values.phone_number}
-                onChange={handleChange("phone_number")}
+                value={values.phone}
+                onChange={handleChange("phone")}
                 style={{ marginTop: 15, marginBottom: 15 }}
               />
               <TextField
@@ -134,29 +148,26 @@ export default (props) => {
                   shrink: true,
                 }}
                 style={{ marginTop: 15, marginBottom: 15 }}
-                value={values.date_naissance}
-                onChange={handleChange("date_naissance")}
+                value={values.birth_date}
+                onChange={handleChange("birth_date")}
               />
-              <Link
-                to={ROUTE.CONFIRM_REGISTRATION}
-                style={{ textDecoration: "none" }}
+
+              <Button
+                onClick={handleSubmit}
+                fullWidth
+                style={{
+                  backgroundColor: "rgb(70, 176, 74)",
+                  color: "white",
+                  fontWeight: "bold",
+                  marginTop: 15,
+                  padding: 15,
+                  borderRadius: 4,
+                  boxShadow: "0px 9px 18px 3px rgba(24,176,116,0.15)",
+                }}
+
               >
-                <Button
-                  onClick={handleSubmit}
-                  fullWidth
-                  style={{
-                    backgroundColor: "rgb(70, 176, 74)",
-                    color: "white",
-                    fontWeight: "bold",
-                    marginTop: 15,
-                    padding: 15,
-                    borderRadius: 4,
-                    boxShadow: "0px 9px 18px 3px rgba(24,176,116,0.15)",
-                  }}
-                >
-                  Continuer <i className='uil uil-arrow-right' />
-                </Button>
-              </Link>
+                Continuer <i className='uil uil-arrow-right' />
+              </Button>
             </Box>
           </Box>
         </Grid>
