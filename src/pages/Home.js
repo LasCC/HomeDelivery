@@ -1,17 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
-import { makeStyles } from "@material-ui/core/styles";
-import {
-  Container,
-  Typography,
-  Box,
-  Paper,
-  IconButton,
-  InputBase,
-  Divider,
-  Grid,
-} from "@material-ui/core";
+import { Container, Typography, Box, Divider, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { TimelineLite, TweenMax, Power3 } from "gsap";
 import ROUTE from "../Routes";
 import Lottie from "react-lottie";
 import Footer from "../components/Footer";
@@ -56,326 +47,247 @@ const soapOptions = {
   },
 };
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: 15,
-    display: "flex",
-    alignItems: "center",
-    width: "100%",
-    boxShadow:
-      "0 2px 2.3px rgba(0, 0, 0, 0.011),  0 3.4px 5.6px rgba(0, 0, 0, 0.016),  0 5.1px 10.7px rgba(0, 0, 0, 0.02),  0 8.5px 19.1px rgba(0, 0, 0, 0.024),  0 18.7px 35.4px rgba(0, 0, 0, 0.029),  0 100px 80px rgba(0, 0, 0, 0.04)",
-  },
-  input: {
-    marginLeft: theme.spacing(1),
-    flex: 1,
-    marginTop: 3,
-  },
-  iconButton: {
-    padding: 10,
-  },
-  divider: {
-    height: 28,
-    margin: 4,
-  },
-}));
+const FirstImage = require("../data/1.jpeg");
+const SeconImage = require("../data/2.jpeg");
 
 export default (props) => {
-  const classes = useStyles();
-  const [values, setValues] = useState({
-    search: "",
-  });
-  const handleChange = (name) => (event) => {
-    setValues({ ...values, [name]: event.target.value });
-  };
+  let app = useRef(null);
+  let images = useRef(null);
+  let content = useRef(null);
+  let tl = new TimelineLite({ delay: 0.8 });
+
+  useEffect(() => {
+    // Images Vars
+    const FirstImage = images.firstElementChild; // or children[0]
+    const SeconImage = images.lastElementChild;
+
+    //content vars
+    const headlineFirst = content.children[0].children[0];
+    const headlineSecond = headlineFirst.nextSibling;
+    const headlineThird = headlineSecond.nextSibling;
+    const contentP = content.children[1];
+    const contentButton = content.children[2];
+
+    //Remove initial flash
+    TweenMax.to(app, 0, { css: { visibility: "visible" } });
+
+    //Images Animation
+    tl.from(FirstImage, 1.2, { y: 1280, ease: Power3.easeOut }, "Start")
+      .from(
+        FirstImage.firstElementChild,
+        2,
+        { scale: 1.6, ease: Power3.easeOut },
+        0.2
+      )
+      .from(SeconImage, 1.4, { y: 1280, ease: Power3.easeOut }, 0.2)
+      .from(
+        SeconImage.firstElementChild,
+        2,
+        { scale: 1.6, ease: Power3.easeOut },
+        0.2
+      );
+
+    //Content Animation
+    tl.staggerFrom(
+      [headlineFirst.children, headlineSecond.children, headlineThird.children],
+      1,
+      {
+        y: 44,
+        ease: Power3.easeOut,
+        delay: 0.8,
+      },
+      0.15,
+      "Start"
+    )
+      .from(contentP, 1, { y: 20, opacity: 0, ease: Power3.easeOut }, 1.4)
+      .from(contentButton, 1, { y: 20, opacity: 0, ease: Power3.easeOut }, 1.6);
+  }, [tl]);
 
   return (
     <div>
-      <Grid container>
-        <Grid item xs={12}>
-          <Container maxWidth='lg'>
-            <Navbar />
-            <Box style={{ height: "100vh" }}>
-              <Box
-                style={{
-                  position: "relative",
-                  top: "30%",
-                  textAlign: "center",
-                  left: "30%",
-                  transform: "translate(-30%, -30%)",
-                  zIndex: 5,
-                }}
-              >
-                <Typography
-                  variant='h3'
-                  component='h1'
-                  style={{ fontWeight: "bold" }}
+      <Container maxWidth='lg'>
+        <Navbar />
+        <Box className='hero' ref={(el) => (app = el)}>
+          <Box className='container'>
+            <Box className='hero-inner'>
+              <Box className='hero-content'>
+                <Box
+                  className='hero-content-inner'
+                  ref={(el) => (content = el)}
                 >
-                  La plateforme qui met en relation
-                  <br />
-                  les personnes dans le besoin
-                </Typography>
-                <Typography
-                  variant='body2'
-                  color='textSecondary'
-                  style={{ marginTop: 15, fontSize: 20 }}
-                >
-                  Nous mettons en relation des personnes prête à aider les
-                  <br />
-                  personnes dans le besoin en ses temps de guerre sanitaire.
-                </Typography>
-                <Paper className={classes.root} style={{ marginTop: 25 }}>
-                  <i className='uil uil-map-pin-alt' style={{ fontSize: 25 }} />
-                  <InputBase
-                    onChange={handleChange("search")}
-                    className={classes.input}
-                    placeholder='Rechercher un livreur près de chez vous'
-                    inputProps={{
-                      "aria-label": "Rechercher un livreur près de chez vous",
-                    }}
-                  />
-                  <IconButton
-                    className={classes.iconButton}
-                    aria-label='search'
-                  >
-                    <i
-                      className='uil uil-arrow-right'
-                      style={{ fontSize: 25 }}
-                    />
-                  </IconButton>
-                </Paper>
+                  <h1>
+                    <Box className='hero-content-line'>
+                      <Box className='hero-content-line-inner'>
+                        La plateforme qui met en relation
+                      </Box>
+                    </Box>
+                    <Box className='hero-content-line'>
+                      <Box className='hero-content-line-inner'>
+                        en relation les bonnes
+                      </Box>
+                    </Box>
+                    <Box className='hero-content-line'>
+                      <Box className='hero-content-line-inner'>personnes.</Box>
+                    </Box>
+                  </h1>
+                  <p>
+                    Nous mettons en relation des personnes prêtes à aider leurs
+                    prochains qui en ont si besoin en ses temps de guerre
+                    sanitaire.
+                  </p>
+                  <Box className='btn-row'>
+                    <button className='explore-button'>
+                      Découvrir
+                      <Box className='arrow-icon'>
+                        <i
+                          className='uil uil-arrow-right row'
+                          style={{ color: "white", fontSize: 18 }}
+                        />
+                      </Box>
+                    </button>
+                  </Box>
+                </Box>
+              </Box>
+              <Box className='hero-images'>
+                <Box ref={(el) => (images = el)} className='hero-images-inner'>
+                  <Box className='hero-image girl'>
+                    <img src={FirstImage} alt='girl' />
+                  </Box>
+                  <Box className='hero-image boy'>
+                    <img src={SeconImage} alt='boy' />
+                  </Box>
+                </Box>
               </Box>
             </Box>
-            <div className='curve' />
-          </Container>
-          <Grid item style={{ zIndex: 55 }}>
-            <Box
-              id='LeSaviezVous'
-              style={{
-                padding: "4em",
-                marginBottom: 15,
-                backgroundColor: "#D9EFE7",
-                textAlign: "center",
-              }}
-            >
-              <Typography
-                variant='h1'
-                style={{
-                  color: "black",
-                  fontWeight: "bold",
-                  fontSize: 45,
-                  marginBottom: 15,
-                }}
-              >
-                Le saviez vous ?
-              </Typography>
-              <Typography color='textSecondary'>
-                Nous sommes une plateforme d’entraide qui cherche à mettre en
-                relation <br />
-                des personnes qui veulent aider leurs prochains pour des tâches
-                quotidiennes <br />
-                telle qu’aller chercher du pain, faire des courses de première
-                nécessité tout cela dans le bénévolat et la bienveillance.
-              </Typography>
-
-              <img
-                alt='curve'
-                src='https://i.imgur.com/INyeAba.png'
-                style={{
-                  height: "auto",
-                  zIndex: 1,
-                  marginTop: 25,
-                  borderRadius: 10,
-                  width: "100%",
-                  maxWidth: 1600,
-                  boxShadow:
-                    "  0 2.8px 2.2px rgba(0, 0, 0, 0.02),  0 6.7px 5.3px rgba(0, 0, 0, 0.028),  0 12.5px 10px rgba(0, 0, 0, 0.035),  0 22.3px 17.9px rgba(0, 0, 0, 0.042),  0 41.8px 33.4px rgba(0, 0, 0, 0.05),  0 100px 80px rgba(0, 0, 0, 0.07)",
-                }}
-              />
-
-              <div className='curve2' />
-            </Box>
-          </Grid>
-          <Grid item>
-            <Box
-              style={{
-                padding: "2em",
-                marginTop: 35,
-              }}
-            >
-              <Container maxWidth='lg'>
-                <Typography
-                  variant='h1'
-                  style={{
-                    color: "black",
-                    fontWeight: "bold",
-                    fontSize: 45,
-                    marginBottom: 15,
-                    textAlign: "center",
-                  }}
-                >
-                  Respect des consignes sanitaires
-                </Typography>
-                <Typography
-                  color='textSecondary'
-                  style={{
-                    textAlign: "center",
-                  }}
-                >
+          </Box>
+        </Box>
+      </Container>
+      <section id='features' className='features'>
+        <Box className='container'>
+          <Box className='row'>
+            <Box className='features-inner'>
+              <Box className='features-content'>
+                <h3>Respect des consignes sanitaires</h3>
+                <p>
                   Nous mettons un poing d’honneur à bien respecter les règles
                   sanitaires mise en oeuvre dans le cadre de l’épidémie
                   sanitaire CoViD-19.
-                </Typography>
-                <Box
-                  display='flex'
-                  alignItems='center'
-                  style={{ marginTop: 80 }}
-                >
-                  <Box style={{ marginRight: 25 }}>
-                    <Lottie
-                      options={handShakeOptions}
-                      height={150}
-                      width={150}
-                    />
-                  </Box>
-                  <Box flexGrow={1}>
-                    <Typography>
-                      Pas de contacte à plus de 1m de distance
-                      <br /> entre le bénévole est le client, il déposera <br />
-                      la commande sur le palier de votre apparement/maison.
-                    </Typography>
-                  </Box>
+                </p>
+                <Box className='btn-row'>
+                  <a>Connaitre les gestes barrieres</a>
                 </Box>
-                <Divider style={{ marginTop: 35, marginBottom: 35 }} />
-                <Box
-                  display='flex'
-                  alignItems='center'
-                  style={{ marginTop: 50 }}
-                >
-                  <Box
-                    flexGrow={1}
-                    display='flex'
-                    justifyContent='flex-end'
-                    style={{ marginRight: 25 }}
-                  >
-                    <Typography>
+              </Box>
+              <Box className='features-list'>
+                <ul>
+                  <li>
+                    <div>
+                      <Lottie
+                        resizeMode='cover'
+                        options={handShakeOptions}
+                        height={80}
+                        width={80}
+                      />
+                    </div>
+                    <h5>Pas de prise de contact</h5>
+                    <p>
+                      Pas de contacte à plus de 1m de distance entre le bénévole
+                      est le client, il déposera la commande sur le palier de
+                      votre apparement/maison.
+                    </p>
+                  </li>
+                  <li>
+                    <Lottie options={maskOptions} height={80} width={80} />
+                    <h5>Port du masque</h5>
+                    <p>
                       Les bénévoles doivent absolument porter un masque de
-                      protection
-                      <br />
-                      pour éviter le plus possible le risque de propagation du
-                      virus.
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Lottie options={maskOptions} height={150} width={150} />
-                  </Box>
-                </Box>
-                <Divider style={{ marginTop: 35, marginBottom: 35 }} />
-                <Box
-                  display='flex'
-                  alignItems='center'
-                  style={{ marginTop: 50 }}
-                >
-                  <Box style={{ marginRight: 25 }}>
-                    <Lottie options={soapOptions} height={150} width={150} />
-                  </Box>
-                  <Box flexGrow={1}>
-                    <Typography>
+                      protection pour éviter le plus possible le risque de
+                      propagation du virus.
+                    </p>
+                  </li>
+                  <li>
+                    <Lottie options={soapOptions} height={80} width={80} />
+                    <h5>Désinfection</h5>
+                    <p>
                       Les bénévoles doivent absolument porter un masque de
-                      protection <br />
-                      pour éviter le plus possible le risque de propagation du
-                      virus.
-                    </Typography>
-                  </Box>
-                </Box>
-                <Divider style={{ marginTop: 35, marginBottom: 35 }} />
-                <Box
-                  display='flex'
-                  alignItems='center'
-                  style={{ marginTop: 50 }}
-                >
-                  <Box
-                    flexGrow={1}
-                    display='flex'
-                    justifyContent='flex-end'
-                    style={{ marginRight: 25 }}
-                  >
-                    <Typography>
+                      protection pour éviter le plus possible le risque de
+                      propagation du virus.
+                    </p>
+                  </li>
+                  <li>
+                    <Lottie options={shampooOptions} height={80} width={80} />
+                    <h5>Désinfection</h5>
+                    <p>
                       Désinfection systématique entre à la moindre interaction
-                      physique
-                      <br />
-                      avec un objet/personne (je sais pas ici non plus)
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Lottie options={shampooOptions} height={150} width={150} />
-                  </Box>
-                </Box>
-                <Divider style={{ marginTop: 35, marginBottom: 35 }} />
-              </Container>
+                      physique avec un objet/personne (je sais pas ici non plus)
+                    </p>
+                  </li>
+                </ul>
+              </Box>
             </Box>
-          </Grid>
-          <Box style={{ marginTop: 15, textAlign: "center" }}>
-            <Container maxWidth='lg'>
-              <Typography
-                variant='h1'
-                style={{
-                  color: "black",
-                  fontWeight: "bold",
-                  fontSize: 45,
-                  marginBottom: 15,
-                }}
-              >
-                L’activité de nos membres
-              </Typography>
-              <Typography>
-                Vous voulez rejoindre notre communauté d’entraide ?<br />{" "}
-                N’hésitez plus rejoignez
-                <b> HomeDelivery</b>, aucun frais <br />
-                ne va vous être demandé.
-              </Typography>
-              <Link to={ROUTE.REGISTER} style={{ textDecoration: "none" }}>
-                <Typography
-                  style={{
-                    color: "rgb(70, 176, 74)",
-                    marginTop: 15,
-                  }}
-                >
-                  Inscription gratuite
-                </Typography>
-              </Link>
-            </Container>
           </Box>
-          <Box
+        </Box>
+      </section>
+
+      <Box style={{ marginTop: 15, textAlign: "center" }}>
+        <Container maxWidth='lg'>
+          <Typography
+            variant='h1'
             style={{
-              height: "70vh",
-              backgroundColor: "rgb(70, 176, 74)",
-              marginTop: 50,
+              color: "black",
+              fontWeight: "bold",
+              fontSize: 45,
+              marginBottom: 15,
             }}
           >
-            <Map />
-          </Box>
-          <Box style={{ marginTop: 80, height: "70vh" }} id='CommentCaMarche'>
-            <Container maxWidth='lg'>
-              <Typography
-                variant='h1'
-                style={{
-                  color: "black",
-                  fontWeight: "bold",
-                  fontSize: 35,
-                  marginBottom: 35,
-                  textAlign: "center",
-                }}
-              >
-                Questions récurrentes
-              </Typography>
-              <Questions />
-            </Container>
-          </Box>
-          <Box style={{ backgroundColor: "#D9EFE7" }}>
-            <Footer />
-          </Box>
-        </Grid>
-      </Grid>
+            L’activité de nos membres
+          </Typography>
+          <Typography>
+            Vous voulez rejoindre notre communauté d’entraide ?<br /> N’hésitez
+            plus rejoignez
+            <b> HomeDelivery</b>, aucun frais <br />
+            ne va vous être demandé.
+          </Typography>
+          <Link to={ROUTE.REGISTER} style={{ textDecoration: "none" }}>
+            <Typography
+              style={{
+                color: "rgb(70, 176, 74)",
+                marginTop: 15,
+              }}
+            >
+              Inscription gratuite
+            </Typography>
+          </Link>
+        </Container>
+      </Box>
+      <Box
+        style={{
+          height: "70vh",
+          backgroundColor: "rgb(70, 176, 74)",
+          marginTop: 50,
+        }}
+      >
+        {/* <Map /> */}
+      </Box>
+      <Box style={{ marginTop: 80, height: "70vh" }} id='CommentCaMarche'>
+        <Container maxWidth='lg'>
+          <Typography
+            variant='h1'
+            style={{
+              color: "black",
+              fontWeight: "bold",
+              fontSize: 35,
+              marginBottom: 35,
+              textAlign: "center",
+            }}
+          >
+            Questions récurrentes
+          </Typography>
+          <Questions />
+        </Container>
+      </Box>
+      <Box style={{ backgroundColor: "#D9EFE7" }}>
+        <Footer />
+      </Box>
     </div>
   );
 };

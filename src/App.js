@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./styles.css";
 import "circular-std";
+import "./App.scss";
 import ROUTE from "./Routes";
 import Loader from "./components/Loader";
 import LoginContext from "../src/contexts/LoginContext";

@@ -1,0 +1,177 @@
+@import "./variables.scss";
+
+.hero {
+  visibility: hidden;
+  height: 100vh;
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 24px;
+    height: 100vh;
+    .hero-content {
+      .hero-content-inner {
+        width: 400px;
+        color: #323232;
+        margin: 0 auto;
+        h1 {
+          font-size: 32px;
+          margin-bottom: 24px;
+          .hero-content-line {
+            margin: 0;
+            height: 44px;
+            overflow: hidden;
+          }
+        }
+        p {
+          font-size: 14px;
+          line-height: 24px;
+          font-weight: 300;
+          padding-right: 48px;
+          margin-bottom: 56px;
+        }
+        .btn-row {
+          button {
+            background: none;
+            border: none;
+            font-size: 12px;
+            padding: 0;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.7px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            &:focus {
+              outline: none;
+            }
+            .arrow-icon {
+              position: absolute;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: #19af58;
+              height: 48px;
+              width: 48px;
+              border-radius: 100px;
+              margin-left: 22px;
+              left: 64px;
+              transform-origin: center center;
+            }
+          }
+        }
+      }
+    }
+
+    .hero-images {
+      width: 50%;
+      height: 100vh;
+      position: relative;
+      .hero-images-inner {
+        .hero-image {
+          position: absolute;
+          overflow: hidden;
+          &.girl {
+            top: 0;
+            right: 0px;
+            width: 45%;
+            height: 50%;
+          }
+          &.boy {
+            bottom: 24px;
+            left: 0px;
+            width: 52%;
+            height: 65%;
+          }
+          img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.features {
+  margin-top: 20vh;
+  .features-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    .features-content {
+      width: 33%;
+      @media (max-width: $widescreen) {
+        width: 40%;
+      }
+      h3 {
+        font-family: "Playfair Display";
+        color: $dark;
+        font-size: 2.6rem;
+        line-height: 3.4rem;
+        margin: 0 0 40px;
+      }
+      p {
+        line-height: 1.8rem;
+        font-weight: 300;
+        color: $dark;
+        margin-bottom: 88px;
+        @media (max-width: $widescreen) {
+          padding-right: 60px;
+        }
+      }
+      .btn-row {
+        a {
+          color: $green;
+          text-decoration: none;
+          font-weight: 600;
+        }
+      }
+    }
+    .features-list {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      ul {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 0;
+        li {
+          list-style: none;
+          div {
+            margin-bottom: 24px;
+
+            margin: none;
+            display: flex;
+            left: 0;
+            top: 0;
+            z-index: -1;
+          }
+          h5 {
+            color: $dark;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 0;
+          }
+          p {
+            line-height: 1.8rem;
+            font-weight: 300;
+            color: $dark;
+            width: 270px;
+            margin: 16px 0 72px;
+            font-size: 1rem;
+            @media (max-width: $widescreen) {
+              font-size: 0.875rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
