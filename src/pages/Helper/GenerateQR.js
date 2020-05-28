@@ -86,12 +86,6 @@ export default (props) => {
   const handleClose = () => {
     setOpen(false);
   };
-  const onlyNumbers = (e) => {
-    e.target.value = e.target.value.replace(
-      /^[0-9]{2}[]{1}[0-9]{2}[]{1}[0-9]{4}$/g,
-      ""
-    );
-  };
   const [values, setValues] = useState({
     search: "",
     Nom: "",
@@ -236,7 +230,6 @@ export default (props) => {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                onInput={onlyNumbers}
                 value={values.Naissance}
                 onChange={handleChange("Naissance")}
                 style={{ marginTop: 25, marginRight: 15 }}

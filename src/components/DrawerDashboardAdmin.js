@@ -64,15 +64,6 @@ export default (props) => {
           </ListItem>
         </Link>
 
-        {/* <Link to={ROUTE.DASHBOARD_ADMIN_DATAVIZ} style={{ textDecoration: 'none', color: 'white' }}>
-					<ListItem button style={{ marginTop: 15, marginBottom: 15 }}>
-						<ListItemIcon>
-							<InsertChartIcon style={{ color: '#ededed' }} />
-						</ListItemIcon>
-						<ListItemText>Data vision</ListItemText>
-					</ListItem>
-				</Link> */}
-
         <Link
           to={ROUTE.DASHBOARD_ADMIN_USERS}
           style={{ textDecoration: "none", color: "white" }}

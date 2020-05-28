@@ -1,18 +1,16 @@
 import React from "react";
 import { Grid, Typography, Box } from "@material-ui/core";
-import { Link } from "react-router-dom";
 import ROUTE from "../Routes";
 window.document.title = "HomeDelivery - Choix création de compte";
 
-
 export default (props) => {
-  const setAccountType = acc_type => {
-    const account_data = JSON.stringify({ acc_type })
-    localStorage.setItem("account_to_register", account_data)
-    if (acc_type === 'client') return props.history.push(ROUTE.REGISTER_CLIENT)
-    else if (acc_type === 'helper') return props.history.push(ROUTE.REGISTER_HELPER)
-
-  }
+  const setAccountType = (acc_type) => {
+    const account_data = JSON.stringify({ acc_type });
+    localStorage.setItem("account_to_register", account_data);
+    if (acc_type === "client") return props.history.push(ROUTE.REGISTER_CLIENT);
+    else if (acc_type === "helper")
+      return props.history.push(ROUTE.REGISTER_HELPER);
+  };
   return (
     <div>
       <Grid container>
@@ -33,9 +31,11 @@ export default (props) => {
             className='backgroundRegister'
           >
             <Box
+              onClick={() => window.location.replace("/")}
               display='flex'
               alignItems='center'
               style={{
+                cursor: "pointer",
                 padding: 25,
               }}
             >
@@ -91,18 +91,13 @@ export default (props) => {
                     Compte <strong>"classique"</strong>
                   </Typography>
                   <Typography color='textSecondary'>
-                    Créer des annonces, être aidé par la communauté
-                    HomeDelivery
-                    </Typography>
+                    Créer des annonces, être aidé par la communauté HomeDelivery
+                  </Typography>
                 </Box>
                 <Box>
-                  <i
-                    className='uil uil-arrow-right'
-                    style={{ fontSize: 25 }}
-                  />
+                  <i className='uil uil-arrow-right' style={{ fontSize: 25 }} />
                 </Box>
               </Box>
-
 
               <Box
                 display='flex'
@@ -118,22 +113,18 @@ export default (props) => {
                     Compte <strong>"bénévole"</strong>
                   </Typography>
                   <Typography color='textSecondary'>
-                    Aidez les personnes dans le besoin, rejoindre la
-                    communauté HomeDelivery
-                    </Typography>
+                    Aidez les personnes dans le besoin, rejoindre la communauté
+                    HomeDelivery
+                  </Typography>
                 </Box>
                 <Box>
-                  <i
-                    className='uil uil-arrow-right'
-                    style={{ fontSize: 25 }}
-                  />
+                  <i className='uil uil-arrow-right' style={{ fontSize: 25 }} />
                 </Box>
               </Box>
-
             </Box>
           </Box>
         </Grid>
       </Grid>
-    </div >
+    </div>
   );
 };

@@ -8,7 +8,7 @@ import LoginContext from "../src/contexts/LoginContext";
 import PublicRoute from "./specialroutes/PublicRoute"; // si tu n'est pas loggé
 import ProtectedClientRoute from "./specialroutes/ProtectedClientRoute"; // si tu es loggé en tant que client
 import ProtectedHelperRoute from "./specialroutes/ProtectedHelperRoute"; // si tu es loggé en tant que helper
-import NotificationWrapper from "./components/NotificationWrapper"
+import NotificationWrapper from "./components/NotificationWrapper";
 const Home = lazy(() => import("./pages/Home"));
 const Register = lazy(() => import("./pages/Register"));
 const RegisterClient = lazy(() => import("./pages/Client/Register-Client"));
@@ -60,7 +60,6 @@ const DashboardAdminUsers = lazy(() => import("./pages/Admin/Users"));
 const DashboardAdminLogin = lazy(() => import("./pages/Admin/Login"));
 const DashboardAdminAnalytics = lazy(() => import("./pages/Admin/Map"));
 const DashboardAdminAccount = lazy(() => import("./pages/Admin/Account"));
-const DashboardAdminDataViz = lazy(() => import("./pages/Admin/DataViz"));
 const UnknownPage = lazy(() => import("./Unknown"));
 
 export default function App() {
@@ -92,7 +91,11 @@ export default function App() {
             path={ROUTE.CHECKOUT_CLIENT}
             component={CheckoutClient}
           />
-          <ProtectedClientRoute exact path={ROUTE.ANNONCE} component={CreateAnnonce} />
+          <ProtectedClientRoute
+            exact
+            path={ROUTE.ANNONCE}
+            component={CreateAnnonce}
+          />
           <ProtectedClientRoute
             exact
             path={ROUTE.CONFIRM_ANNONCE}
@@ -103,7 +106,11 @@ export default function App() {
             path={ROUTE.SHIPMENT_ANNONCE}
             component={ShippingAnnonce}
           />
-          <ProtectedClientRoute exact path={ROUTE.DASHBOARD} component={DashboardClient} />
+          <ProtectedClientRoute
+            exact
+            path={ROUTE.DASHBOARD}
+            component={DashboardClient}
+          />
           <ProtectedClientRoute
             exact
             path={ROUTE.DASHBOARD_SETTINGS}
@@ -190,11 +197,6 @@ export default function App() {
             exact
             path={ROUTE.DASHBOARD_ADMIN_ACCOUNT}
             component={DashboardAdminAccount}
-          />
-          <Route
-            exact
-            path={ROUTE.DASHBOARD_ADMIN_DATAVIZ}
-            component={DashboardAdminDataViz}
           />
 
           <Route exact path={ROUTE.TEST_MAP} component={Dev} />

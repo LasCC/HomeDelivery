@@ -33,7 +33,7 @@ export default (props) => {
     setOpen(false);
   };
 
-  const { handleLogin, httpError, checkAuth } = useContext(LoginContext);
+  const { handleLogin } = useContext(LoginContext);
 
   const [values, setValues] = useState({
     email: "",
@@ -65,9 +65,11 @@ export default (props) => {
             className='backgroundRegister'
           >
             <Box
+              onClick={() => window.location.replace("/")}
               display='flex'
               alignItems='center'
               style={{
+                cursor: "pointer",
                 padding: 25,
               }}
             >
@@ -134,8 +136,8 @@ export default (props) => {
                         {values.showPassword ? (
                           <i className='uil uil-eye-slash' />
                         ) : (
-                            <i className='uil uil-eye' />
-                          )}
+                          <i className='uil uil-eye' />
+                        )}
                       </IconButton>
                     </InputAdornment>
                   ),
@@ -179,7 +181,7 @@ export default (props) => {
                     <br />
                     Nous vous conseillons aussi de regarder{" "}
                     <a
-                      href='https://coulonludovicc.gitbook.io/homedelivery/'
+                      href='https://homedelivery.gitbook.io/homedelivery/'
                       target='_blank'
                       rel='noopener noreferrer'
                       style={{

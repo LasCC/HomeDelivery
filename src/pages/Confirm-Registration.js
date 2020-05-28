@@ -7,17 +7,12 @@ import {
   Button,
   Snackbar,
 } from "@material-ui/core";
-import MuiAlert from "@material-ui/lab/Alert";
-import { Link } from "react-router-dom";
-import ROUTE from "../Routes";
-import { LoginContext } from "../contexts/LoginContext"
+import Alert from "@material-ui/lab/Alert";
+import { LoginContext } from "../contexts/LoginContext";
 window.document.title = "HomeDelivery - Confirmation d'inscription";
 
 export default (props) => {
-  const { mailChecking, resendMail } = useContext(LoginContext)
-  function Alert(props) {
-    return <MuiAlert elevation={6} variant='filled' {...props} />;
-  }
+  const { mailChecking, resendMail } = useContext(LoginContext);
   const [open, setOpen] = React.useState(false);
 
   const handleClose = (event, reason) => {
@@ -34,16 +29,16 @@ export default (props) => {
     setValues({ ...values, [name]: event.target.value });
   };
   const handleResent = () => {
-    const { email } = JSON.parse(localStorage.getItem("account_to_register"))
-    resendMail({ email })
+    const { email } = JSON.parse(localStorage.getItem("account_to_register"));
+    resendMail({ email });
     setOpen(true);
   };
   const handleSubmit = () => {
     console.log("====== CONFIRM CODE ======");
-    mailChecking(values)
-
+    mailChecking(values);
   };
-  const user_mail = JSON.parse(localStorage.getItem('account_to_register')).email
+  const user_mail = JSON.parse(localStorage.getItem("account_to_register"))
+    .email;
   return (
     <div>
       <Grid container>
@@ -138,8 +133,7 @@ export default (props) => {
                 }}
               >
                 Confirmer
-                </Button>
-
+              </Button>
               <Snackbar
                 open={open}
                 autoHideDuration={4000}
@@ -150,16 +144,14 @@ export default (props) => {
                 }}
               >
                 <Alert onClose={handleClose} severity='success'>
-                  Code de confirmation à bien été envoyé
+                  Une erreur est survenue !
                 </Alert>
               </Snackbar>
             </Box>
           </Box>
         </Grid>
       </Grid>
-      <pre>
-        {JSON.stringify(values)}
-      </pre>
+      <pre>{JSON.stringify(values)}</pre>
     </div>
   );
 };

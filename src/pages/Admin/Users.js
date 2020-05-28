@@ -213,8 +213,6 @@ export default (props) => {
           id='Table'
           icons={tableIcons}
           title='Utilisateurs de HomeDelivery'
-          columns={state.columns}
-          data={state.data}
           columns={[
             { title: "Nom", field: "firstname" },
             { title: "Prénom", field: "lastname" },

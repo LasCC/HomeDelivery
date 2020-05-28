@@ -123,11 +123,7 @@ export default (props) => {
                   <br />
                   personnes dans le besoin en ses temps de guerre sanitaire.
                 </Typography>
-                <Paper
-                  component='form'
-                  className={classes.root}
-                  style={{ marginTop: 25 }}
-                >
+                <Paper className={classes.root} style={{ marginTop: 25 }}>
                   <i className='uil uil-map-pin-alt' style={{ fontSize: 25 }} />
                   <InputBase
                     onChange={handleChange("search")}
@@ -138,7 +134,6 @@ export default (props) => {
                     }}
                   />
                   <IconButton
-                    type='submit'
                     className={classes.iconButton}
                     aria-label='search'
                   >
@@ -148,7 +143,6 @@ export default (props) => {
                     />
                   </IconButton>
                 </Paper>
-                {values.search}
               </Box>
             </Box>
             <div className='curve' />

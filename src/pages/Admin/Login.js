@@ -112,6 +112,7 @@ const LoginAdmin = (props) => {
               marginTop: 15,
               color: "white",
               backgroundColor: "#46B04A",
+              fontWeight: "bold",
             }}
           >
             Connexion

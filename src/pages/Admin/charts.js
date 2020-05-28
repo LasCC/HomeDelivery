@@ -451,8 +451,8 @@ const dashboard24HoursPerformanceChart = {
 };
 
 module.exports = {
-  dashboardPanelChart, // Chart for Dashboard view - Will be rendered in panel
-  dashboardShippedProductsChart, // Chart for Dashboard view - Shipped Products Card
-  dashboardAllProductsChart, // Chart for Dashboard view - All products Card
-  dashboard24HoursPerformanceChart, // Chart for Dashboard view - 24 Hours Performance Card
+  dashboardPanelChart,
+  dashboardShippedProductsChart,
+  dashboardAllProductsChart,
+  dashboard24HoursPerformanceChart,
 };

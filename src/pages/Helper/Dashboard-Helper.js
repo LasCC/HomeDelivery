@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Drawer,
@@ -12,7 +12,6 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import ROUTE from "../../Routes";
-import { LoginContext } from "../../contexts/LoginContext"
 import DrawerDashboardHelper from "../../components/DrawerDashboardHelper";
 window.document.title = "HomeDelivery - Dashbord";
 
@@ -56,8 +55,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default (props) => {
-
-  const { firstName } = JSON.parse(localStorage.getItem('account_to_register'))
+  const { firstName } = JSON.parse(localStorage.getItem("account_to_register"));
   const classes = useStyles();
   const [values, setValues] = useState({
     search: "",

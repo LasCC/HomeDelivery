@@ -4,27 +4,31 @@ import { LoginContext } from "../contexts/LoginContext";
 import ROUTE from "../Routes";
 
 export default ({ path, component: Component, render, ...rest }) => {
-    const { checkAuth } = useContext(LoginContext);
-    return (
-        <Route
-            {...rest}
-            render={props => {
-                if (checkAuth() === 'helper')
-                    return Component ? <Component {...props} /> : render(props);
-                else if (checkAuth() === 'client')
-                    return (
-                        <Redirect
-                            to={{ pathname: ROUTE.DASHBOARD, state: { from: props.location } }}
-                        />
-                    );
-                else return (
-                    <Redirect
-                        to={{ pathname: ROUTE.LOGIN, state: { from: props.location } }}
-                    />
-                );
-            }}
-        />
-    );
+  const { checkAuth } = useContext(LoginContext);
+  return (
+    <Route
+      {...rest}
+      render={(props) => {
+        if (checkAuth() === "helper")
+          return Component ? <Component {...props} /> : render(props);
+        else if (checkAuth() === "client")
+          return (
+            <Redirect
+              to={{
+                pathname: ROUTE.DASHBOARD,
+                state: { from: props.location },
+              }}
+            />
+          );
+        else
+          return (
+            <Redirect
+              to={{ pathname: ROUTE.LOGIN, state: { from: props.location } }}
+            />
+          );
+      }}
+    />
+  );
 };
 
 /**

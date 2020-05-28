@@ -1,12 +1,10 @@
 import React, { useState, useContext } from "react";
 import { Grid, TextField, Typography, Box, Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import ROUTE from "../../Routes";
 import { LoginContext } from "../../contexts/LoginContext";
 window.document.title = "HomeDelivery - Création de compte bénévole";
 
 export default (props) => {
-  const { handleHelperRegistration } = useContext(LoginContext)
+  const { handleHelperRegistration } = useContext(LoginContext);
 
   const [values, setValues] = useState({
     firstName: "",
@@ -14,7 +12,7 @@ export default (props) => {
     email: "",
     password: "",
     phone: "",
-    birth_date: ""
+    birth_date: "",
   });
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
@@ -22,17 +20,21 @@ export default (props) => {
 
   const handleSubmit = () => {
     console.log("====== Registration HELPER ======");
-    let acc_to_register = JSON.parse(localStorage.getItem("account_to_register")); // recup acc-type 
-    acc_to_register = { ...acc_to_register, ...values, }; // on ajoute le state + acctype
-    delete acc_to_register.password_confirm
-    delete acc_to_register.showPassword
+    let acc_to_register = JSON.parse(
+      localStorage.getItem("account_to_register")
+    ); // recup acc-type
+    acc_to_register = { ...acc_to_register, ...values }; // on ajoute le state + acctype
+    delete acc_to_register.password_confirm;
+    delete acc_to_register.showPassword;
     //send to back here ---
     // console.log(acc_to_register)
-    handleHelperRegistration({ ...acc_to_register })
-    delete acc_to_register.password
-    localStorage.setItem('account_to_register', JSON.stringify(acc_to_register))
-    console.log("ls : -> ", acc_to_register)
-
+    handleHelperRegistration({ ...acc_to_register });
+    delete acc_to_register.password;
+    localStorage.setItem(
+      "account_to_register",
+      JSON.stringify(acc_to_register)
+    );
+    console.log("ls : -> ", acc_to_register);
   };
   return (
     <div>
@@ -164,7 +166,6 @@ export default (props) => {
                   borderRadius: 4,
                   boxShadow: "0px 9px 18px 3px rgba(24,176,116,0.15)",
                 }}
-
               >
                 Continuer <i className='uil uil-arrow-right' />
               </Button>
