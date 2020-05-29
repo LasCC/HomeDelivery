@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
+import { Formik, Form, Field } from 'formik';
+import { TextField } from 'formik-material-ui';
 import {
   Grid,
-  TextField,
   Typography,
   Box,
   Button,
@@ -12,6 +13,7 @@ import {
   DialogContentText,
   DialogTitle,
   Dialog,
+  LinearProgress
 } from "@material-ui/core";
 import Slide from "@material-ui/core/Slide";
 import { LoginContext } from "../contexts/LoginContext";
@@ -36,8 +38,10 @@ export default (props) => {
   const { handleLogin, httpError } = useContext(LoginContext);
 
   const [values, setValues] = useState({
-    email: "",
-    password: "",
+    showPassword: false,
+    submitted: false,
+    email: '',
+    password: '',
   });
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -64,9 +68,7 @@ export default (props) => {
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
-  const handleSubmit = () => {
-    handleLogin({ email: values.email, password: values.password });
-  };
+
   return (
     <div>
       <Grid container>
@@ -104,7 +106,7 @@ export default (props) => {
           </Box>
         </Grid>
         <Grid item xs={12} xl={9} md={9} sm={12}>
-          {errorMsg()}
+
           <Box
             style={{ height: "100vh", zIndex: 1 }}
             display='flex'
@@ -118,50 +120,103 @@ export default (props) => {
               >
                 Connexion
               </Typography>
+              {(values.submitted && httpError.status === 401) && errorMsg()}
               <Typography color='textSecondary'>
                 Veuillez renseigner vos identifiant pour accéder à HomeDelivery
               </Typography>
-              <TextField
-                label='Adresse email'
-                error={httpError.clientError}
-                variant='outlined'
-                fullWidth
-                value={values.email}
-                onChange={handleChange("email")}
+              <Formik
+                initialValues={values}
+                validate={values => {
+                  setValues({ ...values, submitted: false })
+                  const errors = {};
+                  if (!values.email) {
+                    errors.email = 'Ce champs est requis';
+                  } else if (
+                    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+                  ) {
+                    errors.email = 'Adresse mail invalide';
+                  }
+                  return errors;
+                }}
+                onSubmit={(values, { setSubmitting }) => {
+                  setValues({ ...values, submitted: true })
+                  setTimeout(() => {
+                    setSubmitting(false);
+                    handleLogin({ email: values.email, password: values.password });
+                  }, 500);
+                }}
+              >
 
-                style={{ marginTop: 25, marginBottom: 15, marginRight: 15 }}
-              />
-              <TextField
-                variant='outlined'
-                label='Mot de passe'
-                error={httpError.clientError}
-                value={values.password}
-                type={values.showPassword ? "text" : "password"}
-                onChange={handleChange("password")}
-                fullWidth
-                style={{
-                  marginTop: 10,
-                  marginBottom: 15,
-                }}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position='end'>
-                      <IconButton
-                        edge='end'
-                        aria-label='toggle password visibility'
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                      >
-                        {values.showPassword ? (
-                          <i className='uil uil-eye-slash' />
-                        ) : (
-                            <i className='uil uil-eye' />
-                          )}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
+
+
+                {({ submitForm, isSubmitting }) => (
+                  <Form>
+                    <Field
+                      component={TextField}
+                      name="email"
+                      type="email"
+                      label="Email"
+                      variant='outlined'
+                      fullWidth
+                      style={{
+                        marginTop: 15,
+                        marginBottom: 15,
+                      }}
+                    />
+                    <br />
+                    <Field
+                      component={TextField}
+
+                      label="Mot de passe"
+                      name="password"
+                      variant='outlined'
+                      fullWidth
+                      type={values.showPassword ? "text" : "password"}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position='end'>
+                            <IconButton
+                              edge='end'
+                              aria-label='toggle password visibility'
+                              onClick={handleClickShowPassword}
+                              onMouseDown={handleMouseDownPassword}
+                            >
+                              {values.showPassword ? (
+                                <i className='uil uil-eye-slash' />
+                              ) : (
+                                  <i className='uil uil-eye' />
+                                )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+
+                    {isSubmitting && <LinearProgress />}
+                    <br />
+
+                    <Button
+                      onClick={submitForm}
+                      fullWidth
+                      disabled={isSubmitting}
+                      style={{
+                        backgroundColor: "rgb(70, 176, 74)",
+                        color: "white",
+                        fontWeight: "bold",
+                        marginTop: 20,
+                        marginBottom: 20,
+                        padding: 15,
+                        borderRadius: 4,
+                        boxShadow: "0px 9px 18px 3px rgba(24,176,116,0.15)",
+                      }}
+                    >
+                      Connexion
+                    </Button>
+
+                  </Form>
+                )}
+              </Formik>
+
               <Typography
                 onClick={handleClickOpen}
                 variant='h2'
@@ -225,25 +280,12 @@ export default (props) => {
                   </Button>
                 </DialogActions>
               </Dialog>
-              <Button
-                onClick={handleSubmit}
-                fullWidth
-                style={{
-                  backgroundColor: "rgb(70, 176, 74)",
-                  color: "white",
-                  fontWeight: "bold",
-                  marginTop: 20,
-                  padding: 15,
-                  borderRadius: 4,
-                  boxShadow: "0px 9px 18px 3px rgba(24,176,116,0.15)",
-                }}
-              >
-                Connexion
-              </Button>
+
             </Box>
           </Box>
         </Grid>
       </Grid>
+
     </div>
   );
 };

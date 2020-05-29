@@ -4,7 +4,7 @@
 	"private": true,
 	"dependencies": {
 		"@mapbox/mapbox-gl-directions": "^4.0.3",
-		"@material-ui/core": "^4.9.11",
+		"@material-ui/core": "^4.10.0",
 		"@material-ui/icons": "^4.9.1",
 		"@material-ui/lab": "^4.0.0-alpha.47",
 		"@testing-library/jest-dom": "^4.2.4",
@@ -18,6 +18,8 @@
 		"d3-fetch": "^1.1.2",
 		"d3-scale": "^3.2.1",
 		"deck.gl": "^8.1.1",
+		"formik": "^2.1.4",
+		"formik-material-ui": "^2.0.0-beta.1",
 		"gsap": "^3.2.6",
 		"jwt-decode": "^2.2.0",
 		"material-table": "^1.57.2",
