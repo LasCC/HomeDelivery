@@ -33,7 +33,7 @@ export default (props) => {
     setOpen(false);
   };
 
-  const { handleLogin } = useContext(LoginContext);
+  const { handleLogin, httpError } = useContext(LoginContext);
 
   const [values, setValues] = useState({
     email: "",
@@ -42,7 +42,22 @@ export default (props) => {
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
-
+  const errorMsg = () => {
+    if (httpError.status === 400) {
+      return (
+        <Typography color="error">
+          Merci de completer les champs
+        </Typography>
+      )
+    } else if (httpError.status === 401) {
+      return (
+        <Typography color="error">
+          Nom d'utilisateur ou mot de passe incorrect
+        </Typography>
+      )
+    }
+    return
+  }
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
@@ -89,6 +104,7 @@ export default (props) => {
           </Box>
         </Grid>
         <Grid item xs={12} xl={9} md={9} sm={12}>
+          {errorMsg()}
           <Box
             style={{ height: "100vh", zIndex: 1 }}
             display='flex'
@@ -107,15 +123,18 @@ export default (props) => {
               </Typography>
               <TextField
                 label='Adresse email'
+                error={httpError.clientError}
                 variant='outlined'
                 fullWidth
                 value={values.email}
                 onChange={handleChange("email")}
+
                 style={{ marginTop: 25, marginBottom: 15, marginRight: 15 }}
               />
               <TextField
                 variant='outlined'
                 label='Mot de passe'
+                error={httpError.clientError}
                 value={values.password}
                 type={values.showPassword ? "text" : "password"}
                 onChange={handleChange("password")}
@@ -136,8 +155,8 @@ export default (props) => {
                         {values.showPassword ? (
                           <i className='uil uil-eye-slash' />
                         ) : (
-                          <i className='uil uil-eye' />
-                        )}
+                            <i className='uil uil-eye' />
+                          )}
                       </IconButton>
                     </InputAdornment>
                   ),
