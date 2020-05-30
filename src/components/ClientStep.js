@@ -8,6 +8,7 @@ import "moment/locale/fr";
 moment.locale("fr");
 
 export default (props) => {
+  const { city, address, zipcode } = JSON.parse(localStorage.getItem('account_to_register'))
   return (
     <div>
       <Box display='flex' alignItems='center'>
@@ -21,7 +22,7 @@ export default (props) => {
               variant='h1'
               style={{ fontWeight: "bold", fontSize: 25 }}
             >
-              A [Ville inscrite à l'inscription]
+              A <small>{address + ", " + zipcode + " " + city}</small>
             </Typography>
           </Box>
         </Box>

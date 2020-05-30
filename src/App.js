@@ -5,6 +5,7 @@ import "circular-std";
 import ROUTE from "./Routes";
 import Loader from "./components/Loader";
 import LoginContext from "../src/contexts/LoginContext";
+import AnnonceContext from "../src/contexts/AnnonceContext";
 import PublicRoute from "./specialroutes/PublicRoute"; // si tu n'est pas loggé
 import ProtectedClientRoute from "./specialroutes/ProtectedClientRoute"; // si tu es loggé en tant que client
 import ProtectedHelperRoute from "./specialroutes/ProtectedHelperRoute"; // si tu es loggé en tant que helper
@@ -66,143 +67,147 @@ export default function App() {
   return (
     <Suspense fallback={<Loader />}>
       <LoginContext>
-        <Switch>
-          <PublicRoute exact path={ROUTE.HOME} component={Home} />
-          <PublicRoute exact path={ROUTE.REGISTER} component={Register} />
-          <PublicRoute
-            exact
-            path={ROUTE.REGISTER_HELPER}
-            component={RegisterHelper}
-          />
-          <PublicRoute
-            exact
-            path={ROUTE.REGISTER_CLIENT}
-            component={RegisterClient}
-          />
-          <PublicRoute
-            exact
-            path={ROUTE.CONFIRM_REGISTRATION}
-            component={ConfirmRegistration}
-          />
-          <PublicRoute exact path={ROUTE.LOGIN} component={Login} />
+        <AnnonceContext>
 
-          <ProtectedClientRoute
-            exact
-            path={ROUTE.CHECKOUT_CLIENT}
-            component={CheckoutClient}
-          />
-          <ProtectedClientRoute
-            exact
-            path={ROUTE.ANNONCE}
-            component={CreateAnnonce}
-          />
-          <ProtectedClientRoute
-            exact
-            path={ROUTE.CONFIRM_ANNONCE}
-            component={ConfirmAnnonce}
-          />
-          <ProtectedClientRoute
-            exact
-            path={ROUTE.SHIPMENT_ANNONCE}
-            component={ShippingAnnonce}
-          />
-          <ProtectedClientRoute
-            exact
-            path={ROUTE.DASHBOARD}
-            component={DashboardClient}
-          />
-          <ProtectedClientRoute
-            exact
-            path={ROUTE.DASHBOARD_SETTINGS}
-            component={DashboardClientSettings}
-          />
-          <ProtectedClientRoute
-            exact
-            path={ROUTE.DASHBOARD_QUESTIONS}
-            component={DashboardClientQuestions}
-          />
-          <ProtectedClientRoute
-            exact
-            path={ROUTE.DASHBOARD_HISTORY}
-            component={DashboardClientHistory}
-          />
-          <ProtectedClientRoute
-            exact
-            path={ROUTE.DASHBOARD_CONTACT}
-            component={DashboardClientContact}
-          />
 
-          <ProtectedHelperRoute
-            exact
-            path={ROUTE.DASHBOARD_HELPER}
-            component={DashboardHelper}
-          />
-          <ProtectedHelperRoute
-            exact
-            path={ROUTE.DASHBOARD_HELPER_QR_CODE}
-            component={DashboardHelperGenerateQR}
-          />
-          <ProtectedHelperRoute
-            exact
-            path={ROUTE.DASHBOARD_HELPER_ANNONCE}
-            component={DashboardHelperAnnonce}
-          />
-          <ProtectedHelperRoute
-            exact
-            path={ROUTE.DASHBOARD_SETTINGS_HELPER}
-            component={DashboardHelperSettings}
-          />
-          <ProtectedHelperRoute
-            exact
-            path={ROUTE.DASHBOARD_HISTORY_HELPER}
-            component={DashboardShipmentHistory}
-          />
-          <ProtectedHelperRoute
-            exact
-            path={ROUTE.DASHBOARD_UPDATE_ANNONCE_HELPER}
-            component={DashboardHelperUpdateAnnonce}
-          />
-          <ProtectedHelperRoute
-            exact
-            path={ROUTE.DASHBOARD_CONTACT_HELPER}
-            component={DashboardHelperContact}
-          />
-          <ProtectedHelperRoute
-            exact
-            path={ROUTE.DASHBOARD_QUESTIONS_HELPER}
-            component={DashboardHelperQuestions}
-          />
-          {/* ADMIN */}
-          <Route
-            exact
-            path={ROUTE.DASHBOARD_ADMIN}
-            component={DashboardAdmin}
-          />
-          <Route
-            exact
-            path={ROUTE.DASHBOARD_ADMIN_USERS}
-            component={DashboardAdminUsers}
-          />
-          <Route
-            exact
-            path={ROUTE.DASHBOARD_ADMIN_LOGIN}
-            component={DashboardAdminLogin}
-          />
-          <Route
-            exact
-            path={ROUTE.DASHBOARD_ADMIN_ANALYTICS}
-            component={DashboardAdminAnalytics}
-          />
-          <Route
-            exact
-            path={ROUTE.DASHBOARD_ADMIN_ACCOUNT}
-            component={DashboardAdminAccount}
-          />
+          <Switch>
+            <PublicRoute exact path={ROUTE.HOME} component={Home} />
+            <PublicRoute exact path={ROUTE.REGISTER} component={Register} />
+            <PublicRoute
+              exact
+              path={ROUTE.REGISTER_HELPER}
+              component={RegisterHelper}
+            />
+            <PublicRoute
+              exact
+              path={ROUTE.REGISTER_CLIENT}
+              component={RegisterClient}
+            />
+            <PublicRoute
+              exact
+              path={ROUTE.CONFIRM_REGISTRATION}
+              component={ConfirmRegistration}
+            />
+            <PublicRoute exact path={ROUTE.LOGIN} component={Login} />
 
-          <Route exact path={ROUTE.TEST_MAP} component={Dev} />
-          <Route path='*' component={UnknownPage} />
-        </Switch>
-        <NotificationWrapper />
+            <ProtectedClientRoute
+              exact
+              path={ROUTE.CHECKOUT_CLIENT}
+              component={CheckoutClient}
+            />
+            <ProtectedClientRoute
+              exact
+              path={ROUTE.ANNONCE}
+              component={CreateAnnonce}
+            />
+            <ProtectedClientRoute
+              exact
+              path={ROUTE.CONFIRM_ANNONCE}
+              component={ConfirmAnnonce}
+            />
+            <ProtectedClientRoute
+              exact
+              path={ROUTE.SHIPMENT_ANNONCE}
+              component={ShippingAnnonce}
+            />
+            <ProtectedClientRoute
+              exact
+              path={ROUTE.DASHBOARD}
+              component={DashboardClient}
+            />
+            <ProtectedClientRoute
+              exact
+              path={ROUTE.DASHBOARD_SETTINGS}
+              component={DashboardClientSettings}
+            />
+            <ProtectedClientRoute
+              exact
+              path={ROUTE.DASHBOARD_QUESTIONS}
+              component={DashboardClientQuestions}
+            />
+            <ProtectedClientRoute
+              exact
+              path={ROUTE.DASHBOARD_HISTORY}
+              component={DashboardClientHistory}
+            />
+            <ProtectedClientRoute
+              exact
+              path={ROUTE.DASHBOARD_CONTACT}
+              component={DashboardClientContact}
+            />
+
+            <ProtectedHelperRoute
+              exact
+              path={ROUTE.DASHBOARD_HELPER}
+              component={DashboardHelper}
+            />
+            <ProtectedHelperRoute
+              exact
+              path={ROUTE.DASHBOARD_HELPER_QR_CODE}
+              component={DashboardHelperGenerateQR}
+            />
+            <ProtectedHelperRoute
+              exact
+              path={ROUTE.DASHBOARD_HELPER_ANNONCE}
+              component={DashboardHelperAnnonce}
+            />
+            <ProtectedHelperRoute
+              exact
+              path={ROUTE.DASHBOARD_SETTINGS_HELPER}
+              component={DashboardHelperSettings}
+            />
+            <ProtectedHelperRoute
+              exact
+              path={ROUTE.DASHBOARD_HISTORY_HELPER}
+              component={DashboardShipmentHistory}
+            />
+            <ProtectedHelperRoute
+              exact
+              path={ROUTE.DASHBOARD_UPDATE_ANNONCE_HELPER}
+              component={DashboardHelperUpdateAnnonce}
+            />
+            <ProtectedHelperRoute
+              exact
+              path={ROUTE.DASHBOARD_CONTACT_HELPER}
+              component={DashboardHelperContact}
+            />
+            <ProtectedHelperRoute
+              exact
+              path={ROUTE.DASHBOARD_QUESTIONS_HELPER}
+              component={DashboardHelperQuestions}
+            />
+            {/* ADMIN */}
+            <Route
+              exact
+              path={ROUTE.DASHBOARD_ADMIN}
+              component={DashboardAdmin}
+            />
+            <Route
+              exact
+              path={ROUTE.DASHBOARD_ADMIN_USERS}
+              component={DashboardAdminUsers}
+            />
+            <Route
+              exact
+              path={ROUTE.DASHBOARD_ADMIN_LOGIN}
+              component={DashboardAdminLogin}
+            />
+            <Route
+              exact
+              path={ROUTE.DASHBOARD_ADMIN_ANALYTICS}
+              component={DashboardAdminAnalytics}
+            />
+            <Route
+              exact
+              path={ROUTE.DASHBOARD_ADMIN_ACCOUNT}
+              component={DashboardAdminAccount}
+            />
+
+            <Route exact path={ROUTE.TEST_MAP} component={Dev} />
+            <Route path='*' component={UnknownPage} />
+          </Switch>
+          <NotificationWrapper />
+        </AnnonceContext>
       </LoginContext>
     </Suspense>
   );

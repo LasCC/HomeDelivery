@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Grid, Typography, Box, Divider } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import ClientStep from "../../components/ClientStep";
 import ROUTE from "../../Routes";
 import Navbar from "../../components/Navbar";
 import moment from "moment";
+import { useLocalStorage } from "../../hooks/useLocalstorage"
 import "moment/locale/fr";
+import TodoItem from "../../components/TodoItem"
+import { AnnonceContext } from "../../contexts/AnnonceContext"
 moment.locale("fr");
 window.document.title = "HomeDelivery - Confirmation de votre annonce";
 
 export default (props) => {
+
+  const { handleAnnonceSubmit } = useContext(AnnonceContext)
+  const [values, setValues] = useLocalStorage("courses")
+  const handleSubmit = () => {
+
+    handleAnnonceSubmit(values)
+  }
+
   return (
     <div>
       <Grid container>
@@ -64,39 +75,37 @@ export default (props) => {
                   </Box>
                 </Box>
               </Link>
-              <Link
-                to={ROUTE.SHIPMENT_ANNONCE}
-                style={{ textDecoration: "none", color: "black" }}
+
+              <Box
+                display='flex'
+                alignItems='center'
+                className='successCard'
+                style={{ width: "90%" }}
+                onClick={handleSubmit}
               >
-                <Box
-                  display='flex'
-                  alignItems='center'
-                  className='successCard'
-                  style={{ width: "90%" }}
-                >
-                  <Box>
-                    <i
-                      className='uil uil-check-circle'
-                      style={{ fontSize: 50 }}
-                    />
-                  </Box>
-                  <Box style={{ marginLeft: 10 }} flexGrow={1}>
-                    <Typography>
-                      Valider votre <strong>annonce</strong>
-                    </Typography>
-                    <Typography color='textSecondary'>
-                      Vous allez être redirigés et continuer le processus de
-                      création d'annonce.
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <i
-                      className='uil uil-arrow-right'
-                      style={{ fontSize: 25 }}
-                    />
-                  </Box>
+                <Box>
+                  <i
+                    className='uil uil-check-circle'
+                    style={{ fontSize: 50 }}
+                  />
                 </Box>
-              </Link>
+                <Box style={{ marginLeft: 10 }} flexGrow={1}>
+                  <Typography>
+                    Valider votre <strong>annonce</strong>
+                  </Typography>
+                  <Typography color='textSecondary'>
+                    Vous allez être redirigés et continuer le processus de
+                    création d'annonce.
+                    </Typography>
+                </Box>
+                <Box>
+                  <i
+                    className='uil uil-arrow-right'
+                    style={{ fontSize: 25 }}
+                  />
+                </Box>
+              </Box>
+
             </Box>
           </Box>
         </Grid>
@@ -126,22 +135,32 @@ export default (props) => {
                 <div className='ticket__divider' />
                 <Box className='ticket__body'>
                   <Box className='ticket__section'>
-                    <Typography>Liste des courses (0 / 10) :</Typography>
+                    {values.todos > 0 && (<Typography>
+                      Liste des courses ({values.todos.length} / 10) :
+                    </Typography>)}
                     <Typography>
-                      Liste de la liste de courses stocké dans le localstorage
+                      {/* Liste de la liste de courses stocké dans le localstorage */}
+                      {values.todos && values.todos.map((todo, index) => (
+                        <TodoItem
+                          key={index}
+                          index={index}
+                          todo={todo}
+
+                        />
+                      ))}
                     </Typography>
                   </Box>
                   <Box className='ticket__section'>
                     <Typography>Demandes annexes :</Typography>
                     <Typography color='textSecondary'>
-                      Liste de la liste de courses stocké dans le localstorage
+                      {values.annexe}
                     </Typography>
                   </Box>
 
                   <Box className='ticket__section'>
                     <Typography>Mode de paiement :</Typography>
                     <Typography color='textSecondary'>
-                      Liste de la liste de courses stocké dans le localstorage
+                      {values.payment}
                     </Typography>
                   </Box>
                 </Box>
@@ -149,7 +168,7 @@ export default (props) => {
                   <Typography style={{ fontWeight: "bold" }}>
                     Prix maximum :
                   </Typography>
-                  <Typography color='textSecondary'>30 €</Typography>
+                  <Typography color='textSecondary'>{values.price_max + " €"}</Typography>
                 </Box>
               </article>
             </Box>
