@@ -106,14 +106,13 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(8),
-    boxShadow: "-8px 0px 18px 0px rgba(0,0,0,0.05)",
-    minHeight: "100vh",
     zIndex: 2,
   },
 }));
 
 export default (props) => {
   const classes = useStyles();
+  const [state, setState] = React.useState({});
   const [values, setValues] = React.useState({
     step_update: "",
   });
@@ -131,7 +130,6 @@ export default (props) => {
   const handleClose = () => {
     setState({ ...state, open: false });
   };
-  const [state, setState] = React.useState({});
 
   return (
     <div className={classes.root}>
@@ -194,7 +192,7 @@ export default (props) => {
               <i className='uil uil-create-dashboard' /> Dashboard
             </Typography>
           </Link>
-          <Link style={{ textDecoration: "none" }}>
+          <Link to='#' style={{ textDecoration: "none" }}>
             <Typography color='textPrimary' style={{ fontWeight: "bold" }}>
               <i className='uil-user-circle' /> Utilisateurs
             </Typography>
@@ -270,14 +268,13 @@ export default (props) => {
               tooltip: "Mettre à jour l'utilisateur",
               onClick: (event, query) => {
                 handleClickOpen();
-                console.log("ping pong ching cheng");
               },
             },
             {
               icon: () => <DeleteOutline />,
               tooltip: "Supprimer l'utilisateur",
               onClick: (event, query) => {
-                alert("Vous avez supprimer l'utilisateur");
+                alert(values.firstname);
               },
             },
           ]}
@@ -349,7 +346,7 @@ export default (props) => {
             </Button>
             <Button
               onClick={() => {
-                console.log("getit");
+                console.log(values.step_update);
                 handleClose();
               }}
               color='primary'

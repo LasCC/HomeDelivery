@@ -51,8 +51,6 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(8),
-    boxShadow: "-8px 0px 18px 0px rgba(0,0,0,0.05)",
-    minHeight: "100vh",
     zIndex: 2,
   },
 }));
@@ -128,7 +126,7 @@ export default (props) => {
               <i className='uil uil-create-dashboard' /> Dashboard
             </Typography>
           </Link>
-          <Link style={{ textDecoration: "none" }}>
+          <Link to='#' style={{ textDecoration: "none" }}>
             <Typography color='textPrimary' style={{ fontWeight: "bold" }}>
               <i className='uil uil-map' /> Carte intéractive
             </Typography>

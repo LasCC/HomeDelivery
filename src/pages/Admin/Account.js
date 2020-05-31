@@ -21,6 +21,8 @@ window.document.title = "HomeDelivery - Confiuration de votre compte";
 
 const drawerWidth = 300;
 
+// https://github.com/LasCC/ESTIAM-IO/blob/csb-1571089551595/src/pages/Dashboard-Admin/pages/Files.js#L341 REFERENCE
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -52,8 +54,6 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(8),
-    boxShadow: "-8px 0px 18px 0px rgba(0,0,0,0.05)",
-    minHeight: "100vh",
     zIndex: 2,
   },
 }));
@@ -136,7 +136,7 @@ export default (props) => {
               <i className='uil uil-create-dashboard' /> Dashboard
             </Typography>
           </Link>
-          <Link style={{ textDecoration: "none" }}>
+          <Link to='#' style={{ textDecoration: "none" }}>
             <Typography color='textPrimary' style={{ fontWeight: "bold" }}>
               <i className='uil uil-setting' /> Compte utilisateur
             </Typography>
