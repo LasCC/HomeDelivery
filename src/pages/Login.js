@@ -85,7 +85,7 @@ export default (props) => {
               }}
             >
               <img
-                src='http://svgur.com/i/Jqv.svg'
+                src='https://svgur.com/i/LhU.svg'
                 alt='logoHomedeliveryBlanc'
                 style={{ height: 40 }}
               />
