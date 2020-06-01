@@ -5,7 +5,6 @@ import ClientStep from "../../components/ClientStep";
 import ROUTE from "../../Routes";
 import Navbar from "../../components/Navbar";
 import moment from "moment";
-import { useLocalStorage } from "../../hooks/useLocalstorage"
 import "moment/locale/fr";
 import TodoItem from "../../components/TodoItem"
 import { AnnonceContext } from "../../contexts/AnnonceContext"
@@ -14,8 +13,8 @@ window.document.title = "HomeDelivery - Confirmation de votre annonce";
 
 export default (props) => {
 
-  const { handleAnnonceSubmit } = useContext(AnnonceContext)
-  const [values, setValues] = useLocalStorage("courses")
+  const { handleAnnonceSubmit, values } = useContext(AnnonceContext)
+
   const handleSubmit = () => {
 
     handleAnnonceSubmit(values)

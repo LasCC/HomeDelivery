@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useLocalStorage } from "../../hooks/useLocalstorage"
+import React, { useState, useContext } from "react";
+
 import TodoItem from "../../components/TodoItem"
 import {
   Grid,
@@ -20,16 +20,13 @@ import ROUTE from "../../Routes";
 import Navbar from "../../components/Navbar";
 import moment from "moment";
 import "moment/locale/fr";
+import { AnnonceContext } from "../../contexts/AnnonceContext";
 moment.locale("fr");
 window.document.title = "HomeDelivery - Création d'annonce";
 
 export default (props) => {
-  const [values, setValues] = useLocalStorage('courses', {
-    todos: [],
-    annexe: "",
-    price_max: "",
-    payment: "",
-  })
+  const { values, setValues } = useContext(AnnonceContext)
+
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {

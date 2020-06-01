@@ -65,9 +65,7 @@ export default (props) => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-  const handleChange = (name) => (event) => {
-    setValues({ ...values, [name]: event.target.value });
-  };
+
 
   return (
     <div>
