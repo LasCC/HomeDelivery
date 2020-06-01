@@ -29,7 +29,7 @@ export default (props) => {
           anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         >
           <Alert onClose={handleClose} severity='error'>
-            Une erreur est survenue !
+            Une erreur serveur est survenue !
           </Alert>
         </Snackbar>
       );

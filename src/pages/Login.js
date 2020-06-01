@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
-import { Formik, Form, Field } from 'formik';
-import { TextField } from 'formik-material-ui';
+import { Formik, Form, Field } from "formik";
+import { TextField } from "formik-material-ui";
+import { LoginContext } from "../contexts/LoginContext";
 import {
   Grid,
   Typography,
@@ -13,10 +14,9 @@ import {
   DialogContentText,
   DialogTitle,
   Dialog,
-  LinearProgress
+  CircularProgress,
 } from "@material-ui/core";
 import Slide from "@material-ui/core/Slide";
-import { LoginContext } from "../contexts/LoginContext";
 
 window.document.title = "HomeDelivery - Connexion";
 
@@ -40,8 +40,8 @@ export default (props) => {
   const [values, setValues] = useState({
     showPassword: false,
     submitted: false,
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -49,24 +49,20 @@ export default (props) => {
   const errorMsg = () => {
     if (httpError.status === 400) {
       return (
-        <Typography color="error">
-          Merci de completer les champs
-        </Typography>
-      )
+        <Typography color='error'>Merci de completer les champs</Typography>
+      );
     } else if (httpError.status === 401) {
       return (
-        <Typography color="error">
+        <Typography color='error'>
           Nom d'utilisateur ou mot de passe incorrect
         </Typography>
-      )
+      );
     }
-    return
-  }
+    return;
+  };
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-
-
   return (
     <div>
       <Grid container>
@@ -104,7 +100,6 @@ export default (props) => {
           </Box>
         </Grid>
         <Grid item xs={12} xl={9} md={9} sm={12}>
-
           <Box
             style={{ height: "100vh", zIndex: 1 }}
             display='flex'
@@ -114,46 +109,49 @@ export default (props) => {
             <Box style={{ padding: 25, width: "85%" }}>
               <Typography
                 variant='h1'
-                style={{ fontWeight: "bolder", fontSize: 55, marginBottom: 15 }}
+                style={{ fontWeight: "bolder", fontSize: 55, marginBottom: 10 }}
               >
                 Connexion
               </Typography>
-              {(values.submitted && httpError.status === 401) && errorMsg()}
               <Typography color='textSecondary'>
                 Veuillez renseigner vos identifiant pour accéder à HomeDelivery
               </Typography>
+              {values.submitted && httpError.status === 401 && errorMsg()}
               <Formik
                 initialValues={values}
-                validate={values => {
-                  setValues({ ...values, submitted: false })
+                validate={(values) => {
+                  setValues({ ...values, submitted: false });
                   const errors = {};
                   if (!values.email) {
-                    errors.email = 'Ce champs est requis';
+                    errors.email = "Ce champ est requis !";
                   } else if (
-                    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+                    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(
+                      values.email
+                    )
                   ) {
-                    errors.email = 'Adresse mail invalide';
+                    errors.email = "Adresse email invalide";
                   }
                   return errors;
                 }}
                 onSubmit={(values, { setSubmitting }) => {
-                  setValues({ ...values, submitted: true })
+                  setValues({ ...values, submitted: true });
                   setTimeout(() => {
                     setSubmitting(false);
-                    handleLogin({ email: values.email, password: values.password });
-                  }, 500);
+                    handleLogin({
+                      email: values.email,
+                      password: values.password,
+                    });
+                  }, 1000);
                 }}
               >
-
-
-
                 {({ submitForm, isSubmitting }) => (
                   <Form>
                     <Field
                       component={TextField}
-                      name="email"
-                      type="email"
-                      label="Email"
+                      name='email'
+                      type='email'
+                      label='Identifiant'
+                      placeholder='monmail@gmail.com'
                       variant='outlined'
                       fullWidth
                       style={{
@@ -161,13 +159,12 @@ export default (props) => {
                         marginBottom: 15,
                       }}
                     />
-                    <br />
                     <Field
                       component={TextField}
-
-                      label="Mot de passe"
-                      name="password"
+                      label='Mot de passe'
+                      name='password'
                       variant='outlined'
+                      placeholder='**************'
                       fullWidth
                       type={values.showPassword ? "text" : "password"}
                       InputProps={{
@@ -182,17 +179,13 @@ export default (props) => {
                               {values.showPassword ? (
                                 <i className='uil uil-eye-slash' />
                               ) : (
-                                  <i className='uil uil-eye' />
-                                )}
+                                <i className='uil uil-eye' />
+                              )}
                             </IconButton>
                           </InputAdornment>
                         ),
                       }}
                     />
-
-                    {isSubmitting && <LinearProgress />}
-                    <br />
-
                     <Button
                       onClick={submitForm}
                       fullWidth
@@ -209,12 +202,22 @@ export default (props) => {
                       }}
                     >
                       Connexion
+                      {isSubmitting && (
+                        <CircularProgress
+                          size={24}
+                          style={{
+                            position: "absolute",
+                            top: "50%",
+                            left: "50%",
+                            marginTop: -12,
+                            marginLeft: -12,
+                          }}
+                        />
+                      )}
                     </Button>
-
                   </Form>
                 )}
               </Formik>
-
               <Typography
                 onClick={handleClickOpen}
                 variant='h2'
@@ -278,12 +281,10 @@ export default (props) => {
                   </Button>
                 </DialogActions>
               </Dialog>
-
             </Box>
           </Box>
         </Grid>
       </Grid>
-
     </div>
   );
 };
