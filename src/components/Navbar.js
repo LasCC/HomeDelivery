@@ -29,7 +29,12 @@ export default (props) => {
         >
           <img
             src='https://svgur.com/i/LhH.svg'
-            style={{ height: 35, marginRight: 15 }}
+            style={{
+              height: 35,
+              marginRight: 15,
+              userSelect: "none",
+              userDrag: "none",
+            }}
             alt='logo'
           />
           <Link
