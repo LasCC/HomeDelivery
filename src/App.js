@@ -68,8 +68,6 @@ export default function App() {
     <Suspense fallback={<Loader />}>
       <LoginContext>
         <AnnonceContext>
-
-
           <Switch>
             <PublicRoute exact path={ROUTE.HOME} component={Home} />
             <PublicRoute exact path={ROUTE.REGISTER} component={Register} />
