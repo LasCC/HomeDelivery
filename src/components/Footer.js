@@ -82,7 +82,7 @@ export default (props) => {
       <Box display='flex' alignItems='center' style={{ padding: 30 }}>
         <Box flexGrow={1} display='flex' alignItems='center'>
           <img
-            src='https://svgur.com/i/Jg4.svg'
+            src='https://svgur.com/i/LhH.svg'
             style={{ height: 35, marginRight: 15 }}
             alt='logo'
           />

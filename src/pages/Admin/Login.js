@@ -52,7 +52,7 @@ const LoginAdmin = (props) => {
           }}
         >
           <Grid container justify='center' alignItems='center'>
-            <img src='https://svgur.com/i/Jg4.svg' alt='logoHomedelivery' />
+            <img src='https://svgur.com/i/LhH.svg' alt='logoHomedelivery' />
           </Grid>
           <Grid container justify='center' alignItems='center'>
             <Typography variant='h6' style={{ marginTop: 15 }}>

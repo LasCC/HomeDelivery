@@ -13,7 +13,7 @@ import { LoginContext } from "../../contexts/LoginContext";
 window.document.title = "HomeDelivery - Création de compte classique";
 
 export default (props) => {
-  const { handleClientRegistration } = useContext(LoginContext)
+  const { handleClientRegistration } = useContext(LoginContext);
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -32,7 +32,10 @@ export default (props) => {
       //   response.data.features[0].geometry.coordinates[1],
       //   response.data.features[0].geometry.coordinates[0]
       // );
-      return { latitude: response.data.features[0].geometry.coordinates[1].toString(), longitude: response.data.features[0].geometry.coordinates[0].toString() };
+      return {
+        latitude: response.data.features[0].geometry.coordinates[1].toString(),
+        longitude: response.data.features[0].geometry.coordinates[0].toString(),
+      };
     } catch (error) {
       console.log(error.message);
     }
@@ -56,24 +59,26 @@ export default (props) => {
   const handleSubmit = async () => {
     console.log("====== Registration ======");
     let geoloc = await getResponse(); // coordonné geolocalisé
-    let acc_to_register = JSON.parse(localStorage.getItem("account_to_register")); // recup acc-type 
+    let acc_to_register = JSON.parse(
+      localStorage.getItem("account_to_register")
+    ); // recup acc-type
     acc_to_register = { ...acc_to_register, ...values, ...geoloc }; // on ajoute le state et geoloc
 
-
-    delete acc_to_register.password_confirm
-    delete acc_to_register.showPassword
+    delete acc_to_register.password_confirm;
+    delete acc_to_register.showPassword;
     //send to back here---
     // console.log(acc_to_register)
-    handleClientRegistration({ ...acc_to_register })
-    delete acc_to_register.password
-    localStorage.setItem('account_to_register', JSON.stringify(acc_to_register))
-    console.log("ls : -> ", acc_to_register)
-
+    handleClientRegistration({ ...acc_to_register });
+    delete acc_to_register.password;
+    localStorage.setItem(
+      "account_to_register",
+      JSON.stringify(acc_to_register)
+    );
+    console.log("ls : -> ", acc_to_register);
   };
   return (
     <div>
       <Grid container>
-
         <Grid
           item
           xs={12}
@@ -98,7 +103,7 @@ export default (props) => {
               }}
             >
               <img
-                src='http://svgur.com/i/Jqv.svg'
+                src='https://svgur.com/i/LhU.svg'
                 alt='logoHomedeliveryBlanc'
                 style={{ height: 40 }}
               />
@@ -173,8 +178,8 @@ export default (props) => {
                           {values.showPassword ? (
                             <i className='uil uil-eye-slash' />
                           ) : (
-                              <i className='uil uil-eye' />
-                            )}
+                            <i className='uil uil-eye' />
+                          )}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -201,8 +206,8 @@ export default (props) => {
                           {values.showPassword ? (
                             <i className='uil uil-eye-slash' />
                           ) : (
-                              <i className='uil uil-eye' />
-                            )}
+                            <i className='uil uil-eye' />
+                          )}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -304,7 +309,6 @@ export default (props) => {
           </Box>
         </Grid>
       </Grid>
-
     </div>
   );
 };

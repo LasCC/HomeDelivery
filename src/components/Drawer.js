@@ -53,7 +53,7 @@ export default function TemporaryDrawer() {
       <List component='nav' aria-label='main mailbox folders'>
         <ListItem alignItems='flex-start'>
           <img
-            src='https://svgur.com/i/Jg4.svg'
+            src='https://svgur.com/i/LhH.svg'
             style={{ height: 35, marginRight: 15 }}
             alt='logo'
           />
