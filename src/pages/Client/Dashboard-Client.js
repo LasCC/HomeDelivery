@@ -102,7 +102,7 @@ export default (props) => {
       >
         <Box className={classes.toolbar}>
           <img
-            src='https://svgur.com/i/Jg4.svg'
+            src='https://svgur.com/i/LhH.svg'
             alt='logoHomeDelivery'
             style={{ marginLeft: 13, marginTop: 13 }}
           />
