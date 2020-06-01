@@ -43,6 +43,7 @@ export default (props) => {
               <img
                 src='https://svgur.com/i/LhU.svg'
                 alt='logoHomedeliveryBlanc'
+                draggable='false'
                 style={{ height: 40 }}
               />
               <Box>

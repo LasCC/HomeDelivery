@@ -56,15 +56,18 @@ export default (props) => {
             className='backgroundRegister'
           >
             <Box
+              onClick={() => window.location.replace("/")}
               display='flex'
               alignItems='center'
               style={{
                 padding: 25,
+                cursor: "pointer",
               }}
             >
               <img
                 src='https://svgur.com/i/LhU.svg'
                 alt='logoHomedeliveryBlanc'
+                draggable='false'
                 style={{ height: 40 }}
               />
               <Box>
