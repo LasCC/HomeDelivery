@@ -17,9 +17,10 @@ export default (props) => {
       >
         <Box flexGrow={1} display='flex' alignItems='center'>
           <img
-            src='https://i.imgur.com/fq8R3MQ.png'
+            src='https://i.imgur.com/YuItn4N.png'
             alt='imageFooter'
-            style={{ height: 250, userSelect: "none", userDrag: "none" }}
+            draggable='false'
+            style={{ height: 300, userSelect: "none", userDrag: "none" }}
           />
           <Box style={{ marginLeft: 25 }}>
             <Typography
@@ -56,17 +57,25 @@ export default (props) => {
               <img
                 src='https://i.imgur.com/HwAT5AW.png'
                 alt='iosdl'
+                draggable='false'
                 style={{
                   height: 35,
                   marginRight: 15,
                   userSelect: "none",
                   userDrag: "none",
+                  cursor: "pointer",
                 }}
               />
               <img
                 src='https://i.imgur.com/VryWM5c.png'
                 alt='androiddl'
-                style={{ height: 40, userSelect: "none", userDrag: "none" }}
+                draggable='false'
+                style={{
+                  height: 40,
+                  userSelect: "none",
+                  userDrag: "none",
+                  cursor: "pointer",
+                }}
               />
             </Box>
           </Box>

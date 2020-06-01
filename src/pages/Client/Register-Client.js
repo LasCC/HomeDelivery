@@ -26,12 +26,6 @@ export default (props) => {
       const response = await axios.get(
         `https://api-adresse.data.gouv.fr/search/?q=${values.address}+${values.zipcode}+${values.city}`
       );
-      // console.log(response.data);
-      // console.log(
-      //   `Localisation de l'utilisateur`,
-      //   response.data.features[0].geometry.coordinates[1],
-      //   response.data.features[0].geometry.coordinates[0]
-      // );
       return {
         latitude: response.data.features[0].geometry.coordinates[1].toString(),
         longitude: response.data.features[0].geometry.coordinates[0].toString(),
@@ -96,15 +90,18 @@ export default (props) => {
             className='backgroundRegister'
           >
             <Box
+              onClick={() => window.location.replace("/")}
               display='flex'
               alignItems='center'
               style={{
                 padding: 25,
+                cursor: "pointer",
               }}
             >
               <img
                 src='https://svgur.com/i/LhU.svg'
                 alt='logoHomedeliveryBlanc'
+                draggable='false'
                 style={{ height: 40 }}
               />
               <Box>

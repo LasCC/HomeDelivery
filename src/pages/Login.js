@@ -68,13 +68,19 @@ export default (props) => {
   return (
     <div>
       <Grid container>
-        <Grid item xs={12} xl={3} md={3} sm={12}>
+        <Grid
+          item
+          xs={12}
+          xl={3}
+          md={3}
+          sm={12}
+          style={{ boxShadow: "17px 0px 37px -20px rgba(0, 0, 0, 0.35)" }}
+        >
           <Box
             style={{
               height: "100vh",
               zIndex: 2,
               backgroundColor: "rgb(70, 176, 74)",
-              boxShadow: "17px 0px 37px -20px rgba(0, 0, 0, 0.35)",
             }}
             className='backgroundRegister'
           >

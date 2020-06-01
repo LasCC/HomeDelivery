@@ -8,6 +8,7 @@ export default (props) => {
         <Box flexGrow={1} display='flex' alignItems='center'>
           <img
             src='https://svgur.com/i/LhH.svg'
+            draggable='false'
             style={{
               height: 35,
               marginRight: 15,

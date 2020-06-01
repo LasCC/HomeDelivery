@@ -66,6 +66,7 @@ export default (props) => {
               <img
                 src='https://i.imgur.com/2mIMPDW.png'
                 alt='LangingPageFirstImage'
+                draggable='false'
                 style={{ height: 550, userSelect: "none", userDrag: "none" }}
               />
             </Box>
@@ -74,6 +75,7 @@ export default (props) => {
               <img
                 src='https://i.imgur.com/pxanmp5.png'
                 alt='lesaviezvousimage'
+                draggable='false'
                 style={{
                   height: 600,
                   marginRight: 50,
@@ -132,6 +134,7 @@ export default (props) => {
                   <img
                     src='https://i.imgur.com/krbd6ns.png'
                     alt='pasdecontactimage'
+                    draggable='false'
                     style={{
                       marginRight: 50,
                       userSelect: "none",
@@ -184,6 +187,7 @@ export default (props) => {
                   <img
                     src='https://i.imgur.com/PBOpuTf.png'
                     alt='portermasque'
+                    draggable='false'
                     style={{
                       marginRight: 50,
                       userSelect: "none",
@@ -197,6 +201,7 @@ export default (props) => {
                   <img
                     src='https://i.imgur.com/rJhk4aq.png'
                     alt='mobileapp'
+                    draggable='false'
                     style={{
                       marginRight: 50,
                       userSelect: "none",
@@ -248,6 +253,7 @@ export default (props) => {
                   <img
                     src='https://i.imgur.com/Oy229ak.png'
                     alt='resteralamaisonimage'
+                    draggable='false'
                     style={{
                       marginRight: 50,
                       userSelect: "none",
