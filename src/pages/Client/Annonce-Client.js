@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
+import TodoItem from "../../components/TodoItem"
 import {
   Grid,
   TextField,
@@ -18,16 +20,19 @@ import ROUTE from "../../Routes";
 import Navbar from "../../components/Navbar";
 import moment from "moment";
 import "moment/locale/fr";
+import { AnnonceContext } from "../../contexts/AnnonceContext";
 moment.locale("fr");
 window.document.title = "HomeDelivery - Création d'annonce";
 
 export default (props) => {
+  const { values, setValues } = useContext(AnnonceContext)
+
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
-  const [todos, setTodos] = useState([]);
+
   const onlyNumbers = (e) => {
     e.target.value = e.target.value.replace(/[^0-9]/g, "");
     console.log(e.target.value);
@@ -35,23 +40,13 @@ export default (props) => {
       e.target.value = "50";
     }
   };
-  const Todo = ({ todo, index, removeTodo }) => {
-    return (
-      <Box display='flex' alignItems='center' style={{ marginTop: 15 }}>
-        <Typography color='textSecondary'>{todo.article}</Typography>
-        <i
-          className='uil uil-trash-alt'
-          onClick={() => removeTodo(index)}
-          style={{ cursor: "pointer", color: "#f55151" }}
-        />
-      </Box>
-    );
-  };
+
   const addTodo = (article) => {
-    const newTodos = [...todos, { article }];
-    console.log(todos);
-    if (todos.length < 10) {
-      setTodos(newTodos);
+    console.log(article)
+    const todos = [...values.todos, article];
+
+    if (values.todos.length < 10) {
+      setValues({ ...values, todos });
     } else {
       const FormHelperTextTodo = document.querySelector("#FormHelperTextTodo");
       FormHelperTextTodo.innerHTML =
@@ -61,26 +56,30 @@ export default (props) => {
     }
   };
   const removeTodo = (index) => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
+    const todos = [...values.todos];
+    todos.splice(index, 1);
+    setValues({ ...values, todos });
   };
 
-  const [values, setValues] = useState({
-    list: "",
-    annexe: "",
-    price_max: "",
-    payment: "",
-  });
+
+  const handleSubmit = () => {
+    console.log("====== LIST COURSES ======");
+
+
+
+
+  };
+  console.log(values);
+
+
+
+
+
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
-  const handleSubmit = () => {
-    console.log("====== LIST COURSES ======");
-    console.log(values);
-  };
-  console.log(values);
+
   const TodoForm = ({ addTodo }) => {
     const [value, setValue] = useState("");
 
@@ -121,6 +120,11 @@ export default (props) => {
       </form>
     );
   };
+
+
+
+
+
   return (
     <div>
       <Grid container>
@@ -136,7 +140,7 @@ export default (props) => {
               >
                 Liste de course :{" "}
               </Typography>
-              <TodoForm addTodo={addTodo} onChange={handleChange("list")} />
+              <TodoForm addTodo={addTodo} onChange={handleChange("todos")} />
               <FormHelperText id='FormHelperTextTodo'>
                 La liste des courses est limitée à 10 articles maximum
               </FormHelperText>
@@ -282,11 +286,11 @@ export default (props) => {
                 <div className='ticket__divider' />
                 <Box className='ticket__body'>
                   <Box className='ticket__section'>
-                    <Typography>
-                      Liste des courses ({todos.length} / 10) :
-                    </Typography>
-                    {todos.map((todo, index) => (
-                      <Todo
+                    {values.todos > 0 && (<Typography>
+                      Liste des courses ({values.todos.length} / 10) :
+                    </Typography>)}
+                    {values.todos && values.todos.map((todo, index) => (
+                      <TodoItem
                         key={index}
                         index={index}
                         todo={todo}

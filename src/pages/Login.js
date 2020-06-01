@@ -63,7 +63,6 @@ export default (props) => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-
   return (
     <div>
       <Grid container>
