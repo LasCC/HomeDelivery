@@ -103,8 +103,9 @@ export default (props) => {
           <img
             src='https://svgur.com/i/LhH.svg'
             alt='logoHomeDelivery'
-            draggable='false'
-            style={{ marginLeft: 13, marginTop: 13 }}
+ 
+            style={{ marginLeft: 13, marginTop: 13, height: 35 }}
+ 
           />
         </Box>
         <Divider />

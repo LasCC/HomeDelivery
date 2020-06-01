@@ -15,10 +15,9 @@ export default (props) => {
 
   const { handleAnnonceSubmit, values } = useContext(AnnonceContext)
 
-  const handleSubmit = () => {
 
-    handleAnnonceSubmit(values)
-  }
+
+
 
   return (
     <div>
@@ -80,7 +79,7 @@ export default (props) => {
                 alignItems='center'
                 className='successCard'
                 style={{ width: "90%" }}
-                onClick={handleSubmit}
+                onClick={handleAnnonceSubmit}
               >
                 <Box>
                   <i
