@@ -19,7 +19,7 @@ export default (props) => {
           <img
             src='https://i.imgur.com/fq8R3MQ.png'
             alt='imageFooter'
-            style={{ height: 250 }}
+            style={{ height: 250, userSelect: "none", userDrag: "none" }}
           />
           <Box style={{ marginLeft: 25 }}>
             <Typography
@@ -56,12 +56,17 @@ export default (props) => {
               <img
                 src='https://i.imgur.com/HwAT5AW.png'
                 alt='iosdl'
-                style={{ height: 35, marginRight: 15 }}
+                style={{
+                  height: 35,
+                  marginRight: 15,
+                  userSelect: "none",
+                  userDrag: "none",
+                }}
               />
               <img
                 src='https://i.imgur.com/VryWM5c.png'
                 alt='androiddl'
-                style={{ height: 40 }}
+                style={{ height: 40, userSelect: "none", userDrag: "none" }}
               />
             </Box>
           </Box>
