@@ -1,6 +1,6 @@
 [![N|Solid](https://i.imgur.com/AqIbHv0.png)]()
 
-[![Build Status](http://3.90.31.250:8080/buildStatus/icon?job=React-CI)](https://github.com/LasCC/HomeDelivery)
+[![Build Status](http://3.90.31.250:3333/buildStatus/icon?job=React-CI)](https://github.com/LasCC/HomeDelivery)
 
 # HomeDelivery
 

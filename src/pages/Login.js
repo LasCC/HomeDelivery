@@ -16,6 +16,8 @@ import {
   Dialog,
   CircularProgress,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import ROUTE from "../Routes";
 import Slide from "@material-ui/core/Slide";
 
 window.document.title = "HomeDelivery - Connexion";
@@ -66,7 +68,14 @@ export default (props) => {
   return (
     <div>
       <Grid container>
-        <Grid item xs={12} xl={3} md={3} sm={12}>
+        <Grid
+          item
+          xs={12}
+          xl={3}
+          md={3}
+          sm={12}
+          style={{ boxShadow: "17px 0px 37px -20px rgba(0, 0, 0, 0.35)" }}
+        >
           <Box
             style={{
               height: "100vh",
@@ -229,6 +238,22 @@ export default (props) => {
               >
                 Problème d'identification ?
               </Typography>
+              <Link
+                to={ROUTE.REGISTER}
+                style={{ textDecoration: "none", color: "rgb(70, 176, 74)" }}
+              >
+                <Typography
+                  variant='h2'
+                  style={{
+                    color: "rgb(70, 176, 74)",
+                    fontSize: 15,
+                    marginTop: 15,
+                    cursor: "pointer",
+                  }}
+                >
+                  Vous n'avez pas encore de compte ? Créer un compte
+                </Typography>
+              </Link>
               <Dialog
                 open={open}
                 TransitionComponent={Transition}
