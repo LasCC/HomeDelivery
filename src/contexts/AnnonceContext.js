@@ -10,7 +10,10 @@ console.success = () => {
     console.log('%c%s',
         'color: green; background: yellow; font-size: 24px;', 'Success!')
 }
-
+console.failure = () => {
+    console.log('%c%s',
+        'color: black; background: red; font-size: 24px;', 'Fail!')
+}
 
 const AnnonceProvider = (props) => {
 
@@ -24,12 +27,12 @@ const AnnonceProvider = (props) => {
     })
     const [steps, setSteps] = useState(0)
 
-    const handleAnnonceSubmit = async (obj) => {
+    const handleAnnonceSubmit = async () => {
         const body = {
-            courses: obj.todos,
-            info_annexes: obj.annexe,
-            payment_method: obj.payment,
-            max_price: obj.price_max,
+            courses: values.todos,
+            info_annexes: values.annexe,
+            payment_method: values.payment,
+            max_price: values.price_max,
 
         }
 
@@ -40,12 +43,26 @@ const AnnonceProvider = (props) => {
 
             console.success()
             console.log(res)
+            setSteps(2)
+
+            console.log({ steps })
             if (res.status === 200)
                 return props.history.push(ROUTE.SHIPMENT_ANNONCE)
         } catch (error) {
+            console.failure()
             console.log(error)
         }
 
+    }
+
+    const fetchAnnonce = async () => {
+
+        try {
+            const res = await backapi.get('/annonce/fetch')
+        } catch (error) {
+            console.failure("lol mdr")
+        }
+        return
     }
 
     return (

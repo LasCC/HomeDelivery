@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, Typography, Breadcrumbs } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import ROUTE from "../Routes";
 import moment from "moment";
 import "moment/locale/fr";
+import { AnnonceContext } from "../contexts/AnnonceContext";
 moment.locale("fr");
 
 export default (props) => {
+  const { steps } = useContext(AnnonceContext)
   const { city, address, zipcode } = JSON.parse(localStorage.getItem('account_to_register'))
   return (
     <div>
@@ -37,16 +39,16 @@ export default (props) => {
           separator={<NavigateNextIcon fontSize='small' />}
           aria-label='breadcrumb'
         >
-          <Link to={ROUTE.ANNONCE} style={{ textDecoration: "none" }}>
+          <Link to={steps >= 2 ? "#" : ROUTE.ANNONCE} style={{ textDecoration: "none" }} >
             <Typography color='textSecondary'>Liste de courses</Typography>
           </Link>
-          <Link to={ROUTE.CONFIRM_ANNONCE} style={{ textDecoration: "none" }}>
+          <Link to={steps >= 2 ? "#" : ROUTE.CONFIRM_ANNONCE} style={{ textDecoration: "none" }} disabled>
             <Typography color='textSecondary'>Confirmation</Typography>
           </Link>
-          <Link to={ROUTE.SHIPMENT_ANNONCE} style={{ textDecoration: "none" }}>
+          <Link to={ROUTE.SHIPMENT_ANNONCE} style={{ textDecoration: "none" }} disabled>
             <Typography color='textSecondary'>Livraison</Typography>
           </Link>
-          <Link to={ROUTE.CHECKOUT_CLIENT} style={{ textDecoration: "none" }}>
+          <Link to={ROUTE.CHECKOUT_CLIENT} style={{ textDecoration: "none" }} disabled>
             <Typography color='textSecondary'>Paiement</Typography>
           </Link>
         </Breadcrumbs>
