@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, Typography, Box } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import ROUTE from "../Routes";
 window.document.title = "HomeDelivery - Choix création de compte";
 
@@ -121,6 +122,22 @@ export default (props) => {
                   <i className='uil uil-arrow-right' style={{ fontSize: 25 }} />
                 </Box>
               </Box>
+              <Link
+                to={ROUTE.LOGIN}
+                style={{ textDecoration: "none", color: "rgb(70, 176, 74)" }}
+              >
+                <Typography
+                  variant='h2'
+                  style={{
+                    color: "rgb(70, 176, 74)",
+                    fontSize: 15,
+                    marginTop: 15,
+                    cursor: "pointer",
+                  }}
+                >
+                  Vous avez déjà un compte ? S'identifier
+                </Typography>
+              </Link>
             </Box>
           </Box>
         </Grid>
