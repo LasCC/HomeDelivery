@@ -10,8 +10,11 @@ import {
   IconButton,
   Box,
   Breadcrumbs,
+  Chip,
+  Tab,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { TabPanel, TabContext, TabList, Skeleton } from "@material-ui/lab";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import ROUTE from "../../Routes";
 import DrawerDashboardClient from "../../components/DrawerDashboardClient";
@@ -52,14 +55,16 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(8),
     backgroundColor: "white",
-    boxShadow: "-8px 0px 18px 0px rgba(0,0,0,0.05)",
-    zIndex: 2,
     minHeight: "100vh",
   },
 }));
 
 export default (props) => {
   const classes = useStyles();
+  const [tabValue, setValue] = useState();
+  const handleTabChange = (event, newValue) => {
+    setValue(newValue);
+  };
   const [values, setValues] = useState({
     input: "",
   });
@@ -107,9 +112,12 @@ export default (props) => {
           <img
             src='https://svgur.com/i/LhH.svg'
             alt='logoHomeDelivery'
- 
-            style={{ marginLeft: 13, marginTop: 13, objectFit: "cover", height: 35 }}
- 
+            style={{
+              marginLeft: 13,
+              marginTop: 13,
+              objectFit: "cover",
+              height: 35,
+            }}
           />
         </Box>
         <Divider />
@@ -129,22 +137,90 @@ export default (props) => {
           </Link>
           <Link style={{ textDecoration: "none" }}>
             <Typography color='textPrimary' style={{ fontWeight: "bold" }}>
-              <i className='uil uil-receipt-alt' /> Historique
+              <i className='uil uil-receipt-alt' /> Annonces
             </Typography>
           </Link>
         </Breadcrumbs>
         <Typography variant='h6' component='h1'>
-          <i className='uil uil-receipt-alt' /> Historique de vos annonces
-          postées
+          <i className='uil uil-receipt-alt' /> Annonces que vous avez postées
+          sur HomeDelivery
         </Typography>
         <Typography color='textSecondary'>
           Toutes vos annonces que vous avez postées sur la plateforme
           HomeDelivery.
         </Typography>
         <Divider style={{ marginTop: 15, marginBottom: 15 }} />
-        <Box style={{ marginTop: 25 }}>
-          <CardHistory />
-        </Box>
+        <TabContext value={tabValue}>
+          <TabList onChange={handleTabChange} aria-label='tabs'>
+            <Tab label='Annonces en cours' value='1' />
+            <Tab label='Historique' value='2' />
+          </TabList>
+          <TabPanel value='1'>
+            <Box
+              display='flex'
+              alignItems='center'
+              className=' successCard'
+              style={{ width: "100%", cursor: "inherit" }}
+            >
+              <Box>
+                <Skeleton
+                  variant='rect'
+                  width={125}
+                  height={125}
+                  style={{ borderRadius: 10 }}
+                />
+              </Box>
+              <Box style={{ marginLeft: 10 }} flexGrow={1}>
+                <Typography
+                  varaiant='h6'
+                  component='h1'
+                  style={{ fontWeight: "bold" }}
+                >
+                  Annonce de Boper
+                  <Chip
+                    label='En cours'
+                    variant='outlined'
+                    style={{
+                      backgroundColor: "#ffba08",
+                      borderColor: "#ffba08",
+                      borderWidth: 1,
+                      color: "black",
+                      fontWeight: "bold",
+                      marginLeft: 10,
+                    }}
+                  />
+                </Typography>
+                <Typography
+                  varaiant='h6'
+                  component='h1'
+                  style={{ marginTop: 10, marginBottom: 10 }}
+                >
+                  <i className='uil uil-ticket' />
+                  Liste de courses
+                </Typography>
+                <Box display='flex'>
+                  <Typography color='textSecondary'>
+                    <i className='uil uil-hourglass' />
+                    Date
+                  </Typography>
+                  <Typography color='textSecondary' style={{ marginLeft: 15 }}>
+                    <i className='uil uil-transaction' /> Mode de paiement
+                  </Typography>
+                  <Typography color='textSecondary' style={{ marginLeft: 15 }}>
+                    <i className='uil uil-euro-circle' />
+                    Prix
+                  </Typography>
+                </Box>
+              </Box>
+              <Box>
+                <i className='uil uil-arrow-right' style={{ fontSize: 25 }} />
+              </Box>
+            </Box>
+          </TabPanel>
+          <TabPanel value='2'>
+            <CardHistory />
+          </TabPanel>
+        </TabContext>
       </main>
     </div>
   );
