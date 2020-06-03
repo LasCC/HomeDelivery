@@ -108,10 +108,10 @@ export default (props) => {
             className='HoverTextColor'
           >
             <i
-              className='uil uil-history'
+              className='uil uil-receipt-alt'
               style={{ fontSize: 20, marginRight: 10 }}
             />
-            <Typography>Historique</Typography>
+            <Typography>Annonces</Typography>
           </Box>
         </Link>
       </Box>

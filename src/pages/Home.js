@@ -67,7 +67,7 @@ export default (props) => {
                 src='https://i.imgur.com/2mIMPDW.png'
                 alt='LangingPageFirstImage'
                 draggable='false'
-                style={{ height: 550, userSelect: "none", userDrag: "none" }}
+                style={{ userSelect: "none", userDrag: "none" }}
               />
             </Box>
             {/* Le saviez vous ? */}

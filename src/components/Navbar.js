@@ -29,6 +29,7 @@ export default (props) => {
         >
           <img
             src='https://svgur.com/i/LhH.svg'
+            draggable='false'
             style={{
               height: 35,
               marginRight: 15,
