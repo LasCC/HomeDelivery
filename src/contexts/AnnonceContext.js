@@ -15,6 +15,7 @@ console.failure = () => {
         'color: black; background: red; font-size: 24px;', 'Fail!')
 }
 
+
 const AnnonceProvider = (props) => {
 
 
@@ -44,7 +45,6 @@ const AnnonceProvider = (props) => {
             console.success()
             console.log(res)
             setSteps(2)
-
             console.log({ steps })
             if (res.status === 200)
                 return props.history.push(ROUTE.SHIPMENT_ANNONCE)
@@ -59,21 +59,23 @@ const AnnonceProvider = (props) => {
 
         try {
             const res = await backapi.get('/annonce/fetch')
+            console.log(res)
         } catch (error) {
-            console.failure("lol mdr")
+            console.failure()
         }
         return
     }
+    fetchAnnonce()
 
     return (
         <AnnonceContext.Provider
             value={{
-                test: "yes",
                 handleAnnonceSubmit,
                 values,
                 setValues,
                 steps,
-                setSteps
+                setSteps,
+                fetchAnnonce
             }}
 
         >
