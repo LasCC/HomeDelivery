@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Drawer,
@@ -13,6 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import ROUTE from "../../Routes";
 import DrawerDashboardClient from "../../components/DrawerDashboardClient";
+import { AnnonceContext } from "../../contexts/AnnonceContext";
 window.document.title = "HomeDelivery - Dashbord";
 
 const drawerWidth = 300;
@@ -55,6 +56,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default (props) => {
+  // const { fetchAnnonce } = useContext(AnnonceContext)
+  // fetchAnnonce()
   const classes = useStyles();
   const [values, setValues] = useState({
     search: "",
@@ -104,9 +107,9 @@ export default (props) => {
           <img
             src='https://svgur.com/i/LhH.svg'
             alt='logoHomeDelivery'
- 
+
             style={{ marginLeft: 13, marginTop: 13, height: 35 }}
- 
+
           />
         </Box>
         <Divider />

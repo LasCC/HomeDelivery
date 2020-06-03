@@ -19,7 +19,7 @@ const LoginProvider = (props) => {
     clientError: false,
     serverError: false,
   });
-  const endpoint = "http://localhost:8080";
+  const endpoint = "http://3.90.31.250:8080";
 
   const handleLogin = async (data) => {
     console.log("login request ....", data);
