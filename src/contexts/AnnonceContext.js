@@ -65,6 +65,18 @@ const AnnonceProvider = (props) => {
         }
         return
     }
+
+    const fetchActiveAnnonce = async () => {
+        try {
+            const res = await backapi.get('/annonce/fetchAll')
+            console.log(res)
+        } catch (error) {
+            console.failure()
+        }
+        return
+    }
+
+
     fetchAnnonce()
 
     return (
@@ -75,7 +87,8 @@ const AnnonceProvider = (props) => {
                 setValues,
                 steps,
                 setSteps,
-                fetchAnnonce
+                fetchAnnonce,
+                fetchActiveAnnonce,
             }}
 
         >
