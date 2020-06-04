@@ -84,9 +84,11 @@ const AnnonceProvider = (props) => {
 
         return
     }
-    const resolveAnnonce = async id => {
+    const resolveAnnonce = async annonce_id => {
         try {
-            const res = await backapi.post(`/annonce/resolve/${id}`)
+            const res = await backapi.post(`/annonce/resolve`, {
+                annonce_id
+            })
             console.log(res)
         } catch (error) {
 
@@ -94,7 +96,7 @@ const AnnonceProvider = (props) => {
             return console.failure()
         }
     }
-    // resolveAnnonce("")
+    // resolveAnnonce("5ed82d56b3bac6050996c244x")
 
 
     return (
