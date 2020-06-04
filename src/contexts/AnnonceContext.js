@@ -27,6 +27,7 @@ const AnnonceProvider = (props) => {
         payment: "",
     })
     const [steps, setSteps] = useState(0)
+    const [myannonces, setMyannonce] = useState({ loaded: false });
 
     const handleAnnonceSubmit = async () => {
         const body = {
@@ -56,28 +57,45 @@ const AnnonceProvider = (props) => {
     }
 
     const fetchAnnonce = async () => {
+        let res;
 
         try {
-            const res = await backapi.get('/annonce/fetch')
-            console.log(res)
+            res = await backapi.get('/annonce/fetch')
+            const { annonces, length } = res.data
+            await setMyannonce({ annonces, length, loaded: true })
+            console.log((annonces))
+            return res
         } catch (error) {
             console.failure()
         }
-        return
+        return res;
     }
 
     const fetchActiveAnnonce = async () => {
         try {
+
             const res = await backapi.get('/annonce/fetchAll')
-            console.log(res)
+            console.log(res.data)
+            setMyannonce(res)
+            return res
         } catch (error) {
             console.failure()
         }
+
         return
     }
+    const resolveAnnonce = async id => {
+        try {
+            const res = await backapi.post(`/annonce/resolve/${id}`)
+            console.log(res)
+        } catch (error) {
 
+            console.log({ error })
+            return console.failure()
+        }
+    }
+    // resolveAnnonce("")
 
-    fetchAnnonce()
 
     return (
         <AnnonceContext.Provider
@@ -89,6 +107,8 @@ const AnnonceProvider = (props) => {
                 setSteps,
                 fetchAnnonce,
                 fetchActiveAnnonce,
+                myannonces,
+                setMyannonce
             }}
 
         >

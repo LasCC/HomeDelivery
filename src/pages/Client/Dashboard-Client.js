@@ -1,5 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import backapi from "../../api/backapi"
+
 import {
   Drawer,
   CssBaseline,
@@ -14,7 +16,7 @@ import { Link } from "react-router-dom";
 import ROUTE from "../../Routes";
 import DrawerDashboardClient from "../../components/DrawerDashboardClient";
 import { AnnonceContext } from "../../contexts/AnnonceContext";
-window.document.title = "HomeDelivery - Dashbord";
+window.document.title = "HomeDelivery - Dashboard";
 
 const drawerWidth = 300;
 
@@ -56,8 +58,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default (props) => {
-  // const { fetchAnnonce } = useContext(AnnonceContext)
-  // fetchAnnonce()
+
+
+  const { fetchAnnonce, fetchActiveAnnonce, myannonces, setMyannonce } = useContext(AnnonceContext)
+  useEffect(() => {
+    fetchAnnonce()
+  }, [])
+
   const classes = useStyles();
   const [values, setValues] = useState({
     search: "",
@@ -70,6 +77,9 @@ export default (props) => {
     <div className={classes.root}>
       <CssBaseline />
       <Box position='fixed' className={classes.appBar}>
+        <p>
+          {JSON.stringify(myannonces.annonces) || "rien du tout"}
+        </p>
         <Toolbar>
           <i
             className='uil uil-search'
@@ -283,7 +293,7 @@ export default (props) => {
                       variant='h6'
                       component='h2'
                     >
-                      Annonces postées <br /> 45
+                      Annonces postées <br /> {myannonces.length || "0"}
                     </Typography>
                   </Box>
                 </Link>
@@ -325,6 +335,7 @@ export default (props) => {
           </Box>
         </Box>
       </main>
+
     </div>
   );
 };
