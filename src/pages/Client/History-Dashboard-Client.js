@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import CardAnnonceDashboard from "../../components/CardAnnonceDashboard"
 import {
   Drawer,
   CssBaseline,
@@ -10,7 +11,6 @@ import {
   IconButton,
   Box,
   Breadcrumbs,
-  Chip,
   Tab,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
@@ -19,6 +19,7 @@ import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import ROUTE from "../../Routes";
 import DrawerDashboardClient from "../../components/DrawerDashboardClient";
 import CardHistory from "../../components/CardHistory";
+import { AnnonceContext } from "../../contexts/AnnonceContext";
 window.document.title = "HomeDelivery - Historique";
 
 const drawerWidth = 300;
@@ -60,19 +61,36 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default (props) => {
+
+
+
+
+  const { fetchAnnonce, fetchActiveAnnonce, myannonces, setMyannonce } = useContext(AnnonceContext)
+  useEffect(() => {
+    fetchAnnonce()
+  }, [])
+
+
+
+  // console.log(annonces)
+
+
   const classes = useStyles();
-  const [tabValue, setValue] = useState();
+  const [tabValue, setValue] = useState("1");
   const handleTabChange = (event, newValue) => {
     setValue(newValue);
+
   };
   const [values, setValues] = useState({
-    input: "",
+    input: "1",
   });
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
+
   return (
     <div className={classes.root}>
+
       <CssBaseline />
       <Box position='fixed' className={classes.appBar}>
         <Toolbar>
@@ -152,76 +170,27 @@ export default (props) => {
         <Divider style={{ marginTop: 15, marginBottom: 15 }} />
         <TabContext value={tabValue}>
           <TabList onChange={handleTabChange} aria-label='tabs'>
-            <Tab label='Annonces en cours' value='1' />
+            <Tab label='Annonces en cours' value='1' selected />
             <Tab label='Historique' value='2' />
           </TabList>
           <TabPanel value='1'>
-            <Box
-              display='flex'
-              alignItems='center'
-              className=' successCard'
-              style={{ width: "100%", cursor: "inherit" }}
-            >
-              <Box>
-                <Skeleton
-                  variant='rect'
-                  width={125}
-                  height={125}
-                  style={{ borderRadius: 10 }}
-                />
-              </Box>
-              <Box style={{ marginLeft: 10 }} flexGrow={1}>
-                <Typography
-                  varaiant='h6'
-                  component='h1'
-                  style={{ fontWeight: "bold" }}
-                >
-                  Annonce de Boper
-                  <Chip
-                    label='En cours'
-                    variant='outlined'
-                    style={{
-                      backgroundColor: "#ffba08",
-                      borderColor: "#ffba08",
-                      borderWidth: 1,
-                      color: "black",
-                      fontWeight: "bold",
-                      marginLeft: 10,
-                    }}
-                  />
-                </Typography>
-                <Typography
-                  varaiant='h6'
-                  component='h1'
-                  style={{ marginTop: 10, marginBottom: 10 }}
-                >
-                  <i className='uil uil-ticket' />
-                  Liste de courses
-                </Typography>
-                <Box display='flex'>
-                  <Typography color='textSecondary'>
-                    <i className='uil uil-hourglass' />
-                    Date
-                  </Typography>
-                  <Typography color='textSecondary' style={{ marginLeft: 15 }}>
-                    <i className='uil uil-transaction' /> Mode de paiement
-                  </Typography>
-                  <Typography color='textSecondary' style={{ marginLeft: 15 }}>
-                    <i className='uil uil-euro-circle' />
-                    Prix
-                  </Typography>
-                </Box>
-              </Box>
-              <Box>
-                <i className='uil uil-arrow-right' style={{ fontSize: 25 }} />
-              </Box>
-            </Box>
+            {myannonces.loaded && myannonces.annonces.map((annonce, index) =>
+              < CardAnnonceDashboard key={`cardannonce_${annonce._id}`}  {...annonce} num={index} />
+
+            ) || "Aucune Annonce en cours "}
           </TabPanel>
           <TabPanel value='2'>
             <CardHistory />
           </TabPanel>
         </TabContext>
+        <pre>
+
+
+
+        </pre>
       </main>
     </div>
   );
 };
+
+

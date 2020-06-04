@@ -95,10 +95,16 @@ export default (props) => {
               >
                 Confirmation de votre inscription
               </Typography>
+
+
               <Typography color='textSecondary'>
                 Un code de confirmation vous a été envoyé dans votre boîte de
                 réception <b>{user_mail}</b>.
               </Typography>
+              <Typography color='error'>
+                <b>Code de confirmation incorrect</b>.
+                </Typography>
+
               <TextField
                 label='Code de confirmation'
                 variant='outlined'
@@ -120,7 +126,6 @@ export default (props) => {
               >
                 Code de confirmation non reçu ?
               </Typography>
-
               <Button
                 onClick={handleSubmit}
                 fullWidth
