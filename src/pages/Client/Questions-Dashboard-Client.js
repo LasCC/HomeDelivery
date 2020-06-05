@@ -52,9 +52,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(8),
     backgroundColor: "white",
-    boxShadow: "-8px 0px 18px 0px rgba(0,0,0,0.05)",
     zIndex: 2,
-    minHeight: "100vh",
   },
 }));
 
@@ -107,12 +105,8 @@ export default (props) => {
           <img
             src='https://svgur.com/i/LhH.svg'
             alt='logoHomeDelivery'
- 
             style={{ marginLeft: 13, marginTop: 13, height: 35 }}
- 
             draggable='false'
-       
- 
           />
         </Box>
         <Divider />

@@ -505,6 +505,8 @@ html {
   color: rgba(70, 176, 74, 0.534) !important;
 }
 
-.PrivateTabIndicator-colorSecondary-34 {
+.PrivateTabIndicator-colorSecondary-34,
+.MuiTabs-indicator,
+.PrivateTabIndicator-root-32 {
   background-color: green !important;
 }
