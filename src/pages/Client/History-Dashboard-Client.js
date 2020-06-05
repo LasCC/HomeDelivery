@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import CardAnnonceDashboard from "../../components/CardAnnonceDashboard"
+import useLocalStorage from "../../hooks/useLocalstorage"
 import {
   Drawer,
   CssBaseline,
@@ -70,11 +71,16 @@ export default (props) => {
     fetchAnnonce()
   }, [])
 
+  const [annonce, setAnnonce] = useLocalStorage("selected_annonce", "")
 
 
   // console.log(annonces)
 
+  const handleAnnonceSelection = annonce => {
+    setAnnonce(annonce)
+    props.history.push(ROUTE.SINGLE_SHIPMENT_ANNONCE)
 
+  }
   const classes = useStyles();
   const [tabValue, setValue] = useState("1");
   const handleTabChange = (event, newValue) => {
@@ -175,8 +181,9 @@ export default (props) => {
           </TabList>
           <TabPanel value='1'>
             {myannonces.loaded && myannonces.annonces.map((annonce, index) =>
-              < CardAnnonceDashboard key={`cardannonce_${annonce._id}`}  {...annonce} num={index} />
-
+              <Box onClick={() => handleAnnonceSelection(annonce)}>
+                < CardAnnonceDashboard key={`cardannonce_${annonce._id}`}  {...annonce} num={index} />
+              </Box>
             ) || "Aucune Annonce en cours "}
           </TabPanel>
           <TabPanel value='2'>

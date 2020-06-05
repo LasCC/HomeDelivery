@@ -48,7 +48,7 @@ const AnnonceProvider = (props) => {
             setSteps(2)
             console.log({ steps })
             if (res.status === 200)
-                return props.history.push(ROUTE.SHIPMENT_ANNONCE)
+                return props.history.push(ROUTE.DASHBOARD_HISTORY)
         } catch (error) {
             console.failure()
             console.log(error)

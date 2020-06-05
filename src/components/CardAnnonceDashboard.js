@@ -16,7 +16,7 @@ function CardAnnonceDashboard(props) {
             display='flex'
             alignItems='center'
             className=' successCard'
-            style={{ width: "100%", cursor: "inherit" }}
+            style={{ width: "100%", cursor: "pointer" }}
         >
             <Box>
                 <Skeleton
@@ -53,7 +53,7 @@ function CardAnnonceDashboard(props) {
                     style={{ marginTop: 10, marginBottom: 10 }}
                 >
                     <i className='uil uil-ticket' />
-                    {props.courses.map(course => course)}
+                    {props.courses.map(course => course + "\t")}
                 </Typography>
                 <Box display='flex'>
                     <Typography color='textSecondary'>

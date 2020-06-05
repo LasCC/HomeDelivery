@@ -131,7 +131,7 @@ export default (props) => {
         <Grid item xs={12} xl={8} md={8} sm={12}>
           <Navbar />
           <Box style={{ padding: 35 }}>
-            <ClientStep />
+            <ClientStep step={0} />
             <Divider />
             <Box style={{ marginTop: 15, padding: 25 }}>
               <Typography

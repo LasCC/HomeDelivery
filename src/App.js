@@ -133,6 +133,11 @@ export default function App() {
               path={ROUTE.DASHBOARD_CONTACT}
               component={DashboardClientContact}
             />
+            <ProtectedClientRoute
+              exact
+              path={ROUTE.SINGLE_SHIPMENT_ANNONCE}
+              component={ShippingAnnonce}
+            />
 
             <ProtectedHelperRoute
               exact
@@ -174,6 +179,7 @@ export default function App() {
               path={ROUTE.DASHBOARD_QUESTIONS_HELPER}
               component={DashboardHelperQuestions}
             />
+
             {/* ADMIN */}
             <Route
               exact
