@@ -17,6 +17,7 @@ const routes = {
   DASHBOARD_CONTACT: "/dashboard-contact",
   DASHBOARD_HELPER: "/dashboard-helper",
   DASHBOARD_HELPER_QR_CODE: "/dashboard-generate",
+  DASHBOARD_HELPER_SELECT_CITY: "/dashboard-helper/select-city",
   DASHBOARD_HELPER_ANNONCE: "/dashboard-annonces",
   DASHBOARD_SETTINGS_HELPER: "/dashboard-user-settings",
   DASHBOARD_HISTORY_HELPER: "/dashboard-shipment-history",
