@@ -7,14 +7,12 @@ import Map from "../../components/Map";
 import Navbar from "../../components/Navbar";
 import moment from "moment";
 import "moment/locale/fr";
-import useLocalStorage from "../../hooks/useLocalstorage"
+import useLocalStorage from "../../hooks/useLocalstorage";
 moment.locale("fr");
 window.document.title = "HomeDelivery - Livraison en cours..";
 
 export default (props) => {
-
-  const [annonces] = useLocalStorage("selected_annonce")
-
+  const [annonces] = useLocalStorage("selected_annonce");
 
   const items = [
     {

@@ -1,7 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import backapi from "../../api/backapi"
-
 import {
   Drawer,
   CssBaseline,
@@ -51,19 +49,15 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(8),
-    boxShadow: "-8px 0px 18px 0px rgba(0,0,0,0.05)",
-    minHeight: "100vh",
     zIndex: 2,
   },
 }));
 
 export default (props) => {
-
-
-  const { fetchAnnonce, fetchActiveAnnonce, myannonces, setMyannonce } = useContext(AnnonceContext)
+  const { fetchAnnonce, myannonces } = useContext(AnnonceContext);
   useEffect(() => {
-    fetchAnnonce()
-  }, [])
+    fetchAnnonce();
+  }, []);
 
   const classes = useStyles();
   const [values, setValues] = useState({
@@ -77,9 +71,7 @@ export default (props) => {
     <div className={classes.root}>
       <CssBaseline />
       <Box position='fixed' className={classes.appBar}>
-        <p>
-          {JSON.stringify(myannonces.annonces) || "rien du tout"}
-        </p>
+        <p>{JSON.stringify(myannonces.annonces) || "rien du tout"}</p>
         <Toolbar>
           <i
             className='uil uil-search'
@@ -117,9 +109,7 @@ export default (props) => {
           <img
             src='https://svgur.com/i/LhH.svg'
             alt='logoHomeDelivery'
-
             style={{ marginLeft: 13, marginTop: 13, height: 35 }}
-
           />
         </Box>
         <Divider />
@@ -335,7 +325,6 @@ export default (props) => {
           </Box>
         </Box>
       </main>
-
     </div>
   );
 };

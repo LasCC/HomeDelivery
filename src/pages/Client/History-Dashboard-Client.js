@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import CardAnnonceDashboard from "../../components/CardAnnonceDashboard"
-import useLocalStorage from "../../hooks/useLocalstorage"
+import CardAnnonceDashboard from "../../components/CardAnnonceDashboard";
+import useLocalStorage from "../../hooks/useLocalstorage";
 import {
   Drawer,
   CssBaseline,
@@ -15,7 +15,7 @@ import {
   Tab,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { TabPanel, TabContext, TabList, Skeleton } from "@material-ui/lab";
+import { TabPanel, TabContext, TabList } from "@material-ui/lab";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import ROUTE from "../../Routes";
 import DrawerDashboardClient from "../../components/DrawerDashboardClient";
@@ -57,35 +57,27 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(8),
     backgroundColor: "white",
-    minHeight: "100vh",
   },
 }));
 
 export default (props) => {
-
-
-
-
-  const { fetchAnnonce, fetchActiveAnnonce, myannonces, setMyannonce } = useContext(AnnonceContext)
+  const { fetchAnnonce, myannonces } = useContext(AnnonceContext);
   useEffect(() => {
-    fetchAnnonce()
-  }, [])
+    fetchAnnonce();
+  }, []);
 
-  const [annonce, setAnnonce] = useLocalStorage("selected_annonce", "")
-
+  const [setAnnonce] = useLocalStorage("selected_annonce", "");
 
   // console.log(annonces)
 
-  const handleAnnonceSelection = annonce => {
-    setAnnonce(annonce)
-    props.history.push(ROUTE.SINGLE_SHIPMENT_ANNONCE)
-
-  }
+  const handleAnnonceSelection = (annonce) => {
+    setAnnonce(annonce);
+    props.history.push(ROUTE.SINGLE_SHIPMENT_ANNONCE);
+  };
   const classes = useStyles();
   const [tabValue, setValue] = useState("1");
   const handleTabChange = (event, newValue) => {
     setValue(newValue);
-
   };
   const [values, setValues] = useState({
     input: "1",
@@ -96,7 +88,6 @@ export default (props) => {
 
   return (
     <div className={classes.root}>
-
       <CssBaseline />
       <Box position='fixed' className={classes.appBar}>
         <Toolbar>
@@ -180,24 +171,43 @@ export default (props) => {
             <Tab label='Historique' value='2' />
           </TabList>
           <TabPanel value='1'>
-            {myannonces.loaded && myannonces.annonces.map((annonce, index) =>
-              <Box onClick={() => handleAnnonceSelection(annonce)}>
-                < CardAnnonceDashboard key={`cardannonce_${annonce._id}`}  {...annonce} num={index} />
+            {(myannonces.loaded &&
+              myannonces.annonces.map((annonce, index) => (
+                <Box onClick={() => handleAnnonceSelection(annonce)}>
+                  <CardAnnonceDashboard
+                    key={`cardannonce_${annonce._id}`}
+                    {...annonce}
+                    num={index}
+                  />
+                </Box>
+              ))) || (
+              <Box style={{ textAlign: "center", marginTop: 35 }}>
+                <Typography style={{ marginBottom: 15, fontSize: 18 }}>
+                  Vous n'avez aucune annonce <br />
+                  Pour créer une annonce veuillez cliquer{" "}
+                  <a
+                    href={ROUTE.ANNONCE}
+                    style={{
+                      color: "rgb(70, 176, 74)",
+                      textDecoration: "none",
+                    }}
+                  >
+                    ce lien.
+                  </a>
+                </Typography>
+                <img
+                  src='https://i.imgur.com/I7iNjd4.png'
+                  style={{ height: 450 }}
+                  alt='notfound'
+                />
               </Box>
-            ) || "Aucune Annonce en cours "}
+            )}
           </TabPanel>
           <TabPanel value='2'>
             <CardHistory />
           </TabPanel>
         </TabContext>
-        <pre>
-
-
-
-        </pre>
       </main>
     </div>
   );
 };
-
-

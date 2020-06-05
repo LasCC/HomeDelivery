@@ -71,8 +71,6 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(8),
-    boxShadow: "-8px 0px 18px 0px rgba(0,0,0,0.05)",
-    minHeight: "100vh",
     zIndex: 2,
   },
 }));
@@ -113,11 +111,11 @@ export default (props) => {
     "DD/MM/YYYY"
   )} a ${moment().format("LT")}; Nom: ${values.Nom}; Prenom: ${
     values.Prenom
-    }; Naissance: ${values.Naissance} a ${values.Ville_naissance}; Adresse: ${
+  }; Naissance: ${values.Naissance} a ${values.Ville_naissance}; Adresse: ${
     values.Adresse
-    }; Sortie: ${values.Sortie} a ${values.SortieHeure}; Motifs: ${
+  }; Sortie: ${values.Sortie} a ${values.SortieHeure}; Motifs: ${
     values.Motifs
-    }`;
+  }`;
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
@@ -160,9 +158,7 @@ export default (props) => {
           <img
             src='https://svgur.com/i/LhH.svg'
             alt='logoHomeDelivery'
- 
             style={{ marginLeft: 13, marginTop: 13, height: 35 }}
- 
           />
         </Box>
         <Divider />
