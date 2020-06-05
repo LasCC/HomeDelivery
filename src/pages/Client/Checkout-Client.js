@@ -15,7 +15,7 @@ export default (props) => {
         <Grid item xs={12} xl={8} md={8} sm={12}>
           <Navbar />
           <Box style={{ padding: 35 }}>
-            <ClientStep />
+            <ClientStep step={3} />
             <Divider />
             <Box style={{ marginTop: 5, padding: 25 }}>Paiement ici :)</Box>
           </Box>

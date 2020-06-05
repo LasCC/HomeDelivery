@@ -89,7 +89,7 @@ const LoginProvider = (props) => {
   };
   const handleClientRegistration = async (data) => {
     console.log("register request ...", data);
-    // TODO si user deja enregistré go login
+
     let res = null;
     try {
       res = await http.post(endpoint + "/auth/register", data);
@@ -119,7 +119,7 @@ const LoginProvider = (props) => {
   };
   const handleHelperRegistration = async (data) => {
     console.log("register request ...", data);
-    // TODO si user deja enregistré go login
+
     let res = null;
     try {
       res = await http.post(endpoint + "/auth/register", data);

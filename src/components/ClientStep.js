@@ -6,11 +6,28 @@ import ROUTE from "../Routes";
 import moment from "moment";
 import "moment/locale/fr";
 import { AnnonceContext } from "../contexts/AnnonceContext";
+import StepShipment from "./StepShipment"
+import useLocalstorage from "../hooks/useLocalstorage"
 moment.locale("fr");
 
+
+
+
+
+
 export default (props) => {
+
+
+
+
+
+  const [annonces] = useLocalstorage("selected_annonce")
+
+  //TODO 
   const { steps } = useContext(AnnonceContext)
   const { city, address, zipcode } = JSON.parse(localStorage.getItem('account_to_register'))
+  const isonTrackingPage = window.location.href.split("/")[4] === "track" && localStorage.getItem('annonce_id') !== null
+  const isConfirmed = steps >= 2
   return (
     <div>
       <Box display='flex' alignItems='center'>
@@ -18,7 +35,7 @@ export default (props) => {
           <img src='https://svgur.com/i/Jbo.svg' alt='voiture_logo_checkout' />
           <Box style={{ marginLeft: 25 }}>
             <Typography color='textSecondary'>
-              Annonce créer le {moment().format("DD MMMM YYYY")}
+              Annonce créer le {props.step <= 1 ? moment().format("DD MMMM YYYY") : moment(annonces.created_at).format("DD MMMM YYYY")}
             </Typography>
             <Typography
               variant='h1'
@@ -34,25 +51,9 @@ export default (props) => {
           </Typography>
         </Box>
       </Box>
-      <Box style={{ padding: 20 }}>
-        <Breadcrumbs
-          separator={<NavigateNextIcon fontSize='small' />}
-          aria-label='breadcrumb'
-        >
-          <Link to={steps >= 2 ? "#" : ROUTE.ANNONCE} style={{ textDecoration: "none" }} >
-            <Typography color='textSecondary'>Liste de courses</Typography>
-          </Link>
-          <Link to={steps >= 2 ? "#" : ROUTE.CONFIRM_ANNONCE} style={{ textDecoration: "none" }} disabled>
-            <Typography color='textSecondary'>Confirmation</Typography>
-          </Link>
-          <Link to={ROUTE.SHIPMENT_ANNONCE} style={{ textDecoration: "none" }} disabled>
-            <Typography color='textSecondary'>Livraison</Typography>
-          </Link>
-          <Link to={ROUTE.CHECKOUT_CLIENT} style={{ textDecoration: "none" }} disabled>
-            <Typography color='textSecondary'>Paiement</Typography>
-          </Link>
-        </Breadcrumbs>
-      </Box>
+
+
+      <StepShipment step={props.step} />
     </div>
   );
 };

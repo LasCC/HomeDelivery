@@ -8,6 +8,7 @@ const routes = {
   ANNONCE: "/create-annonce",
   CONFIRM_ANNONCE: "/confirmation-annonce",
   SHIPMENT_ANNONCE: "/shipment-annonce",
+  SINGLE_SHIPMENT_ANNONCE: "/shipment-annonce/track/",
   CHECKOUT_CLIENT: "/checkout-annonce",
   DASHBOARD: "/dashboard",
   DASHBOARD_SETTINGS: "/dashboard-settings",

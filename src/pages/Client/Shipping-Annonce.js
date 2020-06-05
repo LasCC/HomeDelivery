@@ -7,10 +7,15 @@ import Map from "../../components/Map";
 import Navbar from "../../components/Navbar";
 import moment from "moment";
 import "moment/locale/fr";
+import useLocalStorage from "../../hooks/useLocalstorage"
 moment.locale("fr");
 window.document.title = "HomeDelivery - Livraison en cours..";
 
 export default (props) => {
+
+  const [annonces] = useLocalStorage("selected_annonce")
+
+
   const items = [
     {
       title: "Jean célestin a accepter votre commande",
@@ -48,7 +53,7 @@ export default (props) => {
         <Grid item xs={12} xl={8} md={8} sm={12}>
           <Navbar />
           <Box style={{ padding: 35 }}>
-            <ClientStep />
+            <ClientStep step={2} />
             <Divider />
             <Box style={{ marginTop: 5, padding: 25 }}>
               <Box display='flex'>
