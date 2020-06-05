@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 
-import TodoItem from "../../components/TodoItem"
+import TodoItem from "../../components/TodoItem";
 import {
   Grid,
   TextField,
@@ -25,7 +25,7 @@ moment.locale("fr");
 window.document.title = "HomeDelivery - Création d'annonce";
 
 export default (props) => {
-  const { values, setValues } = useContext(AnnonceContext)
+  const { values, setValues } = useContext(AnnonceContext);
 
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
@@ -42,7 +42,7 @@ export default (props) => {
   };
 
   const addTodo = (article) => {
-    console.log(article)
+    console.log(article);
     const todos = [...values.todos, article];
 
     if (values.todos.length < 10) {
@@ -61,20 +61,10 @@ export default (props) => {
     setValues({ ...values, todos });
   };
 
-
   const handleSubmit = () => {
     console.log("====== LIST COURSES ======");
-
-
-
-
   };
   console.log(values);
-
-
-
-
-
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
@@ -120,10 +110,6 @@ export default (props) => {
       </form>
     );
   };
-
-
-
-
 
   return (
     <div>
@@ -286,17 +272,18 @@ export default (props) => {
                 <div className='ticket__divider' />
                 <Box className='ticket__body'>
                   <Box className='ticket__section'>
-                    {values.todos > 0 && (<Typography>
+                    <Typography>
                       Liste des courses ({values.todos.length} / 10) :
-                    </Typography>)}
-                    {values.todos && values.todos.map((todo, index) => (
-                      <TodoItem
-                        key={index}
-                        index={index}
-                        todo={todo}
-                        removeTodo={removeTodo}
-                      />
-                    ))}
+                    </Typography>
+                    {values.todos &&
+                      values.todos.map((todo, index) => (
+                        <TodoItem
+                          key={index}
+                          index={index}
+                          todo={todo}
+                          removeTodo={removeTodo}
+                        />
+                      ))}
                   </Box>
                   <Box className='ticket__section'>
                     <Typography>Demandes annexes :</Typography>

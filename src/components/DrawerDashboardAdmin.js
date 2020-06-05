@@ -21,13 +21,15 @@ export default (props) => {
     <Box style={{ padding: 20, marginTop: 25 }}>
       <Box style={{ textAlign: "center", marginBottom: 15 }}>
         <img
-          src='https://i.imgur.com/f3F04uB.png'
+          onClick={() => (window.location.href = ROUTE.DASHBOARD)}
+          src='https://i.imgur.com/htXksA3.png'
           alt='avatarUser'
           style={{
             height: 80,
             width: 80,
             borderRadius: 80,
             objectFit: "cover",
+            cursor: "pointer",
           }}
         />
         <Typography

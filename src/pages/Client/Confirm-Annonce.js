@@ -6,18 +6,13 @@ import ROUTE from "../../Routes";
 import Navbar from "../../components/Navbar";
 import moment from "moment";
 import "moment/locale/fr";
-import TodoItem from "../../components/TodoItem"
-import { AnnonceContext } from "../../contexts/AnnonceContext"
+import TodoItem from "../../components/TodoItem";
+import { AnnonceContext } from "../../contexts/AnnonceContext";
 moment.locale("fr");
 window.document.title = "HomeDelivery - Confirmation de votre annonce";
 
 export default (props) => {
-
-  const { handleAnnonceSubmit, values } = useContext(AnnonceContext)
-
-
-
-
+  const { handleAnnonceSubmit, values } = useContext(AnnonceContext);
 
   return (
     <div>
@@ -94,16 +89,12 @@ export default (props) => {
                   <Typography color='textSecondary'>
                     Vous allez être redirigés et continuer le processus de
                     création d'annonce.
-                    </Typography>
+                  </Typography>
                 </Box>
                 <Box>
-                  <i
-                    className='uil uil-arrow-right'
-                    style={{ fontSize: 25 }}
-                  />
+                  <i className='uil uil-arrow-right' style={{ fontSize: 25 }} />
                 </Box>
               </Box>
-
             </Box>
           </Box>
         </Grid>
@@ -133,19 +124,17 @@ export default (props) => {
                 <div className='ticket__divider' />
                 <Box className='ticket__body'>
                   <Box className='ticket__section'>
-                    {values.todos > 0 && (<Typography>
-                      Liste des courses ({values.todos.length} / 10) :
-                    </Typography>)}
+                    {values.todos > 0 && (
+                      <Typography>
+                        Liste des courses ({values.todos.length} / 10) :
+                      </Typography>
+                    )}
                     <Typography>
                       {/* Liste de la liste de courses stocké dans le localstorage */}
-                      {values.todos && values.todos.map((todo, index) => (
-                        <TodoItem
-                          key={index}
-                          index={index}
-                          todo={todo}
-
-                        />
-                      ))}
+                      {values.todos &&
+                        values.todos.map((todo, index) => (
+                          <TodoItem key={index} index={index} todo={todo} />
+                        ))}
                     </Typography>
                   </Box>
                   <Box className='ticket__section'>
@@ -166,7 +155,9 @@ export default (props) => {
                   <Typography style={{ fontWeight: "bold" }}>
                     Prix maximum :
                   </Typography>
-                  <Typography color='textSecondary'>{values.price_max + " €"}</Typography>
+                  <Typography color='textSecondary'>
+                    {values.price_max + " €"}
+                  </Typography>
                 </Box>
               </article>
             </Box>
