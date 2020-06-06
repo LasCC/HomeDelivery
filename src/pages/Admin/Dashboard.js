@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import ChartsEmbedSDK from "@mongodb-js/charts-embed-dom"
 import {
   Drawer,
   CssBaseline,
@@ -22,14 +21,6 @@ import DrawerDashboardAdmin from "../../components/DrawerDashboardAdmin";
 window.document.title = "HomeDelivery - Dashbord";
 
 const drawerWidth = 300;
-const sdk = new ChartsEmbedSDK({
-  baseUrl: "https://charts.mongodb.com/charts-project-0-evccx", // Optional: ~REPLACE~ with your Charts URL
-
-});
-const chart = sdk.createChart({
-  chartId: "e857a818-9a8f-4c90-aa69-226671047ee7", // Optional: ~REPLACE~ with the Chart ID from your Embed Chart dialog
-  height: "700px"
-});
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -155,10 +146,7 @@ export default (props) => {
               />
             </div>
           </Card>
-
-          <Box id="chart">
-          </Box>
-
+          <Box id='chart'></Box>
         </Box>
       </main>
     </div>

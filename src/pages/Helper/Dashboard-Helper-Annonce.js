@@ -1,21 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Drawer,
   CssBaseline,
   Toolbar,
-  Typography,
   Divider,
   InputBase,
+  Button,
   IconButton,
   Box,
-  Breadcrumbs,
+  MenuItem,
+  Select,
+  InputLabel,
+  Typography,
+  FormControl,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
 import DrawerDashboardHelper from "../../components/DrawerDashboardHelper";
-import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-import ROUTE from "../../Routes";
 import MapDev from "../../components/MapDev";
+import France from "../../data/france.json";
 window.document.title = "HomeDelivery - Annonces";
 
 const drawerWidth = 300;
@@ -32,6 +34,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
   },
   input: {
+    marginLeft: theme.spacing(1),
+    flex: 1,
+    marginTop: 3,
+    zIndex: 3,
+  },
+  inputSearch: {
     marginLeft: theme.spacing(1),
     flex: 1,
     marginTop: 3,
@@ -56,10 +64,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default (props) => {
+  const inputLabel = React.useRef(null);
+  const [labelWidth, setLabelWidth] = React.useState(0);
+  useEffect(() => {
+    setLabelWidth(inputLabel.current.offsetWidth);
+  }, []);
   const classes = useStyles();
-
   const [values, setValues] = useState({
     search: "",
+    ville: "",
   });
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
@@ -111,31 +124,84 @@ export default (props) => {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Breadcrumbs
-          separator={<NavigateNextIcon fontSize='small' />}
-          aria-label='breadcrumb'
-          style={{ marginBottom: 25 }}
+        <Typography
+          variant='h5'
+          component='h1'
+          style={{ fontWeight: "bold", textAlign: "center" }}
         >
-          <Link to={ROUTE.DASHBOARD_HELPER} style={{ textDecoration: "none" }}>
-            <Typography color='textSecondary'>
-              <i className='uil uil-create-dashboard' /> Dashboard
-            </Typography>
-          </Link>
-          <Link style={{ textDecoration: "none" }}>
-            <Typography color='textPrimary' style={{ fontWeight: "bold" }}>
-              <i className='uil uil-map' /> Annonces
-            </Typography>
-          </Link>
-        </Breadcrumbs>
-        <Typography variant='h6' component='h1'>
-          <i className='uil uil-search-alt' /> Toutes les annonces près de votre
-          position
+          Recherchez l'annonce qui vous convient le mieux.
         </Typography>
-        <Typography color='textSecondary'>
-          Pour aider une personne dans le besoin, cliquez simplement sur une box
-          en bas de la map et laissez vous guider.
-        </Typography>
-        <Divider style={{ marginTop: 15, marginBottom: 15 }} />
+        <Box
+          display='flex'
+          alignItems='center'
+          style={{
+            marginTop: 25,
+            backgroundColor: "white",
+            borderRadius: 10,
+            padding: 15,
+            height: "100px",
+            boxShadow:
+              "0 4.5px 3px rgba(0, 0, 0, 0.01),  0 12.5px 10.8px rgba(0, 0, 0, 0.015),  0 30.1px 45.5px rgba(0, 0, 0, 0.02),  0 100px 80px rgba(0, 0, 0, 0.03)",
+          }}
+        >
+          <i
+            className='uil uil-search'
+            style={{ fontSize: 25, color: "#82867D" }}
+          />
+          <InputBase
+            onChange={handleChange("search")}
+            className={classes.inputSearch}
+            placeholder='Rechercher un département ou une région'
+            inputProps={{ "aria-label": "Rechercher une adresse" }}
+          />
+
+          <Divider orientation='vertical' flexItem />
+          <FormControl
+            variant='outlined'
+            style={{
+              marginRight: 15,
+              minWidth: 300,
+              border: "none",
+              marginLeft: 15,
+            }}
+          >
+            <InputLabel ref={inputLabel} htmlFor='villederesidence'>
+              Rechercher par département
+            </InputLabel>
+            <Select
+              labelWidth={labelWidth}
+              value={values.ville}
+              onChange={handleChange("ville")}
+              autoWidth={true}
+              inputProps={{
+                name: "ville",
+                "aria-label": "Ville de résidence",
+              }}
+            >
+              {France.map((city, k) => (
+                <MenuItem key={k} value={city.dep_name}>
+                  <i classNamme='uil uil-map-marker' />
+                  {city.num_dep + " " + city.dep_name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <Button
+            type='submit'
+            aria-label='search'
+            style={{
+              height: "55px",
+              width: "15%",
+              borderRadius: 8,
+              backgroundColor: "rgb(70, 176, 74)",
+              color: "white",
+            }}
+          >
+            Rechercher
+          </Button>
+        </Box>
+        <div>{`inputValue: '${values.ville}'`}</div>
+        <div>{`searchBar: '${values.search}'`}</div>
         <Box
           style={{
             position: "sticky",
