@@ -1,6 +1,14 @@
+<div align="center">
+
 [![N|Solid](https://i.imgur.com/AqIbHv0.png)]()
 
 [![Build Status](http://3.90.31.250:3333/buildStatus/icon?job=React-CI)](https://github.com/LasCC/HomeDelivery)
+
+[Documentation](https://coulonludovicc.gitbook.io/homedelivery/ "Documentation de l'application") 📚
+
+</div>
+
+
 
 # HomeDelivery
 
@@ -11,19 +19,22 @@ HomeDelivery est une application web afin d'aider les personnes âgées ou en si
 - Répondre, est consulté une annonce et suivre l'état de celle-ci.
 - Générateur d'attestation de déplacement provisoire en version QR code.
 
-Application mobile https://github.com/LasCC/HomeDelivery-React-Native
+📱 Application mobile : [Lien](https://github.com/LasCC/HomeDelivery-React-Native/) 
 
-# Fonctionnalités!
+⚙️ Backend API : [Lien](https://github.com/rb-x/Home-delivery-back) 
+
+# Fonctionnalités
 
 - Une interface simple d'utilisation est dans l'air du temps !
 - Application à but non lucratif, aucune revente de données.
 - Une application mobile est disponible pour génerer un attestation de déplacement provisoire pour les bénévoles qui livrent.
 
+
 # Partie technique
 
 HomeDelivery utilises les technologies suivantes :
 
-## Back-end :
+### Back-end :
 
 - Node-JS, ExpressJS
 
@@ -35,7 +46,7 @@ HomeDelivery utilises les technologies suivantes :
 
 - SQLite
 
-## Front-end :
+### Front-end :
 
 - ReactJS
 
@@ -49,7 +60,7 @@ HomeDelivery utilises les technologies suivantes :
 
 - Chart-JS
 
-## DevOps :
+### DevOps :
 
 - Jenkins
 
@@ -57,13 +68,16 @@ HomeDelivery utilises les technologies suivantes :
 
 - Docker
 
-### Installation
+## Installation
 
 ```
 yarn install && yarn start
 ```
+OR
+```
+docker-compose build && docker-compose up -d 
+```
 
-### Quelques images du site
 
 ## Landing page
 [![N|Solid](https://i.imgur.com/2S8f3MB.png)](https://i.imgur.com/2S8f3MB.png)
