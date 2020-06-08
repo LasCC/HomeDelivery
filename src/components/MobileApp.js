@@ -47,36 +47,50 @@ export default (props) => {
               />
             </Typography>
             <Typography>
-              Etiam sagittis ullamcorper dolor nec tincidunt. Aliquam erat
-              volutpat. Etiam lacinia condimentum tellus sed viverra. Duis
-              tincidunt ligula nisi, ac molestie urna egestas in. Sed eget
-              lectus placerat, faucibus velit at, fringilla turpis. Nullam eget
-              sem eu leo vestibulum pretium. In hac habitasse platea dictumst.
+              L'appliction officiel du projet HomeDelivery (React Native)
+              Listing d'annonces consultables.
+              <br /> Générateur d'attestation de déplacement provisoire en
+              version QR code. <br />
+              Fonctionnalités ! Une interface simple d'utilisation est dans
+              l'air du temps ! <br />
+              Application à but non lucratif, aucune revente de données.
             </Typography>
             <Box display='flex' alignItems='center' style={{ marginTop: 15 }}>
-              <img
-                src='https://i.imgur.com/HwAT5AW.png'
-                alt='iosdl'
-                draggable='false'
-                style={{
-                  height: 35,
-                  marginRight: 15,
-                  userSelect: "none",
-                  userDrag: "none",
-                  cursor: "pointer",
-                }}
-              />
-              <img
-                src='https://i.imgur.com/VryWM5c.png'
-                alt='androiddl'
-                draggable='false'
-                style={{
-                  height: 40,
-                  userSelect: "none",
-                  userDrag: "none",
-                  cursor: "pointer",
-                }}
-              />
+              <a
+                href='https://github.com/LasCC/HomeDelivery-React-Native'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <img
+                  src='https://i.imgur.com/HwAT5AW.png'
+                  alt='iosdl'
+                  draggable='false'
+                  style={{
+                    height: 35,
+                    marginRight: 15,
+                    userSelect: "none",
+                    userDrag: "none",
+                    cursor: "pointer",
+                  }}
+                />
+              </a>
+              <a
+                href='https://github.com/LasCC/HomeDelivery-React-Native'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <img
+                  src='https://i.imgur.com/VryWM5c.png'
+                  alt='androiddl'
+                  draggable='false'
+                  style={{
+                    height: 40,
+                    userSelect: "none",
+                    userDrag: "none",
+                    cursor: "pointer",
+                  }}
+                />
+              </a>
             </Box>
           </Box>
         </Box>

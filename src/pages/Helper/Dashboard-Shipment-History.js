@@ -124,8 +124,7 @@ export default (props) => {
           aidées depuis votre inscription
         </Typography>
         <Typography color='textSecondary'>
-          Mauris aliquet scelerisque blandit. Morbi laoreet, tortor at convallis
-          laoreet, augue nibh cursus mauris, eget faucibus ex nibh a sem.
+          Récapitulatif de toutes les livraisons depuis votre inscription.
         </Typography>
         <Divider style={{ marginTop: 15, marginBottom: 15 }} />
         <CardHistory />

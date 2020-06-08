@@ -158,11 +158,10 @@ export default (props) => {
         </Breadcrumbs>
         <Typography variant='h6' component='h1'>
           <i className='uil uil-receipt-alt' /> Annonces que vous avez postées
-          sur HomeDelivery
+          depuis votre inscription
         </Typography>
         <Typography color='textSecondary'>
-          Toutes vos annonces que vous avez postées sur la plateforme
-          HomeDelivery.
+          Récapitulatif de toutes les annonces que vous avez postées.
         </Typography>
         <Divider style={{ marginTop: 15, marginBottom: 15 }} />
         <TabContext value={tabValue}>

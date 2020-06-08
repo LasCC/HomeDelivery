@@ -8,8 +8,6 @@
 
 </div>
 
-
-
 # HomeDelivery
 
 HomeDelivery est une application web afin d'aider les personnes âgées ou en situation de handicap/maladie de déposer une demande avec sa liste de courses.
@@ -19,16 +17,15 @@ HomeDelivery est une application web afin d'aider les personnes âgées ou en si
 - Répondre, est consulté une annonce et suivre l'état de celle-ci.
 - Générateur d'attestation de déplacement provisoire en version QR code.
 
-📱 Application mobile : [Lien](https://github.com/LasCC/HomeDelivery-React-Native/) 
+📱 Application mobile : [Lien](https://github.com/LasCC/HomeDelivery-React-Native/)
 
-⚙️ Backend API : [Lien](https://github.com/rb-x/Home-delivery-back) 
+⚙️ Backend API : [Lien](https://github.com/rb-x/Home-delivery-back)
 
 # Fonctionnalités
 
 - Une interface simple d'utilisation est dans l'air du temps !
 - Application à but non lucratif, aucune revente de données.
 - Une application mobile est disponible pour génerer un attestation de déplacement provisoire pour les bénévoles qui livrent.
-
 
 # Partie technique
 
@@ -73,13 +70,15 @@ HomeDelivery utilises les technologies suivantes :
 ```
 yarn install && yarn start
 ```
-OR
-```
-docker-compose build && docker-compose up -d 
-```
 
+OR
+
+```
+docker-compose build && docker-compose up -d
+```
 
 ## Landing page
+
 [![N|Solid](https://i.imgur.com/2S8f3MB.png)](https://i.imgur.com/2S8f3MB.png)
 [![N|Solid](https://i.imgur.com/KEeDxXa.png)](https://i.imgur.com/KEeDxXa.png)
 [![N|Solid](https://i.imgur.com/4WlRGZ2.png)](https://i.imgur.com/4WlRGZ2.png)
@@ -87,12 +86,14 @@ docker-compose build && docker-compose up -d
 [![N|Solid](https://i.imgur.com/9FYiDQn.png)](https://i.imgur.com/9FYiDQn.png)
 
 ## Création de compte
+
 [![N|Solid](https://i.imgur.com/HI4HUBX.jpg)](https://i.imgur.com/HI4HUBX.jpg)
 [![N|Solid](https://i.imgur.com/05bF0tV.jpg)](https://i.imgur.com/05bF0tV.jpg)
 [![N|Solid](https://i.imgur.com/dTNTN6k.jpg)](https://i.imgur.com/dTNTN6k.jpg)
 [![N|Solid](https://i.imgur.com/S1jQ5nJ.jpg)](https://i.imgur.com/S1jQ5nJ.jpg)
 
 ## Dashboard
+
 [![N|Solid](https://i.imgur.com/9IwwOnW.png)](https://i.imgur.com/9IwwOnW.png)
 [![N|Solid](https://i.imgur.com/teqSgHL.jpg)](https://i.imgur.com/teqSgHL.jpg)
 [![N|Solid](https://i.imgur.com/kI75gmg.png)](https://i.imgur.com/kI75gmg.png)

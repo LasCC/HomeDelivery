@@ -14,6 +14,7 @@ import {
   InputLabel,
   Typography,
   FormControl,
+  Chip,
 } from "@material-ui/core";
 import DrawerDashboardHelper from "../../components/DrawerDashboardHelper";
 import MapDev from "../../components/MapDev";
@@ -127,9 +128,28 @@ export default (props) => {
         <Typography
           variant='h5'
           component='h1'
-          style={{ fontWeight: "bold", textAlign: "center" }}
+          style={{ textAlign: "center", fontWeight: "bold" }}
         >
-          Recherchez l'annonce qui vous convient le mieux.
+          Recherchez l'annonce qui vous convient le mieux{" "}
+          <Chip
+            label='New'
+            variant='outlined'
+            style={{
+              backgroundColor: "#d9efe7 ",
+              borderColor: "#d9efe7 ",
+              borderWidth: 1,
+              color: "#18b074",
+              fontWeight: "bold",
+              marginLeft: 5,
+            }}
+          />
+        </Typography>
+        <Typography
+          component='h1'
+          color='textSecondary'
+          style={{ textAlign: "center" }}
+        >
+          Vous pouvez dès à présent affiner vos recherches par département
         </Typography>
         <Box
           display='flex'
