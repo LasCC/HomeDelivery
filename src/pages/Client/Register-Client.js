@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Grid,
   TextField,
@@ -7,13 +7,24 @@ import {
   Button,
   IconButton,
   InputAdornment,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel
 } from "@material-ui/core";
 import axios from "axios";
 import { LoginContext } from "../../contexts/LoginContext";
+import France from "../../data/france.json";
 window.document.title = "HomeDelivery - Création de compte classique";
-
 export default (props) => {
+
   const { handleClientRegistration } = useContext(LoginContext);
+  const inputLabel = React.useRef(null);
+  const [labelWidth, setLabelWidth] = React.useState(0);
+
+  useEffect(() => {
+    setLabelWidth(inputLabel.current.offsetWidth);
+  }, []);
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -46,6 +57,7 @@ export default (props) => {
     zipcode: "",
     phone: "",
     birth_date: "",
+    dept: " "
   });
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
@@ -133,6 +145,7 @@ export default (props) => {
               </Typography>
               <Box display='flex'>
                 <TextField
+                  labelWidth={labelWidth}
                   label='Nom'
                   variant='outlined'
                   placeholder='PLATINI'
@@ -175,8 +188,8 @@ export default (props) => {
                           {values.showPassword ? (
                             <i className='uil uil-eye-slash' />
                           ) : (
-                            <i className='uil uil-eye' />
-                          )}
+                              <i className='uil uil-eye' />
+                            )}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -203,8 +216,8 @@ export default (props) => {
                           {values.showPassword ? (
                             <i className='uil uil-eye-slash' />
                           ) : (
-                            <i className='uil uil-eye' />
-                          )}
+                              <i className='uil uil-eye' />
+                            )}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -251,21 +264,58 @@ export default (props) => {
                   onChange={handleChange("city")}
                   style={{ marginTop: 15, marginBottom: 15 }}
                 />
+
               </Box>
-              <TextField
-                label='Date de naissance'
-                variant='outlined'
-                format='dd/MM/yyyy'
-                fullWidth
-                type='date'
-                helperText={"Veuillez renseigner une date valide : dd/MM/yyyy"}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                style={{ marginTop: 15, marginBottom: 15 }}
-                value={values.birth_date}
-                onChange={handleChange("birth_date")}
-              />
+              <Box display="flex"   >
+                <FormControl
+                  variant='outlined'
+                  style={{
+                    marginRight: 15,
+                    minWidth: 400,
+                    border: "none",
+                    marginLeft: 0,
+                    marginTop: 15, marginBottom: 15
+
+                  }}
+                >
+                  <InputLabel ref={inputLabel} htmlFor='villederesidence'>
+                    Département
+            </InputLabel>
+                  <Select
+                    labelWidth={labelWidth}
+                    value={values.ville}
+                    onChange={handleChange("ville")}
+
+                    autoWidth={true}
+                    inputProps={{
+                      name: "ville",
+                      "aria-label": "Ville de résidence",
+                    }}
+                  >
+                    {France.map((city, k) => (
+                      <MenuItem key={k} value={city.dep_name}>
+                        <i classNamme='uil uil-map-marker' />
+                        {city.num_dep + " " + city.dep_name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+
+                <TextField
+                  label='Date de naissance'
+                  variant='outlined'
+                  format='dd/MM/yyyy'
+                  fullWidth
+                  type='date'
+                  helperText={"Veuillez renseigner une date valide : dd/MM/yyyy"}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  style={{ marginTop: 15, marginBottom: 15 }}
+                  value={values.birth_date}
+                  onChange={handleChange("birth_date")}
+                />
+              </Box>
               <Box display='flex'>
                 <TextField
                   label='Code postale'
@@ -290,6 +340,7 @@ export default (props) => {
               <Button
                 onClick={handleSubmit}
                 fullWidth
+
                 style={{
                   backgroundColor: "rgb(70, 176, 74)",
                   color: "white",
@@ -306,6 +357,11 @@ export default (props) => {
           </Box>
         </Grid>
       </Grid>
-    </div>
+
+
+      <pre>
+        {JSON.stringify(values)}
+      </pre>
+    </div >
   );
 };
