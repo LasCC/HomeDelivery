@@ -37,7 +37,7 @@ export default (props) => {
           >
             <Box>
               <img
-                src={feed.avatar}
+                src='https://i.imgur.com/x0SNZjM.png'
                 alt='imageHistorique'
                 style={{
                   height: 125,
@@ -58,10 +58,10 @@ export default (props) => {
                   label='Terminé'
                   variant='outlined'
                   style={{
-                    backgroundColor: "rgb(70, 176, 74) ",
-                    borderColor: "rgb(70, 176, 74) ",
+                    backgroundColor: "#d9efe7 ",
+                    borderColor: "#d9efe7 ",
                     borderWidth: 1,
-                    color: "white",
+                    color: "#18b074",
                     fontWeight: "bold",
                     marginLeft: 10,
                   }}
