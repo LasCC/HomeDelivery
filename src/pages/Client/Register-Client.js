@@ -10,14 +10,14 @@ import {
   Select,
   MenuItem,
   FormControl,
-  InputLabel
+  InputLabel,
+  FormHelperText,
 } from "@material-ui/core";
 import axios from "axios";
 import { LoginContext } from "../../contexts/LoginContext";
 import France from "../../data/france.json";
 window.document.title = "HomeDelivery - Création de compte classique";
 export default (props) => {
-
   const { handleClientRegistration } = useContext(LoginContext);
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
@@ -57,7 +57,7 @@ export default (props) => {
     zipcode: "",
     phone: "",
     birth_date: "",
-    dept: " "
+    dept: " ",
   });
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
@@ -188,8 +188,8 @@ export default (props) => {
                           {values.showPassword ? (
                             <i className='uil uil-eye-slash' />
                           ) : (
-                              <i className='uil uil-eye' />
-                            )}
+                            <i className='uil uil-eye' />
+                          )}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -216,8 +216,8 @@ export default (props) => {
                           {values.showPassword ? (
                             <i className='uil uil-eye-slash' />
                           ) : (
-                              <i className='uil uil-eye' />
-                            )}
+                            <i className='uil uil-eye' />
+                          )}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -264,28 +264,26 @@ export default (props) => {
                   onChange={handleChange("city")}
                   style={{ marginTop: 15, marginBottom: 15 }}
                 />
-
               </Box>
-              <Box display="flex"   >
+              <Box display='flex'>
                 <FormControl
                   variant='outlined'
                   style={{
                     marginRight: 15,
-                    minWidth: 400,
+                    minWidth: 607,
                     border: "none",
                     marginLeft: 0,
-                    marginTop: 15, marginBottom: 15
-
+                    marginTop: 15,
+                    marginBottom: 15,
                   }}
                 >
                   <InputLabel ref={inputLabel} htmlFor='villederesidence'>
                     Département
-            </InputLabel>
+                  </InputLabel>
                   <Select
                     labelWidth={labelWidth}
                     value={values.ville}
                     onChange={handleChange("ville")}
-
                     autoWidth={true}
                     inputProps={{
                       name: "ville",
@@ -299,15 +297,19 @@ export default (props) => {
                       </MenuItem>
                     ))}
                   </Select>
+                  <FormHelperText>
+                    Veuillez sélectionner votre département
+                  </FormHelperText>
                 </FormControl>
-
                 <TextField
                   label='Date de naissance'
                   variant='outlined'
                   format='dd/MM/yyyy'
                   fullWidth
                   type='date'
-                  helperText={"Veuillez renseigner une date valide : dd/MM/yyyy"}
+                  helperText={
+                    "Veuillez renseigner une date valide : dd/MM/yyyy"
+                  }
                   InputLabelProps={{
                     shrink: true,
                   }}
@@ -340,7 +342,6 @@ export default (props) => {
               <Button
                 onClick={handleSubmit}
                 fullWidth
-
                 style={{
                   backgroundColor: "rgb(70, 176, 74)",
                   color: "white",
@@ -358,10 +359,7 @@ export default (props) => {
         </Grid>
       </Grid>
 
-
-      <pre>
-        {JSON.stringify(values)}
-      </pre>
-    </div >
+      <pre>{JSON.stringify(values)}</pre>
+    </div>
   );
 };
