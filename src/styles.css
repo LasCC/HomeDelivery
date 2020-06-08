@@ -288,6 +288,27 @@ html {
   }
 }
 
+.Cards {
+  padding: 25px;
+  background-color: white;
+  box-shadow: 0 0px 2.7px rgba(0, 0, 0, 0.012), 0 0px 6.9px rgba(0, 0, 0, 0.018),
+    0 0px 14.2px rgba(0, 0, 0, 0.022), 0 0px 29.2px rgba(0, 0, 0, 0.028),
+    0 0px 80px rgba(0, 0, 0, 0.04);
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border-radius: 15px;
+  border: solid 2px #dfdfdf4d;
+  width: 75%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.Cards:hover {
+  border: solid 2px rgb(240, 240, 240);
+  background-color: #f5f5f5;
+  transform: translateY(-5px);
+}
+
 .successCard {
   padding: 25px;
   background-color: white;
