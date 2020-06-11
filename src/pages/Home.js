@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import ROUTE from "../Routes";
 import Footer from "../components/Footer";
 import MobileApp from "../components/MobileApp";
+import { Link as AnimationScroll } from "react-scroll";
 window.document.title = "HomeDelivery - Accueil";
 
 export default (props) => {
@@ -17,6 +18,7 @@ export default (props) => {
             <Box display='flex' alignItems='center' style={{ height: "80vh" }}>
               <Box flexGrow={1}>
                 <Typography
+                  id='accueil'
                   variant='h4'
                   component='h1'
                   style={{ fontWeight: "bold" }}
@@ -35,16 +37,27 @@ export default (props) => {
                   personnes dans le besoin en ses temps de guerre sanitaire.
                 </Typography>
                 <Box style={{ marginTop: 15 }}>
-                  <Button
-                    style={{
-                      backgroundColor: "#C1EDC3",
-                      color: "#46B04A",
-                      padding: 10,
-                      marginRight: 15,
-                    }}
+                  <AnimationScroll
+                    to='consignes_sanitaires'
+                    spy={true}
+                    smooth={true}
+                    hashSpy={true}
+                    offset={-100}
+                    duration={1500}
+                    isDynamic={true}
+                    ignoreCancelEvents={false}
                   >
-                    En savoir plus
-                  </Button>
+                    <Button
+                      style={{
+                        backgroundColor: "#C1EDC3",
+                        color: "#46B04A",
+                        padding: 10,
+                        marginRight: 15,
+                      }}
+                    >
+                      En savoir plus
+                    </Button>
+                  </AnimationScroll>
                   <Link
                     to={ROUTE.REGISTER}
                     style={{ textDecoration: "none", color: "white" }}
@@ -83,7 +96,7 @@ export default (props) => {
                   userDrag: "none",
                 }}
               />
-              <Box flexGrow={1}>
+              <Box flexGrow={1} id='lesaviezvous'>
                 <Typography
                   variant='h1'
                   style={{
@@ -106,7 +119,11 @@ export default (props) => {
               </Box>
             </Box>
             {/* Respect des consignes */}
-            <Container maxWidth='lg' style={{ marginTop: 200 }}>
+            <Container
+              maxWidth='lg'
+              style={{ marginTop: 200 }}
+              id='consignes_sanitaires'
+            >
               <Typography
                 variant='h1'
                 style={{
@@ -152,13 +169,12 @@ export default (props) => {
                       marginBottom: 15,
                     }}
                   >
-                    Respect des consignes sanitaires
+                    Respect des distanciations sociales
                   </Typography>
                   <Typography>
-                    Pas de contacte à plus de 1m de distance entre le bénévole
-                    est le client <br />
-                    il déposera la commande sur le palier de votre
-                    apparement/maison.
+                    Une distance de sécurité minimum d'un mètre des autres et le
+                    port du masque est fortement recommandé dans les lieux
+                    publics.
                   </Typography>
                 </Box>
               </Box>
@@ -173,14 +189,11 @@ export default (props) => {
                       marginBottom: 15,
                     }}
                   >
-                    Respect des consignes sanitaires
+                    Désinfection systématique
                   </Typography>
                   <Typography>
-                    Les bénévoles doivent absolument porter un masque de
-                    protection
-                    <br />
-                    pour éviter le plus possible le risque de propagation du
-                    virus.
+                    Avant est après chaque intervention le livreur procède à une
+                    désinfection des mains avec du gel hydro-alcoolique.
                   </Typography>
                 </Box>
                 <Box>
@@ -219,13 +232,13 @@ export default (props) => {
                       marginBottom: 15,
                     }}
                   >
-                    Respect des consignes sanitaires
+                    Paiement sans contact
                   </Typography>
                   <Typography>
-                    Les bénévoles doivent absolument porter un masque de
-                    protection <br />
-                    pour éviter le plus possible le risque de propagation du
-                    virus.
+                    Pour des mesures de sécurité nos livreurs privilégient le
+                    paiement sans contact. Cette mesure devrait permettre de
+                    payer de manière plus simple et sans contact physique pour
+                    des achats du quotidien.
                   </Typography>
                 </Box>
               </Box>
@@ -240,13 +253,12 @@ export default (props) => {
                       marginBottom: 15,
                     }}
                   >
-                    Respect des consignes sanitaires
+                    HomeDelivery s'occupe de tout
                   </Typography>
                   <Typography>
-                    Désinfection systématique entre à la moindre interaction
-                    physique
-                    <br />
-                    avec un objet/personne (je sais pas ici non plus)
+                    Nous nous occupons de votre commande du début à la fin et,
+                    ainsi, nous savons exactement où se situe votre commande à
+                    n'importe quel moment. Il vous reste plus qu'a être patient.
                   </Typography>
                 </Box>
                 <Box>
