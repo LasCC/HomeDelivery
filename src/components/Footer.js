@@ -1,5 +1,8 @@
 import React from "react";
-import { Container, Typography, Grid, Box } from "@material-ui/core";
+import { Container, Typography, Box } from "@material-ui/core";
+import { Link as AnimationScroll } from "react-scroll";
+import { Link } from "react-router-dom";
+import ROUTES from "../Routes";
 
 export default (props) => {
   return (
@@ -36,48 +39,178 @@ export default (props) => {
           >
             Menu
           </Typography>
-          <Typography style={{ marginTop: 15, marginBottom: 15 }}>
-            Accueil
-          </Typography>
-          <Typography style={{ marginTop: 15, marginBottom: 15 }}>
-            Le saviez-vous ?
-          </Typography>
-          <Typography style={{ marginTop: 15, marginBottom: 15 }}>
-            Respect des consignes sanitaires
-          </Typography>
-          <Typography>Contact</Typography>
+          <AnimationScroll
+            to='accueil'
+            spy={true}
+            smooth={true}
+            hashSpy={true}
+            offset={-550}
+            duration={1500}
+            isDynamic={true}
+            ignoreCancelEvents={false}
+          >
+            <Typography
+              className='HoverTextColor'
+              style={{ marginTop: 15, marginBottom: 15, cursor: "pointer" }}
+            >
+              Accueil
+            </Typography>
+          </AnimationScroll>
+          <AnimationScroll
+            to='lesaviezvous'
+            spy={true}
+            smooth={true}
+            hashSpy={true}
+            offset={-385}
+            isDynamic={true}
+            ignoreCancelEvents={false}
+          >
+            <Typography
+              className='HoverTextColor'
+              style={{ marginTop: 15, marginBottom: 15, cursor: "pointer" }}
+            >
+              Le saviez-vous ?
+            </Typography>
+          </AnimationScroll>
+          <AnimationScroll
+            to='consignes_sanitaires'
+            spy={true}
+            smooth={true}
+            hashSpy={true}
+            offset={-100}
+            isDynamic={true}
+            ignoreCancelEvents={false}
+          >
+            <Typography
+              className='HoverTextColor'
+              style={{ marginTop: 15, marginBottom: 15, cursor: "pointer" }}
+            >
+              Respect des consignes sanitaires
+            </Typography>
+          </AnimationScroll>
+          <Link
+            to={ROUTES.REGISTER}
+            style={{ color: "black", textDecoration: "none" }}
+          >
+            <Typography
+              className='HoverTextColor'
+              style={{ marginTop: 15, marginBottom: 15, cursor: "pointer" }}
+            >
+              Créer un compte
+            </Typography>
+          </Link>
+          <Link
+            to={ROUTES.LOGIN}
+            style={{ color: "black", textDecoration: "none" }}
+          >
+            <Typography
+              className='HoverTextColor'
+              style={{ marginTop: 15, marginBottom: 15, cursor: "pointer" }}
+            >
+              Se connecter
+            </Typography>
+          </Link>
+          <a
+            href='https://github.com/LasCC/HomeDelivery-React-Native/'
+            target='_blank'
+            rel='noopener noreferrer'
+            style={{ color: "black", textDecoration: "none" }}
+          >
+            <Typography
+              className='HoverTextColor'
+              style={{ cursor: "pointer" }}
+            >
+              Application mobile
+            </Typography>
+          </a>
         </Box>
         <Box flexGrow={1}>
           <Typography variant='h1' style={{ fontSize: 20, fontWeight: "bold" }}>
             Nous suivre
           </Typography>
-          <Typography style={{ marginTop: 15, marginBottom: 15 }}>
-            <i className='uil uil-facebook-f' />
-            Facebook
-          </Typography>
-          <Typography style={{ marginTop: 15, marginBottom: 15 }}>
-            <i className='uil uil-twitter-alt' />
-            Twitter
-          </Typography>
-          <Typography style={{ marginTop: 15, marginBottom: 15 }}>
-            <i className='uil uil-instagram' />
-            Instagram
-          </Typography>
-          <Typography style={{ marginTop: 15, marginBottom: 15 }}>
-            <i className='uil uil-github' /> Github
-          </Typography>
+          <a
+            href='https://facebook.com/#'
+            target='_blank'
+            rel='noopener noreferrer'
+            style={{ color: "black", textDecoration: "none" }}
+          >
+            <Typography
+              className='HoverTextColor'
+              style={{ marginTop: 15, marginBottom: 15, cursor: "pointer" }}
+            >
+              <i className='uil uil-facebook-f' />
+              Facebook
+            </Typography>
+          </a>
+          <a
+            href='https://twitter.com/#'
+            target='_blank'
+            rel='noopener noreferrer'
+            style={{ color: "black", textDecoration: "none" }}
+          >
+            <Typography
+              className='HoverTextColor'
+              style={{ marginTop: 15, marginBottom: 15, cursor: "pointer" }}
+            >
+              <i className='uil uil-twitter-alt' />
+              Twitter
+            </Typography>
+          </a>
+          <a
+            href='https://instagram.com/#'
+            target='_blank'
+            rel='noopener noreferrer'
+            style={{ color: "black", textDecoration: "none" }}
+          >
+            <Typography
+              className='HoverTextColor'
+              style={{ marginTop: 15, marginBottom: 15, cursor: "pointer" }}
+            >
+              <i className='uil uil-instagram' />
+              Instagram
+            </Typography>
+          </a>
+          <a
+            href='https://github.com/LasCC/HomeDelivery'
+            target='_blank'
+            rel='noopener noreferrer'
+            style={{ color: "black", textDecoration: "none" }}
+          >
+            <Typography
+              className='HoverTextColor'
+              style={{ marginTop: 15, marginBottom: 15, cursor: "pointer" }}
+            >
+              <i className='uil uil-github' /> Github
+            </Typography>
+          </a>
         </Box>
         <Box alignItems='center'>
           <Typography variant='h1' style={{ fontSize: 20, fontWeight: "bold" }}>
             Nous contacter
           </Typography>
-          <Typography style={{ marginTop: 15, marginBottom: 15 }}>
-            <i className='uil uil-fast-mail' /> io.estiam@gmail.com
-          </Typography>
-          <Typography style={{ marginTop: 15, marginBottom: 15 }}>
-            <i className='uil uil-calling' />
-            +33 6 03 87 64 36
-          </Typography>
+          <a
+            href='mailto: io.estiam@gmail.com'
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <Typography
+              className='HoverTextColor'
+              style={{ marginTop: 15, marginBottom: 15, cursor: "pointer" }}
+            >
+              <i className='uil uil-fast-mail' /> io.estiam@gmail.com
+            </Typography>
+          </a>
+          <a
+            href='tel: +33 6 44 64 90 21'
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <Typography
+              className='HoverTextColor'
+              style={{ marginTop: 15, marginBottom: 15, cursor: "pointer" }}
+            >
+              <i className='uil uil-calling' />
+              +33 6 44 64 90 21
+            </Typography>
+          </a>
         </Box>
       </Box>
     </Container>

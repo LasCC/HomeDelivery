@@ -364,7 +364,6 @@ export default (props) => {
                 <a
                   href='https://media.interieur.gouv.fr/deplacement-covid-19/'
                   target='_blank'
-                  without
                   rel='noopener noreferrer'
                   style={{
                     textDecoration: "none",
