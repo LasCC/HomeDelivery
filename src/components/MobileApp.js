@@ -47,7 +47,7 @@ export default (props) => {
               />
             </Typography>
             <Typography>
-              L'appliction officiel du projet HomeDelivery (React Native)
+              L'application officiel du projet HomeDelivery (React Native)
               Listing d'annonces consultables.
               <br /> Générateur d'attestation de déplacement provisoire en
               version QR code. <br />
