@@ -155,7 +155,7 @@ export default (props) => {
                     Respect des consignes sanitaires
                   </Typography>
                   <Typography>
-                    Pas de contacte à plus de 1m de distance entre le bénévole
+                    Pas de contact à plus de 1m de distance entre le bénévole
                     est le client <br />
                     il déposera la commande sur le palier de votre
                     apparement/maison.

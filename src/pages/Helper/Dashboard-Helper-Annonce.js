@@ -14,11 +14,15 @@ import {
   InputLabel,
   Typography,
   FormControl,
+  TextField,
   Chip,
 } from "@material-ui/core";
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import DrawerDashboardHelper from "../../components/DrawerDashboardHelper";
 import MapDev from "../../components/MapDev";
 import France from "../../data/france.json";
+import { useContext } from "react";
+import { AnnonceContext } from "../../contexts/AnnonceContext";
 window.document.title = "HomeDelivery - Annonces";
 
 const drawerWidth = 300;
@@ -67,9 +71,11 @@ const useStyles = makeStyles((theme) => ({
 export default (props) => {
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
-  useEffect(() => {
-    setLabelWidth(inputLabel.current.offsetWidth);
-  }, []);
+  // useEffect(() => {
+  //   setLabelWidth(inputLabel.current.offsetWidth);
+  // }, []);
+  const { fetchCityAnnonce } = useContext(AnnonceContext)
+
   const classes = useStyles();
   const [values, setValues] = useState({
     search: "",
@@ -78,6 +84,9 @@ export default (props) => {
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
+  const handleSubmit = () => {
+    fetchCityAnnonce(values.ville)
+  }
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -176,7 +185,7 @@ export default (props) => {
           />
 
           <Divider orientation='vertical' flexItem />
-          <FormControl
+          {/* <FormControl
             variant='outlined'
             style={{
               marginRight: 15,
@@ -184,11 +193,11 @@ export default (props) => {
               border: "none",
               marginLeft: 15,
             }}
-          >
-            <InputLabel ref={inputLabel} htmlFor='villederesidence'>
+          > */}
+          {/* <InputLabel ref={inputLabel} htmlFor='villederesidence'>
               Rechercher par département
-            </InputLabel>
-            <Select
+            </InputLabel> */}
+          {/* <Select
               labelWidth={labelWidth}
               value={values.ville}
               onChange={handleChange("ville")}
@@ -204,9 +213,21 @@ export default (props) => {
                   {city.num_dep + " " + city.dep_name}
                 </MenuItem>
               ))}
-            </Select>
-          </FormControl>
+            </Select> */}
+          {/* </FormControl> */}
+          <Autocomplete
+            id="combo-box-demo"
+
+            onChange={(event, newValue) => {
+              setValues({ ...values, ville: newValue.dep_name });
+            }}
+            options={France}
+            getOptionLabel={(option) => option.dep_name}
+            style={{ width: 300 }}
+            renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
+          />
           <Button
+            onClick={handleSubmit}
             type='submit'
             aria-label='search'
             style={{
@@ -233,7 +254,7 @@ export default (props) => {
           alignItems='center'
           justifyContent='center'
         >
-          <MapDev />
+          {/* <MapDev /> */}
         </Box>
       </main>
     </div>

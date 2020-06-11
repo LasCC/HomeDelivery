@@ -94,6 +94,12 @@ const AnnonceProvider = (props) => {
       return console.failure();
     }
   };
+
+
+  const fetchCityAnnonce = async (input) => {
+    console.log(input);
+    // backapi.post()
+  }
   // resolveAnnonce("5ed82d56b3bac6050996c244x")
 
   return (
@@ -108,6 +114,7 @@ const AnnonceProvider = (props) => {
         fetchActiveAnnonce,
         myannonces,
         setMyannonce,
+        fetchCityAnnonce
       }}
     >
       {props.children}

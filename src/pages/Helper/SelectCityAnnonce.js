@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Drawer,
@@ -16,7 +16,9 @@ import {
   FormControl,
 } from "@material-ui/core";
 import DrawerDashboardHelper from "../../components/DrawerDashboardHelper";
+
 import France from "../../data/france.json";
+import { AnnonceContext } from "../../contexts/AnnonceContext";
 window.document.title = "HomeDelivery - Sélectionner la ville de votre choix";
 
 const drawerWidth = 300;
@@ -65,6 +67,8 @@ const useStyles = makeStyles((theme) => ({
 export default (props) => {
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
+  const { fetchCityAnnonce } = useContext(AnnonceContext)
+  fetchCityAnnonce("booop")
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
