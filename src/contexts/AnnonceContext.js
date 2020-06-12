@@ -64,7 +64,6 @@ const AnnonceProvider = (props) => {
       res = await backapi.get("/annonce/fetch");
       const { annonces, length } = res.data;
       await setMyannonce({ annonces, length, loaded: true });
-      console.log(annonces);
       return res;
     } catch (error) {
       console.failure();
