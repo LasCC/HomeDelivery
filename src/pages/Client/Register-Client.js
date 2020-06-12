@@ -188,8 +188,8 @@ export default (props) => {
                           {values.showPassword ? (
                             <i className='uil uil-eye-slash' />
                           ) : (
-                            <i className='uil uil-eye' />
-                          )}
+                              <i className='uil uil-eye' />
+                            )}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -216,8 +216,8 @@ export default (props) => {
                           {values.showPassword ? (
                             <i className='uil uil-eye-slash' />
                           ) : (
-                            <i className='uil uil-eye' />
-                          )}
+                              <i className='uil uil-eye' />
+                            )}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -277,17 +277,17 @@ export default (props) => {
                     marginBottom: 15,
                   }}
                 >
-                  <InputLabel ref={inputLabel} htmlFor='villederesidence'>
+                  <InputLabel ref={inputLabel} htmlFor='deptderesidence'>
                     Département
                   </InputLabel>
                   <Select
                     labelWidth={labelWidth}
-                    value={values.ville}
-                    onChange={handleChange("ville")}
+                    value={values.dept}
+                    onChange={handleChange("dept")}
                     autoWidth={true}
                     inputProps={{
-                      name: "ville",
-                      "aria-label": "Ville de résidence",
+                      name: "dept",
+                      "aria-label": "dept de résidence",
                     }}
                   >
                     {France.map((city, k) => (
