@@ -172,11 +172,9 @@ export default (props) => {
                     Respect des distanciations sociales
                   </Typography>
                   <Typography>
-
                     Une distance de sécurité minimum d'un mètre des autres et le
                     port du masque est fortement recommandé dans les lieux
                     publics.
-                    
                   </Typography>
                 </Box>
               </Box>

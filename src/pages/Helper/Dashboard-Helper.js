@@ -54,16 +54,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default (props) => {
-  const { fetchAnnonce, myannonces } = useContext(AnnonceContext)
-
-
+  const { fetchAnnonce, myannonces } = useContext(AnnonceContext);
 
   useEffect(() => {
     fetchAnnonce();
-  }, [])
+  }, []);
 
-
-  const { firstName } = JSON.parse(localStorage.getItem("account_to_register"));
+  const { lastName } = JSON.parse(localStorage.getItem("account_to_register"));
   const classes = useStyles();
   const [values, setValues] = useState({
     search: "",
@@ -132,7 +129,7 @@ export default (props) => {
               component='h1'
               style={{ textAlign: "center" }}
             >
-              Ravis de vous revoir parmi nous {firstName}
+              Ravis de vous revoir parmi nous {lastName}
             </Typography>
             <Typography
               variant='h4'

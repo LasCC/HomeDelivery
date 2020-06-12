@@ -1,4 +1,4 @@
-import React , {useState , useEffect, useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Grid,
@@ -13,6 +13,12 @@ import {
   StepLabel,
   StepContent,
   Divider,
+  Slide,
+  DialogTitle,
+  DialogContentText,
+  DialogContent,
+  Dialog,
+  DialogActions,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -23,10 +29,13 @@ import "moment/locale/fr";
 import useLocalStorage from "../../hooks/useLocalstorage";
 import backapi from "../../api/backapi";
 import { AnnonceContext } from "../../contexts/AnnonceContext";
-import ROUTE from  "../../Routes"
+import ROUTE from "../../Routes";
 moment.locale("fr");
-
 window.document.title = "HomeDelivery - Service de livraison";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction='up' ref={ref} {...props} />;
+});
 
 const shippping = require("../../data/Shipping.json");
 const shippingOptions = {
@@ -37,10 +46,6 @@ const shippingOptions = {
     preserveAspectRatio: "xMidYMid slice",
   },
 };
-
-
-
-
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -143,37 +148,39 @@ function getStepContent(step) {
 export default (props) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-
-  const [name, setName] = useState('');
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const [name, setName] = useState("");
 
   useEffect(async () => {
-    let res = await backapi.post("/annonce/resolve",{
-      annonce_id : selected_annonce._id
-    })
+    let res = await backapi.post("/annonce/resolve", {
+      annonce_id: selected_annonce._id,
+    });
     setName({
-      firstName : res.data.user_found.firstName ,
-      lastName : res.data.user_found.lastName , 
-      email  : res.data.user_found.email ,  
-      phone : res.data.user_found.phone , 
-      city : res.data.user_found.city  , 
-      address : res.data.user_found.address,
-      c_address : res.data.user_found.c_address,
-      zipcode : res.data.user_found.zipcode
-    })
-    console.log(res)
-  }, [])
-
-
+      firstName: res.data.user_found.firstName,
+      lastName: res.data.user_found.lastName,
+      email: res.data.user_found.email,
+      phone: res.data.user_found.phone,
+      city: res.data.user_found.city,
+      address: res.data.user_found.address,
+      c_address: res.data.user_found.c_address,
+      zipcode: res.data.user_found.zipcode,
+    });
+    console.log(res);
+  }, []);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
-  const [selected_annonce] = useLocalStorage('selected_annonce')
-  console.log(selected_annonce)
+  const [selected_annonce] = useLocalStorage("selected_annonce");
+  console.log(selected_annonce);
   const handleSubmit = () => {
-    console.log("====== LIST COURSES ======");
-    
-    props.history.push(ROUTE.DASHBOARD_HISTORY_HELPER)
+    window.location.href = ROUTE.DASHBOARD_HISTORY_HELPER;
   };
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -186,15 +193,12 @@ export default (props) => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
+  const { updateAnnonceSatus } = useContext(AnnonceContext);
 
-  const {updateAnnonceSatus} = useContext(AnnonceContext)
-
-  const handleSetStatus = x => {
-    handleNext()
-    updateAnnonceSatus( selected_annonce._id,activeStep)
-  }
-
-
+  const handleSetStatus = (x) => {
+    handleNext();
+    updateAnnonceSatus(selected_annonce._id, activeStep);
+  };
 
   return (
     <div>
@@ -219,26 +223,28 @@ export default (props) => {
                 </Box>
                 <Box style={{ marginLeft: 25 }}>
                   <Typography color='textSecondary'>
-                    Annonce n° {selected_annonce._id.substring(17,24)}
+                    Annonce n°{selected_annonce._id.substring(17, 24)}
                   </Typography>
                   <Typography
                     variant='h1'
                     style={{ fontWeight: "bold", fontSize: 25 }}
                   >
-                    {(name === "" && "...") || `${name.firstName} ${name.lastName}` }
+                    {(name === "" && "...") ||
+                      `${name.firstName} ${name.lastName}`}
                   </Typography>
                 </Box>
               </Box>
               <Box>
-                <a
-                  href='tel:060606060606'
+                <span
+                  onClick={() => window.open(`tel:${name.phone}`)}
                   style={{
                     color: "rgb(70, 176, 74)",
                     textDecoration: "none",
+                    cursor: "pointer",
                   }}
                 >
                   Besoin de contacter le client ?
-                </a>
+                </span>
               </Box>
             </Box>
             <Box style={{ marginTop: 15, padding: 25 }}>
@@ -295,15 +301,16 @@ export default (props) => {
                     </Typography>
                     <Typography>
                       Numéro de téléphone :{" "}
-                      <a
-                        href='tel:0606060606'
+                      <span
+                        onClick={() => window.open(`tel:${name.phone}`)}
                         style={{
                           textDecoration: "none",
                           color: "rgb(70, 176, 74",
+                          cursor: "pointer",
                         }}
                       >
-                        0606060606
-                      </a>
+                        {name.phone}
+                      </span>
                     </Typography>
                   </Box>
                 </ExpansionPanelDetails>
@@ -320,7 +327,6 @@ export default (props) => {
                 >
                   <Typography className={classes.heading}>
                     Liste de courses
-                   
                   </Typography>
                   <Typography className={classes.secondaryHeading}>
                     Liste et demande explicites du client
@@ -333,21 +339,17 @@ export default (props) => {
                       Liste de courses
                     </Typography>
                     <Divider style={{ marginTop: 10, marginBottom: 10 }} />
-               
-                    {selected_annonce.courses.map( item => 
-                      
-                      
+
+                    {selected_annonce.courses.map((item) => (
                       <Typography color='textSecondary'>{item}</Typography>
-                      
-                      
-                      )}
+                    ))}
                   </Box>
                   <Box style={{ width: "100%", marginTop: 25 }}>
                     <Typography style={{ fontWeight: "bold", fontSize: 20 }}>
                       <i className='uil uil-question-circle' /> Demandes annexes
                     </Typography>
                     <Divider style={{ marginTop: 10, marginBottom: 10 }} />
-                  
+
                     {selected_annonce.info_annexes}
                   </Box>
                 </ExpansionPanelDetails>
@@ -408,7 +410,7 @@ export default (props) => {
               <Box display='flex' flexDirection='row-reverse'>
                 <Link to='#' style={{ textDecoration: "none" }}>
                   <Button
-                    onClick={handleSubmit}
+                    onClick={handleClickOpen}
                     style={{
                       backgroundColor: "rgb(70, 176, 74)",
                       color: "white",
@@ -457,37 +459,41 @@ export default (props) => {
                 <div className='ticket__divider' />
                 <Box className='ticket__body'>
                   <Box className='ticket__section'>
-                    <Typography>Liste des courses ({selected_annonce.courses.length} / 10) :</Typography>
-                    
-                    {selected_annonce.courses.map( item => 
-                      
-                      
-                      <Typography color='textSecondary'>{item}</Typography>
-                      
-                      
-                      )}
+                    <Typography>
+                      Liste des courses ({selected_annonce.courses.length} / 10)
+                      :
+                    </Typography>
 
+                    {selected_annonce.courses.map((item) => (
+                      <Typography color='textSecondary'>{item}</Typography>
+                    ))}
                   </Box>
                   <Box className='ticket__section'>
                     <Typography>Demandes annexes :</Typography>
-          <Typography color='textSecondary'>{selected_annonce.info_annexes}</Typography>
+                    <Typography color='textSecondary'>
+                      {selected_annonce.info_annexes}
+                    </Typography>
                   </Box>
 
                   <Box className='ticket__section'>
                     <Typography>Mode de paiement :</Typography>
-          <Typography color='textSecondary'>{selected_annonce.payment_method}</Typography>
+                    <Typography color='textSecondary'>
+                      {selected_annonce.payment_method}
+                    </Typography>
                   </Box>
                 </Box>
                 <Box className='ticket__footer '>
                   <Typography style={{ fontWeight: "bold" }}>
-                    Prix maximum à respecter : 
+                    Prix maximum à respecter :
                   </Typography>
-                  <Typography color='textSecondary'>{selected_annonce.max_price + " €"}</Typography>
+                  <Typography color='textSecondary'>
+                    {selected_annonce.max_price + " €"}
+                  </Typography>
                 </Box>
               </article>
               <Link to='#' style={{ textDecoration: "none" }}>
                 <Button
-                  onClick={handleSubmit}
+                  onClick={handleClickOpen}
                   fullWidth
                   style={{
                     backgroundColor: "rgb(70, 176, 74)",
@@ -501,6 +507,61 @@ export default (props) => {
                   Finaliser la livraison <i className='uil uil-box' />
                 </Button>
               </Link>
+              <Dialog
+                open={open}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={handleClose}
+              >
+                <DialogTitle>
+                  Information a tous nos livreurs{" "}
+                  <i className='uil uil-exclamation-triangle'></i>
+                </DialogTitle>
+                <DialogContent>
+                  <DialogContentText>
+                    Avant d’effectuer votre livraison veuillez générer votre
+                    attestation de déplacement provisoire, pour générer une
+                    attestation veuillez vous rendre sur{" "}
+                    <a
+                      href={ROUTE.DASHBOARD_HELPER_QR_CODE}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      style={{
+                        textDecoration: "none",
+                        color: "rgb(70, 176, 74)",
+                      }}
+                    >
+                      ce lien
+                    </a>{" "}
+                  </DialogContentText>
+                  <DialogContentText>
+                    Une fois votre attestation téléchargée il vous suffira de
+                    présenter votre QR code à l'agent de police.
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button
+                    onClick={handleClose}
+                    style={{
+                      marginTop: 15,
+                      color: "gray",
+                    }}
+                    autoFocus
+                  >
+                    Annuler
+                  </Button>
+                  <Button
+                    onClick={handleSubmit}
+                    style={{
+                      marginTop: 15,
+                      color: "#46B04A",
+                    }}
+                    autoFocus
+                  >
+                    Continuer
+                  </Button>
+                </DialogActions>
+              </Dialog>
             </Box>
           </Box>
         </Grid>

@@ -63,7 +63,7 @@ export default (props) => {
   const [values, setValues] = useState({
     search: "",
   });
-  const { firstName } = JSON.parse(localStorage.getItem("account_to_register"));
+  const { lastName } = JSON.parse(localStorage.getItem("account_to_register"));
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
@@ -71,7 +71,6 @@ export default (props) => {
     <div className={classes.root}>
       <CssBaseline />
       <Box position='fixed' className={classes.appBar}>
-        <p>{JSON.stringify(myannonces.annonces) || "rien du tout"}</p>
         <Toolbar>
           <i
             className='uil uil-search'
@@ -130,7 +129,7 @@ export default (props) => {
               component='h1'
               style={{ textAlign: "center" }}
             >
-              Ravis de vous revoir parmi nous {firstName}
+              Ravis de vous revoir parmi nous {lastName}
             </Typography>
             <Typography
               variant='h4'
