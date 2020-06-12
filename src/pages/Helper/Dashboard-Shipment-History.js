@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import CardHistory from "../../components/CardHistory";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import ROUTE from "../../Routes";
+import logoBlack from "../../images/logoBlack.svg";
 import DrawerDashboardHelper from "../../components/DrawerDashboardHelper";
 window.document.title = "HomeDelivery - Livraisons effectuées";
 
@@ -93,7 +94,7 @@ export default (props) => {
       >
         <Box className={classes.toolbar}>
           <img
-            src='https://svgur.com/i/LhH.svg'
+            src={logoBlack}
             alt='logoHomeDelivery'
             style={{ marginLeft: 13, marginTop: 13, height: 35 }}
           />

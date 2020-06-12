@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Grid, TextField, Typography, Box, Button } from "@material-ui/core";
 import { LoginContext } from "../../contexts/LoginContext";
+import logoWhite from "../../images/logoWhite.svg";
 window.document.title = "HomeDelivery - Création de compte bénévole";
 
 export default (props) => {
@@ -65,7 +66,7 @@ export default (props) => {
               }}
             >
               <img
-                src='https://svgur.com/i/LhU.svg'
+                src={logoWhite}
                 alt='logoHomedeliveryBlanc'
                 draggable='false'
                 style={{ height: 40 }}

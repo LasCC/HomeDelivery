@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Typography, Box } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import ROUTE from "../Routes";
+import logoWhite from "../images/logoWhite.svg";
 window.document.title = "HomeDelivery - Choix création de compte";
 
 export default (props) => {
@@ -41,7 +42,7 @@ export default (props) => {
               }}
             >
               <img
-                src='https://svgur.com/i/LhU.svg'
+                src={logoWhite}
                 alt='logoHomedeliveryBlanc'
                 draggable='false'
                 style={{ height: 40 }}

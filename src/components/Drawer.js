@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import ROUTE from "../Routes";
+import logoBlack from "../images/logoBlack.svg";
 import MenuIcon from "@material-ui/icons/Menu";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import HomeIcon from "@material-ui/icons/Home";
@@ -53,7 +54,7 @@ export default function TemporaryDrawer() {
       <List component='nav' aria-label='main mailbox folders'>
         <ListItem alignItems='flex-start'>
           <img
-            src='https://svgur.com/i/LhH.svg'
+            src={logoBlack}
             style={{ height: 35, marginRight: 15 }}
             alt='logo'
           />

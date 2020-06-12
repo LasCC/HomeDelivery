@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-
 import { Box, Typography, Menu, MenuItem, IconButton } from "@material-ui/core";
-
 import { Link } from "react-router-dom";
-
+import logoBlack from "../images/logoBlack.svg";
 import ROUTE from "../Routes";
 
 export default (props) => {
@@ -28,7 +26,7 @@ export default (props) => {
           style={{ marginLeft: 10 }}
         >
           <img
-            src='https://svgur.com/i/LhH.svg'
+            src={logoBlack}
             draggable='false'
             style={{
               height: 35,

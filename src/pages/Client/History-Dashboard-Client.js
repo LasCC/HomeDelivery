@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import CardAnnonceDashboard from "../../components/CardAnnonceDashboard";
-import useLocalStorage from "../../hooks/useLocalstorage";
 import {
   Drawer,
   CssBaseline,
@@ -16,6 +15,7 @@ import {
 import { Link } from "react-router-dom";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import ROUTE from "../../Routes";
+import logoBlack from "../../images/logoBlack.svg";
 import DrawerDashboardClient from "../../components/DrawerDashboardClient";
 import { AnnonceContext } from "../../contexts/AnnonceContext";
 window.document.title = "HomeDelivery - Historique";
@@ -118,7 +118,7 @@ export default (props) => {
       >
         <Box className={classes.toolbar}>
           <img
-            src='https://svgur.com/i/LhH.svg'
+            src={logoBlack}
             alt='logoHomeDelivery'
             style={{
               marginLeft: 13,

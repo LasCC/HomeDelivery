@@ -19,6 +19,7 @@ import France from "../../data/france.json";
 import { useContext } from "react";
 import { AnnonceContext } from "../../contexts/AnnonceContext";
 import ROUTE from "../../Routes";
+import logoBlack from "../../images/logoBlack.svg";
 import CardAnnonceDashboard from "../../components/CardAnnonceDashboard";
 import useLocalStorage from "../../hooks/useLocalstorage";
 
@@ -126,7 +127,7 @@ export default (props) => {
       >
         <Box className={classes.toolbar}>
           <img
-            src='https://svgur.com/i/LhH.svg'
+            src={logoBlack}
             alt='logoHomeDelivery'
             style={{ marginLeft: 13, marginTop: 13, height: 35 }}
           />

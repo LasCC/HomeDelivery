@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { LoginContext } from "../contexts/LoginContext";
+import logoWhite from "../images/logoWhite.svg";
 window.document.title = "HomeDelivery - Confirmation d'inscription";
 
 export default (props) => {
@@ -66,7 +67,7 @@ export default (props) => {
               }}
             >
               <img
-                src='https://svgur.com/i/LhU.svg'
+                src={logoWhite}
                 alt='logoHomedeliveryBlanc'
                 draggable='false'
                 style={{ height: 40 }}

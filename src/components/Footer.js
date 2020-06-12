@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Typography, Box } from "@material-ui/core";
 import { Link as AnimationScroll } from "react-scroll";
 import { Link } from "react-router-dom";
+import logoBlack from "../images/logoBlack.svg";
 import ROUTES from "../Routes";
 
 export default (props) => {
@@ -10,7 +11,7 @@ export default (props) => {
       <Box display='flex' alignItems='center' style={{ padding: 30 }}>
         <Box flexGrow={1} display='flex' alignItems='center'>
           <img
-            src='https://svgur.com/i/LhH.svg'
+            src={logoBlack}
             draggable='false'
             style={{
               height: 35,

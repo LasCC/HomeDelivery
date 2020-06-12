@@ -10,6 +10,7 @@ import {
   IconButton,
   Divider,
 } from "@material-ui/core";
+import logoBlack from "../../images/logoBlack.svg";
 
 const LoginAdmin = (props) => {
   const [values, setValues] = useState({
@@ -53,7 +54,7 @@ const LoginAdmin = (props) => {
         >
           <Grid container justify='center' alignItems='center'>
             <img
-              src='https://svgur.com/i/LhH.svg'
+              src={logoBlack}
               alt='logoHomedelivery'
               style={{ height: 35 }}
             />

@@ -14,6 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import Questions from "../../components/Questions";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import logoBlack from "../../images/logoBlack.svg";
 import ROUTE from "../../Routes";
 import DrawerDashboardClient from "../../components/DrawerDashboardClient";
 window.document.title = "HomeDelivery - Questions récurrentes";
@@ -103,7 +104,7 @@ export default (props) => {
       >
         <Box className={classes.toolbar}>
           <img
-            src='https://svgur.com/i/LhH.svg'
+            src={logoBlack}
             alt='logoHomeDelivery'
             style={{ marginLeft: 13, marginTop: 13, height: 35 }}
             draggable='false'

@@ -12,6 +12,10 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import ROUTE from "../../Routes";
+import logoBlack from "../../images/logoBlack.svg";
+import image_dash_1 from "../../images/image_dash_1.svg";
+import image_dash_2 from "../../images/image_dash_2.svg";
+import image_dash_3 from "../../images/image_dash_3.svg";
 import DrawerDashboardHelper from "../../components/DrawerDashboardHelper";
 import { AnnonceContext } from "../../contexts/AnnonceContext";
 window.document.title = "HomeDelivery - Dashbord";
@@ -106,7 +110,7 @@ export default (props) => {
       >
         <Box className={classes.toolbar}>
           <img
-            src='https://svgur.com/i/LhH.svg'
+            src={logoBlack}
             alt='logoHomeDelivery'
             style={{ marginLeft: 13, marginTop: 13, height: 35 }}
           />
@@ -159,7 +163,7 @@ export default (props) => {
                     alignItems='center'
                     style={{
                       height: "100%",
-                      backgroundImage: "url('https://svgur.com/i/KAb.svg')",
+                      backgroundImage: `url(${image_dash_2})`,
                       backgroundPosition: "right",
                       backgroundSize: "cover",
                       borderRadius: "10px",
@@ -200,7 +204,7 @@ export default (props) => {
                     alignItems='center'
                     style={{
                       height: "100%",
-                      backgroundImage: "url('https://svgur.com/i/KAw.svg')",
+                      backgroundImage: `url(${image_dash_3})`,
                       backgroundPosition: "center",
                       backgroundSize: "cover",
                       borderRadius: "10px",
@@ -237,7 +241,7 @@ export default (props) => {
                     alignItems='center'
                     style={{
                       height: "100%",
-                      backgroundImage: "url('https://svgur.com/i/KAw.svg')",
+                      backgroundImage: `url(${image_dash_3})`,
                       backgroundPosition: "center",
                       backgroundSize: 500,
                       borderRadius: "10px",
@@ -310,7 +314,7 @@ export default (props) => {
                     alignItems='center'
                     style={{
                       height: "100%",
-                      backgroundImage: "url('https://svgur.com/i/KAa.svg')",
+                      backgroundImage: `url(${image_dash_1})`,
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "left",
                       backgroundPositionX: "-6em",

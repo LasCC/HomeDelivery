@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
 import { LoginContext } from "../contexts/LoginContext";
+import logoWhite from "../images/logoWhite.svg";
 import {
   Grid,
   Typography,
@@ -94,7 +95,7 @@ export default (props) => {
               }}
             >
               <img
-                src='https://svgur.com/i/LhU.svg'
+                src={logoWhite}
                 alt='logoHomedeliveryBlanc'
                 style={{ height: 40 }}
               />

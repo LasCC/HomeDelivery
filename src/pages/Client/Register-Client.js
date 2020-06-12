@@ -13,6 +13,7 @@ import {
   InputLabel,
   FormHelperText,
 } from "@material-ui/core";
+import logoWhite from "../../images/logoWhite.svg";
 import axios from "axios";
 import { LoginContext } from "../../contexts/LoginContext";
 import France from "../../data/france.json";
@@ -111,7 +112,7 @@ export default (props) => {
               }}
             >
               <img
-                src='https://svgur.com/i/LhU.svg'
+                src={logoWhite}
                 alt='logoHomedeliveryBlanc'
                 draggable='false'
                 style={{ height: 40 }}
