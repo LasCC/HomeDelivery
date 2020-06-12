@@ -154,8 +154,8 @@ export default (props) => {
       firstName : res.data.user_found.firstName ,
       lastName : res.data.user_found.lastName , 
       email  : res.data.user_found.email ,  
-      phone : res.data.phone , 
-      city : res.data.city  , 
+      phone : res.data.user_found.phone , 
+      city : res.data.user_found.city  , 
       address : res.data.user_found.address,
       c_address : res.data.user_found.c_address,
       zipcode : res.data.user_found.zipcode
