@@ -128,10 +128,7 @@ export default (props) => {
         </Typography>
         <Divider style={{ marginTop: 15, marginBottom: 15 }} />
         <CardHistory />
-        <CardHistory />
-        <CardHistory />
-        <CardHistory />
-        <CardHistory />
+
       </main>
     </div>
   );

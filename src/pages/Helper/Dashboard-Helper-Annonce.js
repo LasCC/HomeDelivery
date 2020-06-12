@@ -14,11 +14,19 @@ import {
   InputLabel,
   Typography,
   FormControl,
+  TextField,
   Chip,
 } from "@material-ui/core";
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import DrawerDashboardHelper from "../../components/DrawerDashboardHelper";
 import MapDev from "../../components/MapDev";
 import France from "../../data/france.json";
+import { useContext } from "react";
+import { AnnonceContext } from "../../contexts/AnnonceContext";
+import ROUTE from "../../Routes"
+import CardAnnonceDashboard from "../../components/CardAnnonceDashboard"
+import useLocalStorage from "../../hooks/useLocalstorage";
+
 window.document.title = "HomeDelivery - Annonces";
 
 const drawerWidth = 300;
@@ -67,9 +75,11 @@ const useStyles = makeStyles((theme) => ({
 export default (props) => {
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
-  useEffect(() => {
-    setLabelWidth(inputLabel.current.offsetWidth);
-  }, []);
+  // useEffect(() => {
+  //   setLabelWidth(inputLabel.current.offsetWidth);
+  // }, []);
+  const { fetchCityAnnonce, annoncedept } = useContext(AnnonceContext)
+  const [annonceselected, setAnnonceselected] = useLocalStorage('selected_annonce', 'xxx')
   const classes = useStyles();
   const [values, setValues] = useState({
     search: "",
@@ -78,8 +88,17 @@ export default (props) => {
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
+  const handleSubmit = () => {
+    fetchCityAnnonce(values.ville)
+  }
+  const handleAnnonceSelection = obj => {
+    console.log(obj)
+    setAnnonceselected(obj)
+    props.history.push(ROUTE.DASHBOARD_UPDATE_ANNONCE_HELPER)
+  }
   return (
     <div className={classes.root}>
+
       <CssBaseline />
       <Box position='fixed' className={classes.appBar}>
         <Toolbar>
@@ -176,37 +195,20 @@ export default (props) => {
           />
 
           <Divider orientation='vertical' flexItem />
-          <FormControl
-            variant='outlined'
-            style={{
-              marginRight: 15,
-              minWidth: 300,
-              border: "none",
-              marginLeft: 15,
+
+          <Autocomplete
+            id="combo-box-demo"
+
+            onChange={(event, newValue) => {
+              setValues({ ...values, ville: newValue.dep_name });
             }}
-          >
-            <InputLabel ref={inputLabel} htmlFor='villederesidence'>
-              Rechercher par département
-            </InputLabel>
-            <Select
-              labelWidth={labelWidth}
-              value={values.ville}
-              onChange={handleChange("ville")}
-              autoWidth={true}
-              inputProps={{
-                name: "ville",
-                "aria-label": "Ville de résidence",
-              }}
-            >
-              {France.map((city, k) => (
-                <MenuItem key={k} value={city.dep_name}>
-                  <i classNamme='uil uil-map-marker' />
-                  {city.num_dep + " " + city.dep_name}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+            options={France}
+            getOptionLabel={(option) => option.dep_name}
+            style={{ width: 300 }}
+            renderInput={(params) => <TextField {...params} label="Departement" variant="outlined" />}
+          />
           <Button
+            onClick={handleSubmit}
             type='submit'
             aria-label='search'
             style={{
@@ -220,8 +222,16 @@ export default (props) => {
             Rechercher
           </Button>
         </Box>
-        <div>{`inputValue: '${values.ville}'`}</div>
-        <div>{`searchBar: '${values.search}'`}</div>
+        <div> {annoncedept.length > 0 && JSON.stringify(annoncedept) || "vide :-("} </div>
+        {/* <div>{`searchBar: '${values.search}'`}</div> */}
+        {annoncedept.length > 0 && annoncedept.annonces.map((cdata, index) =>
+
+          (<Box onClick={() => handleAnnonceSelection(cdata)}>
+            <CardAnnonceDashboard key={index} {...cdata} num={cdata._id.substring(17, 24)} />
+          </Box>
+          )
+        )}
+
         <Box
           style={{
             position: "sticky",
@@ -233,9 +243,12 @@ export default (props) => {
           alignItems='center'
           justifyContent='center'
         >
-          <MapDev />
+          {/* <MapDev /> */}
+
+
         </Box>
       </main>
+
     </div>
   );
 };

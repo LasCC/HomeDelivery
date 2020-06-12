@@ -180,27 +180,27 @@ export default (props) => {
                   />
                 </Box>
               ))) || (
-              <Box style={{ textAlign: "center", marginTop: 35 }}>
-                <Typography style={{ marginBottom: 15, fontSize: 18 }}>
-                  Vous n'avez aucune annonce <br />
+                <Box style={{ textAlign: "center", marginTop: 35 }}>
+                  <Typography style={{ marginBottom: 15, fontSize: 18 }}>
+                    Vous n'avez aucune annonce <br />
                   Pour créer une annonce veuillez cliquer{" "}
-                  <a
-                    href={ROUTE.ANNONCE}
-                    style={{
-                      color: "rgb(70, 176, 74)",
-                      textDecoration: "none",
-                    }}
-                  >
-                    ce lien.
+                    <a
+                      href={ROUTE.ANNONCE}
+                      style={{
+                        color: "rgb(70, 176, 74)",
+                        textDecoration: "none",
+                      }}
+                    >
+                      ce lien.
                   </a>
-                </Typography>
-                <img
-                  src='https://i.imgur.com/I7iNjd4.png'
-                  style={{ height: 450 }}
-                  alt='notfound'
-                />
-              </Box>
-            )}
+                  </Typography>
+                  <img
+                    src='https://i.imgur.com/I7iNjd4.png'
+                    style={{ height: 450 }}
+                    alt='notfound'
+                  />
+                </Box>
+              )}
           </TabPanel>
           <TabPanel value='2'>
             <CardHistory />
