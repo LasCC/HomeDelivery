@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState , useEffect, useContext} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Grid,
@@ -20,7 +20,12 @@ import Lottie from "react-lottie";
 import Navbar from "../../components/Navbar";
 import moment from "moment";
 import "moment/locale/fr";
+import useLocalStorage from "../../hooks/useLocalstorage";
+import backapi from "../../api/backapi";
+import { AnnonceContext } from "../../contexts/AnnonceContext";
+import ROUTE from  "../../Routes"
 moment.locale("fr");
+
 window.document.title = "HomeDelivery - Service de livraison";
 
 const shippping = require("../../data/Shipping.json");
@@ -32,6 +37,10 @@ const shippingOptions = {
     preserveAspectRatio: "xMidYMid slice",
   },
 };
+
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -134,11 +143,37 @@ function getStepContent(step) {
 export default (props) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+
+  const [name, setName] = useState('');
+
+  useEffect(async () => {
+    let res = await backapi.post("/annonce/resolve",{
+      annonce_id : selected_annonce._id
+    })
+    setName({
+      firstName : res.data.user_found.firstName ,
+      lastName : res.data.user_found.lastName , 
+      email  : res.data.user_found.email ,  
+      phone : res.data.phone , 
+      city : res.data.city  , 
+      address : res.data.user_found.address,
+      c_address : res.data.user_found.c_address,
+      zipcode : res.data.user_found.zipcode
+    })
+    console.log(res)
+  }, [])
+
+
+
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+  const [selected_annonce] = useLocalStorage('selected_annonce')
+  console.log(selected_annonce)
   const handleSubmit = () => {
     console.log("====== LIST COURSES ======");
+    
+    props.history.push(ROUTE.DASHBOARD_HISTORY_HELPER)
   };
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -150,6 +185,16 @@ export default (props) => {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
+
+
+  const {updateAnnonceSatus} = useContext(AnnonceContext)
+
+  const handleSetStatus = x => {
+    handleNext()
+    updateAnnonceSatus( selected_annonce._id,activeStep)
+  }
+
+
 
   return (
     <div>
@@ -174,13 +219,13 @@ export default (props) => {
                 </Box>
                 <Box style={{ marginLeft: 25 }}>
                   <Typography color='textSecondary'>
-                    Annonce n°6543778
+                    Annonce n° {selected_annonce._id.substring(17,24)}
                   </Typography>
                   <Typography
                     variant='h1'
                     style={{ fontWeight: "bold", fontSize: 25 }}
                   >
-                    Michel PLATINI
+                    {(name === "" && "...") || `${name.firstName} ${name.lastName}` }
                   </Typography>
                 </Box>
               </Box>
@@ -221,14 +266,14 @@ export default (props) => {
                       Destinatire
                     </Typography>
                     <Divider style={{ marginTop: 10, marginBottom: 10 }} />
-                    <Typography>Nom : COULON</Typography>
-                    <Typography>Prénom : Ludovic</Typography>
-                    <Typography>Adresse : 27 rue des pommes</Typography>
+                    <Typography>Nom : {name.lastName}</Typography>
+                    <Typography>Prénom : {name.firstName}</Typography>
+                    <Typography>Adresse : {name.address}</Typography>
                     <Typography>
-                      Complément d'adresse : Batiment C, porte 313, Étage 4
+                      Complément d'adresse : {name.c_address}
                     </Typography>
-                    <Typography>Ville : Paris 11e</Typography>
-                    <Typography>Code postale : 75011</Typography>
+                    <Typography>Ville : {name.city}</Typography>
+                    <Typography>Code postale : {name.zipcode}</Typography>
                   </Box>
                   <Box style={{ width: "100%", marginTop: 25 }}>
                     <Typography style={{ fontWeight: "bold", fontSize: 20 }}>
@@ -245,7 +290,7 @@ export default (props) => {
                           color: "rgb(70, 176, 74",
                         }}
                       >
-                        coulonludovic@gmail.com
+                        {name.email}
                       </a>
                     </Typography>
                     <Typography>
@@ -275,6 +320,7 @@ export default (props) => {
                 >
                   <Typography className={classes.heading}>
                     Liste de courses
+                   
                   </Typography>
                   <Typography className={classes.secondaryHeading}>
                     Liste et demande explicites du client
@@ -287,14 +333,22 @@ export default (props) => {
                       Liste de courses
                     </Typography>
                     <Divider style={{ marginTop: 10, marginBottom: 10 }} />
-                    <Typography>Liste complète ici</Typography>
+               
+                    {selected_annonce.courses.map( item => 
+                      
+                      
+                      <Typography color='textSecondary'>{item}</Typography>
+                      
+                      
+                      )}
                   </Box>
                   <Box style={{ width: "100%", marginTop: 25 }}>
                     <Typography style={{ fontWeight: "bold", fontSize: 20 }}>
                       <i className='uil uil-question-circle' /> Demandes annexes
                     </Typography>
                     <Divider style={{ marginTop: 10, marginBottom: 10 }} />
-                    <Typography>Liste complète ici</Typography>
+                  
+                    {selected_annonce.info_annexes}
                   </Box>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
@@ -329,7 +383,7 @@ export default (props) => {
                                 Annuler
                               </Button>
                               <Button
-                                onClick={handleNext}
+                                onClick={handleSetStatus}
                                 className={classes.button}
                                 style={{
                                   backgroundColor: "rgb(70, 176, 74)",
@@ -403,23 +457,32 @@ export default (props) => {
                 <div className='ticket__divider' />
                 <Box className='ticket__body'>
                   <Box className='ticket__section'>
-                    <Typography>Liste des courses (1 / 10) :</Typography>
+                    <Typography>Liste des courses ({selected_annonce.courses.length} / 10) :</Typography>
+                    
+                    {selected_annonce.courses.map( item => 
+                      
+                      
+                      <Typography color='textSecondary'>{item}</Typography>
+                      
+                      
+                      )}
+
                   </Box>
                   <Box className='ticket__section'>
                     <Typography>Demandes annexes :</Typography>
-                    <Typography color='textSecondary'></Typography>
+          <Typography color='textSecondary'>{selected_annonce.info_annexes}</Typography>
                   </Box>
 
                   <Box className='ticket__section'>
                     <Typography>Mode de paiement :</Typography>
-                    <Typography color='textSecondary'></Typography>
+          <Typography color='textSecondary'>{selected_annonce.payment_method}</Typography>
                   </Box>
                 </Box>
                 <Box className='ticket__footer '>
                   <Typography style={{ fontWeight: "bold" }}>
-                    Prix maximum à respecter :
+                    Prix maximum à respecter : 
                   </Typography>
-                  <Typography color='textSecondary'>€</Typography>
+                  <Typography color='textSecondary'>{selected_annonce.max_price + " €"}</Typography>
                 </Box>
               </article>
               <Link to='#' style={{ textDecoration: "none" }}>

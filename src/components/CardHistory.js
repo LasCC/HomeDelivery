@@ -4,11 +4,12 @@ import axios from "axios";
 import moment from "moment";
 import "moment/locale/fr";
 import CardHistoryLoading from "./CardHistoryLoading";
+import backapi from "../api/backapi";
 moment.locale("fr");
 
 const getResponse = async () => {
   try {
-    const response = await axios.get("https://reqres.in/api/users");
+    const response = await backapi.get("/annonce/fetch");
     console.log(response.data);
     return response.data;
   } catch (error) {
@@ -16,18 +17,30 @@ const getResponse = async () => {
   }
 };
 
+
+
 export default (props) => {
+
+
   const [data, setdata] = useState(null);
   const [isReady, setisready] = useState(false);
+  const [name, setName] = useState("")
+
+
+
+
+
   useEffect(() => {
     getResponse()
       .then((data) => setdata(data))
       .then(() => setisready(true));
+
+
   }, []);
   if (isReady && data) {
     return (
       <div>
-        {data.data.map((feed, i) => (
+        {data.annonces.map((feed, i) => (
           <Box
             display='flex'
             alignItems='center'
@@ -53,7 +66,7 @@ export default (props) => {
                 component='h1'
                 style={{ fontWeight: "bold" }}
               >
-                Annonce de {feed.first_name}
+                Annonce du departement :  {feed.dept}
                 <Chip
                   label='Terminé'
                   variant='outlined'

@@ -38,9 +38,7 @@ const DashboardHelper = lazy(() => import("./pages/Helper/Dashboard-Helper"));
 const DashboardHelperGenerateQR = lazy(() =>
   import("./pages/Helper/GenerateQR")
 );
-const SelectCityAnnonce = lazy(() =>
-  import("./pages/Helper/SelectCityAnnonce")
-);
+
 const DashboardHelperAnnonce = lazy(() =>
   import("./pages/Helper/Dashboard-Helper-Annonce")
 );
@@ -157,11 +155,7 @@ export default function App() {
               path={ROUTE.DASHBOARD_HELPER_ANNONCE}
               component={DashboardHelperAnnonce}
             />
-            <ProtectedHelperRoute
-              exact
-              path={ROUTE.DASHBOARD_HELPER_SELECT_CITY}
-              component={SelectCityAnnonce}
-            />
+
             <ProtectedHelperRoute
               exact
               path={ROUTE.DASHBOARD_SETTINGS_HELPER}

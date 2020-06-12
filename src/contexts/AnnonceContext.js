@@ -30,6 +30,7 @@ const AnnonceProvider = (props) => {
   });
   const [steps, setSteps] = useState(0);
   const [myannonces, setMyannonce] = useState({ loaded: false });
+  const [annoncedept, setAnnoncedept] = useState("")
 
   const handleAnnonceSubmit = async () => {
     const body = {
@@ -98,8 +99,59 @@ const AnnonceProvider = (props) => {
 
   const fetchCityAnnonce = async (input) => {
     console.log(input);
-    // backapi.post()
+
+    try {
+      const res = await backapi.post("/annonce/fetchdeptactive", {
+        dept_name: input
+      })
+      console.log(res.data)
+      setAnnoncedept(res.data)
+    } catch (err) {
+      console.log({ err })
+      return console.failure()
+    }
   }
+
+  const updateAnnonceSatus = async (annonce_id, step) => {
+    if (step === 0) {
+      step = 2;
+      setHandledby(annonce_id)
+    }
+    else
+      step++
+    console.log(annonce_id, step)
+
+    // handled by ...
+    step = step.toString()
+    try {
+      const res = await backapi.put("/annonce/update", {
+        annonce_id,
+        step
+      })
+      console.log(res.data)
+    } catch (err) {
+      console.log({ err })
+      return console.failure()
+    }
+
+  }
+
+  const setHandledby = async annonce_id => {
+    try {
+      const res = await backapi.put("/annonce/handle", {
+        annonce_id
+
+      })
+      console.log(res.data)
+    } catch (err) {
+      console.log({ err })
+      return console.failure()
+    }
+  }
+
+
+
+
   // resolveAnnonce("5ed82d56b3bac6050996c244x")
 
   return (
@@ -114,7 +166,9 @@ const AnnonceProvider = (props) => {
         fetchActiveAnnonce,
         myannonces,
         setMyannonce,
-        fetchCityAnnonce
+        fetchCityAnnonce,
+        annoncedept,
+        updateAnnonceSatus
       }}
     >
       {props.children}

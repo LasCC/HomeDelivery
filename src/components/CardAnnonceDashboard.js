@@ -25,7 +25,7 @@ function CardAnnonceDashboard(props) {
             year: "numeric",
           })}
           <Chip
-            label={props.status === "active" ? "En cours" : "Terminé"}
+            label={props.status === "active" ? "En Attente" : "Terminé"}
             variant='outlined'
             style={{
               backgroundColor:
