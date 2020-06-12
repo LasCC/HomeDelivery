@@ -7,11 +7,11 @@ import StepShipment from "./StepShipment";
 import useLocalstorage from "../hooks/useLocalstorage";
 moment.locale("fr");
 
-const shippping = require("../data/Shipping.json");
-const shippingOptions = {
+const shopping = require("../data/shopping.json");
+const shoppingSettings = {
   loop: true,
   autoplay: true,
-  animationData: shippping,
+  animationData: shopping,
   rendererSettings: {
     preserveAspectRatio: "xMidYMid slice",
   },
@@ -39,7 +39,7 @@ export default (props) => {
               borderRadius: 10,
             }}
           >
-            <Lottie options={shippingOptions} height={150} width={150} />
+            <Lottie options={shoppingSettings} height={150} width={150} />
           </Box>{" "}
           <Box style={{ marginLeft: 25 }}>
             <Typography color='textSecondary'>

@@ -124,11 +124,10 @@ export default (props) => {
                 <div className='ticket__divider' />
                 <Box className='ticket__body'>
                   <Box className='ticket__section'>
-                    {values.todos > 0 && (
-                      <Typography>
-                        Liste des courses ({values.todos.length} / 10) :
-                      </Typography>
-                    )}
+                    <Typography>
+                      Liste des courses ({values.todos.length} / 10) :
+                    </Typography>
+
                     <Typography>
                       {/* Liste de la liste de courses stocké dans le localstorage */}
                       {values.todos &&

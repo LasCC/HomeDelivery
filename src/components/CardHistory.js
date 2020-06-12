@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Chip } from "@material-ui/core";
-import axios from "axios";
 import moment from "moment";
 import "moment/locale/fr";
 import CardHistoryLoading from "./CardHistoryLoading";
@@ -17,25 +16,14 @@ const getResponse = async () => {
   }
 };
 
-
-
 export default (props) => {
-
-
   const [data, setdata] = useState(null);
   const [isReady, setisready] = useState(false);
-  const [name, setName] = useState("")
-
-
-
-
 
   useEffect(() => {
     getResponse()
       .then((data) => setdata(data))
       .then(() => setisready(true));
-
-
   }, []);
   if (isReady && data) {
     return (
@@ -66,7 +54,7 @@ export default (props) => {
                 component='h1'
                 style={{ fontWeight: "bold" }}
               >
-                Annonce du departement :  {feed.dept}
+                Annonce du departement : {feed.dept}
                 <Chip
                   label='Terminé'
                   variant='outlined'

@@ -6,7 +6,7 @@ import { LoginContext } from "../contexts/LoginContext";
 
 export default (props) => {
   const { handleLogout } = useContext(LoginContext);
-  const { firstName } = JSON.parse(localStorage.getItem("account_to_register"));
+  const { lastName } = JSON.parse(localStorage.getItem("account_to_register"));
   return (
     <Box style={{ padding: 20, marginTop: 25 }}>
       <img
@@ -26,7 +26,7 @@ export default (props) => {
         component='h1'
         style={{ marginTop: 15, fontWeight: "bold" }}
       >
-        Bonjour {firstName}
+        Bonjour {lastName}
       </Typography>
       <Link to={ROUTE.ANNONCE} style={{ textDecoration: "none" }}>
         <Button

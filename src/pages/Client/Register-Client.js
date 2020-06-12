@@ -188,8 +188,8 @@ export default (props) => {
                           {values.showPassword ? (
                             <i className='uil uil-eye-slash' />
                           ) : (
-                              <i className='uil uil-eye' />
-                            )}
+                            <i className='uil uil-eye' />
+                          )}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -216,8 +216,8 @@ export default (props) => {
                           {values.showPassword ? (
                             <i className='uil uil-eye-slash' />
                           ) : (
-                              <i className='uil uil-eye' />
-                            )}
+                            <i className='uil uil-eye' />
+                          )}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -270,7 +270,7 @@ export default (props) => {
                   variant='outlined'
                   style={{
                     marginRight: 15,
-                    minWidth: 607,
+                    minWidth: "49%",
                     border: "none",
                     marginLeft: 0,
                     marginTop: 15,
@@ -293,7 +293,7 @@ export default (props) => {
                     {France.map((city, k) => (
                       <MenuItem key={k} value={city.dep_name}>
                         <i classNamme='uil uil-map-marker' />
-                        {city.num_dep + " " + city.dep_name}
+                        {city.num_dep + "-" + city.dep_name}
                       </MenuItem>
                     ))}
                   </Select>
@@ -358,8 +358,6 @@ export default (props) => {
           </Box>
         </Grid>
       </Grid>
-
-      <pre>{JSON.stringify(values)}</pre>
     </div>
   );
 };

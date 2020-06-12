@@ -11,7 +11,11 @@ function CardAnnonceDashboard(props) {
     >
       <Box>
         <img
-          src='https://i.imgur.com/AoDLCID.png'
+          src={
+            props.status === "active"
+              ? "https://i.imgur.com/AoDLCID.png"
+              : "https://i.imgur.com/x0SNZjM.png"
+          }
           alt='queue_waiting'
           style={{ width: 125, height: 125 }}
         />
@@ -25,14 +29,16 @@ function CardAnnonceDashboard(props) {
             year: "numeric",
           })}
           <Chip
-            label={props.status === "active" ? "En Attente" : "Terminé"}
+            label={
+              props.status === "active" ? "En attente d'acceptation" : "Terminé"
+            }
             variant='outlined'
             style={{
               backgroundColor:
-                props.status === "active" ? "#ffe299" : "#46a34a",
+                props.status === "active" ? "#ffe299" : "#d9efe7",
               borderColor: "#f7f7f7",
               borderWidth: 1,
-              color: props.status === "active" ? "#d69200" : "white",
+              color: props.status === "active" ? "#d69200" : "#18b074",
               fontWeight: "bold",
               marginLeft: 10,
             }}
